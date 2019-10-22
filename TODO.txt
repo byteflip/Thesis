@@ -1,0 +1,4 @@
+Inhaltsverzeichnis
+Literatur aufschreiben
+Flussdiagram für die Daten
+Komponentendiagram zur allgemeinen Übersicht
