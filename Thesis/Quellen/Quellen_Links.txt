@@ -1,1 +1,1 @@
-afs
+https://ieeexplore.ieee.org/abstract/document/6641132 			Detection of malicious AIS position spoofing by exploiting radar information		
