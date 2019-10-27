@@ -1,0 +1,71 @@
+\usepackage{fancyhdr}
+\usepackage{etoolbox}
+\usepackage{todonotes}
+\usepackage[nottoc]{tocbibind}
+
+% title of thesis
+\newcommand{\myThesisTitle}{\textit{Bestimmung von Position und Orientierung des Eigenschiffes mittels Korrelation von Radar und AIS Informationen}}
+
+% backmatter functions exactly as frontmatter
+\renewcommand\backmatter{%
+  \cleardoublepage
+  \@mainmatterfalse
+  \pagenumbering{roman}}
+
+%\usepackage[disable]{todonotes}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+
+% use actual name of chapters and sections
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+
+% set symbols in nomenclature bold, add nomenclature to toc
+%\renewcommand{\nomlabel}[1]{\textsf{\textbf{#1}}}
+%\def\nompreamble{\addcontentsline{toc}{chapter}{\nomname}\markboth{\nomname}{\nomname}}
+
+% header and footer style for book layout
+\fancypagestyle{main}{%
+  \fancyhf{}% Clear fancy header/footer
+  \fancyhead[L]{\myThesisTitle} % title in right header
+  \fancyhead[C]{}
+  \fancyhead[R]{\textit{Jannik Knopp}} % author in left header
+  \fancyfoot[L]{}
+  \fancyfoot[C]{\thepage} % Page number in center footer
+  \fancyfoot[R]{}
+  \renewcommand{\footrulewidth}{0.4pt} % line at bottom visible
+}
+
+% applying the styles to frontmatter and mainmatter and backmatter
+\appto\frontmatter{\pagestyle{main}}
+\appto\mainmatter{\pagestyle{main}}
+\appto\backmatter{\pagestyle{main}}
+
+
+% remove "Chapter"-text from each chapter and add the chapter number before the chapter name
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter{. }}{0pt}{\Huge\bfseries}
+
+% header and footer show on first page of a chapter too.
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
+
+% TOC header displayed in lowercase
+\patchcmd{\tableofcontents}
+  {\MakeUppercase}
+  {}
+  {}{}
+\patchcmd{\tableofcontents}
+  {\MakeUppercase}
+  {}
+  {}{}
+
+% clickable links in the TOC
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
