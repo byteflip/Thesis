@@ -1,0 +1,156 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input{preamble}
+\end_preamble
+\use_default_options true
+\master Bachelor-Thesis_YannikFoth_928761.lyx
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\paperheight 1.5cm
+\leftmargin 3.5cm
+\topmargin 3cm
+\rightmargin 3.5cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Abstract
+\end_layout
+
+\begin_layout Standard
+Das Ziel dieser Arbeit war es, einen BPMN-Editor zur grafischen Modellierung
+ von BPMN-Prozessen (Arbeitsabläufen) zu konzipieren und entwickeln.
+ Der BPMN-Editor sollte hierbei die Möglichkeit bieten, Arbeitsabläufe für
+ Außendienstmitarbeiter und Servicetechniker zu erstellen.
+ An den einzelnen BPMN-Elementen der Prozesse sollten hierbei zusätzliche
+ Informationen hinterlegt werden können, dies dient dazu, dass der Prozess
+ später in einer Smartphone-App ausführbar sein muss.
+ Dies wiederum dient dem Ziel des später geringen Programmieraufwands, da
+ nicht für verschiedene Arbeitsabläufe von Außendienstmitarbeitern und Servicete
+chnikern verschiedener Kunden verschiedene programmatische Anpassungen gemacht
+ werden müssen, es muss lediglich ein anderer Workflow erstellt werden.
+ Bestandteil dieser Arbeit ist hierbei der BPMN-Editor zum Erstellen dieser
+ Workflows, die Smartphone-App dient lediglich dem Kontext und dem Verständnis.
+ Zentrales Ziel bei der Konzeption und Entwicklung des BPMN-Editors war
+ außerdem die hohe Usability und gute User Experience, sowie eine intuitive
+ Verwendung.
+ Dies soll lange Einarbeitungszeiten der späteren Benutzer verhindern und
+ ein einfach zu bedienendes, auf den speziellen Kontext perfekt angepasstes
+ BPMN-Tool als Ergebnis bringen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{plain}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{roman}     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{page}{1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

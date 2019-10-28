@@ -1,0 +1,429 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input{preamble}
+\end_preamble
+\use_default_options true
+\master Bachelor-Thesis_YannikFoth_928761.lyx
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\paperheight 1.5cm
+\leftmargin 3.5cm
+\topmargin 3cm
+\rightmargin 3.5cm
+\bottommargin 3cm
+\secnumdepth -2
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Einleitung
+\end_layout
+
+\begin_layout Standard
+Im folgenden Kapitel wird das Unternehmen FLS
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "FLS"
+description "Fast Lean Smart"
+literal "false"
+
+\end_inset
+
+ GmbH vorgestellt, sowie der thematische Kontext der Thesis beschrieben.
+ Außerdem werden die Ziele dieser Arbeit definiert und eine thematische
+ Abgrenzung vorgenommen.
+\end_layout
+
+\begin_layout Section
+Das Unternehmen - FLS GmbH
+\end_layout
+
+\begin_layout Standard
+Das Thema wurde von der FLS GmbH gestellt und in dessen Hause bearbeitet.
+ FLS sitzt in Heikendorf und ist ein 1992 gegründetes Unternehmen, welches
+ Software zur Optimierung in der Echtzeit Tourenplanung von Außendienst-
+ und Servicemitarbeitern, sowie Technikern entwickelt.
+ Hierbei steht immer der von FLS selbst entwickelte Algorithmus (PowerOpt)
+ im Zentrum.
+ Dieser Algorithmus arbeitet in Echtzeit und optimiert die Touren- und Terminpla
+nung laufend.
+ Hinzu kommt, dass PowerOpt verschiedene Parameter entgegennehmen kann und,
+ trotz der daraus entstehenden Restriktionen, immer das optimale Ergebnis
+ liefert.
+ Basierend auf diesem Algorithmus bietet FLS eine Planungssoftware, genannt
+ FLS VISITOUR.
+ Mit diesem Desktop Client können Dispositionen von Außendienstmitarbeitern,
+ Lieferanten und Servicetechnikern vorgenommen werden.
+ FLS VISITOUR wird von Dispatchern verwendet.
+ Diese verplanen Aufträge an jeweilige Techniker oder lassen die Optimierung
+ selbst das Verplanen erledigen.
+ Mit dem Web-Client (genannt DISPATCH NOW), einem weiterem Produkt von FLS,
+ wird der Desktop-Client als Webanwendung abgebildet.
+ In dieser Cloud-Lösung wurde auch der BPMN-Editor eingebunden.
+ Mit FLS MOBILE ist eine Lösung für die Außendienstmitarbeiter, Lieferanten
+ und Servicetechniker geboten, welche die Smartphone-Hybrid-App auf ihrem
+ Smartphone oder Tablet nutzen, um zum Beispiel alle anliegenden Aufträge
+ und aktuelle Informationen über diese einzusehen oder Statusrückmeldungen
+ an den VISITOUR-Server, die zentrale Schnittstelle der verschiedenen Produkte,
+ zu senden.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "FLS,FLSBOOK"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+FLS beschäftigt über 100 Mitarbeiter.
+ Der Hauptsitz ist in Heikendorf, ein weiterer Standort befindet sich in
+ Köln.
+ Außerdem gibt es in den Niederlanden und in Großbritannien weitere Niederlassun
+gen.
+ Die Abteilung, in welcher diese Thesis erarbeitet wurde, ist die Software
+ Entwicklung für die Mobile Lösung.
+ Das Mobile Team ist verantwortlich für die FLS MOBILE Hybrid-App für Smartphone
+s und Tablets.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "FLS,FLSBOOK"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Kontext
+\end_layout
+
+\begin_layout Standard
+Das Mobile Team entwickelt aktuell eine neue Smartphone-App für FLS MOBILE,
+ welche auf BPMN-Prozessen
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "BPMN"
+description "Business Process Model and Notation"
+literal "false"
+
+\end_inset
+
+ (Arbeitsabläufen) basiert.
+ Diese Arbeitsabläufe, auch Workflows genannt, sollen automatisiert verwendet
+ werden.
+ Das heißt, es wird ein Workflow erstellt und anschließend stellt sich die
+ Smartphone-Hybrid-App auf genau diesen Arbeitsablauf ein.
+ Es wird erreicht, dass nicht für jeden Kunden einzeln viele programmiertechnisc
+he Anpassungen für die unterschiedlichen Arbeitsabläufe der Außendienstmitarbeit
+er und Techniker vorgenommen werden müssen, sondern nur ein anderer Arbeitsablau
+f für die Smartphone-App hinterlegt werden muss.
+\begin_inset Newline newline
+\end_inset
+
+Damit die Arbeitsabläufe grafisch erstellt werden können bedarf es einem
+ BPMN-Editor, welcher die Modellierung von BPMN-Prozessen mit der Funktion
+ der Hinterlegung von zusätzlichen Informationen für einzelne Prozess-Elemente
+ bietet.
+ Dies dient der späteren Ausführbarkeit in der FLS MOBILE Smartphone-App.
+ Da der BPMN-Editor in ein bestehendes Produkt in Form einer Webanwendung
+ integriert wurde, wurde dieser ebenfalls als Webanwendung umgesetzt.
+\end_layout
+
+\begin_layout Section
+Ziele
+\end_layout
+
+\begin_layout Standard
+Ziel der Thesis war es, einen BPMN-Editor zu entwickeln.
+ BPMN steht für Business Process Model and Notation, auf deutsch: Geschäftsproze
+ssmodell und -notation.
+ Hierbei handelt es sich um eine Prozessmodellierungssprache für Arbeitsabläufe
+ (Workflows).
+ Das folgende Diagramm in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abbildung:bpmn-beispiel1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ zeigt ein simples Beispiel eines BPMN-Diagramms.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename res/BPMN_Example.svg
+	scale 46
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Beispiel BPMN-Diagramm, selbst erstellt, Quelle des verwendeten Tools: 
+\begin_inset CommandInset href
+LatexCommand href
+name "bpmn.io JavaScript Framework"
+target "bpmn.io"
+literal "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BPMNIO"
+literal "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "abbildung:bpmn-beispiel1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Nach dem Start-Element 
+\begin_inset Quotes gld
+\end_inset
+
+Auftrag ausgewählt
+\begin_inset Quotes grd
+\end_inset
+
+ werden in diesem Beispiel fünf so genannte User-Task-Elemente durchlaufen.
+ Das heißt, für jede dieser fünf User-Tasks muss in diesem Kontext der Außendien
+stmitarbeiter oder Servicetechniker eine bestimmte Aktion ausführen.
+ In diesem Fall sind es zuerst zwei Statusmeldungen, welche zum Beispiel
+ durch einfache Button dargestellt werden können (
+\begin_inset Quotes gld
+\end_inset
+
+Auftrag anfahren
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+am Auftragsort angekommen
+\begin_inset Quotes grd
+\end_inset
+
+).
+ Aber auch verschiedene Abfragen und beliebige andere Aktionen sind möglich.
+\begin_inset Newline newline
+\end_inset
+
+Der BPMN-Editor sollte sowohl BPMN-Prozesse anzeigen, als auch erstellen
+ und bearbeiten können.
+ Außerdem sollte der BPMN-Editor intuitiv zu bedienen sein.
+ Hier war eine hohe Usability gefordert, da vor allem Nicht-Entwickler (zum
+ Beispiel Consultants) als spätere Anwender geplant sind.
+ Des Weiteren sollten nur valide, bzw.
+ für die Smartphone-App verwendbare, Arbeitsabläufe erstellt werden können.
+ Der BPMN-Editor sollte verschiedene Panel, wie zum Beispiel ein Panel für
+ Properties, beinhalten, in welchem (einzeln jeweils für die Elemente des
+ Diagramms) Informationen für die Smartphone-App eingegeben werden können.
+ Ein Beispiel hierfür wäre der spätere Bezeichner in der Implementierung
+ der Smartphone-App.
+ Wenn dieser Bezeichner beispielsweise als 
+\begin_inset Quotes gld
+\end_inset
+
+call-list
+\begin_inset Quotes grd
+\end_inset
+
+ im BPMN-Editor für ein bestimmtes Element definiert wird, weiß die Smartphone-A
+pp, dass an dieser Stelle im Prozess die Auftragsliste zu sehen sein soll.
+ So können die Properties bereits im BPMN-Editor definiert werden.
+ Die Smartphone-App ist eine Mobile Lösung für Servicetechniker und Lieferanten,
+ welche das BPMN-Diagramm einliest und verwendet.
+ Hierbei ist in der Smartphone-App nichts vom BPMN-Diagramm selbst zu sehen,
+ sondern jedes Element des Diagramms steht für eine bestimmte View oder
+ einen bestimmten Service in der App.
+ Um dies mit einem Beispiel zu veranschaulichen: In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abbildung:bpmn-beispiel1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ sieht man ein BPMN-Diagramm mit einigen User-Task-Elementen.
+ Diese stehen in der Smartphone-App später dafür, dass der User etwas tun
+ muss, beispielsweise einen Button drücken.
+ Die User-Task 
+\begin_inset Quotes gld
+\end_inset
+
+Abfrage
+\begin_inset Quotes grd
+\end_inset
+
+ mit der Notiz 
+\begin_inset Quotes gld
+\end_inset
+
+Lieferschein übergeben
+\begin_inset Quotes grd
+\end_inset
+
+ könnte in der Smartphone-App einer View entsprechen, in welcher ein zentrales
+ Textelement im Zentrum steht: 
+\begin_inset Quotes gld
+\end_inset
+
+Wurde der Lieferschein dem Kunden übergeben?
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Unter diesem Textelement könnte ein Button mit dem Text 
+\begin_inset Quotes gld
+\end_inset
+
+Bestätigen
+\begin_inset Quotes grd
+\end_inset
+
+ Platz nehmen.
+ Nach dem Drücken dieses Buttons würde der Lieferant oder Servicetechniker
+ dann mit dem nächsten Element fortfahren.
+ Die Smartphone-App selbst ist nicht Teil der Thesis, diese dient aber der
+ Verständlichkeit dieser Arbeit.
+ Die Anwender der Smartphone-App werden Lieferanten und Servicetechniker
+ sein.
+ Die Anwender des BPMN-Editors werden später Consultants von FLS sein, welche
+ den kundenspezifischen Workflow (in Zusammenarbeit mit dem Kunden) erstellen,
+ welcher dann der Smartphone-App übergeben wird.
+\end_layout
+
+\begin_layout Section
+Abgrenzung
+\end_layout
+
+\begin_layout Standard
+Die Thesis bezieht sich auf die Konzeption und Entwicklung des BPMN-Editors.
+ Die bereits erwähnte Smartphone-App wird nicht behandelt.
+ Des Weiteren werden keine serverseitigen Implementationen behandelt, es
+ wird sich auf die clientseitige Implementation des BPMN-Editors konzentriert.
+\end_layout
+
+\end_body
+\end_document
