@@ -1,0 +1,449 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3.5cm
+\topmargin 1.5cm
+\rightmargin 2cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Exposé zur Bachelor-Thesis
+\begin_inset Newline newline
+\end_inset
+
+Bestimmung von Position und Orientierung des Eigenschiffes mittels Korrelation
+ von AIS- und RADAR-Informationen
+\end_layout
+
+\begin_layout Author
+Jannik Knopp
+\end_layout
+
+\begin_layout Section
+Einleitung
+\end_layout
+
+\begin_layout Standard
+Die Eigenposition eines Schiffes gehört zu den wichtigsten navigatorischen
+ Daten.
+ Diese wird meistens über einen GPS-Empfänger bestimmt.
+ Das GPS-Signal ist manipulierbar, somit besteht die Möglichkeit einer böswillig
+en Manipulation durch einen Angreifer.
+ Dadurch fällt der GPS-Empfänger aus oder gibt eine falsche Position zurück.
+ In diesen Fällen ist die Eigenposition nicht mehr verfügbar oder nicht
+ vertrauenswürdig, somit ist es notwendig eine Methode zur Positionsbestimmung
+ zu entwickeln, welche unabhängig von dem eigenen GPS-Empfänger arbeitet.
+\begin_inset Newline newline
+\end_inset
+
+Zur Bestimmung der Eigenposition können die Daten aus dem Radar, die GPS-Daten
+ der Schiffe in unmittelbarer Nähe (über AIS bekannt) und die Daten der
+ Seekarte genutzt werden.
+ Das Automatic Identification System (AIS) ist ein unverschlüsseltes Funksystem,
+ zum Austausch von Schiffs- und Navigationsdaten.
+ Durch die AIS-Daten ist die absolute Position von Schiffen und ATONs (
+\emph on
+Aid to navigation
+\emph default
+) bekannt.
+ ATONs sind markante Landmarken oder Bojen zur Unterstützung der Navigation.
+ Durch das Radar erhält man die relative Position der Schiffe und der ATONs
+ zu der Eigenposition.
+ Durch diese beiden Daten lässt sich ein Rückschluss auf die Eigenposition
+ ziehen.
+ Die Zuordnung zwischen AIS- und Radar-Signalen ist aktuell abhängig von
+ der Eigenposition.
+ Da diese bestimmt werden soll, muss ein Algorithmus unabhängig von dieser
+ die Zuordnung finden können.
+ Wenn diese Zuordnung gefunden ist, kann die Eigenposition über diese zugeordnet
+en Daten bestimmt werden.
+\end_layout
+
+\begin_layout Section
+Inhalt der Thesis
+\end_layout
+
+\begin_layout Subsection
+Matching-Algorithmus
+\end_layout
+
+\begin_layout Standard
+Der Matching-Algorithmus bekommt als Input die Radar-Daten und die AIS-Daten
+ der ATONs in unmittelbarer Umgebung.
+ Diese Daten werden als NMEA-Nachricht empfangen und durch einen im Praktikum
+ entstandenen Parser in eine Datenstruktur gefüllt.
+ NMEA (National Marine Electronics Association) ist ein standardisiertes
+ Austauschformat für Navigationsgeräte auf der Schiffsbrücke.
+ Zwischen diesen Daten wird versucht eine Relation zu erstellen, damit aus
+ den zugeordneten Wertepaaren später die Eigenposition bestimmt werden kann.
+ Die ATON-Informationen können um weitere ATONs aus der Karte erweitert
+ werden, um auch ATONs in den Algorithmus mit einzubeziehen, welche aktuell
+ keine AIS-Informationen senden.
+ Der Algorithmus gibt die gefundene Zuordnung zwischen Radar- und AIS-Informatio
+nen weiter an den Position-Fix Algorithmus zur weiteren Verarbeitung.
+\begin_inset Newline newline
+\end_inset
+
+Weiterhin arbeitet der Algorithmus auch auf Radar- und den kompletten AIS-Daten.
+ Dies deckt den Fall ab, dass keine ATONs vom Radar erfasst werden können.
+ Falls möglich gibt der Algorithmus bei einer Verschiebung oder Verdrehung
+ durch böswillige Manipulation
+\emph on
+ 
+\emph default
+an, wie groß diese Manipulation war.
+\begin_inset Newline newline
+\end_inset
+
+Zur Verifizierung der Funktionalität des Algorithmus wurde im vorausgegangenen
+ Praktikum, des Autors, ein Datengenerator entwickelt, welcher Daten aus
+ Fehlerfällen simuliert und somit Testdaten für den Algorithmus liefert.
+\end_layout
+
+\begin_layout Subsection
+Position-Fix-Algorithmus
+\end_layout
+
+\begin_layout Standard
+Der Position-Fix-Algorithmus erhält das Ergebnis des Matching Algorithmus
+ und bestimmt aus den zugeordneten Daten die Eigenposition und der Kurs
+ (Heading) des Schiffes.
+ Diese Daten werden als NMEA-Nachricht wieder an die Brücke gesendet, damit
+ das Ergebnis wie die Daten eines Sensors behandelt werden kann.
+ Falls es zeitlich möglich ist, wird das Ergebnis des Algorithmus visualisiert
+ und weiter an die Seekarte gesendet.
+ Hierfür werden möglicherweise statistische Daten erhoben, um die Darstellung
+ zu verbessern.
+ Diese Darstellung soll an die von Herrn André Becker im Rahmen einer Bachelor-T
+hesis zu entwickelnde Netzwerkschnittstelle gesendet werden, um sie auf
+ der Seekarte anzeigen zu können.
+\end_layout
+
+\begin_layout Section
+Struktur der Thesis
+\end_layout
+
+\begin_layout Subsection
+Aufteilung des Problems
+\end_layout
+
+\begin_layout Standard
+Im folgenden befindet sich eine Grafik, welche die Trennung des Gesamtproblems
+ aufzeigt und den jeweiligen Bearbeiter der Aufgabe.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ThesisAufteilung.svg
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Struktur und Trennung zwischen den Thesen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Unterschiede des Matching-Algorithmus
+\end_layout
+
+\begin_layout Standard
+Es werden zwei verschiedene Ansätze für den Matching-Algorithmus entwickelt,
+ die Unterschiede sind in der folgenden Tabelle dargestellt.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Verwendete Daten
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorteile
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bearbeiter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AIS-ATON, Radar, Geschwindigkeit, Seekarte
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hohe Genauigkeit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+André Becker
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Radar, Geschwindigkeit, Seekarten-ATONs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+unabhängig von allen AIS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+André Becker
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AIS-ATONs, Radar, Seekarte
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+unabhängig von der Geschwindigkeit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Jannik Knopp
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AIS, Radar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+unabhängig von ATONs und Geschwindigkeit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Jannik Knopp
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Unterschiede Matching Algorithmus
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
