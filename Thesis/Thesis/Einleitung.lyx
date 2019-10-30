@@ -7,7 +7,7 @@
 \textclass book
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -63,7 +63,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -78,43 +78,31 @@
 \begin_body
 
 \begin_layout Chapter
-Grundlagen
-\end_layout
-
-\begin_layout Standard
-blablabla
+Einleitung
 \end_layout
 
 \begin_layout Section
-Grundlagen1
-\end_layout
-
-\begin_layout Standard
-asfasf
+Firma
 \end_layout
 
 \begin_layout Section
-Grundlagen2
+Problembeschreibung
 \end_layout
 
-\begin_layout Standard
-asfasf
+\begin_layout Section
+Zweck
 \end_layout
 
-\begin_layout Subsection
-Grundlagen2.1
+\begin_layout Section
+Ziel
 \end_layout
 
-\begin_layout Standard
-asfafasg
+\begin_layout Section
+Methoden
 \end_layout
 
-\begin_layout Subsection
-Grundlagen2.2
-\end_layout
-
-\begin_layout Standard
-asdf
+\begin_layout Section
+Abgrenzung
 \end_layout
 
 \end_body

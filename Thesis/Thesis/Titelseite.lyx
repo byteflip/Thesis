@@ -5,6 +5,9 @@
 \save_transient_properties true
 \origin unavailable
 \textclass book
+\begin_preamble
+\include{preamble}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -79,7 +82,7 @@
 
 \begin_layout Title
 Bestimmung von Position und Orientierung des Eigenschiffes mittels Korrelation
- von AIS und Radar Informationen
+ von AIS-und Radar-Informationen
 \end_layout
 
 \begin_layout Author

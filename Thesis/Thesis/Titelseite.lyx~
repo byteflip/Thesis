@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass book
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -29,6 +29,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -76,25 +77,9 @@
 
 \begin_body
 
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-documentclass{book}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Title
 Bestimmung von Position und Orientierung des Eigenschiffes mittels Korrelation
- von AIS und Radar Informationen
+ von AIS-und Radar-Informationen
 \end_layout
 
 \begin_layout Author

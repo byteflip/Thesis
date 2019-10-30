@@ -7,7 +7,7 @@
 \textclass book
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -63,7 +63,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -81,40 +81,32 @@
 Grundlagen
 \end_layout
 
-\begin_layout Standard
-blablabla
+\begin_layout Section
+AIS, ARPA und ATONs
 \end_layout
 
 \begin_layout Section
-Grundlagen1
-\end_layout
-
-\begin_layout Standard
-asfasf
+Manipulierbarkeit von AIS- und GPS- Signalen
 \end_layout
 
 \begin_layout Section
-Grundlagen2
+NMEA
 \end_layout
 
-\begin_layout Standard
-asfasf
+\begin_layout Section
+Point Set Registration
 \end_layout
 
-\begin_layout Subsection
-Grundlagen2.1
-\end_layout
-
-\begin_layout Standard
-asfafasg
+\begin_layout Section
+Mathematische Grundlagen
 \end_layout
 
 \begin_layout Subsection
-Grundlagen2.2
+Gaussian Mixture Model
 \end_layout
 
-\begin_layout Standard
-asdf
+\begin_layout Subsection
+...
 \end_layout
 
 \end_body
