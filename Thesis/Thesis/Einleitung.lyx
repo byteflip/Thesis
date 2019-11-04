@@ -85,24 +85,52 @@ Einleitung
 Firma
 \end_layout
 
+\begin_layout Standard
+Kurze Beschreibung von Raytheon Anschütz, damit der Kontext der Aufgabe
+ gut umrissen werden kann.
+\end_layout
+
 \begin_layout Section
 Problembeschreibung
+\end_layout
+
+\begin_layout Standard
+Wie im Exposé
 \end_layout
 
 \begin_layout Section
 Zweck
 \end_layout
 
+\begin_layout Standard
+Wie im Exposé
+\end_layout
+
 \begin_layout Section
 Ziel
+\end_layout
+
+\begin_layout Standard
+Definition der Ziele der Thesis im Kontext.
 \end_layout
 
 \begin_layout Section
 Methoden
 \end_layout
 
+\begin_layout Standard
+Verwendete Methoden, bsp.
+ point matching, Positionsbestimmung...
+ nur sehr grob
+\end_layout
+
 \begin_layout Section
 Abgrenzung
+\end_layout
+
+\begin_layout Standard
+Abgrenzung zu Andrés These und zu allem was zwar in der Thesis verwendet
+ wird aber schon vorher existiert hat.
 \end_layout
 
 \end_body

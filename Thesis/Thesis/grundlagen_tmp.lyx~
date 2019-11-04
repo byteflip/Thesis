@@ -85,35 +85,16 @@ Grundlagen
 AIS, ARPA und ATONs
 \end_layout
 
-\begin_layout Standard
-Genaue Erklärung der Begriffe und deren Zusammenspiel im Kontext der Positionsbe
-stimmung
-\end_layout
-
 \begin_layout Section
 Manipulierbarkeit von AIS- und GPS- Signalen
-\end_layout
-
-\begin_layout Standard
-Gefahren und Unischerheiten aufzeigen wie jamming, spoofing usw.
 \end_layout
 
 \begin_layout Section
 NMEA
 \end_layout
 
-\begin_layout Standard
-Erklärung des Ein- und Ausgangsprotokolls.
-\end_layout
-
 \begin_layout Section
 Point Set Registration
-\end_layout
-
-\begin_layout Standard
-Allgemeine Beschreibung eines Point set registration Problems und es auf
- das aktuelle Problem anwenden, um zu zeigen das es eine geeignete Methodik
- ist das Problem zu lösen.
 \end_layout
 
 \begin_layout Section

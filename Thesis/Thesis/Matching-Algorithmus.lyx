@@ -85,20 +85,16 @@ Matching-Algorithmus
 Möglichkeiten des Matchings
 \end_layout
 
+\begin_layout Standard
+Verschiedene Algorithmen, Arten der Parametrisierung usw.
+\end_layout
+
 \begin_layout Section
 Algorithmus
 \end_layout
 
-\begin_layout Subsection
-...
-\end_layout
-
-\begin_layout Section
-Funktionalität
-\end_layout
-
-\begin_layout Section
-Bewertung des Ergebnis im Vergleich zu anderen Algorithmen
+\begin_layout Standard
+Erklärung der Funktionsweise des Algorithmus oder der Algorithmen
 \end_layout
 
 \end_body

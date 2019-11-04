@@ -85,16 +85,34 @@ Position-Fix
 Berechnung von Distanzen und Punkten auf einem Erd-Ellipsoiden
 \end_layout
 
+\begin_layout Standard
+Vergleich der verschiedenen Formeln zur Berechnung von Distanzen und Winkeln
+ auf einem Erd Ellipsoiden.
+\end_layout
+
 \begin_layout Section
 Bestimmung der Eigenposition
+\end_layout
+
+\begin_layout Standard
+Erklärung des Verfahrens zu Bestimmung der Eigenposition
 \end_layout
 
 \begin_layout Section
 Bestimmung der Sicherheit der Eigenposition
 \end_layout
 
+\begin_layout Standard
+Erklärung wie die Sicherheit der Eigenpostion berechnet wird bzw.
+ der Sicherheitsbereich
+\end_layout
+
 \begin_layout Section
 Bestimmung des Eigenheadings
+\end_layout
+
+\begin_layout Standard
+Erklärung des Verfahrens zur Bestimmung des Eigenheadings
 \end_layout
 
 \end_body

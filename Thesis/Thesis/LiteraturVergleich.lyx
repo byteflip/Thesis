@@ -85,12 +85,26 @@ Literatur Vergleich zu ähnlichen Arbeiten
 Fusion von AIS- und ARPA-Signalen
 \end_layout
 
+\begin_layout Standard
+Andere Ansätze zur Fusion von AIS und ARPA Vergleichen und vergleichen mit
+ dieser Arbeit.
+\end_layout
+
 \begin_layout Section
 Position-Fix Methoden
 \end_layout
 
+\begin_layout Standard
+Den aktuellen Stand für PositionFixes beschreiben und vergleichen zum entwickelt
+en Verfahren
+\end_layout
+
 \begin_layout Section
 Maßnahmen gegen Spoofing und Jamming
+\end_layout
+
+\begin_layout Standard
+Andere Ansätze zur Sicherstellung der Positionsdaten.
 \end_layout
 
 \end_body
