@@ -91,19 +91,48 @@ Kurze Beschreibung von Raytheon Anschütz, damit der Kontext der Aufgabe
 \end_layout
 
 \begin_layout Section
-Problembeschreibung
-\end_layout
-
-\begin_layout Standard
-Wie im Exposé
-\end_layout
-
-\begin_layout Section
 Zweck
 \end_layout
 
 \begin_layout Standard
-Wie im Exposé
+Die Eigenposition eines Schiﬀes gehört zu den wichtigsten navigatorischen
+ Daten.
+ Diese wird meistens über einen GPS-Empfänger bestimmt.
+ Das GPS-Signal ist manipulierbar, somit besteht die Möglichkeit einer böswillig
+en Manipulation durch einen Angreifer.
+ Dadurch fällt der GPS-Empfänger aus oder gibt eine falsche Position zurück.
+ In diesen Fällen ist die Eigenposition nicht mehr verfügbar oder nicht
+ vertrauenswürdig, somit ist es notwendig eine Methode zur Positionsbestimmung
+ zu entwickeln, welche unabhängig von dem eigenen GPS-Empfänger arbeitet.
+ 
+\end_layout
+
+\begin_layout Section
+Problembeschreibung
+\end_layout
+
+\begin_layout Standard
+Zur Bestimmung der Eigenposition können die Daten aus dem Radar, die GPS-Daten
+ der Schiffe in unmittelbarer Nähe (über AIS bekannt) und die Daten der
+ Seekarte genutzt werden.
+ Das Automatic Identification System (AIS) ist ein unverschlüsseltes Funksystem,
+ zum Austausch von Schiffs- und Navigationsdaten.
+ Durch die AIS-Daten ist die absolute Position von Schiffen und ATONs (
+\emph on
+Aid to navigation
+\emph default
+) bekannt.
+ ATONs sind markante Landmarken oder Bojen zur Unterstützung der Navigation.
+ Durch das Radar erhält man die relative Position der Schiffe und der ATONs
+ zu der Eigenposition.
+ Durch diese beiden Daten lässt sich ein Rückschluss auf die Eigenposition
+ ziehen.
+ Die Zuordnung zwischen AIS- und Radar-Signalen ist aktuell abhängig von
+ der Eigenposition.
+ Da diese bestimmt werden soll, muss ein Algorithmus entwickelt werden,
+ welcher unabhängig von dieser die Zuordnung finden kann.
+ Durch das finden einer Zuordnung findet sich auch die Transformation, die
+ beide Punktwolken unterscheidet.
 \end_layout
 
 \begin_layout Section
@@ -111,7 +140,14 @@ Ziel
 \end_layout
 
 \begin_layout Standard
-Definition der Ziele der Thesis im Kontext.
+Das Ziel der Thesis ist die Entwicklung eines Algorithmus, welcher die Eigenposi
+tion und den Kurs (Heading) des Eigenschiffes möglichst genau bestimmen
+ kann.
+ Dies soll unabhängig der eigenen GPS-Daten funktionieren.
+ Der Algorithmus soll wie ein Sensor für die Brücke fungieren.
+ Das heißt er seine benötigten Daten und sendet die bestimmte Eigenposition
+ und das Heading zurück an die ECDIS, dort können diese mit anderen Daten
+ verglichen werden und somit Inkonsistenzen erkannt werden.
 \end_layout
 
 \begin_layout Section
@@ -119,9 +155,18 @@ Methoden
 \end_layout
 
 \begin_layout Standard
-Verwendete Methoden, bsp.
- point matching, Positionsbestimmung...
- nur sehr grob
+Zur Bestimmung der Zuordnung zwischen den ARPA- und AIS-Signalen wird der
+ Coherent Point Drift, ein Point-Set-Registration Algorithmus, verwendet.
+ Dies impliziert die Verwendung von Gaussian mixture models, sowie des EM-Algori
+thmus (Expectation Maximization Algorithmus).
+ 
+\begin_inset Newline newline
+\end_inset
+
+ Der Position Fix wird über die Lösung der ersten geodätischen Hauptaufgabe
+ bestimmt.
+ Hierfür wird die wird auf Grund ihrer hohen Genauigkeit auf einem Erd-Ellipsoid
+en die Vincenty Formel verwendet.
 \end_layout
 
 \begin_layout Section
@@ -129,8 +174,19 @@ Abgrenzung
 \end_layout
 
 \begin_layout Standard
-Abgrenzung zu Andrés These und zu allem was zwar in der Thesis verwendet
- wird aber schon vorher existiert hat.
+Das Produkt der Thesis ist ein externes Softwaremodul, auf welches von der
+ Brücke zugegriffen werden kann.
+ Dieses Softwaremodul wird in Zusammenarbeit mit Herrn André Becker erarbeitet.
+ Das Modul besteht aus verschiedenen Komponenten, diese sind die allgemeine
+ Struktur zur Verarbeitung der Daten, die spezielle Filterung der Daten,
+ zwei Point-Set-Registration Algorithmen, der Position Fix und eine Netzwerkschn
+ittstelle zur Kommunikation mit der Brücke.
+ Teil dieser Thesis ist, die Erstellung der Struktur des Softwaremoduls,
+ ein Point-Set-Registration Algorithmus und der Position Fix.
+ Die Filter, der andere Point-Set-Regisistration Algorithmus und die Netzwerksch
+nittstelle werden von Herrn Becker entwickelt.
+ Daten parser und Daten generator werden aus einem vorherigen Praktikum
+ verwendet.
 \end_layout
 
 \end_body
