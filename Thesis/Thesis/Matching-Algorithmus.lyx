@@ -78,23 +78,56 @@
 \begin_body
 
 \begin_layout Chapter
-Matching-Algorithmus
+?????????????
 \end_layout
 
 \begin_layout Section
-Möglichkeiten des Matchings
+????
 \end_layout
 
-\begin_layout Standard
-Verschiedene Algorithmen, Arten der Parametrisierung usw.
+\begin_layout Subsection
+Programmablauf
+\end_layout
+
+\begin_layout Subsection
+Verschiebung von AIS zum Ursprung und ARPA Initialisierung (Umgehen von
+ Geometrischen Transformationen)???
+\end_layout
+
+\begin_layout Subsection
+Oberen Punkt in zwei Punkte aufteilen?
 \end_layout
 
 \begin_layout Section
-Algorithmus
+Coherent Point Drift
 \end_layout
 
-\begin_layout Standard
-Erklärung der Funktionsweise des Algorithmus oder der Algorithmen
+\begin_layout Subsection
+Konzept
+\end_layout
+
+\begin_layout Subsection
+Funktionsweise
+\end_layout
+
+\begin_layout Subsection
+Ausgleich der begrenzten Rotation
+\end_layout
+
+\begin_layout Section
+Position-Fix
+\end_layout
+
+\begin_layout Subsection
+Bestimmung der Eigenposition
+\end_layout
+
+\begin_layout Subsection
+Bestimmung der Sicherheit der Eigenposition
+\end_layout
+
+\begin_layout Subsection
+Rückgabe oder sowas???
 \end_layout
 
 \end_body

@@ -82,14 +82,18 @@ Grundlagen
 \end_layout
 
 \begin_layout Section
-AIS, ARPA und ATONs
+???
 \end_layout
 
-\begin_layout Section
-Manipulierbarkeit von AIS- und GPS- Signalen
+\begin_layout Subsection
+ARPA, AIS, ATON (???)
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
+Manipulierbarkeit der Daten
+\end_layout
+
+\begin_layout Subsection
 NMEA
 \end_layout
 
@@ -97,8 +101,8 @@ NMEA
 Point Set Registration
 \end_layout
 
-\begin_layout Section
-Mathematische Grundlagen
+\begin_layout Subsection
+Stochhastisches Point Set Registration
 \end_layout
 
 \begin_layout Subsection
@@ -106,7 +110,15 @@ Gaussian Mixture Model
 \end_layout
 
 \begin_layout Subsection
-...
+EM-Algorithmus
+\end_layout
+
+\begin_layout Subsection
+Singulärwertzerlegung
+\end_layout
+
+\begin_layout Subsection
+Rigid und Non-rigid Registration
 \end_layout
 
 \end_body

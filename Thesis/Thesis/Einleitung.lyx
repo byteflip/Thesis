@@ -82,15 +82,6 @@ Einleitung
 \end_layout
 
 \begin_layout Section
-Unternehmen
-\end_layout
-
-\begin_layout Standard
-Kurze Beschreibung von Raytheon Anschütz, damit der Kontext der Aufgabe
- gut umrissen werden kann.
-\end_layout
-
-\begin_layout Section
 Zweck
 \end_layout
 
@@ -103,8 +94,8 @@ en Manipulation durch einen Angreifer.
  Dadurch fällt der GPS-Empfänger aus oder gibt eine falsche Position zurück.
  In diesen Fällen ist die Eigenposition nicht mehr verfügbar oder nicht
  vertrauenswürdig, somit ist es notwendig eine Methode zur Positionsbestimmung
- zu entwickeln, welche unabhängig von dem eigenen GPS-Empfänger arbeitet.
- 
+ zu entwickeln, welche unabhängig von dem eigenen GPS-Empfänger arbeitet
+ und somit in der Lage ist dessen Daten zu verifizieren.
 \end_layout
 
 \begin_layout Section
@@ -143,11 +134,12 @@ Ziel
 Das Ziel der Thesis ist die Entwicklung eines Algorithmus, welcher die Eigenposi
 tion und den Kurs (Heading) des Eigenschiffes möglichst genau bestimmen
  kann.
- Dies soll unabhängig der eigenen GPS-Daten funktionieren.
- Der Algorithmus soll wie ein Sensor für die Brücke fungieren.
- Das heißt er seine benötigten Daten und sendet die bestimmte Eigenposition
- und das Heading zurück an die ECDIS, dort können diese mit anderen Daten
- verglichen werden und somit Inkonsistenzen erkannt werden.
+ Dieser soll unabhängig der eigenen GPS-Daten funktionieren.
+ Der Algorithmus soll später als eine Art Sensor für die Brücke eingesetzt
+ werden, das heißt die Brücke sendet die benötigten Daten an den Algorithmus
+ und dieser sendet die errechnete Eigenposition und eine Darstellung zurück
+ an die Seekarte.
+ 
 \end_layout
 
 \begin_layout Section
@@ -165,8 +157,8 @@ thmus (Expectation Maximization Algorithmus).
 
  Der Position Fix wird über die Lösung der ersten geodätischen Hauptaufgabe
  bestimmt.
- Hierfür wird die wird auf Grund ihrer hohen Genauigkeit auf einem Erd-Ellipsoid
-en die Vincenty Formel verwendet.
+ Hierfür wird die wird auf Grund ihrer hohen Genauigkeit, auf einem Erd-Ellipsoi
+den, die Vincenty Formel verwendet.
 \end_layout
 
 \begin_layout Section
@@ -174,19 +166,29 @@ Abgrenzung
 \end_layout
 
 \begin_layout Standard
-Das Produkt der Thesis ist ein externes Softwaremodul, auf welches von der
- Brücke zugegriffen werden kann.
- Dieses Softwaremodul wird in Zusammenarbeit mit Herrn André Becker erarbeitet.
- Das Modul besteht aus verschiedenen Komponenten, diese sind die allgemeine
- Struktur zur Verarbeitung der Daten, die spezielle Filterung der Daten,
- zwei Point-Set-Registration Algorithmen, der Position Fix und eine Netzwerkschn
-ittstelle zur Kommunikation mit der Brücke.
- Teil dieser Thesis ist, die Erstellung der Struktur des Softwaremoduls,
- ein Point-Set-Registration Algorithmus und der Position Fix.
- Die Filter, der andere Point-Set-Regisistration Algorithmus und die Netzwerksch
-nittstelle werden von Herrn Becker entwickelt.
- Daten parser und Daten generator werden aus einem vorherigen Praktikum
- verwendet.
+Das Produkt der Thesis ist ein externes Softwaremodul, welches in Zusammenarbeit
+ mit Herrn André Becker entwickelt wird.
+ Dieser verfasst ebenfalls seine Thesis über einen Teil dieses Softwaremoduls.
+ Die Thesen lassen sich wie folgt abgrenzen, Herr Becker entwickelt die
+ Vorfilterung der Daten, einen Point-Matching Algorithmus und eine Netzwerkschni
+ttstelle zur Kommunikation des Softwaremoduls mit der Schiffsbrücke.
+ Diese Thesis umfasst die Softwarestruktur des Moduls, ebenfalls einen Point-Mat
+ching Algorithmus und einen Algorihtmus zur Positions- und Kursbestimmung.
+ Das einlesen der Daten wird über einen Daten Parser realisiert, welcher
+ von Raytheon Anschütz gestellt wurde und somit nicht Teil der Thesis ist.
+ Ebenso wird die Funktionalität über Daten aus einem Daten Generator verifiziert
+, welcher ebenfalls von Raytheon Anschütz gestellt wurde.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Letzten beiden Sätze überarbeiten
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

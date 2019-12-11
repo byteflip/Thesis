@@ -82,50 +82,71 @@ Grundlagen
 \end_layout
 
 \begin_layout Section
-AIS, ARPA und ATONs
+???
+\end_layout
+
+\begin_layout Subsection
+ARPA, AIS, ATON (???)
 \end_layout
 
 \begin_layout Standard
-Genaue Erklärung der Begriffe und deren Zusammenspiel im Kontext der Positionsbe
-stimmung
+.
 \end_layout
 
-\begin_layout Section
-Manipulierbarkeit von AIS- und GPS- Signalen
+\begin_layout Subsection
+Manipulierbarkeit der Daten
 \end_layout
 
 \begin_layout Standard
-Gefahren und Unischerheiten aufzeigen wie jamming, spoofing usw.
+.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 NMEA
 \end_layout
 
 \begin_layout Standard
-Erklärung des Ein- und Ausgangsprotokolls.
+.
 \end_layout
 
 \begin_layout Section
 Point Set Registration
 \end_layout
 
-\begin_layout Standard
-Allgemeine Beschreibung eines Point set registration Problems und es auf
- das aktuelle Problem anwenden, um zu zeigen das es eine geeignete Methodik
- ist das Problem zu lösen.
+\begin_layout Subsection
+Stochhastisches Point Set Registration
 \end_layout
 
-\begin_layout Section
-Mathematische Grundlagen
+\begin_layout Standard
+.
 \end_layout
 
 \begin_layout Subsection
 Gaussian Mixture Model
 \end_layout
 
+\begin_layout Standard
+.
+\end_layout
+
 \begin_layout Subsection
-...
+EM-Algorithmus
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Subsection
+Singulärwertzerlegung
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Subsection
+Rigid und Non-rigid Registration
 \end_layout
 
 \end_body

@@ -75,7 +75,7 @@
 \rightmargin 3.5cm
 \bottommargin 3cm
 \secnumdepth 3
-\tocdepth 1
+\tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
@@ -179,16 +179,6 @@ filename "grundlagen_tmp.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "Matching-Algorithmus.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Position-Fix.lyx"
 
 \end_inset
 

@@ -78,23 +78,19 @@
 \begin_body
 
 \begin_layout Chapter
-Position-Fix
+Bewertung
 \end_layout
 
 \begin_layout Section
-Berechnung von Distanzen und Punkten auf einem Erd-Ellipsoiden
+Evaluierung der Anforderungen
 \end_layout
 
 \begin_layout Section
-Bestimmung der Eigenposition
+Performanz und Robustheit
 \end_layout
 
 \begin_layout Section
-Bestimmung der Sicherheit der Eigenposition
-\end_layout
-
-\begin_layout Section
-Bestimmung des Eigenheadings
+Genauigkeit
 \end_layout
 
 \end_body
