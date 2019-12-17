@@ -78,7 +78,7 @@
 \begin_body
 
 \begin_layout Chapter
-Literatur Vergleich zu ähnlichen Arbeiten
+Literaturvergleich
 \end_layout
 
 \begin_layout Section
@@ -91,7 +91,7 @@ Andere Ansätze zur Fusion von AIS und ARPA Vergleichen und vergleichen mit
 \end_layout
 
 \begin_layout Section
-Position-Fix Methoden
+Point Set Registration Methoden
 \end_layout
 
 \begin_layout Standard
@@ -100,7 +100,7 @@ en Verfahren
 \end_layout
 
 \begin_layout Section
-Maßnahmen gegen Spoofing und Jamming
+Position Fix Methoden / Sicherheitssteigerung der Positionsbestimmung
 \end_layout
 
 \begin_layout Standard

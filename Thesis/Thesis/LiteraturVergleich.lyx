@@ -86,8 +86,9 @@ Fusion von AIS- und ARPA-Signalen
 \end_layout
 
 \begin_layout Standard
-Andere Ansätze zur Fusion von AIS und ARPA Vergleichen und vergleichen mit
- dieser Arbeit.
+Es existieren mehrer Arbeiten zum Thema Fusion von Arpa und Ais Signalen,
+ diese werden betrachtet und kurz bewertet wie sie zu dieser Aufgabenstellung
+ passen
 \end_layout
 
 \begin_layout Section
@@ -95,8 +96,7 @@ Point Set Registration Methoden
 \end_layout
 
 \begin_layout Standard
-Den aktuellen Stand für PositionFixes beschreiben und vergleichen zum entwickelt
-en Verfahren
+Mehrere Rigid Point Set Registration Methoden werden betrachtet.
 \end_layout
 
 \begin_layout Section
@@ -104,7 +104,9 @@ Position Fix Methoden / Sicherheitssteigerung der Positionsbestimmung
 \end_layout
 
 \begin_layout Standard
-Andere Ansätze zur Sicherstellung der Positionsdaten.
+Andere Ansätze zur Sicherstellung der Positionsdaten werden erklärt (Hier
+ ist noch keine konkrete Literatur recherchiert kann sich deswegen noch
+ ändern)
 \end_layout
 
 \end_body

@@ -85,12 +85,27 @@ Bewertung
 Genauigkeit 
 \end_layout
 
+\begin_layout Standard
+Tests mit Generatordaten werden dargelegt, erklärt und ausgewertet.
+ Es werden außerdem Methoden zur Genauigkeitssteigerung des Algorithmus
+ bewertet.
+\end_layout
+
 \begin_layout Section
 Robustheit
 \end_layout
 
+\begin_layout Standard
+Tests mit Generatordaten mit zunehmenden Ausreißern und Auswertung der Ergebniss
+e
+\end_layout
+
 \begin_layout Section
-????
+Ausblick
+\end_layout
+
+\begin_layout Standard
+Mögliche Optimierungen für den Algorithmus werden beschrieben.
 \end_layout
 
 \end_body

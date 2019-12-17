@@ -78,40 +78,69 @@
 \begin_body
 
 \begin_layout Chapter
-?????????????
+Umsetzung
 \end_layout
 
 \begin_layout Section
-????
+Ansätze
+\end_layout
+
+\begin_layout Subsection
+ICP
+\end_layout
+
+\begin_layout Standard
+Kurze Erklärung was ICP ist und was seine Schwächen für die konkrete Aufgabe
+ gewesen sind
+\end_layout
+
+\begin_layout Subsection
+Graph-Matching
+\end_layout
+
+\begin_layout Standard
+Erklärung was Graph Matching ist warum es nicht nutzbar für die Aufgabe
+ ist
+\end_layout
+
+\begin_layout Subsection
+Coherent Point Drift
+\end_layout
+
+\begin_layout Standard
+Begründung warum CPD für die Aufgabe verwendet wird und gegenüber Stellung
+ zu den anderen beiden Ansätzen
+\end_layout
+
+\begin_layout Section
+Implementierung
 \end_layout
 
 \begin_layout Subsection
 Programmablauf
 \end_layout
 
-\begin_layout Subsection
-Verschiebung von AIS zum Ursprung und ARPA Initialisierung (Umgehen von
- Geometrischen Transformationen)???
+\begin_layout Standard
+Ablauf des Programms um einen allgemeinen Eindruck zu bekommen was alles
+ passiert und wo die nächsten Punkte einzuordnen sind 
 \end_layout
 
 \begin_layout Subsection
-Oberen Punkt in zwei Punkte aufteilen?
+Ungenauigkeiten durch den Erdellipsoiden
 \end_layout
 
-\begin_layout Section
-Coherent Point Drift
-\end_layout
-
-\begin_layout Subsection
-Konzept
+\begin_layout Standard
+Probleme durch Koordinaten auf dem Erdellipsoiden werden erwähnt und die
+ Lösung zu diesen wird präsentiert
 \end_layout
 
 \begin_layout Subsection
-Funktionsweise
+Rotationsschwäche von Coherent Point Drift
 \end_layout
 
-\begin_layout Subsection
-Ausgleich der begrenzten Rotation
+\begin_layout Standard
+Der CPD kann mit einer Rotation einer Punktwolke nur bis zu einem bestimmten
+ Grad umgehen, dies wird hier behandelt und eine Lösung wird präsentiert
 \end_layout
 
 \begin_layout Section
@@ -122,12 +151,27 @@ Position-Fix
 Bestimmung der Eigenposition
 \end_layout
 
-\begin_layout Subsection
-Bestimmung der Sicherheit der Eigenposition
+\begin_layout Standard
+Die Methodik zur Bestimmung der Eigenposition wird erklärt.
 \end_layout
 
 \begin_layout Subsection
-Rückgabe oder sowas???
+Bestimmung der Sicherheit der Eigenposition und Eliminierung von Ausreißern
+\end_layout
+
+\begin_layout Standard
+Hier wird die Mahalanobis Distanz erklärt und wie sie man dadurch Ausreißer
+ erkennen kann und über die Standardabweichungen eine gewisse Sicherheit
+ für diese Position Bestimmen kann.
+\end_layout
+
+\begin_layout Subsection
+Erstellung des Ergebnisses
+\end_layout
+
+\begin_layout Standard
+Kurze Erklärung wie das Ergebniss erstellt wird (NMEA Telegram und Grafik)
+ um von der Netzwerkschnittstelle gesendet werden zu können.
 \end_layout
 
 \end_body
