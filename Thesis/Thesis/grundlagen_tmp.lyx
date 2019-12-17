@@ -82,19 +82,7 @@ Grundlagen
 \end_layout
 
 \begin_layout Section
-???
-\end_layout
-
-\begin_layout Subsection
-ARPA, AIS, ATON (???)
-\end_layout
-
-\begin_layout Standard
-.
-\end_layout
-
-\begin_layout Subsection
-Manipulierbarkeit der Daten
+Allgemeines
 \end_layout
 
 \begin_layout Standard
@@ -106,7 +94,26 @@ NMEA
 \end_layout
 
 \begin_layout Standard
-.
+Erklärung der Datenkommunikation mittels NMEA - Nachrichten auf der Schiffsbrück
+e und mittels des Softwaremoduls
+\end_layout
+
+\begin_layout Subsection
+WGS84
+\end_layout
+
+\begin_layout Standard
+Erklärung des WGS84 Refernzsystems zur Positionsbestimmung auf dem Erdellipsoide
+n
+\end_layout
+
+\begin_layout Subsection
+Berechnungen auf dem Erdellipsoiden
+\end_layout
+
+\begin_layout Standard
+Probleme bei der Berechnung von Distanzen auf dem Erdellipsoiden und verschieden
+e Formeln zur Berechnung auf dem Erdellipsoiden
 \end_layout
 
 \begin_layout Section
@@ -114,11 +121,22 @@ Point Set Registration
 \end_layout
 
 \begin_layout Subsection
+Rigid und Non-rigid Registration
+\end_layout
+
+\begin_layout Standard
+Unterschied zwischen Rigid und Non-rigid registration erklären und kurze
+ Erwähnung der Probleme welche bei Rigid Registration auftreten
+\end_layout
+
+\begin_layout Subsection
 Stochhastisches Point Set Registration
 \end_layout
 
 \begin_layout Standard
-.
+Vergleich von Stochhastischen Point Set Registration Methoden( basieren
+ meist auf GMMs) und anderen Methoden z.B.
+ Iterative Closest point
 \end_layout
 
 \begin_layout Subsection
@@ -126,7 +144,7 @@ Gaussian Mixture Model
 \end_layout
 
 \begin_layout Standard
-.
+Erklärung von Gaussian Mixture Models im Zusammenhang mit Point Set Registration
 \end_layout
 
 \begin_layout Subsection
@@ -134,7 +152,8 @@ EM-Algorithmus
 \end_layout
 
 \begin_layout Standard
-.
+Erklärung des EM Algorithmus und welchen nutzen er für Point Set Registration
+ hat
 \end_layout
 
 \begin_layout Subsection
@@ -142,11 +161,16 @@ Singulärwertzerlegung
 \end_layout
 
 \begin_layout Standard
-.
+Erklärung von Singulärwertzerlegung 
 \end_layout
 
 \begin_layout Subsection
-Rigid und Non-rigid Registration
+Coherent Point Drift
+\end_layout
+
+\begin_layout Standard
+Erklärung der Methodik des Coherent Point Drift Algorithmus und des mathematisch
+en Hintergrunds anhand der letzten drei Punkte
 \end_layout
 
 \end_body

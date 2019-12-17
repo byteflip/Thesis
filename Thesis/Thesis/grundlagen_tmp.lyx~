@@ -82,19 +82,35 @@ Grundlagen
 \end_layout
 
 \begin_layout Section
-???
+Allgemeines
 \end_layout
 
-\begin_layout Subsection
-ARPA, AIS, ATON (???)
-\end_layout
-
-\begin_layout Subsection
-Manipulierbarkeit der Daten
+\begin_layout Standard
+.
 \end_layout
 
 \begin_layout Subsection
 NMEA
+\end_layout
+
+\begin_layout Standard
+-
+\end_layout
+
+\begin_layout Subsection
+WGS84
+\end_layout
+
+\begin_layout Standard
+-
+\end_layout
+
+\begin_layout Subsection
+Berechnungen au dem Erdellipsoiden
+\end_layout
+
+\begin_layout Standard
+.
 \end_layout
 
 \begin_layout Section
@@ -102,23 +118,47 @@ Point Set Registration
 \end_layout
 
 \begin_layout Subsection
+Rigid und Non-rigid Registration
+\end_layout
+
+\begin_layout Standard
+-
+\end_layout
+
+\begin_layout Subsection
 Stochhastisches Point Set Registration
+\end_layout
+
+\begin_layout Standard
+.
 \end_layout
 
 \begin_layout Subsection
 Gaussian Mixture Model
 \end_layout
 
+\begin_layout Standard
+.
+\end_layout
+
 \begin_layout Subsection
 EM-Algorithmus
+\end_layout
+
+\begin_layout Standard
+.
 \end_layout
 
 \begin_layout Subsection
 Singulärwertzerlegung
 \end_layout
 
+\begin_layout Standard
+.
+\end_layout
+
 \begin_layout Subsection
-Rigid und Non-rigid Registration
+Coherent Point Drift
 \end_layout
 
 \end_body

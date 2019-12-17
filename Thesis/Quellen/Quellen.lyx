@@ -1,0 +1,364 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Quellen zur Thesis
+\end_layout
+
+\begin_layout Section
+Einleitung
+\end_layout
+
+\begin_layout Standard
+ARPA:
+\end_layout
+
+\begin_layout Standard
+AIS:
+\end_layout
+
+\begin_layout Standard
+ATON:
+\end_layout
+
+\begin_layout Section
+Grundlagen
+\end_layout
+
+\begin_layout Subsection
+Allgemeines
+\end_layout
+
+\begin_layout Subsubsection
+NMEA
+\end_layout
+
+\begin_layout Standard
+NMEA 0183 Standard Version 4.11 November 2018
+\end_layout
+
+\begin_layout Subsubsection
+WGS 84
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+name "Link"
+target "https://apps.dtic.mil/dtic/tr/fulltext/u2/a167570.pdf"
+literal "false"
+
+\end_inset
+
+ Referenz auf World Geodetic System 1984 von B.
+ Louis Decker
+\end_layout
+
+\begin_layout Subsubsection
+Berechnungen auf dem Erdellipsoiden
+\end_layout
+
+\begin_layout Standard
+Vincenty Formula : 
+\begin_inset CommandInset href
+LatexCommand href
+name "Link"
+target "https://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Great circle Distance : 
+\begin_inset CommandInset href
+LatexCommand href
+name "Link"
+target "https://books.google.de/books?id=xcy4K5BPyg4C&pg=PA10&redir_esc=y#v=onepage&q&f=false"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Point Set Registration
+\end_layout
+
+\begin_layout Subsubsection
+Rigid und Non-Rigid Registration
+\end_layout
+
+\begin_layout Standard
+Beispiele von bereits erwähnten Algorithmen ICP und CPD
+\end_layout
+
+\begin_layout Subsubsection
+Stochhastisches Point Set Registration
+\end_layout
+
+\begin_layout Standard
+CPD und noch ein paar andere
+\end_layout
+
+\begin_layout Subsubsection
+Gaussian Mixture Models
+\end_layout
+
+\begin_layout Subsubsection
+EM-Algorithmus
+\end_layout
+
+\begin_layout Standard
+Allgemein EM : 
+\begin_inset CommandInset href
+LatexCommand href
+name "Link"
+target "https://rss.onlinelibrary.wiley.com/doi/pdf/10.1111/j.2517-6161.1977.tb01600.x#accessDenialLayout"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aus dem Magazin : 
+\begin_inset CommandInset href
+LatexCommand href
+name "Link"
+target " http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=543975&isnumber=11789"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Singulärwertzerlegung
+\end_layout
+
+\begin_layout Standard
+Mathe Buch
+\end_layout
+
+\begin_layout Subsubsection
+Coherent Point Drift
+\end_layout
+
+\begin_layout Standard
+Original : 
+\begin_inset CommandInset href
+LatexCommand href
+name "Link"
+target "https://arxiv.org/pdf/0905.2635.pdf"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Literaturvergleich
+\end_layout
+
+\begin_layout Subsection
+Fusion von Ais und Arpa Signalen
+\end_layout
+
+\begin_layout Subsection
+Point Set Registration Methoden
+\end_layout
+
+\begin_layout Subsection
+Position Fix Methoden / Sicherheitssteigerung der Positionsbestimmung
+\end_layout
+
+\begin_layout Section
+Umsetzung
+\end_layout
+
+\begin_layout Subsection
+Ansätze
+\end_layout
+
+\begin_layout Subsubsection
+ICP
+\end_layout
+
+\begin_layout Standard
+ICP Varianten : 
+\end_layout
+
+\begin_layout Subsubsection
+Graph-Matching
+\end_layout
+
+\begin_layout Standard
+Ein Graph matching Algoithmus
+\end_layout
+
+\begin_layout Subsubsection
+Coherent Point Drift
+\end_layout
+
+\begin_layout Standard
+Original : 
+\begin_inset CommandInset href
+LatexCommand href
+name "Link"
+target "https://arxiv.org/pdf/0905.2635.pdf"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Implementierung
+\end_layout
+
+\begin_layout Subsubsection
+Programmablauf
+\end_layout
+
+\begin_layout Subsubsection
+Ungenauigkeiten durch den Erdellipsoiden
+\end_layout
+
+\begin_layout Subsubsection
+Rotationsschwäche von Coherent Point Drift
+\end_layout
+
+\begin_layout Standard
+Paper die eine Rotationsschwäche von CPD bestätigen
+\end_layout
+
+\begin_layout Subsection
+Position-Fix
+\end_layout
+
+\begin_layout Subsubsection
+Bestimmung der Eigenposition
+\end_layout
+
+\begin_layout Subsubsection
+Bestimmung der Sicherheit der Eigenposition und Eliminierung von Ausreißern
+\end_layout
+
+\begin_layout Standard
+Mahalanobis Distanz : 
+\end_layout
+
+\begin_layout Subsubsection
+Erstellung des Ergebnisses
+\end_layout
+
+\begin_layout Section
+Bewertung
+\end_layout
+
+\begin_layout Subsection
+Genauigkeit
+\end_layout
+
+\begin_layout Subsection
+Robustheit
+\end_layout
+
+\begin_layout Subsection
+Ausblick
+\end_layout
+
+\begin_layout Section
+Schluss
+\end_layout
+
+\begin_layout Subsection
+Zusammenfassung
+\end_layout
+
+\end_body
+\end_document

@@ -178,6 +178,16 @@ filename "grundlagen_tmp.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
+filename "LiteraturVergleich.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
 filename "Matching-Algorithmus.lyx"
 
 \end_inset
@@ -189,16 +199,6 @@ filename "Matching-Algorithmus.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "Bewertung.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "LiteraturVergleich.lyx"
 
 \end_inset
 

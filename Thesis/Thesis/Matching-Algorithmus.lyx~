@@ -78,23 +78,63 @@
 \begin_body
 
 \begin_layout Chapter
-Matching-Algorithmus
+Umsetzung
 \end_layout
 
 \begin_layout Section
-Möglichkeiten des Matchings
+Ansätze
+\end_layout
+
+\begin_layout Subsection
+ICP
 \end_layout
 
 \begin_layout Standard
-Verschiedene Algorithmen, Arten der Parametrisierung usw.
+-
+\end_layout
+
+\begin_layout Subsection
+Graph-Matching
+\end_layout
+
+\begin_layout Standard
+-
+\end_layout
+
+\begin_layout Subsection
+Coherent Point Drift
 \end_layout
 
 \begin_layout Section
-Algorithmus
+Implementierung
 \end_layout
 
-\begin_layout Standard
-Erklärung der Funktionsweise des Algorithmus oder der Algorithmen
+\begin_layout Subsection
+Programmablauf
+\end_layout
+
+\begin_layout Subsection
+Ungenauigkeiten durch den Erdellipsoiden
+\end_layout
+
+\begin_layout Subsection
+Rotationsschwäche von Coherent Point Drift
+\end_layout
+
+\begin_layout Section
+Position-Fix
+\end_layout
+
+\begin_layout Subsection
+Bestimmung der Eigenposition
+\end_layout
+
+\begin_layout Subsection
+Bestimmung der Sicherheit der Eigenposition
+\end_layout
+
+\begin_layout Subsection
+Erstellung des Ergebnisses
 \end_layout
 
 \end_body
