@@ -82,7 +82,7 @@ Einleitung
 \end_layout
 
 \begin_layout Section
-Zweck
+Problemstellung
 \end_layout
 
 \begin_layout Standard
@@ -96,13 +96,9 @@ en Manipulation durch einen Angreifer.
  vertrauenswürdig, somit ist es notwendig eine Methode zur Positionsbestimmung
  zu entwickeln, welche unabhängig von dem eigenen GPS-Empfänger arbeitet
  und somit in der Lage ist dessen Daten zu verifizieren.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Section
-Problembeschreibung
-\end_layout
-
-\begin_layout Standard
 Zur Bestimmung der Eigenposition können die Daten aus dem Radar, die GPS-Daten
  der Schiffe in unmittelbarer Nähe (über AIS bekannt) und die Daten der
  Seekarte genutzt werden.
@@ -127,7 +123,7 @@ Aid to navigation
 \end_layout
 
 \begin_layout Section
-Ziel
+Zielsetzung
 \end_layout
 
 \begin_layout Standard
@@ -140,25 +136,6 @@ tion und den Kurs (Heading) des Eigenschiffes möglichst genau bestimmen
  und dieser sendet die errechnete Eigenposition und eine Darstellung zurück
  an die Seekarte.
  
-\end_layout
-
-\begin_layout Section
-Methoden
-\end_layout
-
-\begin_layout Standard
-Zur Bestimmung der Zuordnung zwischen den ARPA- und AIS-Signalen wird der
- Coherent Point Drift, ein Point-Set-Registration Algorithmus, verwendet.
- Dies impliziert die Verwendung von Gaussian mixture models, sowie des EM-Algori
-thmus (Expectation Maximization Algorithmus).
- 
-\begin_inset Newline newline
-\end_inset
-
- Der Position Fix wird über die Lösung der ersten geodätischen Hauptaufgabe
- bestimmt.
- Hierfür wird die wird auf Grund ihrer hohen Genauigkeit, auf einem Erd-Ellipsoi
-den, die Vincenty Formel verwendet.
 \end_layout
 
 \begin_layout Section
@@ -178,7 +155,6 @@ ching Algorithmus und einen Algorihtmus zur Positions- und Kursbestimmung.
  von Raytheon Anschütz gestellt wurde und somit nicht Teil der Thesis ist.
  Ebenso wird die Funktionalität über Daten aus einem Daten Generator verifiziert
 , welcher ebenfalls von Raytheon Anschütz gestellt wurde.
- 
 \begin_inset Note Note
 status open
 
@@ -189,6 +165,10 @@ Letzten beiden Sätze überarbeiten
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Aufbau der Arbeit
 \end_layout
 
 \end_body
