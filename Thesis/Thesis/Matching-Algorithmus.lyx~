@@ -86,11 +86,49 @@ Ansätze
 \end_layout
 
 \begin_layout Subsection
-ICP
+Iterative Closest Point
 \end_layout
 
 \begin_layout Standard
--
+-Allgemeine beschreibung
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+prefix "ICP"
+symbol "ICP"
+description "Iterative Closest Point"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+- Minimierung der Distanz zwischen Punktwolken
+\end_layout
+
+\begin_layout Standard
+- fixed, moving Cloud
+\end_layout
+
+\begin_layout Standard
+- Translation und Rotation
+\end_layout
+
+\begin_layout Standard
+- error metric: distance between points / sum squarred distances
+\end_layout
+
+\begin_layout Standard
+- Viele Varianten (alle Verlinken)
+\end_layout
+
+\begin_layout Standard
+- Stärken: schnell und simpel
+\end_layout
+
+\begin_layout Standard
+- Schwächen: outliers, rotation, noise in Data, hard matching(0 or 1)?
 \end_layout
 
 \begin_layout Subsection
@@ -98,11 +136,56 @@ Graph-Matching
 \end_layout
 
 \begin_layout Standard
--
+-Allgemeine Beschreibung
+\end_layout
+
+\begin_layout Standard
+- finden von Subgraphen
+\end_layout
+
+\begin_layout Standard
+- Funktionsweise kurz beschreiben
+\end_layout
+
+\begin_layout Standard
+- Stärken: schnell und genau
+\end_layout
+
+\begin_layout Standard
+- Schwächen: outlier können nicht gefunden werden => falsches Ergebnis
+\end_layout
+
+\begin_layout Standard
+- Grafik? (wenn Platz ist ja)
 \end_layout
 
 \begin_layout Subsection
 Coherent Point Drift
+\end_layout
+
+\begin_layout Standard
+-Einleitung passend zu Grundlagen
+\end_layout
+
+\begin_layout Standard
+- Begründung warum CPD verwendet wurde:
+\end_layout
+
+\begin_layout Standard
+- outlier erkennen
+\end_layout
+
+\begin_layout Standard
+- noise Data
+\end_layout
+
+\begin_layout Standard
+- soft matching(0.0 - 0.5 - 1.0)? => Falsche matchings können besser erkannt
+ werden
+\end_layout
+
+\begin_layout Standard
+- Performanz Vergleich? (Wieder finden im Paper im Vergleich zu ICP)
 \end_layout
 
 \begin_layout Section
@@ -113,12 +196,120 @@ Implementierung
 Programmablauf
 \end_layout
 
+\begin_layout Standard
+Beschreibung was das Programm machen soll (kurz, einleitend)
+\end_layout
+
+\begin_layout Standard
+- Grafik zum Ablauf des Softwaremoduls
+\end_layout
+
+\begin_layout Standard
+- Daten einlesen => Daten die benötigt werden kurz nennen
+\end_layout
+
+\begin_layout Standard
+- Daten Filtern => Filter nennen
+\end_layout
+
+\begin_layout Standard
+- Algorithmus auswählen
+\end_layout
+
+\begin_layout Standard
+- AIS Interpolieren kurz beschreiben und warum
+\end_layout
+
+\begin_layout Standard
+- Arpa zu WGS 84 Koordinaten
+\end_layout
+
+\begin_layout Standard
+- Start des Algorithmus
+\end_layout
+
+\begin_layout Standard
+- Verschiebung beider Punktwolken auf den Ursprung des Koordinatensystems
+\end_layout
+
+\begin_layout Standard
+- Ergebnis = Zuordnung zwischen den Punkten und Rotation
+\end_layout
+
+\begin_layout Standard
+- Position Fix Eigenposition bestimmen
+\end_layout
+
+\begin_layout Standard
+- Eigenposition und Heading als NMEA-Nachricht
+\end_layout
+
+\begin_layout Standard
+- Ergebnis SVG senden
+\end_layout
+
 \begin_layout Subsection
 Ungenauigkeiten durch den Erdellipsoiden
 \end_layout
 
+\begin_layout Standard
+Wie enstehen ungenauigkeiten durch den Algorithmus? => Roation und Translation
+ sorgen für Ungenauigkeiten da mit WGS 84 Koordinaten gerechnet wird
+\end_layout
+
+\begin_layout Standard
+- Roation und Translation auf einer Ellipse/Kreis (Grafik kartesische Koordinate
+n System Vergleich mit Kugel Koordinatensystem)
+\end_layout
+
+\begin_layout Standard
+- Verschiebung auf gemeinsamen Punkt (Ursprung da Position im worst case
+ sowieso unbekannt ist) Rotation sorgt für genaue Ergebnisse
+\end_layout
+
+\begin_layout Standard
+- Arpa Verschieben mit initial Position auf 0,0
+\end_layout
+
+\begin_layout Standard
+- AIS Verschieben, Abstände speichern zu aisMittelwert und dann mittels
+ dieser Abstände die punktwolke an 0,0 neu konstruieren
+\end_layout
+
+\begin_layout Standard
+-Abbildung für Ungenauigkeiten? (Müsste noch erstellt werden)
+\end_layout
+
 \begin_layout Subsection
 Rotationsschwäche von Coherent Point Drift
+\end_layout
+
+\begin_layout Standard
+- Experimente beschreiben und Visualisieren (Tabelle oder so) über die Versuche
+ bis zu welchem grad die Punktwolke rotiert sein darf (Möglicherweise nicht
+ nur für WGS 84 Koordinaten sondern auch für kartesische Koordinaten)
+\end_layout
+
+\begin_layout Standard
+- Paper verlinken welches dasselbe beobachten konnte
+\end_layout
+
+\begin_layout Standard
+- Lösung für die Rotation: 
+\end_layout
+
+\begin_layout Standard
+- Mehrfachausführung mit initialem Drehwinkel für die Arpa Wolke
+\end_layout
+
+\begin_layout Standard
+- Ergebnis mit dem geringstem Fehler auswählen und zurückgeben (Methodik
+ hier genauer beschreiben)
+\end_layout
+
+\begin_layout Standard
+- Erklärung das es nur einmalig ist, da nach dem ersten Durchlauf wieder
+ ein Heading existiert an dem man sich orientieren kann.
 \end_layout
 
 \begin_layout Section
@@ -129,12 +320,27 @@ Position-Fix
 Bestimmung der Eigenposition
 \end_layout
 
+\begin_layout Standard
+Die Methodik zur Bestimmung der Eigenposition wird erklärt.
+\end_layout
+
 \begin_layout Subsection
-Bestimmung der Sicherheit der Eigenposition
+Bestimmung der Sicherheit der Eigenposition und Eliminierung von Ausreißern
+\end_layout
+
+\begin_layout Standard
+Hier wird die Mahalanobis Distanz erklärt und wie sie man dadurch Ausreißer
+ erkennen kann und über die Standardabweichungen eine gewisse Sicherheit
+ für diese Position Bestimmen kann.
 \end_layout
 
 \begin_layout Subsection
 Erstellung des Ergebnisses
+\end_layout
+
+\begin_layout Standard
+Kurze Erklärung wie das Ergebniss erstellt wird (NMEA Telegram und Grafik)
+ um von der Netzwerkschnittstelle gesendet werden zu können.
 \end_layout
 
 \end_body

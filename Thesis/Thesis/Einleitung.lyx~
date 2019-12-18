@@ -82,7 +82,7 @@ Einleitung
 \end_layout
 
 \begin_layout Section
-Zweck
+Problemstellung
 \end_layout
 
 \begin_layout Standard
@@ -96,13 +96,9 @@ en Manipulation durch einen Angreifer.
  vertrauenswürdig, somit ist es notwendig eine Methode zur Positionsbestimmung
  zu entwickeln, welche unabhängig von dem eigenen GPS-Empfänger arbeitet
  und somit in der Lage ist dessen Daten zu verifizieren.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Section
-Problembeschreibung
-\end_layout
-
-\begin_layout Standard
 Zur Bestimmung der Eigenposition können die Daten aus dem Radar, die GPS-Daten
  der Schiffe in unmittelbarer Nähe (über AIS bekannt) und die Daten der
  Seekarte genutzt werden.
@@ -127,7 +123,7 @@ Aid to navigation
 \end_layout
 
 \begin_layout Section
-Ziel
+Zielsetzung
 \end_layout
 
 \begin_layout Standard
@@ -143,25 +139,6 @@ tion und den Kurs (Heading) des Eigenschiffes möglichst genau bestimmen
 \end_layout
 
 \begin_layout Section
-Methoden
-\end_layout
-
-\begin_layout Standard
-Zur Bestimmung der Zuordnung zwischen den ARPA- und AIS-Signalen wird der
- Coherent Point Drift, ein Point-Set-Registration Algorithmus, verwendet.
- Dies impliziert die Verwendung von Gaussian mixture models, sowie des EM-Algori
-thmus (Expectation Maximization Algorithmus).
- 
-\begin_inset Newline newline
-\end_inset
-
- Der Position Fix wird über die Lösung der ersten geodätischen Hauptaufgabe
- bestimmt.
- Hierfür wird die wird auf Grund ihrer hohen Genauigkeit, auf einem Erd-Ellipsoi
-den, die Vincenty Formel verwendet.
-\end_layout
-
-\begin_layout Section
 Abgrenzung
 \end_layout
 
@@ -169,26 +146,40 @@ Abgrenzung
 Das Produkt der Thesis ist ein externes Softwaremodul, welches in Zusammenarbeit
  mit Herrn André Becker entwickelt wird.
  Dieser verfasst ebenfalls seine Thesis über einen Teil dieses Softwaremoduls.
- Die Thesen lassen sich wie folgt abgrenzen, Herr Becker entwickelt die
- Vorfilterung der Daten, einen Point-Matching Algorithmus und eine Netzwerkschni
-ttstelle zur Kommunikation des Softwaremoduls mit der Schiffsbrücke.
- Diese Thesis umfasst die Softwarestruktur des Moduls, ebenfalls einen Point-Mat
-ching Algorithmus und einen Algorihtmus zur Positions- und Kursbestimmung.
+ Die Thesen lassen sich wie folgt abgrenzen, Herr Becker entwickelt einen
+ Teil der Vorfilterung der Daten, einen Point-Matching Algorithmus und eine
+ Netzwerkschnittstelle zur Kommunikation des Softwaremoduls mit der Schiffsbrück
+e.
+ Diese Thesis umfasst einen weiteren Teil der Vorfilterung der Daten, ebenfalls
+ einen Point-Matching Algorithmus und einen Algorihtmus zur Positionsbestimmung.
  Das einlesen der Daten wird über einen Daten Parser realisiert, welcher
  von Raytheon Anschütz gestellt wurde und somit nicht Teil der Thesis ist.
  Ebenso wird die Funktionalität über Daten aus einem Daten Generator verifiziert
 , welcher ebenfalls von Raytheon Anschütz gestellt wurde.
- 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Letzten beiden Sätze überarbeiten
+Letzten beiden Sätze?
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Aufbau der Arbeit
+\end_layout
+
+\begin_layout Standard
+Die folgende Arbeit ist behandelt in Kapitel 2 wichtige Grundlagen die benötigt
+ werden, um im weiteren die Problemstellungen und die Algorithmen zu verstehen.
+ Das dritte Kapitel zeigt andere Ansätze aus der Literatur zu diesem Thema
+ und wie diese zur aktuellen Arbeit in Verbindung stehen.
+ In Kapitel 4 werden verschiedene Ansätze und die Umsetzung beschrieben.
+ Danach wird in Kapitel 5 das erarbeitete Ergebnis bewertet und es wird
+ ein Ausblick über mögliche Optimierungen gegeben.
 \end_layout
 
 \end_body

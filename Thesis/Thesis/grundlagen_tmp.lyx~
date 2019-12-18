@@ -94,23 +94,83 @@ NMEA
 \end_layout
 
 \begin_layout Standard
--
+Erklärung der Datenkommunikation mittels NMEA - Nachrichten auf der Schiffsbrück
+e und mittels des Softwaremoduls
 \end_layout
 
 \begin_layout Subsection
-WGS84
+WGS 84
 \end_layout
 
 \begin_layout Standard
--
+Das World Geodetic System 1984 (WGS 84) ist ein einheitliches System zur
+ Positionsbestimmung auf dem Erdellipsoid.
+ Es basiert auf einem Referenzellipsoiden.
+\end_layout
+
+\begin_layout Standard
+Dieser Referenzellipsoid ist wie folgt parametrisiert:
+\end_layout
+
+\begin_layout Standard
+Semi Major Axis 
+\begin_inset Formula $a=6.378.137m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Semi Minor Axis 
+\begin_inset Formula $b=6.356.752m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Erdabplattung: 
+\begin_inset Formula $f=\frac{(a-b)}{a}$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Formel prüfen
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Somit sind globale Positionsangaben in Längen- und Breitengrad möglich.
+ Die Längengerade verlaufen zwischen den Nord- und Südpol, die Breitengerade
+ verlaufen parallel zum Äquator.
+ Dadurch sinkt die Distanz zwischen benachbarten Längengeraden je näher
+ sie einem Pol kommen.
+ Die Längen- und Breitengrade werden in der Grad angegeben.
+ Bei genaueren Positionsangaben werden zusätzlich die Gradminuten und Gradsekund
+en angegeben.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Das WGS 84 wird in GPS Empfängern verwendet und ist somit ein essentielles
+ System zur Positionsbestimmung in der Schifffahrt.
+ 
 \end_layout
 
 \begin_layout Subsection
-Berechnungen au dem Erdellipsoiden
+Berechnungen auf dem Erdellipsoid
 \end_layout
 
 \begin_layout Standard
-.
+Probleme bei der Berechnung von Distanzen auf dem Erdellipsoid und verschiedene
+ Formeln zur Berechnung auf dem Erdellipsoid
 \end_layout
 
 \begin_layout Section
@@ -122,7 +182,8 @@ Rigid und Non-rigid Registration
 \end_layout
 
 \begin_layout Standard
--
+Unterschied zwischen Rigid und Non-rigid registration erklären und kurze
+ Erwähnung der Probleme welche bei Rigid Registration auftreten
 \end_layout
 
 \begin_layout Subsection
@@ -130,7 +191,9 @@ Stochhastisches Point Set Registration
 \end_layout
 
 \begin_layout Standard
-.
+Vergleich von Stochhastischen Point Set Registration Methoden( basieren
+ meist auf GMMs) und anderen Methoden z.B.
+ Iterative Closest point
 \end_layout
 
 \begin_layout Subsection
@@ -138,7 +201,7 @@ Gaussian Mixture Model
 \end_layout
 
 \begin_layout Standard
-.
+Erklärung von Gaussian Mixture Models im Zusammenhang mit Point Set Registration
 \end_layout
 
 \begin_layout Subsection
@@ -146,7 +209,8 @@ EM-Algorithmus
 \end_layout
 
 \begin_layout Standard
-.
+Erklärung des EM Algorithmus und welchen nutzen er für Point Set Registration
+ hat
 \end_layout
 
 \begin_layout Subsection
@@ -154,11 +218,16 @@ Singulärwertzerlegung
 \end_layout
 
 \begin_layout Standard
-.
+Erklärung von Singulärwertzerlegung 
 \end_layout
 
 \begin_layout Subsection
 Coherent Point Drift
+\end_layout
+
+\begin_layout Standard
+Erklärung der Methodik des Coherent Point Drift Algorithmus und des mathematisch
+en Hintergrunds anhand der letzten drei Punkte
 \end_layout
 
 \end_body

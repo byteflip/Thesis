@@ -94,26 +94,116 @@ NMEA
 \end_layout
 
 \begin_layout Standard
-Erklärung der Datenkommunikation mittels NMEA - Nachrichten auf der Schiffsbrück
-e und mittels des Softwaremoduls
-\end_layout
-
-\begin_layout Subsection
-WGS84
+-Industriestandard für kommunikation zwischen Brückenelementen
 \end_layout
 
 \begin_layout Standard
-Erklärung des WGS84 Refernzsystems zur Positionsbestimmung auf dem Erdellipsoide
-n
-\end_layout
-
-\begin_layout Subsection
-Berechnungen auf dem Erdellipsoiden
+- NMEA 0183 Standard
 \end_layout
 
 \begin_layout Standard
-Probleme bei der Berechnung von Distanzen auf dem Erdellipsoiden und verschieden
-e Formeln zur Berechnung auf dem Erdellipsoiden
+- kurze Erwähnunh welche Daten über NMEA gesendet werden
+\end_layout
+
+\begin_layout Standard
+- Beispiel Abbildung einer NMEA-Nachricht und Erklärung ihrer einzelnen
+ Komponenten anhand der Abbildung
+\end_layout
+
+\begin_layout Standard
+- NMEA 2000 kurze Erwähnung
+\end_layout
+
+\begin_layout Subsection
+WGS 84
+\end_layout
+
+\begin_layout Standard
+Das World Geodetic System 1984 (WGS 84) ist ein einheitliches System zur
+ Positionsbestimmung auf dem Erdellipsoid.
+ Es basiert auf einem Referenzellipsoiden.
+\end_layout
+
+\begin_layout Standard
+Dieser Referenzellipsoid ist wie folgt parametrisiert:
+\end_layout
+
+\begin_layout Standard
+Semi Major Axis 
+\begin_inset Formula $a=6.378.137m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Semi Minor Axis 
+\begin_inset Formula $b=6.356.752m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Erdabplattung: 
+\begin_inset Formula $f=\frac{(a-b)}{a}$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Formel prüfen
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Somit sind globale Positionsangaben in Längen- und Breitengrad möglich.
+ Die Längengerade verlaufen zwischen den Nord- und Südpol, die Breitengerade
+ verlaufen parallel zum Äquator.
+ Dadurch sinkt die Distanz zwischen benachbarten Längengeraden je näher
+ sie einem Pol kommen.
+ Die Längen- und Breitengrade werden in der Grad angegeben.
+ Bei genaueren Positionsangaben werden zusätzlich die Gradminuten und Gradsekund
+en angegeben.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Das WGS 84 wird in GPS Empfängern verwendet und ist somit ein essentielles
+ System zur Positionsbestimmung in der Schifffahrt.
+ 
+\end_layout
+
+\begin_layout Subsection
+Berechnungen auf dem Erdellipsoid
+\end_layout
+
+\begin_layout Standard
+-Beispiel warum andere Formeln als Euklidische Distanz nötig sind (Möglicherweis
+e inklusive Grafik)
+\end_layout
+
+\begin_layout Standard
+- Formeln: Great Circle Distance, Vincenty Formel
+\end_layout
+
+\begin_layout Standard
+- Great Circle Distance beschreiben (kurz)
+\end_layout
+
+\begin_layout Standard
+- Vincenty Formel beschreiben besonders die Genauigkeitsverbesserung durch
+ das rechnen auf einem Ellipsoid
+\end_layout
+
+\begin_layout Standard
+- Abbildung mit Genauigkeiten
 \end_layout
 
 \begin_layout Section
