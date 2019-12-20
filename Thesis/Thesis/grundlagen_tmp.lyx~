@@ -90,12 +90,112 @@ Allgemeines
 \end_layout
 
 \begin_layout Subsection
-NMEA
+NMEA 0183
 \end_layout
 
 \begin_layout Standard
-Erklärung der Datenkommunikation mittels NMEA - Nachrichten auf der Schiffsbrück
-e und mittels des Softwaremoduls
+Der NMEA 0183 ist ein Standard zur Kommunikation zwischen Geräten auf einer
+ Schiffsbrücke.
+ Dieser wurde von der National Marine Electronics Association 1983 veröffentlich
+t.
+ In diesem ist unter anderem die Struktur der Nachrichten definiert.
+\end_layout
+
+\begin_layout Standard
+Die Nachrichten, welche über NMEA gesendet werden enthalten z.B.
+ Daten von Systemen auf dem Schiff wie dem Radar, Daten von Sensoren wie
+ Kompasse und GPS-Empfängern.
+ Hier rüber werden auch zusätzlich AIS-Nachrichten empfangen aus der nahen
+ Umgebung 
+\begin_inset Newline newline
+\end_inset
+
+Eine solche NMEA - Nachricht ist wie folgt aufgebaut: 
+\end_layout
+
+\begin_layout Standard
+Sie beginnt mit einem 
+\begin_inset Quotes gld
+\end_inset
+
+!
+\begin_inset Quotes grd
+\end_inset
+
+ oder einem 
+\begin_inset Quotes gld
+\end_inset
+
+$
+\begin_inset Quotes grd
+\end_inset
+
+ als Startzeichen.
+ Darauf folgen zwei Zeichen Geräte ID, dadurch ist erkennbar woher die gesendete
+n Daten kommen.
+ Auf die Geräte ID folgen drei Zeichen die den Nachrichtentyp bezeichnen,
+ an welchen auch die folgenden Datenfelder zu identifizieren sind.
+ Nun folgen die Datenfelder, welche für jeden Nachrichtentyp spezifisch
+ sind.
+ Am Ende der Nachricht folgt eine optionale Prüfzahl, welche mit einem 
+\begin_inset Quotes gld
+\end_inset
+
+*
+\begin_inset Quotes grd
+\end_inset
+
+ abgetrennt wird.
+ Die Nachricht wird mit einem Zeilenumbruch beendet.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Im folgenden beschreibt Abbildung 1.1 eine Tracked Target Management (TTM)
+ NMEA - Nachricht.
+ Dieser Nachrichtentyp enthält Schiffe aus dem Radar die als solche erkannt
+ wurden und nun kontinuierlich über das Radar verfolgt werden.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/jknopp/Desktop/Repositorys/Thesis/Thesis/Bilder/TTM_NMEA_Sentence.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+TTM Telegramm (NMEA Nachricht)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -169,8 +269,25 @@ Berechnungen auf dem Erdellipsoid
 \end_layout
 
 \begin_layout Standard
-Probleme bei der Berechnung von Distanzen auf dem Erdellipsoid und verschiedene
- Formeln zur Berechnung auf dem Erdellipsoid
+-Beispiel warum andere Formeln als Euklidische Distanz nötig sind (Möglicherweis
+e inklusive Grafik)
+\end_layout
+
+\begin_layout Standard
+- Formeln: Great Circle Distance, Vincenty Formel
+\end_layout
+
+\begin_layout Standard
+- Great Circle Distance beschreiben (kurz)
+\end_layout
+
+\begin_layout Standard
+- Vincenty Formel beschreiben besonders die Genauigkeitsverbesserung durch
+ das rechnen auf einem Ellipsoid
+\end_layout
+
+\begin_layout Standard
+- Abbildung mit Genauigkeiten
 \end_layout
 
 \begin_layout Section
