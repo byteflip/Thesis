@@ -197,87 +197,362 @@ Programmablauf
 \end_layout
 
 \begin_layout Standard
-Beschreibung was das Programm machen soll (kurz, einleitend)
+Das entstandene Softwaremodul umfasst verschiedene Abläufe, welche zum besseren
+ Verständnis im folgenden erläutert werden.
 \end_layout
 
 \begin_layout Standard
-- Grafik zum Ablauf des Softwaremoduls
+In Abbildung 3.1??? ist der Ablauf der Software anhand eines Aktivitätsdiagramms
+ dargestellt, dieser wird im folgenden genauer erläutert.
 \end_layout
 
 \begin_layout Standard
-- Daten einlesen => Daten die benötigt werden kurz nennen
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/User/Desktop/Repositorys/Thesis/Plannung/ProgrammAblauf.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Aktivitätsdiagramm des Softwaremoduls 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-- Daten Filtern => Filter nennen
+Zuerst werden die benötigten Daten von der Brücke als NMEA-Nachrichten eingelese
+n und in Objekte übersetzt.
+ Dies geschieht durch einen NMEA-Parser von Raytheon Anschütz, welcher in
+ das Modul eingebunden ist.
 \end_layout
 
 \begin_layout Standard
-- Algorithmus auswählen
+Im folgenden wird ein Algorithmus ausgewählt, welcher passend zu den verfügbaren
+ Daten den weiteren Ablauf bestimmt.
+ Die hierfür geprüften Daten sind:
+\end_layout
+
+\begin_layout Enumerate
+AIS Daten umliegender Schiffe und ATONs
+\end_layout
+
+\begin_layout Enumerate
+Die Geschwindigkeit des eigenen Schiffes
+\end_layout
+
+\begin_layout Enumerate
+Empfangene AIS-Daten von mindestens drei ATONs
+\begin_inset Newline newline
+\end_inset
+
+Anhand dieser Daten wird ein Algorithmus ausgewählt, welcher in der jeweiligen
+ Situation das beste Ergebnis erzielt.
 \end_layout
 
 \begin_layout Standard
-- AIS Interpolieren kurz beschreiben und warum
+Der vorher bestimmte Algorithmus gibt nun an welche der drei Filter auf
+ die Daten angewendet werden müssen, um die für den Algorithmus relevanten
+ Daten zu extrahieren.
+ Diese drei sind: das filtern nach den neuesten AIS und ARPA Daten der Schiffe,
+ das filtern nach den ATONs im AIS und das filtern nach ARPA Daten, welche
+ keine Geschwindigkeit aufweisen.
+\begin_inset Newline newline
+\end_inset
+
+Zusätzlich zu diesen drei Filtern werden die AIS-Daten mithilfe von Seekarten
+ Informationen abgeglichen.
+ Falls ATONs nicht vom AIS erfasst wurden, werden sie nun ergänzt.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Satz vielleicht nochmal umschreiben
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-- Arpa zu WGS 84 Koordinaten
+Nachdem anwenden der Filter wird der Zeitverzug der AIS-Daten korrigiert.
+ Dieser Zeitverzug existiert, da AIS-Nachrichten in einer Frequenz von 3s
+ bis 2min gesendet werden können.
+ Die Radar Antenne, welche für die ARPA-Daten zuständig ist benötigt jedoch
+ für eine volle Umdrehung bzw.
+ für das erfassen aller umliegenden Schiffe nur ca.
+ 2,7s.
+ Dieser zeitliche Versatz zwischen den beiden Datensätzen hat einen großen
+ Einfluss auf die Genauigkeit der Zuordnung des Algorithmus.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tabelle hier einfügen und nochmal erklären
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Genauigkeitssteigerung durch Korrektur des Zeitverzugs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-- Start des Algorithmus
+Im folgenden startet der spezifische Algorithmus, die einzelnen Komponenten
+ des Algorithmus werden im Laufe der Arbeit genauer behandelt, so wird 
+\emph on
+AIS zum Koordinaten-Ursprung verschieben
+\emph default
+ in Unterabschnitt 4.2.2 behandelt und wie das initiale Heading den Algorithmus
+ beeinflusst wird in 4.23 erklärt.
+\begin_inset Newline newline
+\end_inset
+
+Das Ergebnis des Algorithmus ist die Zuordnung zwischen den Punkten und
+ der Rotationsunterschied, welcher benötigt wurde um die Punktmengen ineinander
+ zu überführen.
+ Die Zuordnung wird für den in 4.3 erklärten Position-Fix Algorithmus benötigt
+ und die Rotation, welche benötigt wird um beide Punktwolken einander zuzuordnen
+ entspricht dem Heading des Eigenschiffes.
+ Das Heading auf diese Weise zu bestimmen ist möglich, da die ARPA-Daten
+ von der relativen Ausrichtung des Schiffes abhängen, die AIS-Daten jedoch
+ nach Norden ausgerichtet sind.
+ Somit entspricht eine Drehung der ARPA-Daten, bis sie mit den AIS-Daten
+ übereinstimmen, dem Winkel zwischen der Ausrichtung des Schiffe und der
+ Himmelsrichtung Norden.
+ Dies ist der Winkel, in welchem das Heading eines Schiffes angegeben wird.
 \end_layout
 
 \begin_layout Standard
-- Verschiebung beider Punktwolken auf den Ursprung des Koordinatensystems
-\end_layout
-
-\begin_layout Standard
-- Ergebnis = Zuordnung zwischen den Punkten und Rotation
-\end_layout
-
-\begin_layout Standard
-- Position Fix Eigenposition bestimmen
-\end_layout
-
-\begin_layout Standard
-- Eigenposition und Heading als NMEA-Nachricht
-\end_layout
-
-\begin_layout Standard
-- Ergebnis SVG senden
+Mit den Ergebnissen des Coherent Point Drift Algorithmus kann nun der Position-F
+ix die Eigenposition bestimmen (4.3) und diese als Positionsangabe über eine
+ NMEA-Nachricht an die Brücke senden.
+ Zusätzlich wird noch eine Visualisierung des Ergebnisses über die von Herrn
+ André Becker entwickelte Netzwerkschnittstelle an die ECDIS gesendet.
 \end_layout
 
 \begin_layout Subsection
-Ungenauigkeiten durch den Erdellipsoiden
+Ungenauigkeiten durch den Erdellipsoid
 \end_layout
 
 \begin_layout Standard
-Wie enstehen ungenauigkeiten durch den Algorithmus? => Roation und Translation
- sorgen für Ungenauigkeiten da mit WGS 84 Koordinaten gerechnet wird
+Der Coherent Point Drift Algorithmus basiert auf Koordinaten in kartesischer
+ Form.
+ In dieser Arbeit wurde er, auf WGS 84 Koordinaten angewendet, wodurch einige
+ Genauigkeitsprobleme enstanden, die im weiteren erläutert werden und eine
+ Lösung für diese präsentiert wird.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Statt WGS 84 vieleicht eher geodätische Koordinaten schreiben da dies die
+ korrekte Bezeichnung wäre
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-- Roation und Translation auf einer Ellipse/Kreis (Grafik kartesische Koordinate
-n System Vergleich mit Kugel Koordinatensystem)
+Das erste Problem beruht auf der Translation, welche der Algorithmus anwendet
+ um die Distanz zwischen zwei Punktwolken zu minimieren.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Die Translation basiert auf dem Unterschied der Punktwolken in 
+\begin_inset Formula $x$
+\end_inset
+
+ und 
+\begin_inset Formula $y$
+\end_inset
+
+ Achse.
+ Dies ist zwar korrekt in einem kartesischen Koordinatensystem, wo der Abstand
+ zwischen zwei Punkten über die Euklidische Norm bestimmt werden kann, jedoch
+ nicht wenn mit WGS 84 Koordinaten gearbeitet wird.
+ Der Grund hierfür ist, dass der Abstand zwischen den Längengraden zwischen
+ Nord- bzw.
+ Südpol und dem Äquator sich je nach Position ändern.
+ Als Folge hiervon ist es zwar möglich die Punktwolken zueinander zu bewegen,
+ jedoch ist die Translation, welche der Algorithmus bestimmt, mit einem
+ Fehler versehen.
+ Diese Abweichungen die durch dieses Problem entstanden sind verhalten sich
+ proportional zum Abstand der beiden Punktwolken (siehe Abbildung/Tabelle
+ ???).
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Abbildung bzw Tabelle ergänzen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-- Verschiebung auf gemeinsamen Punkt (Ursprung da Position im worst case
- sowieso unbekannt ist) Rotation sorgt für genaue Ergebnisse
+Das zweite Problem entstand durch die Rotation, welche Teil des Algorithmus
+ ist.
+ Bei einer Rotation werden alle Punkte einer Punktwolke um den Ursprung
+ des Koordinatensystems gedreht und erhalten somit eine neue Position.
+ Durch das Rotieren einer kartesischen Punktwolke um den Ursprung ändern
+ sich die Positionen der Punkte, jedoch nicht die Abstände zwischen den
+ Punkten.
+ Wenn man WGS 84 Koordinaten rotiert ändern sich ebenso die Positionen der
+ Punkte, jedoch ändert sich hier auch der Abstand zwischen den Punkten auf
+ Grund der Unterschiedlichen Abstände zwischen Längengraden.
+ Die Abweichungen die durch dieses Problem entstanden sind verhalten sich
+ proportional zu der Verdrehung zwischen den Punktwolken und proportional
+ zum Abstand zwischen Punktwolke und Ursprung.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proportional? eher exponential oder?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-- Arpa Verschieben mit initial Position auf 0,0
+Die Lösung für das erste Problem (Translation), ist dass minimieren der
+ initialen Abstände zwischen den Punktwolken.
+ Die Translation die nun benötigt wird für das überführen der einen Punktwolke
+ in die andere ist so gering, dass der Fehler der durch die Erdkrümmung
+ entsteht vernachlässigbar ist.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Messung im Anhang?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Die Lösung für das zweit Problem (Rotation) ist, dass verschieben des Schwerpunk
+tes der zu rotierenden Punktwolke in den Ursprung des Koordinatensystems.
+ Eine Rotation dieser Punktwolke bewirkt nun das der Schwerpunkt seine Position
+ nicht verändert, wodurch die Punkte der Punktwolke eine minimale Positionsänder
+ung durch eine Rotation erfahren.
 \end_layout
 
 \begin_layout Standard
-- AIS Verschieben, Abstände speichern zu aisMittelwert und dann mittels
- dieser Abstände die punktwolke an 0,0 neu konstruieren
+Somit ist die Lösung für diese Probleme die Translation beider Punktwolken
+ auf den Ursprung des Koordinatensystems, um so die Ungenauigkeiten so gering
+ wie möglich zu halten.
+ Dies hat auch den Effekt das Fehler, welche durch das verwenden der euklidische
+n Norm auf dem Erdellipsoid entstehen, geringer ausfallen, weil Längen-
+ und Breitengrad im Ursprung des Koordinatensystems fast gleich lang sind.
+\begin_inset Newline newline
+\end_inset
+
+Für die ARPA - Punktwolke ist dies trivial, da aufgrund der Radar Daten
+ diese Punkte in Polarkoordinaten angegeben sind, was es leicht macht diese
+ zu auf einen bestimmten Punkt zu verschieben.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Die AIS - Punktwolke ist jedoch an ihre absolute Position gebunden, deswegen
+ ist eine andere Methodik notwendig um die Originale Punktwolke an den Ursprung
+ verschieben zu können.
+ Hierfür wird der Schwerpunkt der AIS - Punktwolke bestimmt, da diese aus
+ nicht gewichteten Punkten besteht ist dieser äquivalent zum arithmetischen
+ Mittel der Punktwolke.
+ Nun wird die Distanz und der Winkel zwischen jedem Punkt der Punktwolke
+ und dem arithmetischem Mittel bestimmt und gespeichert.
+ Für die Berechnung der Distanz und der Winkel zwischen den Punkten wird
+ die Vincenty Formel verwendet, damit keine Fehler durch die Erdkrümmung
+ entstehen.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+inverse oder direct?
+\end_layout
+
+\end_inset
+
+ Nun liegt die AIS - Punktwolke in Polarkoordinaten vor.
+ Das macht es möglich sie ebenso wie die ARPA - Punktwolke an den Ursprung
+ zu platzieren.
+ 
 \end_layout
 
 \begin_layout Standard
--Abbildung für Ungenauigkeiten? (Müsste noch erstellt werden)
+Nun sind optimale Bedingungen geschaffen um eine Zuordnung zwischen den
+ Punktwolken durch den Coherent Point Drift Algorithmus zu bestimmen.
 \end_layout
 
 \begin_layout Subsection
@@ -318,6 +593,120 @@ Position-Fix
 
 \begin_layout Subsection
 Bestimmung der Eigenposition
+\end_layout
+
+\begin_layout Standard
+Mit dem Ergebnis des Coherent Point Drift Algorithmus können ARPA - Punkte
+ auf ihre zugehörigen AIS - Punkte zugeordnet werden.
+ Dadurch ist nun bekannt wo dieser Punkt absolut auf der Karte liegt (AIS-Daten)
+ und wie er relativ zu der Schiffseigenposition liegt (ARPA-Daten).
+ Durch diese beiden Daten ist es möglich die Schiffseigenposition für jedes
+ Paar zugeordneter Punkte zu berechnen.
+\begin_inset Newline newline
+\end_inset
+
+Damit diese Rückrechnung auf die Eigenposition möglich ist, muss zuerst
+ das relative Bearing aus den ARPA - Daten in 
+\emph on
+True 
+\emph default
+Bearing umgerechnet werden.
+ Als 
+\emph on
+True
+\emph default
+ Bearing wird das Bearing bezeichnet, welches relativ zur Nord-Richtung
+ angegeben wird.
+ Diese Umrechnung ist möglich, da der CPD-Algorithmus auch das Heading des
+ Schiffes bestimmt 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Wird das im Programmablauf klar?
+\end_layout
+
+\end_inset
+
+.
+ Das Heading des Schiffes ist relativ zur Nord-Richtung und bietet somit
+ die Möglichkeit über folgende Formel eine relative Bearing Angabe in 
+\emph on
+True 
+\emph default
+Bearing umzurechnen:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $b_{true}:$
+\end_inset
+
+ 
+\emph on
+True 
+\emph default
+Bearing
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $b_{rel}:$
+\end_inset
+
+ Relatives Bearing
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $h:$
+\end_inset
+
+ Heading des Eigenschiffes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+b_{true} & = & (b_{rel}-h)\quad mod\:360
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Formel nochmal checken
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Nun kann von jedem Datenpaar eine individuelle Eigenposition bestimmt werden.
+ Dies basiert auf der Lösung der 1.
+ geodätischen Hauptaufgabe, diese ist das berechnen eines Punktes mit einem
+ Startpunkt, einer Richtung und einer Distanz.
+ Der Startpunkt sind die AIS Koordinaten, die Richtung ist das invertierte
+ 
+\emph on
+true 
+\emph default
+Bearing
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+gibt es hierfür nicht eine mathematische Bezeichnung?
+\end_layout
+
+\end_inset
+
+ und die Distanz kann aus den ARPA - Daten entnommen werden.
+ Die Lösung der 2.
+ geodätischen Hauptaufgabe lässt sich mithilfe der Vincenty Formel bestimmen.
+ 
 \end_layout
 
 \begin_layout Standard

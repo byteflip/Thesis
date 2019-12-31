@@ -151,7 +151,7 @@ n Daten kommen.
 \begin_inset Newline newline
 \end_inset
 
-Im folgenden beschreibt Abbildung 1.1 eine Tracked Target Management (TTM)
+Im folgenden beschreibt Abbildung 2.1 eine Tracked Target Management (TTM)
  NMEA - Nachricht.
  Dieser Nachrichtentyp enthält Schiffe aus dem Radar die als solche erkannt
  wurden und nun kontinuierlich über das Radar verfolgt werden.
@@ -170,7 +170,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename C:/Users/jknopp/Desktop/Repositorys/Thesis/Thesis/Bilder/TTM_NMEA_Sentence.PNG
-	scale 40
+	scale 50
 
 \end_inset
 
