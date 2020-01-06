@@ -90,8 +90,16 @@ Iterative Closest Point
 \end_layout
 
 \begin_layout Standard
-Der Iterative Closest Point Algorithmus (ICP) ist ein sehr bekannter und
- verbreiteter Algorithmus für Rigid Registration.
+Der 
+\emph on
+Iterative Closest Point
+\emph default
+ Algorithmus (ICP) ist ein sehr bekannter und verbreiteter Algorithmus für
+ 
+\emph on
+Rigid Registration
+\emph default
+.
  Er funktioniert wie folgt: 
 \end_layout
 
@@ -100,13 +108,13 @@ Zuerst werden die Transformationsparameter so initialisiert, dass die beiden
  Punktwolken keine zu großen Unterschiede aufweisen.
  Danach werden die Transformationsparameter (Rotation, Translation und Skalierun
 g) auf eine Punktwolke angewandt, sodass nun für jeden Punkt aus der transformie
-rten Punktwolke der dichteste Punkt aus er fixen Punktwolke bestimmt werden
+rten Punktwolke der dichteste Punkt aus der fixen Punktwolke bestimmt werden
  kann.
- Wenn die Zuordnung bestimmt wurde kann nun über die Summe der Abstandsquadrate
+ Wenn die Zuordnung bestimmt wurde, kann nun über die Summe der Abstandsquadrate
  zwischen den Punkten ein Fehler zwischen den Punktwolken berechnet werden.
  Ist dieser Fehler klein genug ist die Registrierung abgeschlossen, ist
  er zu groß werden die Transformationsparameter anhand der gefundenen Zuordnung
- neu bestimmt und der Algorithmus wird iterativ wiederholt bis er konvergiert.
+ neu bestimmt und der Algorithmus wird iterativ wiederholt, bis er konvergiert.
 \begin_inset Newline newline
 \end_inset
 
@@ -127,15 +135,15 @@ Hier die aus den Quellen beschreiben
 \begin_inset Newline newline
 \end_inset
 
-Der ICP Algorithmus ist auf Grund seiner einfachen Funktionsweise sehr Performan
+Der ICP Algorithmus ist auf Grund seiner einfachen Funktionsweise sehr performan
 t und leicht zu verstehen.
- Außerdem lässt er sich wegen seines modularem Aufbaus sehr gut erweitern
+ Außerdem lässt er sich wegen seines modularen Aufbaus sehr gut erweitern
  und verändern, was ihn gut anpassbar für viele Situationen macht.
- Er hat jedoch auch Nachteile in seiner nativen Form.
+ Er hat jedoch auch einige Nachteile, diese werden im folgenden erläutert.
  Die Punktwolken müssen initial bereits annähernd zueinander passen, da
- ICP nicht die richtige Lösung bestimmen kann.
+ sonst nicht die optimale Lösung bestimmt werden kann.
  Außerdem sorgen fehlende Punkte in einer der Punktwolken für Probleme,
- da diese den berechneten Fehler verfälschen.
+ da diese die Zuordnung verfälschen können und somit den berechneten Fehler.
 \begin_inset Newline newline
 \end_inset
 
@@ -159,31 +167,85 @@ Die Zuordnung von Punkten ist eindeutig (0 oder 1), was das erkennen von
 \end_layout
 
 \begin_layout Subsection
-Graph-Matching
+Subgraph Matching
 \end_layout
 
 \begin_layout Standard
--Allgemeine Beschreibung
-\end_layout
+Das Subgraph Matching ist ein weiterer Ansatz, um eine Zuordnung zwischen
+ den Punktwolken wiederherzustellen.
+ Hierfür würden die Punktwolken als zwei vollvermaschte Graphen betrachtet
+ werden.
+ Das Subgraph Matching auch Sub-Graph Isomorphismus Problem genannt basiert
+ auf zwei gegebenen Graphen 
+\begin_inset Formula $G$
+\end_inset
 
-\begin_layout Standard
-- finden von Subgraphen
-\end_layout
+ und 
+\begin_inset Formula $H$
+\end_inset
 
-\begin_layout Standard
-- Funktionsweise kurz beschreiben
-\end_layout
+, wobei gezeigt werden soll das 
+\begin_inset Formula $G$
+\end_inset
 
-\begin_layout Standard
-- Stärken: schnell und genau
-\end_layout
+ einen Subgraph isomorph zu 
+\begin_inset Formula $H$
+\end_inset
 
-\begin_layout Standard
-- Schwächen: outlier können nicht gefunden werden => falsches Ergebnis
-\end_layout
+ enthält.
+ Die Eigenschaft isomorph bedeutet das eine Bijektion zwischen den Kanten
+ von 
+\begin_inset Formula $G$
+\end_inset
 
-\begin_layout Standard
-- Grafik? (wenn Platz ist ja)
+ und 
+\begin_inset Formula $H$
+\end_inset
+
+ existiert, sodass zwei benachbarte Kanten in 
+\begin_inset Formula $G$
+\end_inset
+
+ auch in 
+\begin_inset Formula $H$
+\end_inset
+
+ benachbarten Kanten entsprechen.
+ Für dieses Problem existieren bereits Algorithmen, welche es für große
+ Graphen lösen können.[Cordello 2004] [Bonnici 2013]
+\begin_inset Newline newline
+\end_inset
+
+Die Stärke dieses Ansatzes ist die Genauigkeit, da das finden eines Subgraphen
+ eine eindeutige Zuordnung zur Folge hätte, welche je nach Größe des Subgraphs
+ auch als dementsprechend sicher einzustufen wäre.
+ Zusätzlich kann sich so jede beliebige Rotation zwischen den Punktwolken
+ finden lassen, da die Zuordnung nur auf den Abständen zwischen den Punkten
+ basiert.
+\begin_inset Newline newline
+\end_inset
+
+Jedoch hat dieser Ansatz eine gravierende Schwäche für die zu bearbeitende
+ Problemstellung, welche auch für den Verwurf des Ansatzes sorgte.
+\begin_inset Newline newline
+\end_inset
+
+Das Graph Matching kann mit Ausreißern nicht arbeiten, da es nicht fehlende
+ Punkte erkennen kann und ein vollvermaschter Graph sich negativ auf die
+ Laufzeit auswirkt.
+ Die Ausreißer bei diesem Problem können in AIS- sowie ARPA-Punktwolken
+ existieren.
+ In der AIS-Punktwolke existieren mehr Punkte als in der ARPA-Punktwolke,
+ weil AIS mehr Reichweite als das Radar hat und AIS geographisch nicht durch
+ verschiedenen Höhen beschränkt ist wie das Radar.
+ Außerdem kann die ARPA-Punktwolke auch Punkte enthalten die in der AIS-Punktwol
+ke fehlen.
+ Dies ist möglich falls ein Schiff kein AIS sendet oder Radarschatten fälschlich
+ für Schiffe gehalten werden.
+ Zusätzlich ist der Ansatz sehr Laufzeit intensiv, da die beiden Graphen
+ zuerst erstellt werden müssen, wofür die Distanz zwischen allen Punkten
+ berechnet werden muss.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -191,28 +253,288 @@ Coherent Point Drift
 \end_layout
 
 \begin_layout Standard
--Einleitung passend zu Grundlagen
+Der in dieser Arbeit verwendete Algorithmus ist der Coherent Point Drift
+ Algorithmus.
+ Dieser wurde aus verschiedenen Punkten ausgewählt, welche im folgenden
+ erläutert werden.
 \end_layout
 
 \begin_layout Standard
-- Begründung warum CPD verwendet wurde:
+Der CPD kann mit verrauschten Daten arbeiten, da er eine 
+\emph on
+weiche 
+\emph default
+Zuordnung (Wert zwischen 0 und 1) berechnet anstatt einer eindeutigen Zuordnung
+ wie der ICP Algorithmus.
+ Durch diese 
+\emph on
+weiche
+\emph default
+ Zuordnung ist es auch möglich eine Aussage über die Vertrauenswürdigkeit
+ eines Zuordnungspaares zu treffen.
+ Dadurch könnte der errechnete Wert wie genau die Zuordnung gepasst hat,
+ als Gewichtung genutzt werden.
+\begin_inset Newline newline
+\end_inset
+
+Eine weitere wichtige Eigenschaft von CPD ist, dass es möglich ist Ausreißer
+ in den Punktwolken zu erkennen und diese keinem Punkt zuzuordnen.
+ Dies war in ICP und Subgraph Matching noch ein Problem.
+\begin_inset Newline newline
+\end_inset
+
+Zusätzlich kann der CPD auch eine Rotation der Punktwolke erkennen was essentiel
+l für die Bestimmung des Headings des Schiffes ist (siehe Programmablauf).
+\begin_inset Newline newline
+\end_inset
+
+Es existiert ein Problem mit diesem Ansatz.
+ Der CPD kann keine beliebige Rotation erkennen, dieses Problem lässt sich
+ jedoch in vielen Point Set Registration Algorithmen finden.
+ Die Lösung dieses Problems wird in 4.2.3 genauer erklärt.
+ 
+\begin_inset Newline newline
+\end_inset
+
+In der folgenden Tabelle 1.1???? ist die Entscheidungsfindung nochmal tabelliert.
+ Zu erkennen sind die einzelnen Stärken der Ansätze und welche Eigenschaften
+ fehlen, um das hier betrachtete Problem effektiv zu lösen.
+ GRAFIK STATT TABELLE?
 \end_layout
 
 \begin_layout Standard
-- outlier erkennen
+\noindent
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Standard
-- noise Data
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ICP
 \end_layout
 
-\begin_layout Standard
-- soft matching(0.0 - 0.5 - 1.0)? => Falsche matchings können besser erkannt
- werden
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Subgraph Matching
 \end_layout
 
-\begin_layout Standard
-- Performanz Vergleich? (Wieder finden im Paper im Vergleich zu ICP)
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CPD
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rauschen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rotation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ausreißer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+weiches Matching
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Vor- und Nachteile der Ansätze
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -225,7 +547,7 @@ Programmablauf
 
 \begin_layout Standard
 Das entstandene Softwaremodul umfasst verschiedene Abläufe, welche zum besseren
- Verständnis im folgenden erläutert werden.
+ Verständnis erläutert werden.
 \end_layout
 
 \begin_layout Standard
@@ -274,7 +596,7 @@ Aktivitätsdiagramm des Softwaremoduls
 
 \begin_layout Standard
 Zuerst werden die benötigten Daten von der Brücke als NMEA-Nachrichten eingelese
-n und in Objekte übersetzt.
+n.
  Dies geschieht durch einen NMEA-Parser von Raytheon Anschütz, welcher in
  das Modul eingebunden ist.
 \end_layout
@@ -282,7 +604,7 @@ n und in Objekte übersetzt.
 \begin_layout Standard
 Im folgenden wird ein Algorithmus ausgewählt, welcher passend zu den verfügbaren
  Daten den weiteren Ablauf bestimmt.
- Die hierfür geprüften Daten sind:
+ Die folgenden Daten werden hier auf ihre Existenz geprüft:
 \end_layout
 
 \begin_layout Enumerate
@@ -303,9 +625,9 @@ Anhand dieser Daten wird ein Algorithmus ausgewählt, welcher in der jeweiligen
 \end_layout
 
 \begin_layout Standard
-Der vorher bestimmte Algorithmus gibt nun an welche der drei Filter auf
- die Daten angewendet werden müssen, um die für den Algorithmus relevanten
- Daten zu extrahieren.
+Der bestimmte Algorithmus gibt nun an, welche der drei Filter auf die Daten
+ angewendet werden müssen, um die für den Algorithmus relevanten Daten zu
+ extrahieren.
  Diese drei sind: das filtern nach den neuesten AIS und ARPA Daten der Schiffe,
  das filtern nach den AtoNs im AIS und das filtern nach ARPA Daten, welche
  keine Geschwindigkeit aufweisen.
@@ -314,7 +636,9 @@ Der vorher bestimmte Algorithmus gibt nun an welche der drei Filter auf
 
 Zusätzlich zu diesen drei Filtern werden die AIS-Daten mithilfe von Seekarten
  Informationen abgeglichen.
- Falls AtoNs nicht vom AIS erfasst wurden, werden sie nun ergänzt.
+ Bei diesem Abgleich werden fehlende AtoNs im AIS durch AtoNs aus den Seekarten
+ korrigiert.
+ Dies ist möglich, da alle AtoNs in der Seekarte verzeichnet sind.
  
 \begin_inset Note Note
 status open
@@ -329,9 +653,12 @@ Satz vielleicht nochmal umschreiben
 \end_layout
 
 \begin_layout Standard
-Nachdem anwenden der Filter wird der Zeitverzug der AIS-Daten korrigiert.
+Nach der Anwendeung der Filter auf die Daten, wird der Zeitverzug der AIS-Daten
+ korrigiert.
  Dieser Zeitverzug existiert, da AIS-Nachrichten in einer Frequenz zwischen
  3s bis 2min gesendet werden können.
+ Die Sendezeit ist abhängig von der Geschwindigkeit und der Kursänderung
+ des Schiffes.
  Die Radar Antenne, welche für die ARPA-Daten zuständig ist benötigt jedoch
  für eine volle Umdrehung bzw.
  für das erfassen aller umliegenden Schiffe nur ca.
@@ -339,48 +666,6 @@ Nachdem anwenden der Filter wird der Zeitverzug der AIS-Daten korrigiert.
  Dieser zeitliche Versatz zwischen den beiden Datensätzen hat einen großen
  Einfluss auf die Genauigkeit der Zuordnung des Algorithmus.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Tabelle hier einfügen und nochmal erklären
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Genauigkeitssteigerung durch Korrektur des Zeitverzugs
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -400,7 +685,7 @@ Das Ergebnis des Algorithmus ist die Zuordnung zwischen den Punkten und
  Die Zuordnung wird für den in 4.3 erklärten Position-Fix Algorithmus benötigt
  und die Rotation, welche benötigt wird um beide Punktwolken einander zuzuordnen
  entspricht dem Heading des Eigenschiffes.
- Das Heading auf diese Weise zu bestimmen ist möglich, da die ARPA-Daten
+ Die Bestimmung des Headings auf diese Weise ist möglich, da die ARPA-Daten
  von der relativen Ausrichtung des Schiffes abhängen, die AIS-Daten jedoch
  nach Norden ausgerichtet sind.
  Somit entspricht eine Drehung der ARPA-Daten, bis sie mit den AIS-Daten
@@ -732,20 +1017,8 @@ Das zweite Problem entstand durch die Rotation, welche Teil des Algorithmus
  Wenn man geodätische Koordinaten rotiert ändern sich ebenso die Positionen
  der Punkte, jedoch ändert sich hier auch der Abstand zwischen den Punkten
  auf Grund der Unterschiedlichen Abstände zwischen Längengraden.
- Die Abweichungen die durch dieses Problem entstanden sind verhalten sich
- proportional zu der Verdrehung zwischen den Punktwolken und proportional
- zum Abstand zwischen Punktwolke und Ursprung.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Proportional? eher exponential oder?
-\end_layout
-
-\end_inset
-
-
+ Die Abweichungen die durch dieses Problem entstanden sind, steigen mit
+ dem Abstand zwischen den Punktwolken.
 \end_layout
 
 \begin_layout Standard
@@ -789,34 +1062,27 @@ n Norm auf dem Erdellipsoid entstehen, geringer ausfallen, weil Längen-
 \end_inset
 
 Für die ARPA - Punktwolke ist dies trivial, da aufgrund der Radar Daten
- diese Punkte in Polarkoordinaten angegeben sind, was es leicht macht diese
- zu auf einen bestimmten Punkt zu verschieben.
+ diese Punkte in Polarkoordinaten angegeben sind.
  
 \begin_inset Newline newline
 \end_inset
 
 Die AIS - Punktwolke ist jedoch an ihre absolute Position gebunden, deswegen
- ist eine andere Methodik notwendig um die Originale Punktwolke an den Ursprung
- verschieben zu können.
- Hierfür wird der Schwerpunkt der AIS - Punktwolke bestimmt, da diese aus
- nicht gewichteten Punkten besteht ist dieser äquivalent zum arithmetischen
- Mittel der Punktwolke.
+ ist eine andere Methodik notwendig, um die Punktwolke, ohne Änderung der
+ Abstände zwischen den Punkten, verschieben zu können.
+ Die Methodik sieht das bestimmen des Schwerpunktes vor, zu welchem die
+ Abstände und der Richtungswinkel von jedem Punkt bestimmt wird.
+ Nun kann dieser Punkt in verschoben werden und mithilfe der Abstände und
+ Richtungswinkel, lässt sich die Punktwolke korrekt wiederherstellen.
+ Der zu bestimmende Punkt ist der Schwerpunkt der AIS-Punktwolke, welcher
+ sich über das arithmetische Mittel bestimmen lässt, solange es sich um
+ eine nicht gewichtete Punktwolke handelt.
  Nun wird die Distanz und der Winkel zwischen jedem Punkt der Punktwolke
- und dem arithmetischem Mittel bestimmt und gespeichert.
+ und dem Schwerpunkt der Wolke bestimmt und gespeichert.
  Für die Berechnung der Distanz und der Winkel zwischen den Punkten wird
  die Vincenty Formel verwendet, damit keine Fehler durch die Erdkrümmung
  entstehen.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-inverse oder direct?
-\end_layout
-
-\end_inset
-
- Nun liegt die AIS - Punktwolke in Polarkoordinaten vor.
+ Nun liegt die AIS-Punktwolke theoretisch in Polarkoordinaten vor.
  Das macht es möglich sie ebenso wie die ARPA - Punktwolke an den Ursprung
  zu platzieren.
  
@@ -854,8 +1120,8 @@ Bei Experimenten mit dem Coherent Point Drift ist jedoch aufgefallen, das
 \begin_inset Formula $60°$
 \end_inset
 
- Rotationsunterschied besitzen, findet der Algorithmus nur ein lokales Minima
- und gibt dies als Lösung zurück.
+ Rotationsunterschied besitzen, findet der Algorithmus möglicherweise nur
+ ein lokales Minima und gibt dies als Lösung zurück.
  Die Ergebnisse des Experiments sind in Abbildung
 \begin_inset Note Note
 status open
@@ -877,17 +1143,13 @@ Abbildung
 In Tabelle 1.3??? wurden die Ergebnisse des CPD Algorithmus für verschiedene
  Rotationen bestimmt.
  Diese Messung wurde mit perfekten Daten ausgeführt, dass bedeutet das alle
- punkte zugeordnet werden können, die Punkte perfekt aufeinander passen
+ Punkte zugeordnet werden können, die Punkte perfekt aufeinander passen
  und das lediglich der Rotationswinkel der Punktwolken sie voneinander untersche
 idet.
  Die Punkte der Punktwolke wurden zufällig anhand einer Normalverteilung
  erstellt und besteht aus 20 Punkten in geodätischen Koordinaten.
  Alle Angaben sind in Grad gegeben.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float table
-placement H
 wide false
 sideways false
 status open
@@ -895,9 +1157,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="20" columns="3">
+<lyxtabular version="3" rows="7" columns="2">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -905,16 +1166,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-korrekter Rotationswinkel 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Berechneter Rotationswinkel
+Rotationswinkel (°)
 \end_layout
 
 \end_inset
@@ -923,7 +1175,7 @@ Berechneter Rotationswinkel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Abweichung
+Gefundenes Minima (°)
 \end_layout
 
 \end_inset
@@ -931,6 +1183,15 @@ Abweichung
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 - 70
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -939,11 +1200,13 @@ Abweichung
 
 \end_inset
 </cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
--0,07183
+80 - 140
 \end_layout
 
 \end_inset
@@ -952,7 +1215,7 @@ Abweichung
 \begin_inset Text
 
 \begin_layout Plain Layout
-0,0718
+111
 \end_layout
 
 \end_inset
@@ -963,16 +1226,7 @@ Abweichung
 \begin_inset Text
 
 \begin_layout Plain Layout
-10
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-9,90986
+150 - 160
 \end_layout
 
 \end_inset
@@ -981,7 +1235,7 @@ Abweichung
 \begin_inset Text
 
 \begin_layout Plain Layout
-0,0901
+172
 \end_layout
 
 \end_inset
@@ -992,652 +1246,12 @@ Abweichung
 \begin_inset Text
 
 \begin_layout Plain Layout
-20
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19,9038
+170 - 220
 \end_layout
 
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,0961
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-30
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-29,9068
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,0931
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-40
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-39,919
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,0810
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-50
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-49,9454
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,0545
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-60
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-59,9799
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,0201
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-70
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-70,0244
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,0244
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-80
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--31,4769
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-111,477
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-90
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--21,5279
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-111,528
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-100
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--11,6077
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-111,608
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-110
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--1,69131
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-111,691
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-120
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-8,22223
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-111,778
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-130
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-18,1483
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-111,852
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-140
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-28,0852
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-111,915
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-150
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--37,0647
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-172,935
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-160
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--28,0801
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-171,92
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-170
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--60,526
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-129,474
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-180
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--50,5137
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-129,486
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset Tabular
-<lyxtabular version="3" rows="20" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-korrekter Rotationswinkel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Berechneter Rotationswinkel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Abweichung
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-190
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--40,5538
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-129,446
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-200
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--30,6049
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-129,395
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-210
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--20,6822
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-129,318
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-220
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--10,791
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-129,209
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1646,40 +1260,13 @@ Abweichung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--52,2632
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-77,7368
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-240
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--42,1644
+230 - 300
 \end_layout
 
 \end_inset
@@ -1688,355 +1275,7 @@ Abweichung
 \begin_inset Text
 
 \begin_layout Plain Layout
-77,8356
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-250
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--32,0759
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-77,9241
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-260
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--22,0599
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-77,9401
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-270
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--12,1797
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-77,8203
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-280
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--2,3964
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-77,6036
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-290
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7,49
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-77,4899
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-300
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-17,37
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-77,3701
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-310
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--49,9602
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,0397
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-320
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--39,9797
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,0203
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-330
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--30,0025
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,0025
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-340
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--20,0259
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,026
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-350
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--10,0516
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,0516
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-360
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--0,0718
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,0718
+282
 \end_layout
 
 \end_inset
@@ -2047,16 +1286,7 @@ Abweichung
 \begin_inset Text
 
 \begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
+310 - 0
 \end_layout
 
 \end_inset
@@ -2065,7 +1295,7 @@ Abweichung
 \begin_inset Text
 
 \begin_layout Plain Layout
--
+0
 \end_layout
 
 \end_inset
@@ -2099,17 +1329,19 @@ Bestimmte Rotation durch CPD an perfekten Daten
 Es ist deutlich zu erkennen, dass der CPD Algorithmus ab einem bestimmten
  Rotationswinkel, die korrekte Rotation nicht mehr findet und in einem lokalen
  Minimum terminiert.
- Dies ist der Fall für die Rotationswinkel 80 - 140 Grad.
-\end_layout
-
-\begin_layout Standard
-Für dieses Problem wurde eine Lösung entwickelt, mit welcher die korrekte
- Rotation, sowie die korrekte Zuordnung bestimmt werden können.
+ In den Testdaten von Tabelle 1.2??? werden fünf verschiedene Minima gefunden,
+ je nach Rotation der Punktwolke.
  
 \end_layout
 
 \begin_layout Standard
-Hierfür wird der Algorithmus mehrfach ausgeführt ,wobei nach jeder Ausführung
+Für dieses Problem wurde eine Lösung entwickelt, um die korrekte Rotation,
+ sowie die korrekte Zuordnung zu bestimmen.
+ 
+\end_layout
+
+\begin_layout Standard
+Hierfür wird der Algorithmus mehrfach ausgeführt, wobei nach jeder Ausführung
  die ARPA-Punktwolke rotiert wird und die Ergebnisse gespeichert werden.
  Für die kontinuierliche Rotation wurden 
 \begin_inset Formula $45°$
@@ -2124,12 +1356,21 @@ Hierfür wird der Algorithmus mehrfach ausgeführt ,wobei nach jeder Ausführung
 \begin_inset Formula $45$
 \end_inset
 
- der nächste ganzzahlige Teiler kleiner als 
+ der nächste ganzzahlige Teiler von 
+\begin_inset Formula $360$
+\end_inset
+
+ ist und welcher kleiner als 
 \begin_inset Formula $52$
 \end_inset
 
- ist, welches die schlechteste Messung für den Erkennungsraum(anderes Wort)
- des Rotationswinkels unter real nahen Bedingungen war.
+ ist.
+ Die 
+\begin_inset Formula $52°$
+\end_inset
+
+ ist der kleinste Raum für das Erkennen der Rotation durch den CPD unter
+ real nahen Daten.
  Die Rotation der ARPA-Punktwolke ist sehr simple, da sie bereits in Polarkoordi
 naten vorliegt.
  Nachdem der Algorithmus 8 mal ausgeführt wurde (
@@ -2138,46 +1379,22 @@ naten vorliegt.
 
 ) werden die Ergebnisse verglichen.
  Hierbei wird das Ergebnis mit dem geringsten Fehler zwischen den Punkten
- ausgewählt, da dieses das globale Optimum indiziert.
- Bei Tests mit diesem Ansatz wurde unter verschiedenen Bedingungen immer
- der korrekte Rotationswinkel und die richtige Zuordnung gefunden.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Abbildung/Tabelle
-\end_layout
-
-\end_inset
-
- 
+ ausgewählt, da so das globale Optimum gefunden wird.
 \begin_inset Newline newline
 \end_inset
 
 Diese Lösung hat natürlich einen großen Nachteil, welcher die Performanz
- des Algorithmus ist, da dieser nun statt einmal pro Durchlauf acht mal
- aufgerufen wird.
- Es ist jedoch nur notwendig beim initialen Ausführen des Softwaremoduls
- den Algorithmus acht mal zu starten, da nach dem ersten Durchlauf des Softwarem
-oduls ein Heading an die Brücke gesendet wurde, welches beim nächsten Aufrufen
- des Algorithmus wieder mit gesendet werden kann.
- Mit einem Heading, dass nicht mehr als 
-\begin_inset Formula $52°$
-\end_inset
-
- abweicht kann der Algorithmus ohne Probleme arbeiten und muss nun die ARPA-Punk
-twolke nur um den Wert des negativen Headings drehen.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ist das verständlich?
-\end_layout
-
-\end_inset
-
-
+ des Algorithmus ist.
+ Der Algorithmus muss acht mal gestartet werden um ein korrektes Ergebnis
+ zu produzieren.
+ Die achtfache Ausführung ist jedoch nur beim initialen Ausführen des Softwaremo
+duls nötig, weil nach dem ersten Durchlauf des Softwaremoduls ein Heading
+ an die Brücke gesendet wird, welches beim nächsten Aufrufen des Algorithmus
+ mit gesendet wird und somit ein initiales Heading existiert.
+ Wenn ein Heading mit gesendet wird muss der Algorithmus nur einmal ausgeführt
+ werden, weil die ARPA-Punktwolke nur um den Wert des negativen Headings
+ gedreht werden muss und dadurch die Punktwolken eine Ähnliche Rotation
+ aufweisen sollten.
 \end_layout
 
 \begin_layout Section
@@ -2211,17 +1428,7 @@ True
  Bearing wird das Bearing bezeichnet, welches relativ zur Nord-Richtung
  angegeben wird.
  Diese Umrechnung ist möglich, da der CPD-Algorithmus auch das Heading des
- Schiffes bestimmt 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Wird das im Programmablauf klar?
-\end_layout
-
-\end_inset
-
-.
+ Schiffes bestimmt.
  Das Heading des Schiffes ist relativ zur Nord-Richtung und bietet somit
  die Möglichkeit über folgende Formel eine relative Bearing Angabe in 
 \emph on
@@ -2486,10 +1693,10 @@ Nachdem die Ausreißer entfernt wurden ist es wichtig die Genauigkeit des
  Die Form der Punkte entspricht einer Ellipse, welche der Sicherheitsbereich
  ist.
  Eine Visualisierung dieses Ablaufs ist in Abbildung???? zu erkennen.
- Die roten punkte sind zurückgerechnete Eigenpositionen, wobei 10 ein Ausreißer
+ Die roten Punkte sind zurückgerechnete Eigenpositionen, wobei 10 ein Ausreißer
  ist, welcher das Resultat einer falschen Zuordnung sein könnte.
- Die blauen Ellipsen indizieren die Mahalanobis Distanz von 0,5 bis 2,0
- von innen nach außen.
+ Die blauen Ellipsen indizieren die Standardabweichungen vom Faktor 0,5
+ bis 2,0 von innen nach außen.
 \begin_inset Note Note
 status open
 

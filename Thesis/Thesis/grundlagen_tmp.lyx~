@@ -169,7 +169,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/jknopp/Desktop/Repositorys/Thesis/Thesis/Bilder/TTM_NMEA_Sentence.PNG
+	filename C:/Users/User/Desktop/Repositorys/Thesis/Thesis/Bilder/TTM_NMEA_Sentence.PNG
 	scale 50
 
 \end_inset
@@ -266,6 +266,44 @@ Das WGS 84 wird in GPS Empfängern verwendet und ist somit ein essentielles
 
 \begin_layout Subsection
 Berechnungen auf dem Erdellipsoid
+\end_layout
+
+\begin_layout Standard
+Es existieren verschiedene Formeln zur Berechnung auf dem Erdellipsoid.
+ Für diese Arbeit sind besonders Formeln wichtig, welche die erste und zweite
+ geodätische Hauptaufgabe lösen können.
+ Die erste geodätische Hauptaufgabe ist das bestimmen eines Punktes mit
+ einem gegebenen Punkt, einer Richtung und der Distanz.
+ Die zweite geodätische Hauptaufgabe ist das bestimmen von Richtung und
+ Distanz zwischen zwei Punkten.
+ Zur Lösung der ersten beiden geodätischen Hauptaufgaben werden im weiteren
+ drei Möglichkeiten dargestellt und bewertet.
+\end_layout
+
+\begin_layout Standard
+Die erste Möglichkeit ist die Berechnung über die Euklidische Norm.
+ Dabei würde man die Koordinaten auf einer Ebene annehmen und dementsprechend
+ berechnen.
+ Der Vorteil hiervon ist, dass wenn die Entfernungen zwischen den Punkten
+ nicht zu groß werden, der Fehler durch die Erdkrümmung nur sehr klein ist.
+ Zusätzlich ist die Berechnung so natürlich sehr simpel und effizient ausführbar.
+ Die Berechnung über diesen Weg ist nur ratsam bis die Distanz 
+\begin_inset Formula $20km$
+\end_inset
+
+ überschreitet.
+ Denn ab diesem Punkt werden die Fehler durch die Erdkrümmung immer größer,
+ wodurch auf komplexere Formeln mit Erdähnlicheren Grundformen zurückzugreifen
+ ist.
+\begin_inset Newline newline
+\end_inset
+
+Die zweite Mögliche Formel für die Berechnung ist die Great Circle Distance.
+ Diese beruht auf der Annahme das die Erde eine perfekte Kugel ist und somit
+ Distanzberechnungen auf einer Kugel möglich sind.
+ Dies hat den Vorteil, dass der Fehler deutlich geringer bleibt als bei
+ der Euklidischen Norm.
+ 
 \end_layout
 
 \begin_layout Standard

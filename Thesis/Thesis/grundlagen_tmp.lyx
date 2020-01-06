@@ -269,25 +269,73 @@ Berechnungen auf dem Erdellipsoid
 \end_layout
 
 \begin_layout Standard
--Beispiel warum andere Formeln als Euklidische Distanz nötig sind (Möglicherweis
-e inklusive Grafik)
+Es existieren verschiedene Formeln zur Berechnung auf dem Erdellipsoid.
+ Für diese Arbeit sind besonders Formeln wichtig, welche die erste und zweite
+ geodätische Hauptaufgabe lösen können.
+ Die erste geodätische Hauptaufgabe ist das bestimmen eines Punktes mit
+ einem gegebenen Punkt, einer Richtung und der Distanz.
+ Die zweite geodätische Hauptaufgabe ist das bestimmen von Richtung und
+ Distanz zwischen zwei Punkten.
+ Zur Lösung der ersten beiden geodätischen Hauptaufgaben werden im weiteren
+ drei Möglichkeiten dargestellt und bewertet.
 \end_layout
 
 \begin_layout Standard
-- Formeln: Great Circle Distance, Vincenty Formel
+Die erste Möglichkeit ist die Berechnung über die Euklidische Norm.
+ Dabei würde man die Koordinaten auf einer Ebene annehmen und dementsprechend
+ berechnen.
+ Der Vorteil hiervon ist, dass wenn die Entfernungen zwischen den Punkten
+ nicht zu groß werden, der Fehler durch die Erdkrümmung nur sehr klein ist.
+ Zusätzlich ist die Berechnung so natürlich sehr simpel und effizient ausführbar.
+ Die Berechnung über diesen Weg ist nur ratsam bis die Distanz 
+\begin_inset Formula $20km$
+\end_inset
+
+ überschreitet.
+ Denn ab diesem Punkt werden die Fehler durch die Erdkrümmung immer größer,
+ wodurch auf komplexere Formeln mit Erdähnlicheren Grundformen zurückzugreifen
+ ist.
+\begin_inset Newline newline
+\end_inset
+
+Die zweite Mögliche Formel für die Berechnung ist die Great Circle Distance.
+ Diese beruht auf der Annahme das die Erde eine perfekte Kugel ist und somit
+ Distanzberechnungen auf einer Kugel möglich sind.
+ Dies hat den Vorteil, dass der Fehler deutlich geringer bleibt als bei
+ der Euklidischen Norm.
+ Jedoch ist der Fehler für größere Distanzen immer noch zu groß, um die
+ Formel in einem Sicherheitskritischem Bereich zu verwenden.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Die dritte Möglichkeit ist die Vincenty Formel.
+ Diese berechnet die geodätischen Hauptaufgaben auf einem Ellipsoiden.
+ Dieser kann anhand der Erde parametrisiert werden.
+ Das eröffnet die Möglichkeit Punkte über eine beliebige Distanz zu berechnen
+ ohne eine Erhöhung des Fehlers durch die Erdkrümmung.
+ Die Formel hat jedoch eine höhere Laufzeit als die vorherigen, da sie den
+ Fehler der durch den Erdellipsoid entsteht bis zu einem Schwellwert minimiert.
+ Die Formel soll egal wo auf der Erde eine Ungenauigkeit von weniger als
+ einem Zentimeter haben.
+ 
 \end_layout
 
 \begin_layout Standard
-- Great Circle Distance beschreiben (kurz)
+Die genannten Beispiele können je nach Entfernung zwischen den Punkten gewählt
+ werden.
+ Die genaue Auswirkung, welche die Abweichungen haben ist in Abbildung ????
+ zusehen und in Tabelle mit Testdaten belegt.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Abbildung und Tabelle
 \end_layout
 
-\begin_layout Standard
-- Vincenty Formel beschreiben besonders die Genauigkeitsverbesserung durch
- das rechnen auf einem Ellipsoid
-\end_layout
+\end_inset
 
-\begin_layout Standard
-- Abbildung mit Genauigkeiten
+
 \end_layout
 
 \begin_layout Section
