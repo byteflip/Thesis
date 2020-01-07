@@ -100,13 +100,5 @@ Tests mit Generatordaten mit zunehmenden Ausreißern und Auswertung der Ergebnis
 e
 \end_layout
 
-\begin_layout Section
-Ausblick
-\end_layout
-
-\begin_layout Standard
-Mögliche Optimierungen für den Algorithmus werden beschrieben.
-\end_layout
-
 \end_body
 \end_document

@@ -85,6 +85,13 @@ Umsetzung
 Ansätze
 \end_layout
 
+\begin_layout Standard
+Im folgenden Abschnitt werden verschiedene Ansätze behandelt, welche im
+ Laufe der Arbeit evaluiert wurden.
+ Zudem werden die Stärken und Schwächen der Ansätze zu denen des ausgewählten
+ Algorithmus betrachtet und bewertet.
+\end_layout
+
 \begin_layout Subsection
 Iterative Closest Point
 \end_layout
@@ -551,11 +558,12 @@ Das entstandene Softwaremodul umfasst verschiedene Abläufe, welche zum besseren
 \end_layout
 
 \begin_layout Standard
-In Abbildung 3.1??? ist der Ablauf der Software anhand eines Aktivitätsdiagramms
+In Abbildung 4.1 ist der Ablauf der Software anhand eines Aktivitätsdiagramms
  dargestellt, dieser wird im folgenden genauer erläutert.
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 placement H
 wide false
@@ -565,7 +573,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/User/Desktop/Repositorys/Thesis/Plannung/ProgrammAblauf.png
+	filename C:/Users/jknopp/Desktop/Repositorys/Thesis/Thesis/Grafiken/ProgrammAblauf.png
 	scale 45
 
 \end_inset
@@ -757,6 +765,7 @@ In der folgenden Tabelle wird gezeigt wie der Fehler sich mit steigender
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float table
 placement H
 wide false
@@ -1150,6 +1159,7 @@ idet.
  erstellt und besteht aus 20 Punkten in geodätischen Koordinaten.
  Alle Angaben sind in Grad gegeben.
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -1335,6 +1345,46 @@ Es ist deutlich zu erkennen, dass der CPD Algorithmus ab einem bestimmten
 \end_layout
 
 \begin_layout Standard
+\noindent
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/jknopp/Desktop/Repositorys/Thesis/Thesis/Grafiken/RotationswinkelGraph.PNG
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bestimmte Rotation durch CPD an perfekten Daten
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Für dieses Problem wurde eine Lösung entwickelt, um die korrekte Rotation,
  sowie die korrekte Zuordnung zu bestimmen.
  
@@ -1399,6 +1449,12 @@ duls nötig, weil nach dem ersten Durchlauf des Softwaremoduls ein Heading
 
 \begin_layout Section
 Position-Fix
+\end_layout
+
+\begin_layout Standard
+Der folgenden Abschnitt beschreibt die Berechnung der Eigenposition und
+ des Sicherheitsbereichs, welche aus der Zuordnung und dem bestimmten Heading
+ des CPD möglich ist.
 \end_layout
 
 \begin_layout Subsection

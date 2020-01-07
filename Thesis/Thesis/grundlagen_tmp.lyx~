@@ -169,7 +169,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/User/Desktop/Repositorys/Thesis/Thesis/Bilder/TTM_NMEA_Sentence.PNG
+	filename C:/Users/jknopp/Desktop/Repositorys/Thesis/Thesis/Bilder/TTM_NMEA_Sentence.PNG
 	scale 50
 
 \end_inset
@@ -303,29 +303,273 @@ Die zweite Mögliche Formel für die Berechnung ist die Great Circle Distance.
  Distanzberechnungen auf einer Kugel möglich sind.
  Dies hat den Vorteil, dass der Fehler deutlich geringer bleibt als bei
  der Euklidischen Norm.
+ Jedoch ist der Fehler für größere Distanzen immer noch zu groß, um die
+ Formel in einem Sicherheitskritischem Bereich zu verwenden.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Die dritte Möglichkeit ist die Vincenty Formel.
+ Diese berechnet die geodätischen Hauptaufgaben auf einem Ellipsoiden.
+ Dieser kann anhand der Erde parametrisiert werden.
+ Das eröffnet die Möglichkeit Punkte über eine beliebige Distanz zu berechnen
+ ohne eine Erhöhung des Fehlers durch die Erdkrümmung.
+ Die Formel hat jedoch eine höhere Laufzeit als die vorherigen, da sie den
+ Fehler der durch den Erdellipsoid entsteht bis zu einem Schwellwert minimiert.
+ Die Formel soll egal wo auf der Erde eine Ungenauigkeit von weniger als
+ einem Zentimeter haben.
  
 \end_layout
 
 \begin_layout Standard
--Beispiel warum andere Formeln als Euklidische Distanz nötig sind (Möglicherweis
-e inklusive Grafik)
+Die richtige Methode kann nach der Entfernung zwischen den Punkten bestimmt
+ werden.
+ Eine Übersicht über die Genauigkeit für die Berechnung über mehrere Distanzen
+ ist in Tabelle??? angegeben.
+ Hierfür wurde die Distanz zwischen dem Ursprung (0, 0) und einem Punkt
+ gemessen, welche immer weiter vergrößert wurde.
+ Der Punkt zu dem die Entfernung gemessen wurde weißt immer einen Richtungswinke
+l von 
+\begin_inset Formula $45°$
+\end_inset
+
+ auf.
+ Die Werte in der Tabelle entsprechen Distanzen in der Einheit Kilometer.
 \end_layout
 
 \begin_layout Standard
-- Formeln: Great Circle Distance, Vincenty Formel
+\noindent
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lat / Lon
 \end_layout
 
-\begin_layout Standard
-- Great Circle Distance beschreiben (kurz)
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Euklidische Norm
 \end_layout
 
-\begin_layout Standard
-- Vincenty Formel beschreiben besonders die Genauigkeitsverbesserung durch
- das rechnen auf einem Ellipsoid
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Haversine Formel
 \end_layout
 
-\begin_layout Standard
-- Abbildung mit Genauigkeiten
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vincenty Formel
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,00639 / 0,00635
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,9931
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,002
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,06395 / 0,06352
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9,9374
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10,02
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,63947 / 0,63523
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99,374
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100,2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6,38135 / 6,37831
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+994,724
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1002
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1000
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Entfernungsberechnung mit Unterschiedlichen Methoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -333,12 +577,58 @@ Point Set Registration
 \end_layout
 
 \begin_layout Subsection
-Rigid und Non-rigid Registration
+Rigid und Non-rigid Transformationen
 \end_layout
 
 \begin_layout Standard
-Unterschied zwischen Rigid und Non-rigid registration erklären und kurze
- Erwähnung der Probleme welche bei Rigid Registration auftreten
+Rigid (auf Deutsch starre) Transformationen und Non-rigid (auf Deutsch nicht
+ starre) Transformationen gehören zu den Grundlagen von Point Set Registration.
+ Im weiteren werden beide Transformationen erklärt und ebenso ihr Zusammenhang
+ mit Point Set Registration.
+\end_layout
+
+\begin_layout Standard
+Unter einer rigid Transformation, auf einer Punktwolke, versteht man eine
+ Transformation, bei welcher sich die Abstände und die Winkel zwischen den
+ Punkten nicht ändern.
+ Es bedeutet das die Form der Punktwolke sich nicht verändert.
+ Die folgenden Transformationen gelten als rigid Transformationen, da sie
+ die Struktur der Punktwolke nicht verändern:
+\end_layout
+
+\begin_layout Enumerate
+Translation, das verschieben der Punktwolke
+\end_layout
+
+\begin_layout Enumerate
+Rotation, das rotieren der Punktwolke um den Ursprung
+\end_layout
+
+\begin_layout Enumerate
+Spiegelung, das spiegeln der gesamten Punktwolke
+\end_layout
+
+\begin_layout Standard
+Hierbei ist Spiegelung aber eine eher selten verwendete Transformation.
+\begin_inset Newline newline
+\end_inset
+
+Eine Transformation wird als non-rigid bezeichnet sobald sie die Abstände
+ und Winkel zwischen den Punkten verändert.
+ Das bedeutet sie verändert die Struktur der Punktwolke.
+ Zu den bei rigid Transformationen erlaubten Transformationen kommen nun
+ noch affine Transformationen hinzu wie Skalierung, Scherung und Dilatation.
+\begin_inset Newline newline
+\end_inset
+
+Die Point Set Registration Algorithmen lassen sich in eine der beiden Kategorien
+ einteilen, je nach Art der Transformation, welche auf die Daten angewendet
+ wird.
+ Hierbei gibt es ein paar Überschneidungen, was die erlaubten Transformationen
+ betrifft.
+ Manche Algorithmen erlauben bei der rigid Transformation auch eine Skalierung
+ wie der Coherent Point Drift Algorithmus.
+ 
 \end_layout
 
 \begin_layout Subsection

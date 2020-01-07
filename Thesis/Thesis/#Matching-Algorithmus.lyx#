@@ -1542,7 +1542,9 @@ Nachdem dies für jedes Datenpaar wiederholt wurde, existiert eine Punktwolke,
 \end_inset
 
 Die Auswirkung für die Verwendung eines gewichteten Arithmetischen Mittels
- anstatt des normalen arithmetischen Mittels ist in Abbildung 1.2??? zu erkennen.
+ anstatt des normalen arithmetischen Mittels ist in Abbildung 1.2??? zu erkennen
+ (Grün ist das arithmetische Mittel und blau das gewichtete arithmetische
+ Mittel).
  In der Abbildung haben die Punkte 6 - 10 eine höhere Gewichtung als die
  Punkte 1 - 4, was dafür sorgt, dass diese beim gewichteten Arithmetischen
  Mittel stärker berücksichtigt werden.
@@ -1559,7 +1561,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/jknopp/Desktop/Repositorys/Thesis/Thesis/Grafiken/Mittelwerte.PNG
+	filename C:/Users/jknopp/Desktop/Repositorys/Thesis/Thesis/Grafiken/WeightedAndArithmeticMean.PNG
 
 \end_inset
 
@@ -1837,6 +1839,7 @@ Hier Erklärung zu der Visualisierung noch einfügen
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 wide false
 sideways false
