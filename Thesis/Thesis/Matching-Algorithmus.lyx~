@@ -1034,22 +1034,7 @@ Das zweite Problem entstand durch die Rotation, welche Teil des Algorithmus
 Die Lösung für das erste Problem (Translation), ist dass minimieren der
  initialen Abstände zwischen den Punktwolken.
  Die Translation die nun benötigt wird für das überführen der einen Punktwolke
- in die andere resultiert in einer kleinen Abweichung, welche in Tests maximal
- 
-\begin_inset Formula $7m$
-\end_inset
-
- entsprach.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Muss das nochmal dokumentiert werden?
-\end_layout
-
-\end_inset
-
-
+ in die andere resultiert in einer kleinen Abweichung.
 \begin_inset Newline newline
 \end_inset
 
@@ -1534,22 +1519,12 @@ Nun kann von jedem Datenpaar eine individuelle Eigenposition bestimmt werden.
  Dies basiert auf der Lösung der 1.
  geodätischen Hauptaufgabe, diese ist das berechnen eines Punktes mit einem
  Startpunkt, einer Richtung und einer Distanz.
- Der Startpunkt sind die AIS Koordinaten, die Richtung ist das invertierte
+ Der Startpunkt sind die AIS Koordinaten, die Richtung ist das negierte
  
 \emph on
 true 
 \emph default
-Bearing
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-gibt es hierfür nicht eine mathematische Bezeichnung?
-\end_layout
-
-\end_inset
-
- und die Distanz kann aus den ARPA - Daten entnommen werden.
+Bearing und die Distanz kann aus den ARPA - Daten entnommen werden.
  Die Lösung der 1.
  geodätischen Hauptaufgabe lässt sich mithilfe der Vincenty Formel bestimmen.
  
@@ -1574,6 +1549,7 @@ Die Auswirkung für die Verwendung eines gewichteten Arithmetischen Mittels
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 placement H
 wide false
@@ -1767,6 +1743,7 @@ Sicherheitsbereich über Standardabweichung? eher schlecht wegen der Abweichung,
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 placement H
 wide false
@@ -1864,10 +1841,6 @@ Hier Erklärung zu der Visualisierung noch einfügen
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
