@@ -287,11 +287,9 @@ Die erste Möglichkeit ist die Berechnung über die Euklidische Norm.
  Der Vorteil hiervon ist, dass wenn die Entfernungen zwischen den Punkten
  nicht zu groß werden, der Fehler durch die Erdkrümmung nur sehr klein ist.
  Zusätzlich ist die Berechnung so natürlich sehr simpel und effizient ausführbar.
- Die Berechnung über diesen Weg ist nur ratsam bis die Distanz 
-\begin_inset Formula $20km$
-\end_inset
-
- überschreitet.
+ Die Berechnung über diesen Weg ist nur ratsam solange die Distanz nicht
+ mehrere Längen- bzw.
+ Breitengrade überschreitet.
  Denn ab diesem Punkt werden die Fehler durch die Erdkrümmung immer größer,
  wodurch auf komplexere Formeln mit Erdähnlicheren Grundformen zurückzugreifen
  ist.
@@ -324,8 +322,8 @@ Die dritte Möglichkeit ist die Vincenty Formel.
 \begin_layout Standard
 Die richtige Methode kann nach der Entfernung zwischen den Punkten bestimmt
  werden.
- Eine Übersicht über die Genauigkeit für die Berechnung über mehrere Distanzen
- ist in Tabelle??? angegeben.
+ Eine Übersicht über die Abweichung der Euklidischen Norm und der Haversine
+ Formel im Vergleich zu der Vincenty Formel ist in Tabelle 2.1 dokumentiert.
  Hierfür wurde die Distanz zwischen dem Ursprung (0, 0) und einem Punkt
  gemessen, welche immer weiter vergrößert wurde.
  Der Punkt zu dem die Entfernung gemessen wurde weißt immer einen Richtungswinke
@@ -335,6 +333,7 @@ l von
 
  auf.
  Die Werte in der Tabelle entsprechen Distanzen in der Einheit Kilometer.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -348,9 +347,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="4">
+<lyxtabular version="3" rows="5" columns="3">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -359,7 +357,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-Lat / Lon
+Distanz (Berechnung mit Vincenty Formel)
 \end_layout
 
 \end_inset
@@ -373,7 +371,7 @@ Euklidische Norm
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -382,45 +380,9 @@ Haversine Formel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vincenty Formel
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,00639 / 0,00635
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,9931
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1,002
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -429,36 +391,27 @@ Vincenty Formel
 
 \end_inset
 </cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-0,06395 / 0,06352
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-9,9374
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-10,02
+0.0069
 \end_layout
 
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,002
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -467,31 +420,11 @@ Vincenty Formel
 
 \end_inset
 </cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-0,63947 / 0,63523
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-99,374
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-100,2
+0.0626
 \end_layout
 
 \end_inset
@@ -500,7 +433,36 @@ Vincenty Formel
 \begin_inset Text
 
 \begin_layout Plain Layout
+0,02
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.626
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,2
 \end_layout
 
 \end_inset
@@ -511,7 +473,7 @@ Vincenty Formel
 \begin_inset Text
 
 \begin_layout Plain Layout
-6,38135 / 6,37831
+1000
 \end_layout
 
 \end_inset
@@ -520,16 +482,7 @@ Vincenty Formel
 \begin_inset Text
 
 \begin_layout Plain Layout
-994,724
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1002
+5.276
 \end_layout
 
 \end_inset
@@ -538,7 +491,7 @@ Vincenty Formel
 \begin_inset Text
 
 \begin_layout Plain Layout
-1000
+2
 \end_layout
 
 \end_inset
@@ -570,6 +523,19 @@ Entfernungsberechnung mit Unterschiedlichen Methoden
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Es ist zu erkennen das der Fehler bei der Haversine Formel linear mit der
+ Entfernung steigt.
+ Bei der Euklidischen Norm ist zu betrachten, dass der Fehler erst linear
+ steigt, dies hat den Grund das die Messung am Ursprung des geodätischen
+ Koordinatensystems begonnen hat.
+ Dort sind die Distanzen für ein Längen bzw.
+ Breitengrad fast gleich.
+ Nachdem jedoch größere Distanzen mit der Euklidischen Norm berechnet werden,
+ ist zu erkennen das der Fehler mit steigender Erdkrümmung immer weiter
+ zunimmt.
 \end_layout
 
 \begin_layout Section
@@ -605,7 +571,8 @@ Rotation, das rotieren der Punktwolke um den Ursprung
 \end_layout
 
 \begin_layout Enumerate
-Spiegelung, das spiegeln der gesamten Punktwolke
+Spiegelung, das spiegeln der gesamten Punktwolke um eine Achse des Koordinatensy
+stems
 \end_layout
 
 \begin_layout Standard
@@ -646,7 +613,101 @@ Gaussian Mixture Model
 \end_layout
 
 \begin_layout Standard
-Erklärung von Gaussian Mixture Models im Zusammenhang mit Point Set Registration
+Ein Gaussian Mixture Model ist eine Mischverteilung von Normalverteilungen.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Nachschlagen
+\end_layout
+
+\end_inset
+
+ Eine Mischverteilung ist eine Zusammensetzung von Verteilungen verschiedener
+ Datenmengen.
+ Bei Gaussian Mixture Models sind diese Verteilungen Normalverteilungen.
+ Das bedeutet sie hängen von folgenden Parametern ab:
+\end_layout
+
+\begin_layout Enumerate
+Einem Mittelwert 
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Einer Varianz 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ bzw.
+ einer Kovarianz 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ im multidimensionalen Raum
+\end_layout
+
+\begin_layout Standard
+Der Mittelwert ist das Zentrum der Verteilung.
+ Die Varianz bzw.
+ Kovarianz gibt die Breite der Verteilung an, diese ist im mehrdimensionalem
+ Raum ein Ellipsoid.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Die Dichtefunktion der Normalverteilungen 
+\begin_inset Formula $i$
+\end_inset
+
+ enthalten in einem Gaussian Mixture Model ist wie folgt definiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $d:$
+\end_inset
+
+ Dimension in welcher die Daten vorliegen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f_{i}(x)=N(\mu_{i},\Sigma_{i})(x)=\frac{1}{(2\pi)^{\frac{d}{2}}|\Sigma_{i}|^{\frac{1}{2}}}\cdot exp(-\frac{1}{2}(x-\mu_{i})\cdot\Sigma_{i}^{-1}\cdot(x-\mu_{i}))$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Somit ist die Wahrscheinlichkeitsdichtefunktion des Gaussian Mixture Models
+ die folgende.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula ${\displaystyle f(x)=\sum_{i=1}^{M}w_{i}f_{i}(x)=\sum_{i=1}^{M}\cdot\frac{a_{i}}{\left(2\pi\right)^{\frac{d}{2}}|\Sigma_{i}|^{\frac{1}{2}}}\cdot exp(-\frac{1}{2}(x-\mu_{i})\cdot\Sigma_{i}^{-1}\cdot(x-\mu_{i}))}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Gaussian Mixture Models werden immer verwendet wenn eine Verteilung
+ aus mehrere Gauß-Verteilungen besteht oder es abschätzbar ist das dies
+ der Fall ist.
+ Dadurch finden sie eine Anwendung im Feld des Unsupervised Learnings für
+ das Clustering von Datensätzen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Sie finden auch in Point Set Registration Anwendung.
+ Hier wird meist aus einer der Punktwolken eine Menge von Gaussian mixture
+ Models generiert, welche nun mit den Punkten der zweiten Punktwolke verglichen
+ werden.
+ Dadurch entsteht eine probabilistischer Lösung für das Registrationsproblem.
 \end_layout
 
 \begin_layout Subsection
