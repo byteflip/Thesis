@@ -81,6 +81,16 @@
 Literaturvergleich
 \end_layout
 
+\begin_layout Standard
+Im folgenden werden die drei Hauptaufgaben dieser Arbeit mit ähnlichen aktuellen
+ Methoden verglichen.
+ Diese drei Hauptaufgaben sind, dass zusammenführen von AIS- und ARPA -
+ Signalen.
+ Der Algorithmus zum zusammenführen der Daten und die sichere Bestimmung
+ der Position über einen Position-Fix.
+ 
+\end_layout
+
 \begin_layout Section
 Fusion von AIS- und ARPA-Signalen
 \end_layout

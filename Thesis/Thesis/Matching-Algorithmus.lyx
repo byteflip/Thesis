@@ -88,8 +88,10 @@ Ansätze
 \begin_layout Standard
 Im folgenden Abschnitt werden verschiedene Ansätze behandelt, welche im
  Laufe der Arbeit evaluiert wurden.
- Zudem werden die Stärken und Schwächen der Ansätze zu denen des ausgewählten
- Algorithmus betrachtet und bewertet.
+ All diese Ansätze basieren auf dem Prinzip einer rigid Registration, da
+ sich die Abstände zwischen Punkten nicht ändern dürfen.
+ Im weiteren werden die Stärken und Schwächen der Ansätze betrachtet und
+ mit dem ausgewählten Algorithmus verglichen.
 \end_layout
 
 \begin_layout Subsection
@@ -233,7 +235,7 @@ Die Stärke dieses Ansatzes ist die Genauigkeit, da das finden eines Subgraphen
 \end_inset
 
 Jedoch hat dieser Ansatz eine gravierende Schwäche für die zu bearbeitende
- Problemstellung, welche auch für den Verwurf des Ansatzes sorgte.
+ Problemstellung, was auch für das verwerfen des Ansatzes sorgte.
 \begin_inset Newline newline
 \end_inset
 
@@ -267,12 +269,14 @@ Der in dieser Arbeit verwendete Algorithmus ist der Coherent Point Drift
 \end_layout
 
 \begin_layout Standard
-Der CPD kann mit verrauschten Daten arbeiten, da er eine 
+Der CPD kann mit verrauschten und Ausreißer behafteten Daten immer noch
+ eine korrekte Zuordnung finden.
+ Er hat eine 
 \emph on
 weiche 
 \emph default
-Zuordnung (Wert zwischen 0 und 1) berechnet anstatt einer eindeutigen Zuordnung
- wie der ICP Algorithmus.
+Zuordnung (Wert zwischen 0 und 1), anstatt einer eindeutigen Zuordnung wie
+ der ICP Algorithmus.
  Durch diese 
 \emph on
 weiche
@@ -549,7 +553,7 @@ Die Implementierung des CPD Algorithmus erfolgte mithilfe eines Github Repositor
 ys.[GITHUB] In diesem ist der Algorithmus mithilfe der Eigen3 Bibliothek
  implementiert wurden.
  Die Eigen3 Bibliothek umfasst Methoden für Matrizen Berechnung und kann
- enthält auch Methoden zur Singulawertzerlegung.
+ enthält auch Methoden zur Singulärwertzerlegung.
  Diese Implementierung kann auf bestimmte Weise Parametrisiert werden, was
  im folgenden genauer erklärt wird.
 \end_layout

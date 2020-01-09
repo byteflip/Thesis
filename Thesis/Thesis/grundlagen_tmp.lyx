@@ -696,7 +696,7 @@ Somit ist die Wahrscheinlichkeitsdichtefunktion des Gaussian Mixture Models
 \begin_layout Standard
 Die Gaussian Mixture Models werden immer verwendet wenn eine Verteilung
  aus mehrere Gauß-Verteilungen besteht oder es abschätzbar ist das dies
- der Fall ist.
+ der Fall sein wird.
  Dadurch finden sie eine Anwendung im Feld des Unsupervised Learnings für
  das Clustering von Datensätzen.
  
@@ -707,7 +707,8 @@ Sie finden auch in Point Set Registration Anwendung.
  Hier wird meist aus einer der Punktwolken eine Menge von Gaussian mixture
  Models generiert, welche nun mit den Punkten der zweiten Punktwolke verglichen
  werden.
- Dadurch entsteht eine probabilistischer Lösung für das Registrationsproblem.
+ Dadurch ist es möglich eine probabilistische Lösung für das Problem zu
+ bestimmen.
 \end_layout
 
 \begin_layout Standard

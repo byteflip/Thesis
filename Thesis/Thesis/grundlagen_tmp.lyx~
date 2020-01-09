@@ -710,6 +710,19 @@ Sie finden auch in Point Set Registration Anwendung.
  Dadurch entsteht eine probabilistischer Lösung für das Registrationsproblem.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Abbildung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 EM-Algorithmus
 \end_layout

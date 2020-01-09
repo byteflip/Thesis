@@ -88,8 +88,10 @@ Ansätze
 \begin_layout Standard
 Im folgenden Abschnitt werden verschiedene Ansätze behandelt, welche im
  Laufe der Arbeit evaluiert wurden.
- Zudem werden die Stärken und Schwächen der Ansätze zu denen des ausgewählten
- Algorithmus betrachtet und bewertet.
+ All diese Ansätze basieren auf dem Prinzip einer rigid Registration, da
+ sich die Abstände zwischen Punkten nicht ändern dürfen.
+ Im weiteren werden die Stärken und Schwächen der Ansätze betrachtet und
+ mit dem ausgewählten Algorithmus verglichen.
 \end_layout
 
 \begin_layout Subsection
@@ -267,12 +269,14 @@ Der in dieser Arbeit verwendete Algorithmus ist der Coherent Point Drift
 \end_layout
 
 \begin_layout Standard
-Der CPD kann mit verrauschten Daten arbeiten, da er eine 
+Der CPD kann mit verrauschten und Ausreißer behafteten Daten immer noch
+ eine korrekte Zuordnung finden.
+ Er hat eine 
 \emph on
 weiche 
 \emph default
-Zuordnung (Wert zwischen 0 und 1) berechnet anstatt einer eindeutigen Zuordnung
- wie der ICP Algorithmus.
+Zuordnung (Wert zwischen 0 und 1), anstatt einer eindeutigen Zuordnung wie
+ der ICP Algorithmus.
  Durch diese 
 \emph on
 weiche
@@ -544,6 +548,43 @@ Vor- und Nachteile der Ansätze
 
 \end_layout
 
+\begin_layout Standard
+Die Implementierung des CPD Algorithmus erfolgte mithilfe eines Github Repositor
+ys.[GITHUB] In diesem ist der Algorithmus mithilfe der Eigen3 Bibliothek
+ implementiert wurden.
+ Die Eigen3 Bibliothek umfasst Methoden für Matrizen Berechnung und kann
+ enthält auch Methoden zur Singulärwertzerlegung.
+ Diese Implementierung kann auf bestimmte Weise Parametrisiert werden, was
+ im folgenden genauer erklärt wird.
+\end_layout
+
+\begin_layout Standard
+Der Algorithmus gibt die Möglichkeit vor der Ausführung mehrere Einstellungen
+ zu treffen.
+ Hier wurden folgende Einstellungen eingestellt:
+\end_layout
+
+\begin_layout Enumerate
+Spiegelung wurde als Transformation ausgeschlossen
+\end_layout
+
+\begin_layout Enumerate
+Skalierung wurde als Transformation ausgeschlossen
+\end_layout
+
+\begin_layout Enumerate
+Die Ausgabe der Zuordnung der Punkte wurde als Rückgabe festgelegt.
+\end_layout
+
+\begin_layout Standard
+Die Transformationen Spiegelung und Skalierung wurden ausgeschlossen, weil
+ dadurch die Punktwolke in ihrer Form verändert werden würde.
+ Das ist nicht gewünscht, da die Radardaten sehr genau sind und eine Veränderung
+ ihrer Struktur nur zu Fehlern führen würde.
+ Aus diesem Grund arbeitet der Algorithmus nun mit nur Rotation und Translation
+ für die rigid Registration.
+\end_layout
+
 \begin_layout Section
 Implementierung
 \end_layout
@@ -684,6 +725,10 @@ AIS zum Koordinaten-Ursprung verschieben
 \emph default
  in Unterabschnitt 4.2.2 behandelt und wie das initiale Heading den Algorithmus
  beeinflusst wird in 4.23 erklärt.
+ Nun müssen die ARPA-Punktwolken aus der ARPA-Punktwolke in geodätische
+ Koordinaten umgewandelt werden, dies geschieht über die Wahl eines Punktes
+ von welchem die Koordinaten ausgehen.
+ Eine genauere Erklärung wie dieser Punkt gewählt wird ist in 4.22 hinterlegt.
 \begin_inset Newline newline
 \end_inset
 
@@ -1387,25 +1432,13 @@ Hierfür wird der Algorithmus mehrfach ausgeführt, wobei nach jeder Ausführung
 \begin_inset Formula $45°$
 \end_inset
 
- gewählt, weil 
-\begin_inset Formula $45$
+ gewählt anstatt den gemessenen 
+\begin_inset Formula $60°$
 \end_inset
 
- der nächste ganzzahlige Teiler von 
-\begin_inset Formula $360$
-\end_inset
-
- ist und welcher kleiner als 
-\begin_inset Formula $52$
-\end_inset
-
- ist.
- Die 
-\begin_inset Formula $52°$
-\end_inset
-
- ist der kleinste Raum für das Erkennen der Rotation durch den CPD unter
- real nahen Daten.
+, weil diese Messung ohne Ausreißer stattfand und außerdem noch weitere
+ Abweichungen das Ergebniss beeinflussen können, da Euklidische Transformationen
+ auf geodätische Daten angewandt werden.
  Die Rotation der ARPA-Punktwolke ist sehr simple, da sie bereits in Polarkoordi
 naten vorliegt.
  Nachdem der Algorithmus 8 mal ausgeführt wurde (
