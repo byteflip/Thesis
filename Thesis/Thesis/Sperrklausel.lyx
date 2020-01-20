@@ -5,12 +5,9 @@
 \save_transient_properties true
 \origin unavailable
 \textclass book
-\begin_preamble
-\include{preamble}
-\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -66,7 +63,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -80,12 +77,39 @@
 
 \begin_body
 
-\begin_layout Chapter
-Abstract
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{5cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Sperrvermerk
 \end_layout
 
 \begin_layout Standard
-lore ipsum
+Die vorliegende Bachelorarbeit mit dem Titel „Konzeption und Implementierung
+ eines Prototyps zur Visualisierung und Analyse von Datenflüssen innerhalb
+ eines Schiffsbrückennetzwerks“ beinhaltet interne und vertrauliche Informatione
+n des Unternehmens „Raytheon Anschütz GmbH“.
+ Eine Einsicht in diese Bachelorarbeit ist nicht gestattet.
+ Ausgenommen davon sind die betreuenden Dozenten sowie die befugten Mitglieder
+ des Prüfungsausschusses.
+ Eine Veröffentlichung und Vervielfältigung der Bachelorarbeit – auch in
+ Auszügen – ist nicht gestattet.
+ Ausnahmen von dieser Regelung bedürfen einer Genehmigung des Unternehmens
+ Raytheon Anschütz GmbH.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -110,7 +134,7 @@ pagenumbering{roman}
 
 
 \backslash
-setcounter{page}{2}
+setcounter{page}{1}
 \end_layout
 
 \end_inset

@@ -28,7 +28,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
 \use_hyperref false
 \papersize default
@@ -81,14 +81,185 @@
 Literaturvergleich
 \end_layout
 
+\begin_layout Standard
+.....
+\end_layout
+
 \begin_layout Section
 Fusion von AIS- und ARPA-Signalen
 \end_layout
 
 \begin_layout Standard
-Es existieren mehrer Arbeiten zum Thema Fusion von Arpa und Ais Signalen,
- diese werden betrachtet und kurz bewertet wie sie zu dieser Aufgabenstellung
- passen
+Das Hauptproblem der Arbeit ist es, eine sichere Zuordnung zwischen ARPA
+ und AIS-Signalen zu finden.
+ In diesem Gebiet gibt es schon mehrere wissenschaftliche Ansätze, welche
+ unter der Fusion von AIS und ARPA-Signalen bekannt sind.
+ Diese werden im folgenden betrachtet, zudem wird ein Vergleich dieser Methoden
+ mit der aktuellen Arbeit präsentiert.
+\end_layout
+
+\begin_layout Standard
+Die Fusion von ARPA- und AIS-Signalen ist ein wichtiger Bestandteil der
+ Kollisionsverhinderung auf Schiffen.
+ Die Fusion bringt den Vorteil, dass die Daten des Radars, welche Schiffe
+ und Objekte in der Nähe enthalten, mit den absoluten Positions- und Information
+sdaten des AIS verglichen und auf der ECDIS angezeigt werden können.
+ Viele der Verfahren basieren darauf die Daten nicht nur zuzuordnen sondern
+ sie verfolgen zu können das so genannte 
+\begin_inset Quotes gld
+\end_inset
+
+Tracking
+\begin_inset Quotes grd
+\end_inset
+
+.
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "ECDIS"
+description "Electronic Chart Display and Information System"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Durch diesen Vergleich steigt die Genauigkeit und Verlässlichkeit beider
+ Systeme, da ARPA bei schlechten Wetterbedingungen nur eingeschränkt gute
+ Ergebnisse liefert und AIS ein unverschlüsselt übertragenes Datenpaket
+ ist.
+\end_layout
+
+\begin_layout Standard
+Dieser Vorteil wurde schon früh erkannt, weswegen schon 2009 Methoden gesucht
+ und entwickelt wurden um diese Erhöhung der Sicherheit im Bereich Kollisionsver
+hinderung zu erreichen.
+ Hierzu zählt die Arbeit von Shiun, Jinbao und Chaojian
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MaritimeRadarTracking"
+literal "true"
+
+\end_inset
+
+, welche einen Algorithmus vorstellt, der die Genauigkeit und die Zuverlässigkei
+t des 
+\begin_inset Quotes gld
+\end_inset
+
+Trackings
+\begin_inset Quotes grd
+\end_inset
+
+ deutlich erhöhen soll.
+ 
+\begin_inset Newline newline
+\end_inset
+
+In weiteren Arbeiten wurde immer weiter versucht die Genauigkeit des 
+\begin_inset Quotes gld
+\end_inset
+
+Trackings
+\begin_inset Quotes grd
+\end_inset
+
+ und der korrekten Zuordnung zu steigern.
+ Hierfür wurde versucht die Ungenauigkeiten und fehlenden Daten, welche
+ auftreten mithilfe eines Algorithmus basierend auf der 
+\emph on
+Grey Theory 
+\emph default
+zu lösen 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GreayTheoryFusion"
+literal "true"
+
+\end_inset
+
+.
+ Die Grey System Theory, findet eine Lösung für das gegebene Problem, jedoch
+ ist nciht garantiert das diese eine optimale Lösung ist.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Weitere Ansätze zur AIS- und ARPA-Signal Fusion basierten darauf, die AIS-
+ und ARPA-Daten mithilfe von einem Kalman-Filtern zuzuordnen, indem dieser
+ anhand der AIS-Daten die nächste Position des Schiffes bestimmte und dies
+ mit den Radar Daten verglich.
+ Der Kalman-Filter ist ein Filter für optimale Schätzungen von mathematisch
+ beschreibbaren Problemen.
+ Mehrere Arbeiten in diesem Gebiet sind von Stateczny, welcher den Kalman
+ Filtern in diesem Bereich angewendet hat für die Fusion von AIS und ARPA
+ Daten
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RadarAISfusionMaritime,KalmanAndNeuralFilters"
+literal "true"
+
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Neuere Ansätze verwenden anstatt nur des Bearings und der Distanz aus dem
+ Radar das ganze Radarbild und die Positionsdaten aus den AIS-Daten.
+ Durch diese Methodik können deutlich besser Schiffe zugeordnet und verfolgt
+ werden 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RadarImageNotRadarData"
+literal "true"
+
+\end_inset
+
+.
+ Nach den Erkenntnissen dieser Arbeit wurden weitere Arbeiten verfasst,
+ welche zu der Fusion nun das komplette Radarbild verwendeten.
+ Eine hiervon nutzt eine Abwandlung des Monte-Carlo Algorithmus zur Fusion
+ und Verfolgung von Schiffen 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RadarImageAISfusion"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Die in dieser Arbeit entwickelte Methode zur Zusammenführung von AIS- und
+ ARPA-Daten unterscheidet sich in mehreren Punkten von den bekannten Methoden
+ zur ARPA und AIS Fusion.
+ Die Anforderungen für die Zusammenführung beider Informationsquellen ist
+ ein anderer.
+ Die Fusion von ARPA und AIS versucht mit der Zusammenführung und Verfolgung
+ der Schiffe auf der Seekarte gefährliche Kollisionsszenarien voraus zu
+ sehen und zu verhindern, sowie dem Nautiker ein genaueres Informationsbild
+ auf der Seekarte zu bieten.
+ Diese Arbeit zielt auf eine möglichst genaue Positionsbestimmung mithilfe
+ dieser Daten ab und dies im Kontext von möglichen Manipulierten oder falschen
+ Daten.
+ Somit kann der AIS Position nicht vertraut werden, da sie manipuliert sein
+ kann.
+ Deshalb müssen die Daten unter der Vermutung verglichen werden, dass fehlerhaft
+e Daten enthalten sind und nicht alle Positionen korrekt sind.
+\begin_inset Newline newline
+\end_inset
+
+Zusätzlich arbeiten alle genannten Algorithmen immer mit dynamischen Daten.
+ Das bedeutet sie schätzen nachdem sie zwei Datenpaare zusammengefügt haben
+ immer wieder ab wo das Schiff bei der nächsten AIS-Nachricht sein muss
+ und wie sich das reelle Schiff dazu verhält.
+ In dieser Arbeit wurde ein statischer Ansatz gewählt, damit direkt eine
+ Lösung für die Eigenposition bestimmt werden kann.
 \end_layout
 
 \begin_layout Section
@@ -96,17 +267,221 @@ Point Set Registration Methoden
 \end_layout
 
 \begin_layout Standard
-Mehrere Rigid Point Set Registration Methoden werden betrachtet.
-\end_layout
+Point Set Registration ist ein bekanntes Problem aus der Mustererkennung.
+ Zu diesem Thema wurden bereits viele Ansätze entwickelt und evaluiert.
+ In diesem Abschnitt werden bekannte Point Set Registration Algorithmen
+ genannt, welche mit dem verwendeten Algorithmus Ähnlichkeiten aufweisen
+ oder in manchen Gebieten und unter bestimmten Bedingungen bessere Ergebnisse
+ liefern könnten.
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Section
-Position Fix Methoden / Sicherheitssteigerung der Positionsbestimmung
+Ein Point Set Registration Algorithmus wird verwendet um die Zuordnung der
+ Punkte von zwei teilweise gleichen Punktwolken zu finden, sowie die Transformat
+ion, welche beide Punktwolken voneinander unterscheidet.
+ 
 \end_layout
 
 \begin_layout Standard
-Andere Ansätze zur Sicherstellung der Positionsdaten werden erklärt (Hier
- ist noch keine konkrete Literatur recherchiert kann sich deswegen noch
- ändern)
+Die Verwendung von Gaussian Mixture Models war schon vor dem Coherent Point
+ Drift Algorithmus eine Methode zur Bestimmung einer probabilistischen Zuordnung.
+ Hierzu haben Jian und Vemuri 2005 eine Methode entwickelt, welche mithilfe
+ der 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+-Norm zwischen zwei Gaussian Mixture Models das Point Set Registration Problem
+ lösen kann 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GMM-L2"
+literal "true"
+
+\end_inset
+
+.
+ Diese Methode war noch recht fehleranfällig, weswegen sie 2011 diese ausweitete
+n auf mehrere Point Set Registration Methoden und ein Framework hierzu entwickel
+ten.
+ Dieses Framework erweiterte die bekannten Algorithmen, sodass sie statt
+ mit zwei Punktwolken nun mit zwei Gaussian Mixture Models arbeiteten 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RobustGMMEnhancement"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Zur Lösung des Point Set Registration Problems wird in manchen Algorithmen
+ der EM-Algorithmus, da es mit ihm möglich ist die Zuordnung und die Transformat
+ionsparameter gleichzeitig iterativ zu bestimmen.
+ Der bekannte rigid Point Set Registration Algorithmus Iterative Closest
+ Point (ICP) wurde auch mit diesem Algorithmus erweitert.
+ Diese Erweiterung wird EM-ICP genannt.
+ Der EM-ICP wurde auch mit GMMs erweitert und in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "EM-ICP"
+literal "true"
+
+\end_inset
+
+ dazu robuster gegen Ausreißer gemacht.
+ Der Nachteil dieses Algorithmus ist, dass er immer nur ein lokales Minimum
+ finden konnte, da der EM-Algorithmus immer nur zum nähesten Maximum konvergiert.
+ Deswegen waren weitere Verfahren wie Simulated Annealing notwendig um ein
+ globales Optimum zu bestimmen.
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "ICP"
+description "Iterative Closest Point"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "EM-ICP"
+description "Expectation Maximization - Iterative Closest Point"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eine weitere Methode ist der Expectation Conditional Maximization for Point
+ Registration Algorithmus (ECMPR) für rigid Registration, welcher eine Abänderun
+g des EM-Algorithmus ist und eine bessere Methode zur Bestimmung der Rotation
+ und Translation verspricht 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ECMPR"
+literal "true"
+
+\end_inset
+
+.
+ Diese Methode findet bei richtiger Initialisierung, welche bei manchen
+ Datensätzen schwer sein kann, das globale Maximum und damit die korrekte
+ Zuordnung der Punktwolken.
+\end_layout
+
+\begin_layout Standard
+Das finden von globalen Maxima wurde später im Jahr 2015 mit der ICP Erweiterung
+ Global Optimal - Iterative closest Point (GO-ICP) erreicht 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GO-ICP"
+literal "true"
+
+\end_inset
+
+.
+ Dieser Algorithmus konnte ein globales Optimum für eine rigid Registration
+ finden.
+ Das globale Optimum wird mit einem Branch and Bound Algorithmus gefunden,
+ welcher die optimale Transformation finden soll.
+ Dieser Ansatz löst das Problem, dass das Ergebnis nicht von der Initialisierung
+ abhängt, sondern immer das globale Maximum gefunden wird.
+ Der Ansatz hat mehrere Nachteile, wie die langsame Laufzeit bei verrauschten
+ Daten und den entstehenden Fehlern durch Ausreißer.
+ Zusätzlich kann der Algorithmus keine Ausreißer finden, deswegen führen
+ solche zu Fehlern.
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "ECMPR"
+description "Expectation Conditional Maximization Point Registration"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "GO-ICP"
+description "Global Optimal - Iterative Closest Point"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ein weiterer global Optimaler Algorithmus ist eine Coherent Point Drift
+ Erweitertung 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CPD-InvariantShape"
+literal "true"
+
+\end_inset
+
+.
+ Diese Erweiterung behandelt bekannte Probleme des CPD, wie der manuellen
+ Eingabe der vermuteten Ausreißer Menge und dem finden von nur lokalen Maxima.
+ Hierfür verwendet der Algorithmus rotation invariant shape context (RISC)
+ und den EM-Algorithmus, wobei dieser nur abschließend die Zuordnung und
+ Transformationsparameter bestimmt.
+ Der Ansatz löst die kritischen Probleme von CPD, wie das finden von nur
+ lokalen Maxima.
+ Der Algorithmus basiert jedoch auf der non-rigid Variante des CPD und verändert
+ somit die Struktur der Punktwolke bei der Transformation.
+\end_layout
+
+\begin_layout Standard
+Der Coherent Point Drift Algorithmus 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CPD"
+literal "true"
+
+\end_inset
+
+, der auch in dieser Arbeit verwendet wurde ist ein Point Set Registration
+ Algorithmus basierend auf Gaussian Mixture Models und dem EM-Algorithmus.
+ Er unter normalen Bedingungen schlechter Einzuschätzen als der GO-ICP und
+ der Erweiterung des CPD, jedoch erfüllt er alle Bedingungen, welche für
+ diese Arbeit notwendig waren.
+ Diese sind
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "RISC"
+description "Rotation invariant shape context"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Reine Rigid Transformation (Rotation und Translation)
+\end_layout
+
+\begin_layout Enumerate
+soft Matching, eine Wahrscheinlichkeit für die Zuordnung
+\end_layout
+
+\begin_layout Enumerate
+schnelle Laufzeit auch bei Ausreißer behafteten Daten
+\end_layout
+
+\begin_layout Enumerate
+Finden von beliebigen Rotationen (nur teilweise erfüllt)
+\end_layout
+
+\begin_layout Standard
+Unter diesen Anforderungen ist die Entscheidung für den CPD gefallen.
+ Jedoch sollten alle anderen Methoden beobachtet werden, da sie möglicherweise
+ mit speziellen Anpassungen auch die Anforderungen zu genüge erfüllen könnten.
 \end_layout
 
 \end_body

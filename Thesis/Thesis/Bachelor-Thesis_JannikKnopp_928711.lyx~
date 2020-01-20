@@ -33,7 +33,7 @@
 \index_command default
 \float_placement H
 \paperfontsize 12
-\spacing single
+\spacing other 1.2
 \use_hyperref true
 \pdf_bookmarks true
 \pdf_bookmarksnumbered false
@@ -114,6 +114,16 @@ frontmatter
 \begin_inset CommandInset include
 LatexCommand include
 filename "Titelseite.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Sperrklausel.lyx"
 
 \end_inset
 
@@ -230,8 +240,82 @@ backmatter
 
 
 \backslash
-setcounter{page}{4}
+setcounter{page}{5}
 \end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+nomname}{Abkürzungsverzeichnis} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{Anhänge}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "MöglicheAnhänge.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "C:/Users/User/Desktop/Repositorys/Thesis/Thesis/Quellen/BachelorThesisQuellen"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+set_width "auto"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Erklärung.lyx"
 
 \end_inset
 

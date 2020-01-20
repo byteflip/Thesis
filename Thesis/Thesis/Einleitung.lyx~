@@ -28,7 +28,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
 \use_hyperref false
 \papersize default
@@ -88,14 +88,15 @@ Problemstellung
 \begin_layout Standard
 Die Eigenposition eines Schiﬀes gehört zu den wichtigsten navigatorischen
  Daten.
- Diese wird meistens über einen GPS-Empfänger bestimmt.
+ Diese wird über einen GPS-Empfänger bestimmt.
  Das GPS-Signal ist manipulierbar, somit besteht die Möglichkeit einer böswillig
 en Manipulation durch einen Angreifer.
  Dadurch fällt der GPS-Empfänger aus oder gibt eine falsche Position zurück.
  In diesen Fällen ist die Eigenposition nicht mehr verfügbar oder nicht
- vertrauenswürdig, somit ist es notwendig eine Methode zur Positionsbestimmung
- zu entwickeln, welche unabhängig von dem eigenen GPS-Empfänger arbeitet
- und somit in der Lage ist dessen Daten zu verifizieren.
+ vertrauenswürdig.
+ Aufgrund dessen ist es notwendig, eine Methode zur Positionsbestimmung
+ zu entwickeln, welche unabhängig von dem eigenen GPS-Empfänger arbeitet.
+ Diese ist dadurch in der Lage die GPS-Daten zu verifizieren.
 \begin_inset Newline newline
 \end_inset
 
@@ -104,22 +105,37 @@ Zur Bestimmung der Eigenposition können die Daten aus dem Radar, die GPS-Daten
  Seekarte genutzt werden.
  Das Automatic Identification System (AIS) ist ein unverschlüsseltes Funksystem,
  zum Austausch von Schiffs- und Navigationsdaten.
- Durch die AIS-Daten ist die absolute Position von Schiffen und ATONs (
+ Dieses Informationssystem basiert auf dem Prinzip, dass jedes Schiff und
+ jede Landstation (z.
+ B.
+ Leuchttürme) die eigenen Daten an alle erreichbaren Schiffe senden.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Durch die AIS-Daten ist die absolute Position von Schiffen und AtoN's (
 \emph on
 Aid to navigation
 \emph default
 ) bekannt.
- ATONs sind markante Landmarken oder Bojen zur Unterstützung der Navigation.
- Durch das Radar erhält man die relative Position der Schiffe und der ATONs
+ AtoN's sind markante Landmarken oder Bojen zur Unterstützung der Navigation.
+ Durch das Radar erhält man die relative Position der Schiffe und der AtoN's
  zu der Eigenposition.
- Durch diese beiden Daten lässt sich ein Rückschluss auf die Eigenposition
- ziehen.
- Die Zuordnung zwischen AIS- und Radar-Signalen ist aktuell abhängig von
- der Eigenposition.
+ Durch diese beiden Daten lässt sich die Schiffsposition berechnen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Die Zuordnung zwischen AIS- und Radar-Signalen ist aktuell abhängig von
+ der über den eigenen GPS-Empfänger bestimmten Eigenposition.
  Da diese bestimmt werden soll, muss ein Algorithmus entwickelt werden,
  welcher unabhängig von dieser die Zuordnung finden kann.
- Durch das finden einer Zuordnung findet sich auch die Transformation, die
- beide Punktwolken unterscheidet.
+ Dieser Algorithmus muss sich an der Entfernung zu den Punkten orientieren
+ und darf diese nicht verändern, da dies eine Manipulation für den folgenden
+ Positions-Bestimmungs-Algorithmus wäre.
+ Dieser Positions-Bestimmungs-Algorithmus wird muss auch entwickelt werden.
+ Dessen Aufgabe ist es anhand der zugeordneten Daten die Eigenposition zu
+ bestimmen.
 \end_layout
 
 \begin_layout Section
@@ -132,10 +148,13 @@ tion und den Kurs (Heading) des Eigenschiffes möglichst genau bestimmen
  kann.
  Dieser soll unabhängig der eigenen GPS-Daten funktionieren.
  Der Algorithmus soll später als eine Art Sensor für die Brücke eingesetzt
- werden, das heißt die Brücke sendet die benötigten Daten an den Algorithmus
- und dieser sendet die errechnete Eigenposition und eine Darstellung zurück
- an die Seekarte.
- 
+ werden, das heißt, die Brücke sendet die benötigten Daten an den Algorithmus
+ und dieser sendet die errechnete Eigenposition und eine Darstellung an
+ die Seekarte.
+ Der Algorithmus muss robust gegen Ausreißer und Ungenauigkeit sein, da
+ die Reichweite von Radar und AIS nicht gleich ist und die Frequenz, mit
+ der neue Daten kommen, der beiden Informationsquellen sich auch deutlich
+ unterscheiden kann.
 \end_layout
 
 \begin_layout Section
@@ -147,25 +166,15 @@ Das Produkt der Thesis ist ein externes Softwaremodul, welches in Zusammenarbeit
  mit Herrn André Becker entwickelt wird.
  Dieser verfasst ebenfalls seine Thesis über einen Teil dieses Softwaremoduls.
  Die Thesen lassen sich wie folgt abgrenzen, Herr Becker entwickelt einen
- Teil der Vorfilterung der Daten, einen Point-Matching Algorithmus und eine
+ Teil der Vorfilterung der Daten, einen Point-Matching-Algorithmus und eine
  Netzwerkschnittstelle zur Kommunikation des Softwaremoduls mit der Schiffsbrück
 e.
  Diese Thesis umfasst einen weiteren Teil der Vorfilterung der Daten, ebenfalls
- einen Point-Matching Algorithmus und einen Algorihtmus zur Positionsbestimmung.
- Das einlesen der Daten wird über einen Daten Parser realisiert, welcher
- von Raytheon Anschütz gestellt wurde und somit nicht Teil der Thesis ist.
- Ebenso wird die Funktionalität über Daten aus einem Daten Generator verifiziert
-, welcher ebenfalls von Raytheon Anschütz gestellt wurde.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Letzten beiden Sätze?
-\end_layout
-
-\end_inset
-
-
+ einen Point-Matching-Algorithmus und einen Algorithmus zur Positionsbestimmung.
+ Das Einlesen der Daten wird über einen Datenparser realisiert, welcher
+ von Raytheon Anschütz gestellt wurde.
+ Ebenso wird die Funktionalität über Daten aus einem Datengenerator verifiziert,
+ welcher ebenfalls von Raytheon Anschütz gestellt wurde.
 \end_layout
 
 \begin_layout Section
@@ -173,13 +182,18 @@ Aufbau der Arbeit
 \end_layout
 
 \begin_layout Standard
-Die folgende Arbeit ist behandelt in Kapitel 2 wichtige Grundlagen die benötigt
- werden, um im weiteren die Problemstellungen und die Algorithmen zu verstehen.
- Das dritte Kapitel zeigt andere Ansätze aus der Literatur zu diesem Thema
- und wie diese zur aktuellen Arbeit in Verbindung stehen.
- In Kapitel 4 werden verschiedene Ansätze und die Umsetzung beschrieben.
- Danach wird in Kapitel 5 das erarbeitete Ergebnis bewertet und es wird
- ein Ausblick über mögliche Optimierungen gegeben.
+Die folgende Arbeit behandelt in Kapitel 2 wichtige Grundlagen die benötigt
+ werden, um im Weiteren die Problemstellungen und die Algorithmen zu verstehen.
+ Das dritte Kapitel zeigt weitere Ansätze zum Zusammenfügen von Radar und
+ AIS Daten, sowie weitere Methoden des Point Set Registrations.
+ Dies soll einen Überblick über den aktuellen Stand und weitere alternative
+ Ansätze bieten.
+ In Kapitel 4 werden verschiedene Ansätze, die Umsetzung und die Lösung
+ aufgetretener Probleme beschrieben.
+ Das fünfte Kapitel umfasst die Bewertung der Algorithmen auf Genauigkeit
+ und Robustheit.
+ Abgeschlossen wird die Thesis mit einem Fazit und einem Ausblick, welcher
+ mögliche Verbesserungen und Erweiterungen beschreibt.
 \end_layout
 
 \end_body

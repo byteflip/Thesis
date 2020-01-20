@@ -28,7 +28,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
 \use_hyperref false
 \papersize default
@@ -81,12 +81,171 @@
 Grundlagen
 \end_layout
 
+\begin_layout Standard
+Im folgenden Kapitel werden Grundlagen für die folgende Arbeit definiert
+ und erklärt.
+ Diese Grundlagen sorgen für ein Grundverständnis des Themas und helfen
+ den Kontext und die restlichen Schritte der Arbeit zu verstehen.
+\end_layout
+
 \begin_layout Section
 Allgemeines
 \end_layout
 
 \begin_layout Standard
-.
+Es werden Grundlagen über Schiffskommunikation, Koordinaten Definition auf
+ dem Erdellipsoid und Berechnungsmethoden zwischen diesen Koordinaten erklärt
+ und aufgezeigt.
+\end_layout
+
+\begin_layout Subsection
+ARPA und AIS
+\end_layout
+
+\begin_layout Standard
+Das Automatic radar plotting ais (ARPA) ist für die Auswertung, Darstellung
+ und Bestimmung weiterer wichtiger Werte mithilfe des Radars zuständig.
+ Es kann die Daten aus dem Radar, welche die Distanz und das Bearing zum
+ jeweiligen Ziel sind darstellen und bei längerer Betrachtung sogar die
+ Geschwindigkeit des Ziels bestimmen.
+ Es wird hauptsächlich für die Kollisionsverhütung verwendet und ist in
+ diesem Bereich das wichtigste System.
+ Das ARPA kann auch Schiffe als solche erkennen und deswegen 
+\begin_inset Quotes gld
+\end_inset
+
+tracken
+\begin_inset Quotes grd
+\end_inset
+
+, diese werden unterschiedlich von anderen Radar Kontakten wie Landmassen
+ behandelt.
+ Die 
+\begin_inset Quotes gld
+\end_inset
+
+getrackten
+\begin_inset Quotes grd
+\end_inset
+
+ Ziele werden als eine NMEA-Nachricht, spezifisch ein TTM Diagramm in das
+ Schiffsnetz gesendet, da diese höchst Wahrscheinlich ein Schiff indizieren.
+ Diese Nachricht enthält alle Daten, welche in Abbildung 2.1 zu erkennen
+ sind, wobei die wichtigsten beiden Daten die aktuelle Distanz uund Bearing
+ sind.
+ Das Bearing kann als 
+\emph on
+true 
+\emph default
+oder 
+\emph on
+relative
+\emph default
+ Bearing angegeben werden.
+ Das 
+\emph on
+relative
+\emph default
+ Bearing gibt den Winkel zwischen dem Ziel und dem eigenen Schiff relativ
+ von der Ausrichtung (Heading) des Eigenschiffes.
+ Das 
+\emph on
+true 
+\emph default
+Bearing gibt ebenso den Winkel zwischen Ziel und Eigenschiff an, jedoch
+ bezogen auf die Nordrichtung.
+\begin_inset Newline newline
+\end_inset
+
+Die Reichweite des Radars ist abhängig von den eingestellten Gebiet und
+ Filtern.
+ Das eingestellte Gebiet kann beschränkt werden um höhere Reichweiten des
+ Radars zu erreichen.
+ Dies ist hilfreich, falls man in bestimmten Richtungen keine Radarkontakte
+ vermutet.
+ Zusätzlich existieren viele Filter für das Radar, welche die Qualität des
+ Radars bei korrekter Verwendung verbessern können.
+\begin_inset Newline newline
+\end_inset
+
+Die Frequenz mit der die Radardaten sich erneuern beträgt zwischen zwei
+ bis vier Sekunden, dies ist die Zeit in welcher sich die Radar Antenne
+ einmal umdreht.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Es gibt auch Fälle in denen das Radar keine oder nur schlechte Daten liefern
+ kann.
+ Dies kann bei schlechtem Wetter der Fall sein, da starker Regen das Radarbild
+ beeinflusst und es so nur noch für kürzere Distanz klar zu erkennen ist.
+ Dazu kommt das die Radarantenne durch ihre Lage beschränkt ist, da sie
+ nichts geographisch höher gelegenes erfassen kann, sowie sie nicht durch
+ Ziele hindurch sehen kann.
+ Das sorgt für Fehlerfälle wie Verschattung von kleineren Schiffen hinter
+ größeren.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Die Sicherheit der ARPA Anlage ist sehr hoch einzustufen, da sie kaum manipulier
+bar von außerhalb der Schiffsbrücke ist und die Fehlerfälle kaum schadhaft
+ ausgenutzt werden können.
+\end_layout
+
+\begin_layout Standard
+Das Automatic Identification System AIS ist ein Funksystem zum Schiffsdatenausta
+usch bei der Seefahrt.
+ Hierbei werden die eigenen Schiffsinformationen, sowie die Daten einiger
+ Sensoren, wie GPS-Daten, über Funk durch ein Gebiet gesendet.
+ In diesem Gebiet erhalten nun alle anderen Schiffe diese Daten und können
+ mit diesen bessere Einschätzungen für Kollisionsverhinderung und allgemein
+ bessere Entscheidungen treffen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Die AIS-Daten enthalten die absolute Position des Schiffes, die Bemessung
+ des Schiffe, die Geschwindigkeit, den Kurs, den Namen und viele weitere
+ Informationen über das sendende Schiff.
+ Die Reichweite, über welche diese Informationen gesendet werden können
+ übersteigt die Reichweite des Radars bei weitem.
+\begin_inset Newline newline
+\end_inset
+
+Die Ausstattung einer AIS-Senders ist auf fast allen Schiffen Pflicht.
+ Zusätzlich ist es auf dicht befahrenen Seewegen verpflichtend AIS zu senden,
+ um die Sicherheit dort zu erhöhen.
+ Die Frequenz, in welcher die AIS-Nachricht gesendet werden muss hängt von
+ der Geschwindigkeit und der Drehrate des Schiffes ab.
+ Deswegen können AIS-Nachrichten in einer Frequenz zwischen zwei Sekunden
+ und drei Minuten versendet werden.
+\begin_inset Newline newline
+\end_inset
+
+ Die AIS-Daten werden auch von Landstationen wie Leuchttürmen und Navigationshil
+fen wie Bojen gesendet.
+ Mithilfe dieser kann man sich besser in Fahrtrinnen und Häfen navigieren,
+ sollten diese nicht auf dem Radar zu erkennen sein.
+\begin_inset Newline newline
+\end_inset
+
+Obwohl AIS so eine wichtige Rolle in der Schifffahrt spielt hat es einige
+ gravierende Schwächen.
+ Eine davon ist, dass AIS unverschlüsselt übertragen wird und somit für
+ einen Angreifer einfach manipulierbar ist.
+ Ein weiteres Problem ist, dass die Daten aus den Sensoren der Schiffe gesendet
+ werden.
+ Hier könnte ein GPS-Empfänger böswillig manipuliert sein und diese manipulierte
+ Position würde nun an andere Schiffe übergeben werden, welche zusätzlich
+ in Gefahr geraten könnten.
+\begin_inset Newline newline
+\end_inset
+
+Das heißt AIS ist sehr leicht manipulierbar und somit müssen die Daten vorher
+ geprüft werden bevor sie als vertrauenswürdig gelten können.
+ Solche Manipulationen treten nur äußerst selten auf, jedoch gibt es kaum
+ Maßnahmen um so etwas zu erkennen.
 \end_layout
 
 \begin_layout Subsection
@@ -96,17 +255,28 @@ NMEA 0183
 \begin_layout Standard
 Der NMEA 0183 ist ein Standard zur Kommunikation zwischen Geräten auf einer
  Schiffsbrücke.
- Dieser wurde von der National Marine Electronics Association 1983 veröffentlich
-t.
+ Dieser wurde von der 1983 veröffentlicht.
  In diesem ist unter anderem die Struktur der Nachrichten definiert.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+QUELLE AUS DEM PRAKTIKUMSBERICHT
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Die Nachrichten, welche über NMEA gesendet werden enthalten z.B.
+Die Nachrichten, welche über NMEA gesendet werden enthalten z.
+ B.
  Daten von Systemen auf dem Schiff wie dem Radar, Daten von Sensoren wie
  Kompasse und GPS-Empfängern.
- Hier rüber werden auch zusätzlich AIS-Nachrichten empfangen aus der nahen
- Umgebung 
+ Hier rüber werden auch zusätzlich AIS-Nachrichten von Schiffen und AtoNs
+ aus der Umgebung.
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -131,10 +301,10 @@ $
 \end_inset
 
  als Startzeichen.
- Darauf folgen zwei Zeichen Geräte ID, dadurch ist erkennbar woher die gesendete
-n Daten kommen.
- Auf die Geräte ID folgen drei Zeichen die den Nachrichtentyp bezeichnen,
- an welchen auch die folgenden Datenfelder zu identifizieren sind.
+ Darauf folgen zwei Zeichen Geräte ID, dadurch ist erkennbar, woher die
+ gesendeten Daten kommen.
+ Auf die Geräte ID folgen drei Zeichen, die den Nachrichtentyp bezeichnen,
+ durch welchen auch die folgenden Datenfelder zu identifizieren sind.
  Nun folgen die Datenfelder, welche für jeden Nachrichtentyp spezifisch
  sind.
  Am Ende der Nachricht folgt eine optionale Prüfzahl, welche mit einem 
@@ -145,17 +315,44 @@ n Daten kommen.
 \begin_inset Quotes grd
 \end_inset
 
- abgetrennt wird.
+ Abgetrennt wird.
  Die Nachricht wird mit einem Zeilenumbruch beendet.
  
 \begin_inset Newline newline
 \end_inset
 
-Im folgenden beschreibt Abbildung 2.1 eine Tracked Target Management (TTM)
- NMEA - Nachricht.
- Dieser Nachrichtentyp enthält Schiffe aus dem Radar die als solche erkannt
+Im Folgenden beschreibt Abbildung 2.1 eine Tracked Target Message (TTM) NMEA
+ - Nachricht.
+ Dieser Nachrichtentyp enthält Schiffe aus dem Radar die, als solche erkannt
  wurden und nun kontinuierlich über das Radar verfolgt werden.
  
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "NMEA"
+description "National Marine Electronics Association"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "ID"
+description "Identifikator"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "TTM"
+description "Tracked Target Message"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -169,7 +366,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/jknopp/Desktop/Repositorys/Thesis/Thesis/Bilder/TTM_NMEA_Sentence.PNG
+	filename C:/Users/User/Desktop/Repositorys/Thesis/Thesis/Bilder/TTM_NMEA_Sentence.PNG
 	scale 50
 
 \end_inset
@@ -205,22 +402,22 @@ WGS 84
 \begin_layout Standard
 Das World Geodetic System 1984 (WGS 84) ist ein einheitliches System zur
  Positionsbestimmung auf dem Erdellipsoid.
- Es basiert auf einem Referenzellipsoiden.
+ Es basiert auf einem Referenzellipsoid.
 \end_layout
 
 \begin_layout Standard
 Dieser Referenzellipsoid ist wie folgt parametrisiert:
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Semi Major Axis 
 \begin_inset Formula $a=6.378.137m$
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Semi Minor Axis 
 \begin_inset Formula $b=6.356.752m$
 \end_inset
@@ -229,8 +426,26 @@ Semi Minor Axis
 \end_layout
 
 \begin_layout Standard
-Erdabplattung: 
-\begin_inset Formula $f=\frac{(a-b)}{a}$
+Somit sind globale Positionsangaben in Längen- und Breitengrad möglich.
+ Die Längengrade verlaufen zwischen den Nord- und Südpol, die Breitengrade
+ parallel zum Äquator.
+ Dadurch sinkt die Distanz zwischen benachbarten Längengraden, je näher
+ sie einem Pol kommen.
+ Die Längen- und Breitengrade werden in Grad angegeben.
+ Bei Positionsangaben werden für höhere Genauigkeit zusätzlich die Gradminuten
+ und Gradsekunden angegeben.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Das WGS 84 wird in GPS Empfängern verwendet und ist somit ein essenzielles
+ System zur Positionsbestimmung in der Schifffahrt.
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "WGS 84"
+description "World Geodetic System 1984"
+literal "false"
+
 \end_inset
 
  
@@ -238,29 +453,11 @@ Erdabplattung:
 status open
 
 \begin_layout Plain Layout
-Formel prüfen
+Mehr Text über was?
 \end_layout
 
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-Somit sind globale Positionsangaben in Längen- und Breitengrad möglich.
- Die Längengerade verlaufen zwischen den Nord- und Südpol, die Breitengerade
- verlaufen parallel zum Äquator.
- Dadurch sinkt die Distanz zwischen benachbarten Längengeraden je näher
- sie einem Pol kommen.
- Die Längen- und Breitengrade werden in der Grad angegeben.
- Bei genaueren Positionsangaben werden zusätzlich die Gradminuten und Gradsekund
-en angegeben.
- 
-\begin_inset Newline newline
-\end_inset
-
-Das WGS 84 wird in GPS Empfängern verwendet und ist somit ein essentielles
- System zur Positionsbestimmung in der Schifffahrt.
  
 \end_layout
 
@@ -269,69 +466,109 @@ Berechnungen auf dem Erdellipsoid
 \end_layout
 
 \begin_layout Standard
-Es existieren verschiedene Formeln zur Berechnung auf dem Erdellipsoid.
- Für diese Arbeit sind besonders Formeln wichtig, welche die erste und zweite
+Die Berechnung von Entfernung auf dem Erdellipsoid sind besonders in der
+ Weise, dass sie mit geodätischen Koordinaten bestimmt werden müssen.
+ Die Position der geodätischen Koordinaten enthält auch die Abplattung der
+ Erde, diese steigt je näher die Position an einem der Pole liegt.
+ Die Fehler, die durch diese Abplattung entstehen, sollen möglichst gering
+ gehalten werden, deswegen gibt es verschiedene Formeln zur Berechnung auf
+ dem Erdellipsoiden, welche sich in Genauigkeit und Performanz unterscheiden.
+\end_layout
+
+\begin_layout Standard
+Für diese Arbeit sind besonders Formeln wichtig, welche die erste und zweite
  geodätische Hauptaufgabe lösen können.
- Die erste geodätische Hauptaufgabe ist das bestimmen eines Punktes mit
+ Die erste geodätische Hauptaufgabe ist das Bestimmen eines Punktes mit
  einem gegebenen Punkt, einer Richtung und der Distanz.
- Die zweite geodätische Hauptaufgabe ist das bestimmen von Richtung und
- Distanz zwischen zwei Punkten.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Die zweite geodätische Hauptaufgabe ist das Bestimmen von Richtung und Distanz
+ zwischen zwei Punkten.
  Zur Lösung der ersten beiden geodätischen Hauptaufgaben werden im weiteren
  drei Möglichkeiten dargestellt und bewertet.
 \end_layout
 
 \begin_layout Standard
-Die erste Möglichkeit ist die Berechnung über die Euklidische Norm.
- Dabei würde man die Koordinaten auf einer Ebene annehmen und dementsprechend
- berechnen.
- Der Vorteil hiervon ist, dass wenn die Entfernungen zwischen den Punkten
+Die erste Möglichkeit ist die Berechnung über die euklidische Norm.
+ Dabei werden die Koordinaten auf einer Ebene angenommen und dementsprechend
+ berechnet.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Der Vorteil hiervon ist, dass wenn die Entfernungen zwischen den Punkten
  nicht zu groß werden, der Fehler durch die Erdkrümmung nur sehr klein ist.
- Zusätzlich ist die Berechnung so natürlich sehr simpel und effizient ausführbar.
- Die Berechnung über diesen Weg ist nur ratsam solange die Distanz nicht
+ Zusätzlich ist die Berechnung so sehr simpel und effizient ausführbar.
+ Die Berechnung über diesen Weg ist nur ratsam, solange die Distanz nicht
  mehrere Längen- bzw.
  Breitengrade überschreitet.
  Denn ab diesem Punkt werden die Fehler durch die Erdkrümmung immer größer,
- wodurch auf komplexere Formeln mit Erdähnlicheren Grundformen zurückzugreifen
+ wodurch auf komplexere Formeln mit erdähnlicheren Grundformen zurückzugreifen
  ist.
-\begin_inset Newline newline
-\end_inset
-
-Die zweite Mögliche Formel für die Berechnung ist die Great Circle Distance.
- Diese beruht auf der Annahme das die Erde eine perfekte Kugel ist und somit
- Distanzberechnungen auf einer Kugel möglich sind.
- Dies hat den Vorteil, dass der Fehler deutlich geringer bleibt als bei
- der Euklidischen Norm.
- Jedoch ist der Fehler für größere Distanzen immer noch zu groß, um die
- Formel in einem Sicherheitskritischem Bereich zu verwenden.
- 
-\begin_inset Newline newline
-\end_inset
-
-Die dritte Möglichkeit ist die Vincenty Formel.
- Diese berechnet die geodätischen Hauptaufgaben auf einem Ellipsoiden.
- Dieser kann anhand der Erde parametrisiert werden.
- Das eröffnet die Möglichkeit Punkte über eine beliebige Distanz zu berechnen
- ohne eine Erhöhung des Fehlers durch die Erdkrümmung.
- Die Formel hat jedoch eine höhere Laufzeit als die vorherigen, da sie den
- Fehler der durch den Erdellipsoid entsteht bis zu einem Schwellwert minimiert.
- Die Formel soll egal wo auf der Erde eine Ungenauigkeit von weniger als
- einem Zentimeter haben.
- 
 \end_layout
 
 \begin_layout Standard
-Die richtige Methode kann nach der Entfernung zwischen den Punkten bestimmt
- werden.
- Eine Übersicht über die Abweichung der Euklidischen Norm und der Haversine
+Die zweite Mögliche Formel für die Berechnung ist die Great Circle Distance.
+ Diese beruht auf der Annahme das die Erde eine perfekte Kugel ist und somit
+ Distanzberechnungen auf einer Kugel möglich sind.
+ Der Vorteil dieser Methode ist, dass der Fehler deutlich geringer bleibt
+ als bei der euklidischen Norm.
+ Jedoch ist der Fehler für größere Distanzen, vor allem über die Pole noch
+ relativ groß.
+ Die Formel ist deswegen für kleine bis mittlere Distanzen verwendbar, jedoch
+ nicht für große Distanzen oder die Verwendung in einem sicherheitskritischen
+ Bereich.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Great Circle zu Haversine formel je nachdem wie das Paper heißt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die dritte Möglichkeit ist die Vincenty Formel.
+ Diese berechnet die geodätischen Hauptaufgaben auf einem Ellipsoiden.
+ Dieser kann anhand der Erde parametrisiert werden.
+ Das eröffnet die Möglichkeit, Punkte über eine beliebige Distanz zu berechnen
+ ohne eine Erhöhung des Fehlers durch die Erdkrümmung.
+ Die Formel hat jedoch eine höhere Laufzeit als die Vorherigen, da sie den
+ Fehler der durch den Erdellipsoid entsteht bis zu einem Schwellwert minimiert.
+ Die Formel soll egal wo auf der Erde eine gleichbleibende Ungenauigkeit
+ haben, welche unter einem Zentimeter liegen soll.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Paper Vincenty Formel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Bestimmung der für den Fall richtigen Formel ist meisten abhängig von
+ der Entfernung der Punkte und dem tolerierbaren Fehler.
+ Eine Übersicht über die Abweichung der euklidischen Norm und der Haversine
  Formel im Vergleich zu der Vincenty Formel ist in Tabelle 2.1 dokumentiert.
  Hierfür wurde die Distanz zwischen dem Ursprung (0, 0) und einem Punkt
  gemessen, welche immer weiter vergrößert wurde.
- Der Punkt zu dem die Entfernung gemessen wurde weißt immer einen Richtungswinke
-l von 
-\begin_inset Formula $45°$
+ Der Punkt, zu dem die Entfernung gemessen wurde weißt immer einen Richtungswink
+el von 
+\begin_inset Formula $45$
 \end_inset
 
- auf.
+ Grad auf.
  Die Werte in der Tabelle entsprechen Distanzen in der Einheit Kilometer.
  
 \end_layout
@@ -357,7 +594,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-Distanz (Berechnung mit Vincenty Formel)
+Distanz (Berechnung Vincenty Formel)
 \end_layout
 
 \end_inset
@@ -526,20 +763,33 @@ Entfernungsberechnung mit Unterschiedlichen Methoden
 \end_layout
 
 \begin_layout Standard
-Es ist zu erkennen das der Fehler bei der Haversine Formel linear mit der
- Entfernung steigt.
- Bei der Euklidischen Norm ist zu betrachten, dass der Fehler erst linear
- steigt, dies hat den Grund das die Messung am Ursprung des geodätischen
+Es ist zu erkennen, dass der Fehler bei der Haversine Formel linear mit
+ der Entfernung steigt.
+ Bei der euklidischen Norm ist zu betrachten, dass der Fehler erst linear
+ steigt, dies hat den Grund, dass die Messung am Ursprung des geodätischen
  Koordinatensystems begonnen hat.
  Dort sind die Distanzen für ein Längen bzw.
  Breitengrad fast gleich.
- Nachdem jedoch größere Distanzen mit der Euklidischen Norm berechnet werden,
- ist zu erkennen das der Fehler mit steigender Erdkrümmung immer weiter
- zunimmt.
+ Wenn größere Distanzen mit der euklidischen Norm berechnet werden, ist
+ zu erkennen, dass der Fehler mit steigender Erdkrümmung immer weiter zunimmt.
+ 
 \end_layout
 
 \begin_layout Section
 Point Set Registration
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Was soll hier hin?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -547,17 +797,17 @@ Rigid und Non-rigid Transformationen
 \end_layout
 
 \begin_layout Standard
-Rigid (auf Deutsch starre) Transformationen und Non-rigid (auf Deutsch nicht
- starre) Transformationen gehören zu den Grundlagen von Point Set Registration.
- Im weiteren werden beide Transformationen erklärt und ebenso ihr Zusammenhang
- mit Point Set Registration.
+Point Set Registration Algorithmen lassen sich in zwei Kategorien einteilen.
+ Diese sind Rigid (starre) Transformationen und Non-rigid (nicht starre)
+ Transformationen.
+ Im Weiteren werden beide Transformationen erklärt und ebenso ihre Unterschiede.
 \end_layout
 
 \begin_layout Standard
-Unter einer rigid Transformation, auf einer Punktwolke, versteht man eine
- Transformation, bei welcher sich die Abstände und die Winkel zwischen den
- Punkten nicht ändern.
- Es bedeutet das die Form der Punktwolke sich nicht verändert.
+Unter einer rigid Transformation, versteht man eine Transformation, bei
+ welcher sich die Abstände und die Winkel zwischen den Punkten nicht ändern.
+ Das bedeutet, die Struktur der Punktwolke bleibt bei Transformationen unverände
+rt.
  Die folgenden Transformationen gelten als rigid Transformationen, da sie
  die Struktur der Punktwolke nicht verändern:
 \end_layout
@@ -576,18 +826,31 @@ stems
 \end_layout
 
 \begin_layout Standard
-Hierbei ist Spiegelung aber eine eher selten verwendete Transformation.
+Hierbei ist Spiegelung aber eine eher selten verwendete Transformation im
+ Kontext von Point Set Registration.
 \begin_inset Newline newline
 \end_inset
 
 Eine Transformation wird als non-rigid bezeichnet sobald sie die Abstände
  und Winkel zwischen den Punkten verändert.
- Das bedeutet sie verändert die Struktur der Punktwolke.
+ Das bedeutet, sie verändert die Struktur der Punktwolke.
  Zu den bei rigid Transformationen erlaubten Transformationen kommen nun
- noch affine Transformationen hinzu wie Skalierung, Scherung und Dilatation.
-\begin_inset Newline newline
-\end_inset
+ noch affine Transformationen hinzu, diese sind: 
+\end_layout
 
+\begin_layout Enumerate
+Skalierung
+\end_layout
+
+\begin_layout Enumerate
+Scherung 
+\end_layout
+
+\begin_layout Enumerate
+Dilatation
+\end_layout
+
+\begin_layout Standard
 Die Point Set Registration Algorithmen lassen sich in eine der beiden Kategorien
  einteilen, je nach Art der Transformation, welche auf die Daten angewendet
  wird.
@@ -595,39 +858,39 @@ Die Point Set Registration Algorithmen lassen sich in eine der beiden Kategorien
  betrifft.
  Manche Algorithmen erlauben bei der rigid Transformation auch eine Skalierung
  wie der Coherent Point Drift Algorithmus.
- 
-\end_layout
-
-\begin_layout Subsection
-Stochhastisches Point Set Registration
-\end_layout
-
-\begin_layout Standard
-Vergleich von Stochhastischen Point Set Registration Methoden( basieren
- meist auf GMMs) und anderen Methoden z.B.
- Iterative Closest point
 \end_layout
 
 \begin_layout Subsection
 Gaussian Mixture Model
-\end_layout
-
-\begin_layout Standard
-Ein Gaussian Mixture Model ist eine Mischverteilung von Normalverteilungen.
- 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Nachschlagen
+Noch Durchgucken
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+WIRD NOCHMAL ÜBERARBEITET
+\end_layout
+
+\begin_layout Standard
+Ein Gaussian Mixture Model ist eine Mischverteilung basierend auf Normalverteilu
+ngen.
  Eine Mischverteilung ist eine Zusammensetzung von Verteilungen verschiedener
  Datenmengen.
  Bei Gaussian Mixture Models sind diese Verteilungen Normalverteilungen.
- Das bedeutet sie hängen von folgenden Parametern ab:
+ Das heißt es beschreibt eine Menge von 
+\begin_inset Formula $k$
+\end_inset
+
+ Normalverteilungen, welche alle von jeweils unterschiedlichen Parametern
+ abhängen.
+ Diese Parameter sind:
 \end_layout
 
 \begin_layout Enumerate
@@ -709,6 +972,15 @@ Sie finden auch in Point Set Registration Anwendung.
  werden.
  Dadurch ist es möglich eine probabilistische Lösung für das Problem zu
  bestimmen.
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "GMM"
+description "Gaussian Mixture Model"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -729,16 +1001,71 @@ EM-Algorithmus
 \end_layout
 
 \begin_layout Standard
-Erklärung des EM Algorithmus und welchen nutzen er für Point Set Registration
- hat
-\end_layout
-
-\begin_layout Subsection
-Singulärwertzerlegung
+WIRD NOCHMAL ÜBERARBEITET
 \end_layout
 
 \begin_layout Standard
-Erklärung von Singulärwertzerlegung 
+Der Expectation-Maximization Algorithmus ist ein iterativer Algorithmus
+ zur Bestimmung von 
+\begin_inset Quotes gld
+\end_inset
+
+versteckten
+\begin_inset Quotes grd
+\end_inset
+
+ Parametern.
+ Ein 
+\begin_inset Quotes gld
+\end_inset
+
+versteckter
+\begin_inset Quotes grd
+\end_inset
+
+ Parameter ist ein Parameter welcher nur über die Abhängigkeit von einem
+ anderen Parameter beobachtet werden kann.
+ Hierfür muss ein mathematisches Modell existieren um die beiden Parameter
+ ineinander zu überführen.
+ Ein Beispiel im Kontext des Point Set Registration ist, dass die Zuordnung
+ der Punkte und die Transformationsparameter, welche benötigt werden um
+ die Punktwolken ineinander zu überführen, so voneinander abhängen.
+ Sobald die Zuordnung bekannt ist kann man damit die Transformationsparameter
+ bestimmen und andersherum.
+ Somit ist das Ziel die Zuordnung zu finden, welche von den Transformationsparam
+etern abhängt.
+\begin_inset Newline newline
+\end_inset
+
+Der EM-Algorithmus startet meistens mit einer zufälligen Initialisierung
+ und optimiert nun diese bis er konvergiert.
+\begin_inset Newline newline
+\end_inset
+
+Er besteht aus zwei Schritten dem E- und dem M-Schritt.
+ Der E-Schritt auch Expectation-Schritt genannt bestimmt zuerst die Daten,
+ welche Abhängig von den.....
+\begin_inset Newline newline
+\end_inset
+
+HIER NOCH REST SCHREIBEN
+\begin_inset Newline newline
+\end_inset
+
+Der EM-Algorithmus terminiert immer mit einer Lösung für das Problem.
+ Diese Lösung ist aber nur ein lokales Maximum.
+ Damit das globale Maximum gefunden werden kann muss der Algorithmus mit
+ verschiedenen Startparametern aufgerufen werden.
+ 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "EM"
+description "Expectation Maximization"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -746,8 +1073,215 @@ Coherent Point Drift
 \end_layout
 
 \begin_layout Standard
-Erklärung der Methodik des Coherent Point Drift Algorithmus und des mathematisch
-en Hintergrunds anhand der letzten drei Punkte
+Der Coherent Point Drift Algorithmus (CPD) ist ein Point Set Registration
+ Verfahren, welches Rigid und non-Rigid Registrierungen lösen kann.
+ Im Weiteren wird hier der Ablauf der rigid Registrierung erläutert, da
+ nur dieser im Kontext dieser Arbeit relevant ist.
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "CPD"
+description "Coherent Point Drift"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Der CPD gehört zu den probabilistischen Point Set Registration Verfahren,
+ dies bedeutet er arbeitet mit Wahrscheinlichkeiten für die Zuordnung der
+ Punkte anstatt mit einer harten Zuordnung.
+ Dieser probabilistische Weg ist möglich, da der Algorithmus mit Gaussian
+ Mixture Models arbeitet.
+ 
+\end_layout
+
+\begin_layout Standard
+Im folgenden wird die Funktionsweise des Coherent Point Drifts genauer beschrieb
+en.
+\begin_inset Newline newline
+\end_inset
+
+Es wird eine Punktwolke durch GMM Mittelwerte beschrieben.
+ Das bedeutet, jeder Punkt wird als eine Normalverteilung angenommen mit
+ seiner Position als Mittelwert und einer gleichen Varianz für alle Punkte.
+ Die andere Punktwolke bleibt in ihrer normalen Form.
+ Die GMM Punktwolke wird im Weiteren bewegende Punktwolke und die als feste
+ Punktwolke bezeichnet.
+\begin_inset Newline newline
+\end_inset
+
+Der Algorithmus wird mit zufälligen Transformationsparametern initialisiert,
+ welche in einem EM-Algorithmus maximiert werden.
+\begin_inset Newline newline
+\end_inset
+
+Der EM-Algorithmus besteht aus einem E- und einem M-Schritt.
+ Der E-Schritt bestimmt mithilfe der Transformationsparameter die Wahrscheinlich
+keiten für eine Zuordnung von jedem Punkt der bewegenden Punktwolke zu jedem
+ Punkt der festen Punktwolke.
+ Dies geschieht mithilfe folgender Formel für den zwei dimensionalen Fall.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $p_{mn}:$
+\end_inset
+
+ Wahrscheinlichkeit das Punkt 
+\begin_inset Formula $m$
+\end_inset
+
+ Punkt 
+\begin_inset Formula $n$
+\end_inset
+
+ zugeordnet werden kann
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\sigma^{2}:$
+\end_inset
+
+ Kovarianz der beiden Punktwolken
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Richtig?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x:$
+\end_inset
+
+ Punkt aus der feststehenden Punktwolke mit 
+\begin_inset Formula $N$
+\end_inset
+
+ Punkten
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y:$
+\end_inset
+
+ Punkt aus der stehenden Punktwolke mit 
+\begin_inset Formula $M$
+\end_inset
+
+ Punkten
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R:$
+\end_inset
+
+ Rotationsmatrix
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $t:$
+\end_inset
+
+ Translationsvektor
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $w:$
+\end_inset
+
+ Gewichtung der Normalverteilung
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p_{mn}=\frac{e^{-\frac{1}{2\sigma^{2}}||x_{n}-(Ry_{m}+t)||^{2}}}{\sum_{k=1}^{M}e^{-\frac{1}{2\sigma^{2}}||x_{n}-(Ry_{m}+t)||^{2}}+(2\pi\sigma^{2})\cdot\frac{w}{1-w}\cdot\frac{M}{N}}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Erklärung für die Formel?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der M-Schritt bestimmt nun neue maximierte Transformationsparameter, welche
+ anhand der Zuordnung optimiert wurden.
+ Hierfür wird die Rotationsmatrix mithilfe von Singulärwertzerlegung bestimmt
+ und der Translationsvektor durch folgende Formel bestimmt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $t:$
+\end_inset
+
+ Translationsvektor
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R:$
+\end_inset
+
+ Rotationsmatrix
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mu_{fix}:$
+\end_inset
+
+ Mittelwert feste Punktwolke
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mu_{moving}:$
+\end_inset
+
+ Mittelwert bewegende Punktwolke (GMMs)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t=\mu_{fix}-R\mu_{moving}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Diese beiden Schritte werden solange wiederholt, bis die Änderung in den
+ Transformationsparametern nur noch unter einem gewissen Schwellwert liegt.
+ Das bedeutet die Zuordnung und die Transformationsparameter werden durch
+ den EM-Algorithmus solange verbessert bis ein Maximum gefunden wurde.
+ Dieses Maximum muss aber nicht das globale Maximum sein.
+ Der EM-Algorithmus findet immer nur ein lokales Maximum, das bedeutet,
+ dass auch der CPD immer nur ein lokales Maximum für die Zuordnung und Transform
+ation findet.
+ Aus diesem Grund dürfen die Punktwolken zu Beginn der Zuordnung keine zu
+ großen Unterschied aufweisen, da sonst die Punkte initial falsch zugeordnet
+ werden und möglicherweise der Algorithmus nur ein lokales Maximum findet.
+ Eine weitere Schwäche des Algorithmus ist, dass die Menge an Ausreißern
+ welche erwartet werden initial eingegeben werden müssen.
+ Somit ist es notwendig das diese Menge bestimmbar oder abschätzbar ist
+ für ein optimales Ergebnis.
 \end_layout
 
 \end_body
