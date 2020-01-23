@@ -81,10 +81,6 @@
 Literaturvergleich
 \end_layout
 
-\begin_layout Standard
-.....
-\end_layout
-
 \begin_layout Section
 Fusion von AIS- und ARPA-Signalen
 \end_layout
@@ -94,7 +90,7 @@ Das Hauptproblem der Arbeit ist es, eine sichere Zuordnung zwischen ARPA
  und AIS-Signalen zu finden.
  In diesem Gebiet gibt es schon mehrere wissenschaftliche Ansätze, welche
  unter der Fusion von AIS und ARPA-Signalen bekannt sind.
- Diese werden im folgenden betrachtet, zudem wird ein Vergleich dieser Methoden
+ Diese werden im Folgenden betrachtet, zudem wird ein Vergleich dieser Methoden
  mit der aktuellen Arbeit präsentiert.
 \end_layout
 
@@ -104,7 +100,7 @@ Die Fusion von ARPA- und AIS-Signalen ist ein wichtiger Bestandteil der
  Die Fusion bringt den Vorteil, dass die Daten des Radars, welche Schiffe
  und Objekte in der Nähe enthalten, mit den absoluten Positions- und Information
 sdaten des AIS verglichen und auf der ECDIS angezeigt werden können.
- Viele der Verfahren basieren darauf die Daten nicht nur zuzuordnen sondern
+ Viele der Verfahren basieren darauf die Daten nicht nur zuzuordnen, sondern
  sie verfolgen zu können das so genannte 
 \begin_inset Quotes gld
 \end_inset
@@ -134,8 +130,8 @@ Durch diesen Vergleich steigt die Genauigkeit und Verlässlichkeit beider
 
 \begin_layout Standard
 Dieser Vorteil wurde schon früh erkannt, weswegen schon 2009 Methoden gesucht
- und entwickelt wurden um diese Erhöhung der Sicherheit im Bereich Kollisionsver
-hinderung zu erreichen.
+ und entwickelt wurden, um diese Erhöhung der Sicherheit im Bereich Kollisionsve
+rhinderung zu erreichen.
  Hierzu zählt die Arbeit von Shiun, Jinbao und Chaojian
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -158,7 +154,7 @@ Trackings
 \begin_inset Newline newline
 \end_inset
 
-In weiteren Arbeiten wurde immer weiter versucht die Genauigkeit des 
+In weiteren Arbeiten wurde immer weiter versucht, die Genauigkeit des 
 \begin_inset Quotes gld
 \end_inset
 
@@ -168,7 +164,7 @@ Trackings
 
  und der korrekten Zuordnung zu steigern.
  Hierfür wurde versucht die Ungenauigkeiten und fehlenden Daten, welche
- auftreten mithilfe eines Algorithmus basierend auf der 
+ auftreten mithilfe eines Algorithmus, basierend auf der 
 \emph on
 Grey Theory 
 \emph default
@@ -182,7 +178,7 @@ literal "true"
 
 .
  Die Grey System Theory, findet eine Lösung für das gegebene Problem, jedoch
- ist nciht garantiert das diese eine optimale Lösung ist.
+ ist nicht garantiert, dass diese eine optimale Lösung ist.
  
 \begin_inset Newline newline
 \end_inset
@@ -241,9 +237,9 @@ Die in dieser Arbeit entwickelte Methode zur Zusammenführung von AIS- und
  Die Anforderungen für die Zusammenführung beider Informationsquellen ist
  ein anderer.
  Die Fusion von ARPA und AIS versucht mit der Zusammenführung und Verfolgung
- der Schiffe auf der Seekarte gefährliche Kollisionsszenarien voraus zu
- sehen und zu verhindern, sowie dem Nautiker ein genaueres Informationsbild
- auf der Seekarte zu bieten.
+ der Schiffe auf der Seekarte gefährliche Kollisionsszenarien vorauszusehen
+ und zu verhindern, sowie dem Nautiker ein genaueres Informationsbild auf
+ der Seekarte zu bieten.
  Diese Arbeit zielt auf eine möglichst genaue Positionsbestimmung mithilfe
  dieser Daten ab und dies im Kontext von möglichen Manipulierten oder falschen
  Daten.
@@ -255,7 +251,7 @@ e Daten enthalten sind und nicht alle Positionen korrekt sind.
 \end_inset
 
 Zusätzlich arbeiten alle genannten Algorithmen immer mit dynamischen Daten.
- Das bedeutet sie schätzen nachdem sie zwei Datenpaare zusammengefügt haben
+ Das bedeutet sie Schätzen nachdem sie zwei Datenpaare zusammengefügt haben
  immer wieder ab wo das Schiff bei der nächsten AIS-Nachricht sein muss
  und wie sich das reelle Schiff dazu verhält.
  In dieser Arbeit wurde ein statischer Ansatz gewählt, damit direkt eine
@@ -270,9 +266,9 @@ Point Set Registration Methoden
 Point Set Registration ist ein bekanntes Problem aus der Mustererkennung.
  Zu diesem Thema wurden bereits viele Ansätze entwickelt und evaluiert.
  In diesem Abschnitt werden bekannte Point Set Registration Algorithmen
- genannt, welche mit dem verwendeten Algorithmus Ähnlichkeiten aufweisen
- oder in manchen Gebieten und unter bestimmten Bedingungen bessere Ergebnisse
- liefern könnten.
+ genannt, welche mit dem verwendeten Algorithmus Ähnlichkeiten aufweisen.
+ Zusätzlich werden auch Algorithmen genannt, welche in manchen Gebieten
+ und unter bestimmten Bedingungen bessere Ergebnisse liefern könnten.
  Ein Point Set Registration Algorithmus wird verwendet um die Zuordnung
  der Punkte von zwei teilweise gleichen Punktwolken zu finden, sowie die
  Transformation, welche beide Punktwolken voneinander unterscheidet.
@@ -280,7 +276,7 @@ Point Set Registration ist ein bekanntes Problem aus der Mustererkennung.
 \begin_inset Newline newline
 \end_inset
 
-Die gennanten Algorithmen beschränken sich größtenteils auf rigid Transformation
+Die genannten Algorithmen beschränken sich größtenteils auf rigid Transformation
 en, da dies auch der Anwendungsfall dieser Arbeit ist.
  Es gibt jedoch noch deutlich mehr Algorithmen für non-rigid Transformationen,
  welche z.
@@ -323,8 +319,8 @@ literal "true"
 
 \begin_layout Standard
 Zur Lösung des Point Set Registration Problems wird in manchen Algorithmen
- der EM-Algorithmus, da es mit ihm möglich ist die Zuordnung und die Transformat
-ionsparameter gleichzeitig iterativ zu bestimmen.
+ der EM-Algorithmus, da es mit ihm möglich ist, die Zuordnung und die Transforma
+tionsparameter gleichzeitig iterativ zu bestimmen.
  Der bekannte rigid Point Set Registration Algorithmus Iterative Closest
  Point (ICP) wurde auch mit diesem Algorithmus erweitert.
  Diese Erweiterung wird EM-ICP genannt.
@@ -339,8 +335,8 @@ literal "true"
  dazu robuster gegen Ausreißer gemacht.
  Der Nachteil dieses Algorithmus ist, dass er immer nur ein lokales Minimum
  finden konnte, da der EM-Algorithmus immer nur zum nähesten Maximum konvergiert.
- Deswegen waren weitere Verfahren wie Simulated Annealing notwendig um ein
- globales Optimum zu bestimmen.
+ Deswegen waren weitere Verfahren wie Simulated Annealing notwendig, um
+ ein globales Optimum zu bestimmen.
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "ICP"
@@ -473,7 +469,7 @@ Reine Rigid Transformation (Rotation und Translation)
 \end_layout
 
 \begin_layout Enumerate
-soft Matching, eine Wahrscheinlichkeit für die Zuordnung
+soft Assignment, eine Wahrscheinlichkeit für die Zuordnung
 \end_layout
 
 \begin_layout Enumerate

@@ -91,7 +91,7 @@ Im folgenden Abschnitt werden verschiedene Ansätze behandelt, welche im
  Alle diese Ansätze basieren auf dem Prinzip einer rigid Registration, da
  sich die Abstände zwischen Punkten nicht ändern dürfen, weil dies eine
  Verfälschung der Schiffsposition wäre.
- Im weiteren werden die Stärken und Schwächen der Ansätze betrachtet und
+ Im Weiteren werden die Stärken und Schwächen der Ansätze betrachtet und
  mit dem ausgewählten Algorithmus verglichen.
 \end_layout
 
@@ -123,37 +123,37 @@ Zuerst werden die Transformationsparameter so initialisiert, dass die beiden
  eine Punktwolke angewandt, sodass nun für jeden Punkt aus der transformierten
  Punktwolke der dichteste Punkt aus der fixen Punktwolke bestimmt werden
  kann.
- Dies ist die Zuordnung, welche der Algorithmus bestimmt.
  Wenn die Zuordnung bestimmt wurde, kann nun über die Summe der Abstandsquadrate
  zwischen den Punkten ein Fehler zwischen den Punktwolken berechnet werden.
- Ist dieser Fehler klein genug ist die Registrierung abgeschlossen, ist
- er zu groß werden die Transformationsparameter anhand der gefundenen Zuordnung
- neu bestimmt und der Algorithmus wird iterativ wiederholt, bis er konvergiert.
+ Ist dieser Fehler klein genug ist die Registrierung abgeschlossen.
+ Sollte der Fehler zu groß sein, werden die Transformationsparameter anhand
+ der gefundenen Zuordnung neu bestimmt und der Algorithmus wird iterativ
+ wiederholt.
 \begin_inset Newline newline
 \end_inset
 
 ICP existiert schon sehr lange, deswegen gibt es eine Vielzahl von Erweiterungen
 , wie z.B.
- EM-ICP, welches ICP durch den EM-Algorithmus erweitert.
- So existieren auch Varianten die ICP beschleunigen usw.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Hier die aus den Quellen beschreiben
-\end_layout
+ EM-ICP, welches ICP durch den EM-Algorithmus erweitert 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "EM-ICP"
+literal "true"
 
 \end_inset
 
- 
+.
+ So existieren noch viele weitere Varianten die ICP für verschiedene Anwendungsf
+älle modifiziert haben.
 \begin_inset Newline newline
 \end_inset
 
-Der ICP Algorithmus ist auf Grund seiner einfachen Funktionsweise sehr performan
-t und leicht zu verstehen.
+Der ICP Algorithmus ist aufgrund seiner einfachen Funktionsweise sehr performant
+ und leicht zu verstehen.
  Außerdem lässt er sich wegen seines modularen Aufbaus sehr gut erweitern
- und verändern, was ihn gut anpassbar für viele Situationen macht.
- Er hat jedoch auch einige Nachteile, diese werden im folgenden erläutert.
+ und verändern, was ihn gut anpassbar für die unterschiedlichen Situationen
+ macht.
+ Er hat jedoch auch einige Nachteile, diese werden im Folgenden erläutert.
  
 \end_layout
 
@@ -161,7 +161,8 @@ t und leicht zu verstehen.
 Die Punktwolken müssen initial bereits annähernd zueinander passen, da sonst
  nicht die optimale Lösung bestimmt werden kann.
  Außerdem sorgen fehlende Punkte in einer der Punktwolken für Probleme,
- da diese die Zuordnung verfälschen können und somit den berechneten Fehler.
+ da diese die Zuordnung verfälschen können und somit ebenso den berechneten
+ Fehler.
 \begin_inset Newline newline
 \end_inset
 
@@ -234,7 +235,15 @@ Das Subgraph Matching auch Sub-Graph Isomorphismus Problem genannt basiert
 
  benachbarten Kanten entsprechen.
  Für dieses Problem existieren bereits Algorithmen, welche es für große
- Graphen lösen können.[Cordello 2004] [Bonnici 2013]
+ Graphen lösen können 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GraphIsomorphism"
+literal "true"
+
+\end_inset
+
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -258,21 +267,21 @@ Das Graph Matching kann mit Ausreißern nicht arbeiten, da es nicht fehlende
  Die Ausreißer bei diesem Problem können in AIS- sowie ARPA-Punktwolken
  existieren.
  In der AIS-Punktwolke existieren mehr Punkte als in der ARPA-Punktwolke,
- weil AIS mehr Reichweite als das Radar hat und AIS geographisch nicht durch
- verschiedenen Höhen beschränkt.
+ weil AIS mehr Reichweite als das Radar hat und AIS geografisch nicht durch
+ verschiedenen Höhen beschränkt ist.
 \begin_inset Newline newline
 \end_inset
 
 Außerdem kann die ARPA-Punktwolke auch Punkte enthalten die in der AIS-Punktwolk
 e fehlen.
- Dies ist möglich falls ein Schiff kein AIS sendet oder Radarschatten fälschlich
- für Schiffe gehalten werden.
+ Dies ist möglich, falls ein Schiff kein AIS sendet oder Radarschatten fälschlic
+h für Schiffe gehalten werden.
  Zusätzlich ist der Ansatz sehr Laufzeit intensiv, da die beiden Graphen
  zuerst erstellt werden müssen, wofür die Distanz zwischen allen Punkten
  berechnet werden muss.
- Hierbei würden weitere Probleme entstehen falls gleiche Distanzen mehrfach
+ Hierbei würden weitere Probleme entstehen, falls gleiche Distanzen mehrfach
  auftreten bzw.
- wie diese gleichen Distanzen auseinander gehalten werden könnten.
+ wie diese gleichen Distanzen auseinandergehalten werden könnten.
 \end_layout
 
 \begin_layout Subsection
@@ -282,28 +291,20 @@ Coherent Point Drift
 \begin_layout Standard
 Der in dieser Arbeit verwendete Algorithmus ist der Coherent Point Drift
  Algorithmus.
- Die Wahl für diesen Algorithmus wird im folgenden genauer erklärt.
+ Die Wahl für diesen Algorithmus wird im Folgenden genauer erklärt.
 \end_layout
 
 \begin_layout Standard
 Der CPD kann mit verrauschten und Ausreißer behafteten Daten immer noch
  eine korrekte Zuordnung finden.
- Er hat eine 
-\emph on
-weiche 
-\emph default
-Zuordnung (Wert zwischen 0 und 1), anstatt einer eindeutigen Zuordnung wie
- der ICP Algorithmus.
- Durch diese 
-\emph on
-weiche
-\emph default
- Zuordnung ist es auch möglich eine Aussage über die Vertrauenswürdigkeit
- eines Zuordnungspaares zu treffen.
+ Er hat ein soft assignment (Wert zwischen 0 und 1), anstatt einer eindeutigen
+ Zuordnung(hard assignment) wie der ICP Algorithmus.
+ Durch dieses soft assignment ist es auch möglich, eine Aussage über die
+ Vertrauenswürdigkeit eines Zuordnungspaares zu treffen.
  Somit können Punkte, welche sicher zugeordnet werden konnten eine hohe
  Vertrauenswürdigkeit zusprechen, da eine hohe Zuordnung bedeutet, dass
  die ARPA und AIS-Daten zusammenpassten.
- Dadurch könnte der errechnete Wert wie genau die Zuordnung gepasst hat,
+ Dadurch könnte der errechnete Wert, wie genau die Zuordnung gepasst hat,
  als Gewichtung genutzt werden.
 \begin_inset Newline newline
 \end_inset
@@ -314,40 +315,25 @@ Eine weitere wichtige Eigenschaft von CPD ist, dass es möglich ist Ausreißer
 \begin_inset Newline newline
 \end_inset
 
-Zusätzlich kann der CPD auch eine Rotation der Punktwolke erkennen was essentiel
+Zusätzlich kann der CPD auch eine Rotation der Punktwolke erkennen was essenziel
 l für die Bestimmung des Headings des Schiffes ist (siehe Programmablauf).
  Dies funktioniert jedoch nur für einen bestimmten Bereich, da der CPD nur
  ein lokales Maximum finden kann.
- Auf dieses Problem wird in 4.23 genauer eingegangen
+ Auf dieses Problem wird in 4.23 genauer eingegangen.
 \begin_inset Newline newline
 \end_inset
 
-Es existiert noch ein weitere Problem mit diesem Ansatz.
- Der CPD benötigt für das finden von Ausreißern eine initialen Wert wie
+Es existiert noch ein weiteres Problem mit diesem Ansatz.
+ Der CPD benötigt für das finden von Ausreißern einen initialen Wert wie
  viele Ausreißer die Punktwolken enthalten werden.
- Die führte aber in Tests mit dem Datengenerator nur in extrem Fällen zu
- falschen Zuordnungen.
- Extrem Fälle bedeutet hierbei der Algorithmus wurde mit 10% Ausreißern
- initialisiert und es sind über 30% aufgetreten.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Zahlen anpassen nach den Bewertungsmessungen
-\end_layout
-
-\end_inset
-
- Diese Schwäche sollte jedoch für Fehlerfälle bedacht werden.
  
 \begin_inset Newline newline
 \end_inset
 
-In der folgenden Tabelle 1.1???? ist die Entscheidungsfindung für das Verfahren
+In der folgenden Tabelle 4.1 ist die Entscheidungsfindung für das Verfahren
  tabelliert anhand der Anforderungen.
  Zu erkennen sind die einzelnen Stärken der Ansätze und welche Eigenschaften
  fehlen, um das hier betrachtete Problem effektiv zu lösen.
- GRAFIK STATT TABELLE?
 \end_layout
 
 \begin_layout Standard
@@ -524,7 +510,7 @@ Ja
 \begin_inset Text
 
 \begin_layout Plain Layout
-weiches Matching
+soft assignment
 \end_layout
 
 \end_inset
@@ -587,8 +573,16 @@ Vor- und Nachteile der Ansätze
 
 \begin_layout Standard
 Die Implementierung des CPD Algorithmus erfolgte mithilfe eines Github Repositor
-ys.[GITHUB] In diesem ist der Algorithmus mithilfe der Eigen3 Bibliothek
- implementiert wurden.
+ys 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CPD_C++"
+literal "true"
+
+\end_inset
+
+.
+ In diesem ist der Algorithmus mithilfe der Eigen3 Bibliothek implementiert.
  Die Eigen3 Bibliothek umfasst Methoden für Matrizen Berechnung, sowie Methoden
  zur Singulärwertzerlegung.
  Diese Implementierung kann auf bestimmte Weise parametrisiert werden, was
@@ -598,7 +592,7 @@ ys.[GITHUB] In diesem ist der Algorithmus mithilfe der Eigen3 Bibliothek
 \begin_layout Standard
 Der Algorithmus gibt die Möglichkeit vor der Ausführung mehrere Einstellungen
  zu treffen.
- Hier wurden folgende Einstellungen getroffen:
+ Hier wurden Folgende Einstellungen getroffen:
 \end_layout
 
 \begin_layout Enumerate
@@ -610,12 +604,12 @@ Skalierung wurde als Transformation ausgeschlossen
 \end_layout
 
 \begin_layout Enumerate
-Die Ausgabe der Zuordnung der Punkte wurde als Rückgabe festgelegt.
+Die Ausgabe der Zuordnung der Punkte wurde als Rückgabe festgelegt
 \end_layout
 
 \begin_layout Standard
 Die Transformationen Spiegelung und Skalierung wurden ausgeschlossen, weil
- dadurch die Punktwolke in ihrer Form verändert werden würde.
+ das die Punktwolke in ihrer Form verändert würde.
  Das ist nicht gewünscht, da die Radardaten sehr genau sind und eine Veränderung
  ihrer Struktur nur zu Fehlern führen würde.
  Zusätzlich würde so auch die Aussagekraft verringert werden, welche die
@@ -638,7 +632,7 @@ Das entstandene Softwaremodul umfasst verschiedene Abläufe, welche zum besseren
 
 \begin_layout Standard
 In Abbildung 4.1 ist der Ablauf der Software anhand eines Aktivitätsdiagramms
- dargestellt, dieser wird im folgenden genauer erläutert.
+ dargestellt, dieser wird im Folgenden genauer erläutert.
 \end_layout
 
 \begin_layout Standard
@@ -715,9 +709,9 @@ Anhand dieser Daten wird ein Algorithmus ausgewählt, welcher in der jeweiligen
 Der bestimmte Algorithmus gibt an, welche der drei Filter auf die Daten
  angewendet werden müssen, um die für den Algorithmus relevanten Daten zu
  extrahieren.
- Diese drei sind: das filtern nach den neuesten AIS und ARPA Daten der Schiffe,
- das filtern nach den AtoNs im AIS und das filtern nach ARPA Daten, welche
- keine Geschwindigkeit aufweisen.
+ Diese drei sind, dass filtern nach den neuesten AIS und ARPA Daten der
+ Schiffe, das filtern nach den AtoNs im AIS und das filtern nach ARPA Daten,
+ welche keine Geschwindigkeit aufweisen.
 \begin_inset Newline newline
 \end_inset
 
@@ -730,13 +724,13 @@ Zusätzlich zu diesen drei Filtern werden die AIS-Daten mithilfe von Seekarten
 \end_layout
 
 \begin_layout Standard
-Nach der Anwendung der Filter auf die Daten, wird der Zeitverzug der AIS-Daten
+Nach der Anwendung der Filter auf die Daten wird der Zeitverzug der AIS-Daten
  korrigiert.
  Dieser Zeitverzug existiert, da AIS-Nachrichten in einer Frequenz zwischen
  drei Sekunden bis zwei Minuten gesendet werden können.
  Die Sendezeit ist abhängig von der Geschwindigkeit und der Kursänderung
  des Schiffes.
- Die Radar Antenne, welche für die ARPA-Daten zuständig ist benötigt jedoch
+ Die Radarantenne, welche für die ARPA-Daten zuständig ist, benötigt jedoch
  für eine volle Umdrehung bzw.
  für das erfassen aller umliegenden Schiffe nur ca.
  zwei Sekunden bis vier Sekunden.
@@ -746,7 +740,7 @@ Nach der Anwendung der Filter auf die Daten, wird der Zeitverzug der AIS-Daten
 \end_layout
 
 \begin_layout Standard
-Im folgenden startet der spezifische Algorithmus, die einzelnen Komponenten
+Im Folgenden startet der spezifische Algorithmus, die einzelnen Komponenten
  des Algorithmus werden im Laufe der Arbeit genauer behandelt, so wird 
 \emph on
 AIS zum Koordinaten-Ursprung verschieben
@@ -757,18 +751,18 @@ AIS zum Koordinaten-Ursprung verschieben
 \begin_inset Newline newline
 \end_inset
 
-Nachdem alle Methoden zur Reduzierung von Ungenauigkeiten ausgeführt wurden
+Nachdem alle Methoden zur Reduzierung von Ungenauigkeiten ausgeführt wurden,
  müssen die ARPA-Daten, welche in Polarkoordinaten vorliegen in geodätische
  Koordinaten umgewandelt werden.
  Hierfür wird ein Punkt gewählt und die Punktwolke von diesem aus konstruiert.
- Wie dieser Punkt optimaler Weise gewählt werden muss ist in 4.22 beschrieben.
+ Wie dieser Punkt optimalerweise gewählt werden muss, ist in 4.22 beschrieben.
 \begin_inset Newline newline
 \end_inset
 
 Nun kann der CPD mit den beiden Punktwolken als Parameter gestartet werden
  und liefert ein Ergebnis.
  Das Ergebnis des Algorithmus ist die Zuordnung zwischen den Punkten und
- der Rotationsunterschied, welcher benötigt wurde um die Punktwolken ineinander
+ der Rotationsunterschied, welcher benötigt wurde, um die Punktwolken ineinander
  zu überführen.
  Die Zuordnung wird für den in 4.3 erklärten Position-Fix Algorithmus benötigt
  und die bestimmte Rotation entspricht dem Heading des Eigenschiffes.
@@ -776,8 +770,8 @@ Nun kann der CPD mit den beiden Punktwolken als Parameter gestartet werden
  von der relativen Ausrichtung des Schiffes abhängen, die AIS-Daten jedoch
  nach Norden ausgerichtet sind.
  Somit entspricht eine Drehung der ARPA-Punktwolke, bis sie mit der AIS-Punktwol
-ke übereinstimmen, dem Winkel zwischen der Ausrichtung des Schiffe und der
- Himmelsrichtung Norden.
+ke übereinstimmen, dem Winkel zwischen der Ausrichtung des Schiffes und
+ der Himmelsrichtung Norden.
  Dies ist der Winkel, in welchem das Heading eines Schiffes angegeben wird.
  Eine genaue Berechnung hierzu ist in Abschnitt 4.31 zu finden.
 \end_layout
@@ -787,7 +781,8 @@ Mit der Zuordnung der Daten kann nun der Position-Fix die Eigenposition
  bestimmen (4.3) und diese als Positionsangabe über eine NMEA-Nachricht an
  die Brücke senden.
  Zusätzlich wird eine Visualisierung des Ergebnisses über die von Herrn
- André Becker entwickelte Netzwerkschnittstelle an die ECDIS gesendet.
+ André Becker entwickelte Netzwerkschnittstelle an die Seekarte (ECDIS)
+ gesendet.
 \end_layout
 
 \begin_layout Subsection
@@ -798,7 +793,7 @@ Ungenauigkeiten durch den Erdellipsoid
 Der Coherent Point Drift Algorithmus basiert auf Koordinaten in kartesischer
  Form.
  In dieser Arbeit wurde dieser auf geodätische Koordinaten angewendet.
- Wodurch einige Genauigkeitsprobleme entstanden sind, die im weiteren erläutert
+ Wodurch einige Genauigkeitsprobleme entstanden sind, die im Weiteren erläutert
  werden und eine Lösung präsentiert wird.
 \end_layout
 
@@ -819,20 +814,20 @@ Die Translation basiert auf dem Unterschied der Punktwolken in
 
  Achse.
  Dies ist zwar korrekt in einem kartesischen Koordinatensystem, wo der Abstand
- zwischen zwei Punkten über die Euklidische Norm bestimmt werden kann, jedoch
- nicht wenn mit geodätische Koordinaten gearbeitet wird.
+ zwischen zwei Punkten über die euklidische Norm bestimmt werden kann, jedoch
+ nicht wenn mit geodätische Koordinaten gerechnet wird.
  Der Grund hierfür ist, dass der Abstand zwischen den Längengraden zwischen
  Nord- bzw.
  Südpol und dem Äquator sich je nach Position ändern.
  Als Folge hiervon ist es zwar möglich die Punktwolken zueinander zu bewegen,
  jedoch ist die Translation, welche der Algorithmus bestimmt, mit einem
  Fehler versehen.
- Diese Abweichungen die durch dieses Problem entstanden sind verhalten sich
- proportional zum Abstand der beiden Punktwolken.
+ Diese Abweichungen, die durch dieses Problem entstanden sind verhalten
+ sich proportional zum Abstand der beiden Punktwolken.
  Der Abstand zwischen den Punktwolken kann beliebig groß sein, da die ARPA-Punkt
 wolke ohne eine absolute Positionsangabe in Polarkoordinaten vorliegt und
- somit eine initial Position benötigt wird um aus dieser geodätische Koordinaten
- zu erstellen.
+ somit eine initiale Position benötigt wird um aus dieser geodätische Koordinate
+n zu erstellen.
  
 \end_layout
 
@@ -844,34 +839,34 @@ Das zweite Problem entstand durch die Rotation, welche Teil des Algorithmus
  Durch das Rotieren einer kartesischen Punktwolke um den Ursprung ändern
  sich die Positionen der Punkte, jedoch nicht die Abstände zwischen den
  Punkten.
- Wenn man geodätische Koordinaten rotiert ändern sich ebenso die Positionen
+ Wenn man geodätische Koordinaten rotiert, ändern sich ebenso die Positionen
  der Punkte, jedoch ändert sich hier auch der Abstand zwischen den Punkten
- auf Grund der Unterschiedlichen Abstände zwischen Längengraden.
- Die Abweichungen die durch dieses Problem entstanden sind, steigen mit
+ aufgrund der unterschiedlichen Abstände zwischen Längengraden.
+ Die Abweichungen, die durch dieses Problem entstanden sind, steigen mit
  dem Abstand zwischen den Punktwolken.
 \end_layout
 
 \begin_layout Standard
 Die Lösung für das erste Problem (Translation), ist dass minimieren der
  initialen Abstände zwischen den Punktwolken.
- Die Translation die nun benötigt wird für das überführen der einen Punktwolke
+ Die Translation die nun benötigt wird für das Überführen der einen Punktwolke
  in die andere resultiert in einer kleinen Abweichung.
 \begin_inset Newline newline
 \end_inset
 
 Die Lösung für das zweite Problem (Rotation) ist, dass verschieben des Schwerpun
 ktes der zu rotierenden Punktwolke in den Ursprung des Koordinatensystems.
- Eine Rotation dieser Punktwolke bewirkt nun das der Schwerpunkt seine Position
- nicht verändert, wodurch die Punkte der Punktwolke eine minimale Positionsänder
-ung durch eine Rotation erfahren.
+ Eine Rotation dieser Punktwolke bewirkt nun, dass der Schwerpunkt seine
+ Position nicht verändert, wodurch die Punkte der Punktwolke eine minimale
+ Positionsänderung durch eine Rotation erfahren.
 \end_layout
 
 \begin_layout Standard
 Somit ist die Lösung für diese Probleme die Translation beider Punktwolken
  auf den Ursprung des Koordinatensystems, um so die Ungenauigkeiten so gering
  wie möglich zu halten.
- Dies hat auch den Effekt das Fehler, welche durch das verwenden der euklidische
-n Norm auf dem Erdellipsoid entstehen, geringer ausfallen, weil Längen-
+ Dies hat auch den Effekt, dass Fehler, welche durch das Verwenden der euklidisc
+hen Norm auf dem Erdellipsoid entstehen, geringer ausfallen, weil Längen-
  und Breitengrad im Ursprung des Koordinatensystems fast gleich lang sind.
 \begin_inset Newline newline
 \end_inset
@@ -885,15 +880,13 @@ Für die ARPA - Punktwolke ist dies trivial, da aufgrund der Radar Daten
 Die AIS - Punktwolke ist jedoch an ihre absolute Position gebunden, deswegen
  ist eine andere Methodik notwendig, um die Punktwolke, ohne Änderung der
  Abstände zwischen den Punkten, verschieben zu können.
- Die Methodik sieht das bestimmen des Schwerpunktes vor, zu welchem die
- Abstände und der Richtungswinkel von jedem Punkt bestimmt wird.
+ Die Methodik sieht das Bestimmen des Schwerpunktes vor.
+ Zu diesem wird der Abstand und der Richtungswinkel zu jedem Punkt bestimmt.
  Nun kann dieser Punkt in verschoben werden und mithilfe der Abstände und
  Richtungswinkel, lässt sich die Punktwolke korrekt wiederherstellen.
  Der zu bestimmende Punkt ist der Schwerpunkt der AIS-Punktwolke, welcher
  sich über das arithmetische Mittel bestimmen lässt, solange es sich um
  eine nicht gewichtete Punktwolke handelt.
- Nun wird die Distanz und der Winkel zwischen jedem Punkt der Punktwolke
- und dem Schwerpunkt der Wolke bestimmt und gespeichert.
  Für die Berechnung der Distanz und der Winkel zwischen den Punkten wird
  die Vincenty Formel verwendet, damit keine Fehler durch die Erdkrümmung
  entstehen.
@@ -904,7 +897,7 @@ Die AIS - Punktwolke ist jedoch an ihre absolute Position gebunden, deswegen
 \end_layout
 
 \begin_layout Standard
-Nun sind optimale Bedingungen geschaffen um eine Zuordnung zwischen den
+Nun sind optimale Bedingungen geschaffen, um eine Zuordnung zwischen den
  Punktwolken durch den Coherent Point Drift Algorithmus zu bestimmen.
 \end_layout
 
@@ -913,7 +906,7 @@ Rotationsschwäche von Coherent Point Drift
 \end_layout
 
 \begin_layout Standard
-Das erkennen von Rotation ist eine essentielle Eigenschaft, welche der Algorithm
+Das erkennen von Rotation ist eine essenzielle Eigenschaft, welche der Algorithm
 us benötigt um die Punktwolken einander zuzuordnen und somit auch das Heading
  des Eigenschiffes zu bestimmen.
  Die Rotation kann jeden beliebigem gültigen Wert entsprechen, da die Drehung
@@ -926,29 +919,39 @@ us benötigt um die Punktwolken einander zuzuordnen und somit auch das Heading
 \begin_layout Standard
 Der CPD kann nur ein lokales Minima finden, da er auf dem EM-Algorithmus
  basiert.
- Die erkennbare Rotation ist nach NACHNAME bei ca.
+ Die erkennbare Rotation ist nach NACHNAME EINFÜGEN
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Wichtig
+\end_layout
+
+\end_inset
+
+ bei ca.
  
-\begin_inset Formula $65°$
+\begin_inset Formula $65$
 \end_inset
 
-[QUELLE].
+ Grad[QUELLE].
  Bei Punktwolken, welche mehr als 
-\begin_inset Formula $65°$
+\begin_inset Formula $65$
 \end_inset
 
- Rotationsunterschied besitzen, findet der Algorithmus möglicherweise nur
- ein lokales Minima.
+ Grad Rotationsunterschied besitzen, findet der Algorithmus möglicherweise
+ nur ein lokales Minima.
  Ein hierzu ausgeführter Versuch mit perfekten Daten beweist diese These
- (Tabelle 4.3).
+ (Tabelle 4.2).
 \begin_inset Newline newline
 \end_inset
 
-In Tabelle 4.3??? wurden die Ergebnisse des CPD Algorithmus für verschiedene
+In Tabelle 4.2 wurden die Ergebnisse des CPD Algorithmus für verschiedene
  Rotationen bestimmt.
  Diese Messung wurde mit perfekten Daten ausgeführt, dass bedeutet das alle
- Punkte zugeordnet werden können, die Punkte perfekt aufeinander passen
- und das lediglich der Rotationswinkel der Punktwolken sie voneinander untersche
-idet.
+ Punkte zugeordnet werden können.
+ Zudem ist es möglich die Punkte perfekt aufeinander zuzuordnen und das
+ lediglich der Rotationswinkel der Punktwolken sie voneinander unterscheidet.
  Die Punkte der Punktwolke wurden zufällig anhand einer Normalverteilung
  erstellt und besteht aus 20 Punkten in geodätischen Koordinaten.
  Alle Angaben sind in Grad gegeben.
@@ -1133,13 +1136,13 @@ Bestimmte Rotation durch CPD an perfekten Daten
 Es ist deutlich zu erkennen, dass der CPD Algorithmus ab einem bestimmten
  Rotationswinkel, die korrekte Rotation nicht mehr findet und in einem lokalen
  Minimum terminiert.
- In den Testdaten von Tabelle 4.3??? werden fünf verschiedene Minima gefunden,
+ In den Testdaten von Tabelle 4.2 werden fünf verschiedene Minima gefunden,
  je nach Rotation der Punktwolke.
  
 \end_layout
 
 \begin_layout Standard
-Für dieses Problem wurde eine Lösung entwickelt, um die korrekte Rotation,
+Für dieses Problem wurde eine Lösung entwickelt, um die korrekte Rotation
  sowie die korrekte Zuordnung zu bestimmen.
  
 \begin_inset Newline newline
@@ -1148,26 +1151,26 @@ Für dieses Problem wurde eine Lösung entwickelt, um die korrekte Rotation,
 Hierfür wird der Algorithmus mehrfach ausgeführt, wobei nach jeder Ausführung
  die ARPA-Punktwolke rotiert wird und die Ergebnisse gespeichert werden.
  Für die kontinuierliche Rotation wurden 
-\begin_inset Formula $45°$
+\begin_inset Formula $45$
 \end_inset
 
- gewählt.
+ Grad gewählt.
  Es wurden 
-\begin_inset Formula $45°$
+\begin_inset Formula $45$
 \end_inset
 
- gewählt anstatt den gemessenen 
-\begin_inset Formula $65°$
+ Grad gewählt anstatt den gemessenen 
+\begin_inset Formula $65$
 \end_inset
 
-, weil diese Messung ohne Ausreißer stattfand und außerdem noch weitere
+ Grad, weil diese Messung ohne Ausreißer stattfand und außerdem noch weitere
  Abweichungen das Ergebnis beeinflussen können.
- Eine dieser zu beachtenden Abweichungen ist das Euklidische Transformationen
+ Eine dieser zu beachtenden Abweichungen ist das euklidische Transformationen
  auf geodätische Daten angewandt werden, was in Abweichungen resultieren
  könnte.
  Die Rotation der ARPA-Punktwolke ist sehr simple, da sie bereits in Polarkoordi
 naten vorliegt.
- Nachdem der Algorithmus 8 mal ausgeführt wurde (
+ Nachdem der Algorithmus achtmal ausgeführt wurde (
 \begin_inset Formula $\frac{360}{45}=8$
 \end_inset
 
@@ -1179,15 +1182,15 @@ naten vorliegt.
 
 Diese Lösung hat natürlich einen großen Nachteil, welcher die Performanz
  des Algorithmus ist.
- Der Algorithmus muss acht mal gestartet werden um ein korrektes Ergebnis
+ Der Algorithmus muss achtmal gestartet werden um ein korrektes Ergebnis
  zu produzieren.
  Die achtfache Ausführung ist jedoch nur beim initialen Ausführen des Softwaremo
 duls nötig, weil nach dem ersten Durchlauf des Softwaremoduls ein Heading
  an die Brücke gesendet wird, welches beim nächsten Aufrufen des Algorithmus
  mit gesendet wird und somit ein initiales Heading existiert.
- Wenn ein Heading mit gesendet wird muss der Algorithmus nur einmal ausgeführt
+ Wenn ein Heading mit gesendet wird, muss der Algorithmus nur einmal ausgeführt
  werden, weil die ARPA-Punktwolke nur um den Wert des negativen Headings
- gedreht werden muss und dadurch die Punktwolken eine Ähnliche Rotation
+ gedreht werden muss und dadurch die Punktwolken eine ähnliche Rotation
  aufweisen sollten.
 \end_layout
 
@@ -1196,8 +1199,8 @@ Position-Fix
 \end_layout
 
 \begin_layout Standard
-Der folgenden Abschnitt beschreibt die Berechnung der Eigenposition und
- des Sicherheitsbereichs, welche aus der Zuordnung und dem bestimmten Heading
+Der folgende Abschnitt beschreibt die Berechnung der Eigenposition und des
+ Sicherheitsbereichs, welche aus der Zuordnung und dem bestimmten Heading
  des CPD möglich ist.
 \end_layout
 
@@ -1208,23 +1211,23 @@ Bestimmung der Eigenposition
 \begin_layout Standard
 Mit dem Ergebnis des Coherent Point Drift Algorithmus können ARPA - Punkte
  auf ihre zugehörigen AIS - Punkte zugeordnet werden.
- Dadurch ist nun bekannt wo dieser Punkt absolut auf der Karte liegt (AIS-Daten)
- und wie er relativ zu der Schiffseigenposition liegt (ARPA-Daten).
- Durch diese beiden Daten ist es möglich die Schiffseigenposition für jedes
+ Dadurch ist nun bekannt, wo dieser Punkt absolut auf der Karte liegt (AIS-Daten
+) und wie er relativ zu der Schiffseigenposition liegt (ARPA-Daten).
+ Durch diese beiden Daten ist es möglich, die Schiffseigenposition für jedes
  Paar zugeordneter Punkte zu berechnen.
 \begin_inset Newline newline
 \end_inset
 
-Momentan wird bei versagen der GPS-Analge die Eigenposition von der Besatzung
+Momentan wird bei Versagen der GPS-Analge die Eigenposition von der Besatzung
  des Schiffes bestimmt.
  Hierfür werden markante Ziele im AIS gesucht wie Leuchttürme.
- Danach muss der Nautiker überprüfen in welchem Winkel dieses Ziel zum eigenen
- Schiff liegt und so selber den passenden Radarpunkt identifizieren.
- Dies wird für zwei bis drei Ziele wiederholt womit der Nautiker nun die
+ Danach muss der Nautiker überprüfen, in welchem Winkel dieses Ziel zum
+ eigenen Schiff liegt und so selber den passenden Radarpunkt identifizieren.
+ Dies wird für zwei bis drei Ziele wiederholt, womit der Nautiker nun die
  Eigenposition berechnen kann.
  Dies ist sehr aufwendig und soll von dem hier entwickelten Algorithmus
  möglichst ohne manuelle Eingaben umgesetzt werden.
- Dessen Funktionsweise wird im weiteren genauer beschrieben.
+ Dessen Funktionsweise wird im Weiteren genauer beschrieben.
 \end_layout
 
 \begin_layout Standard
@@ -1289,7 +1292,7 @@ b_{true} & = & (b_{rel}-h)\quad mod\:360
 
 Nun kann von jedem Datenpaar eine individuelle Eigenposition bestimmt werden.
  Dies basiert auf der Lösung der 1.
- geodätischen Hauptaufgabe, diese ist das berechnen eines Punktes mit einem
+ geodätischen Hauptaufgabe, diese ist das Berechnen eines Punktes mit einem
  Startpunkt, einer Richtung und einer Distanz.
  Der Startpunkt sind die AIS Koordinaten, die Richtung ist das negierte
  
@@ -1313,11 +1316,12 @@ Nachdem dies für jedes Datenpaar wiederholt wurde, existiert eine Punktwolke,
 \begin_inset Newline newline
 \end_inset
 
-Die Auswirkung für die Verwendung eines gewichteten Arithmetischen Mittels
- anstatt des normalen arithmetischen Mittels ist in Abbildung 4.2??? zu erkennen.
+Die Auswirkung für die Verwendung eines gewichteten arithmetischen Mittels
+ anstatt des normalen arithmetischen Mittels ist in Abbildung 4.2 zu erkennen.
  In der Abbildung haben die Punkte 6 - 10 eine höhere Gewichtung als die
- Punkte 1 - 4, was dafür sorgt, dass diese beim gewichteten Arithmetischen
- Mittel stärker berücksichtigt werden.
+ Punkte 1 - 4.
+ Das sorgt dafür, dass diese beim gewichteten Arithmetischen Mittel stärker
+ berücksichtigt werden.
 \end_layout
 
 \begin_layout Standard
@@ -1360,8 +1364,8 @@ Arithmetisches Mittel der individuell zurückgerechneten Eigenpositionen
 \end_layout
 
 \begin_layout Standard
-Die Abbildung zeigt wie stark die Genauigkeit der Positionsbestimmung erhöht
- werden kann, falls es möglich ist eine Aussage über die Genauigkeit oder
+Die Abbildung zeigt, wie stark die Genauigkeit der Positionsbestimmung erhöht
+ werden kann, falls es möglich ist, eine Aussage über die Genauigkeit oder
  die Vertrauenswürdigkeit der einzelnen Punkte treffen zu können.
  Das wäre möglich über das Unterscheiden von Schiffen und AtoNs oder einer
  manuellen Eingabe.
@@ -1374,21 +1378,21 @@ Bestimmung der Sicherheit der Eigenposition und Eliminierung von Ausreißern
 \begin_layout Standard
 Die Bestimmung der Eigenposition erfolgt über das arithmetische Mittel,
  dieses ist jedoch anfällig für Ausreißer in der Punktwolke.
- Zusätzlich ist es notwendig die bestimmte Eigenposition mit einer Sicherheit
+ Zusätzlich ist es notwendig, die bestimmte Eigenposition mit einer Sicherheit
  bzw.
  eines Sicherheitsbereichs angeben zu können.
 \end_layout
 
 \begin_layout Standard
-Durch die Anfälligkeit des arithmetischen Mittels auf Ausreißer, ist es
- notwendig diese zu bestimmen und in gravierenden Fällen zu eliminieren.
+Durch die Anfälligkeit des arithmetischen Mittels auf Ausreißer ist es notwendig
+, diese zu bestimmen und in gravierenden Fällen zu eliminieren.
  Dies kann jedoch nur angewendet werden, wenn genügend Punkte in der Punktwolke
  existieren, da sonst Ausreißer nicht eindeutig klassifiziert werden können.
 \begin_inset Newline newline
 \end_inset
 
 Zur Erkennung der Ausreißer wird die Mahalanobis Distanz verwendet.
- Die Mahalanobis Distanz ist ein Abstandsmaß, welche angibt wie weit ein
+ Die Mahalanobis Distanz ist ein Abstandsmaß, welche angibt, wie weit ein
  Punkt von der Verteilung einer Punktwolke abweicht.
  Das Ergebnis der Mahalanobis Distanz wird in Standardnormalabweichungen
  angegeben.
@@ -1450,12 +1454,12 @@ d(\vec{X},\vec{\mu})=\sqrt{(\vec{X}-\vec{\mu})^{T}\cdot\Sigma^{-1}\cdot(\vec{X}-
 \begin_inset Newline newline
 \end_inset
 
-zur Berechnung der Mahalanobis Distanz wird nun das arithmetische Mittel
- und die Kovarianzmatrix bestimmt, jedoch ohne einbeziehen des Punktes zu
- welchem die Mahalanobis Distanz bestimmt werden soll, da sonst das Ergebnis
+Zur Berechnung der Mahalanobis Distanz wird nun das arithmetische Mittel
+ und die Kovarianzmatrix bestimmt, jedoch ohne einbeziehen des Punktes,
+ zu welchem die Mahalanobis Distanz bestimmt werden soll, da sonst das Ergebnis
  verfälscht wird.
- Nachdem dies für jeden individuelle Eigenposition berechnet wurde ist es
- möglich Punkte zu entfernen, welche außerhalb einer bestimmten Prozentzahl
+ Nachdem dies für jede individuelle Eigenposition berechnet wurde, ist es
+ möglich, Punkte zu entfernen, welche außerhalb einer bestimmten Prozentzahl
  der Verteilung liegen.
  Für diese Prozentzahl wurde 
 \begin_inset Formula $99,865\%$
@@ -1466,21 +1470,17 @@ zur Berechnung der Mahalanobis Distanz wird nun das arithmetische Mittel
 \end_inset
 
 .
- Somit werden Punkte entfernt die Außerhalb von 
-\begin_inset Formula $99.865\%$
-\end_inset
-
- der Verteilung liegen.
 \begin_inset Newline newline
 \end_inset
 
-Nachdem die Ausreißer entfernt wurden ist es wichtig die Genauigkeit des
+Nachdem die Ausreißer entfernt wurden, ist es wichtig, die Genauigkeit des
  Ergebnisses angeben zu können.
  Hierfür wurde sich entschieden einen Sicherheitsbereich zu bestimmen, durch
  welchen eine prozentuale Sicherheit gegeben werden kann, wie wahrscheinlich
  es ist sich in diesem Bereich zu befinden.
  Dieser Sicherheitsbereich wird mithilfe der Mahalanobis Distanz bestimmt.
- Man setzt die Mahalanobis Distanz auf einen festen Wert, wie z.B.
+ Man setzt die Mahalanobis Distanz auf einen festen Wert, wie z.
+ B.
  
 \begin_inset Formula $2,33$
 \end_inset
@@ -1494,24 +1494,13 @@ Nachdem die Ausreißer entfernt wurden ist es wichtig die Genauigkeit des
  Nun kann durch einsetzen des arithmetischen Mittels und der Kovarianzmatrix
  eine Menge an Punkten bestimmt werden, welche diese Mahalanobis Distanz
  haben.
- Die Form der Punkte entspricht einer Ellipse, welche der Sicherheitsbereich
- ist.
- Eine Visualisierung dieses Ablaufs ist in Abbildung 4.3???? zu erkennen.
+ Die Form der Punkte entspricht einer Ellipse, welche der Form und Größe
+ des Sicherheitsbereichs entspricht.
+ Eine Visualisierung dieses Ablaufs ist in Abbildung 4.3 zu erkennen.
  Die roten Punkte sind zurückgerechnete Eigenpositionen, wobei 10 ein Ausreißer
  ist, welcher das Resultat einer falschen Zuordnung sein könnte.
- Die Ellipsen indizieren die Standardabweichungen vom Faktor 1 bis 4 von
+ Die Ellipsen indizieren die Standardabweichungen vom Faktor 0.5 bis 2 von
  innen nach außen.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Sicherheitsbereich über Standardabweichung? eher schlecht wegen der Abweichung,
- ist aktuell jedoch so im Algorithmus umgesetzt.
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Standard
@@ -1555,10 +1544,10 @@ Eliminierung von Ausreißern und Darstellung des Sicherheitsbereichs
 \end_layout
 
 \begin_layout Standard
-Es ist klar zu erkennen wie groß die Auswirkung eines Ausreißers auf die
+Es ist klar, zu erkennen, wie groß die Auswirkung eines Ausreißers auf die
  Eigenposition und den Sicherheitsbereich ist.
- Deshalb ist diese Methode zum erkennen und ausschließen des Ausreißers
- sehr wichtig um auch in Fehlerfällen eine sichere und möglichst genaue
+ Deshalb ist diese Methode zum Erkennen und Ausschließen des Ausreißers
+ sehr wichtig, um auch in Fehlerfällen eine sichere und möglichst genaue
  Eigenposition bestimmen zu können.
 \end_layout
 
@@ -1574,26 +1563,55 @@ n.
  gesendet, da ihre Daten so intern wie die Daten eines Sensors behandelt
  werden und dadurch eine Integritätsprüfung im Vergleich zu den anderen
  Sensoren möglich ist.
- Die Visualisierung und zusätzliche Daten, wie der Sicherheitsbereich, werden
- über die Netzwerkschnittstelle von Herrn André Becker an die ECDIS übermittelt.
- Die Visualisierung ist eine SVG-Grafik, welche beispielhaft in Abbildung
- 4.4???
-\begin_inset Note Note
+ Die Visualisierung wird über die Netzwerkschnittstelle von Herrn André
+ Becker an die ECDIS übermittelt.
+ Diese muss in Form einer SVG-Grafik gesendet werden, da sie sonst nicht
+ verlustfrei Skaliert werden kann.
+\end_layout
+
+\begin_layout Standard
+Für die Visualisierung sind mehrere Ansätze entstanden im Folgenden wird
+ auf diese genauer eingegangen.
+\begin_inset Newline newline
+\end_inset
+
+Der erste Ansatz basiert auf dem Ziel, dass der Nautiker die bestimmte Eigenposi
+tion möglichst gut nachvollziehen und mögliche Fehler erkennen kann.
+ Deswegen wurde darauf Wert gelegt möglichst viele wichtige Informationen
+ in die Grafik zu integrieren.
+ Diese ist in Abbildung 4.4 dargestellt.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-Abbildung
+\align right
+\begin_inset Graphics
+	filename C:/Users/User/Desktop/Repositorys/Thesis/Thesis/Grafiken/posFix.svg
+	scale 20
+	BoundingBox 0bp 0bp 2400bp 1215bp
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Visualisierung viele Informationen
 \end_layout
 
 \end_inset
 
- abgebildet ist.
- KOMMT SPÄTER
-\begin_inset Note Note
-status open
 
-\begin_layout Plain Layout
-Hier Erklärung zu der Visualisierung noch einfügen
 \end_layout
 
 \end_inset
@@ -1602,16 +1620,71 @@ Hier Erklärung zu der Visualisierung noch einfügen
 \end_layout
 
 \begin_layout Standard
+In der Abbildung 4.4 ist die Eigenposition mit einem blauen Rechteck gekennzeichn
+et, welches mit einem Strich sein Heading kennzeichnet.
+ Zusätzlich sind vier Ziele zu sehen inklusive ihrer Radar-Daten und AIS-ID,
+ dadurch ist es möglich das Ergebnis nachzuprüfen und Fehler direkt zu erkennen.
+ Die Linien von den Zielen Enden in der von diesem Ziel zurückgerechneten
+ Eigenposition, welche für jedes Ziel individuell ist.
+ Die Grafik wurde anhand perfekter Daten erstellt, deswegen führen alle
+ Linien direkt zur Eigenposition.
+ Die Ziele sind zusätzlich eingefärbt in grün, gelb oder rot.
+ Diese Farben sollen ein Indikator sein, wie gut sie zugeordnet werden konnten
+ und somit auch wie vertrauenswürdig ein Ziel ist.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Im Laufe des Projekts wurde entschieden diese Visualisierung nicht zu nutzen.
+ Der Grund hierfür ist, dass die ECDIS bereits sehr viele Informationen
+ darstellt, was schnell unübersichtlich sein kann.
+ Deswegen wurde es als kontraproduktiv eingeschätzt noch viele weitere Informati
+onen hinzuzufügen und somit der Übersicht zu schaden.
+ Dieser Ansatz wäre eine alternative, wenn Informationen klar ein und ausgeblend
+et werden können.
+ 
+\end_layout
+
+\begin_layout Standard
+Eine weitere Visualisierung verfolgte das Ziel, nur die Position und den
+ Sicherheitsbereich anzuzeigen, um nur die wichtigsten Informationen darzustelle
+n.
+ Der Sicherheitsbereich war jedoch meisten relativ klein im Vergleich zu
+ dem Maßstab, in welchem die ECDIS sich meistens befindet und somit nicht
+ zu sehen.
+ Aus diesem Grund wurde auch dieser Ansatz verworfen.
+\end_layout
+
+\begin_layout Standard
+Am Ende wurde ein Teil der Darstellung des ersten Ansatzes gewählt, welcher
+ nur die Eigenposition und das Heading darstellte.
+ Dies ist zu erkennen in Abbildung 4.5.
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/User/Desktop/Repositorys/Thesis/Thesis/Grafiken/posFixMinimal.svg
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Visualisierung zur Anzeige des Ergebnisses auf der Seekarte
+Visualisierung Eigenposition und Heading
 \end_layout
 
 \end_inset
@@ -1622,6 +1695,17 @@ Visualisierung zur Anzeige des Ergebnisses auf der Seekarte
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Die Darstellung zeigt die Eigenposition als grünes Rechteck und das Heading
+ anhand einer Linie, welche die Fahrtrichtung indiziert.
+ Die Farbe des Rechtecks stellt hierbei die Größe des Sicherheitsbereichs
+ dar.
+ Wenn der Sicherheitsbereich größer wird und somit die Position ungenauer
+ wird die Farbe gelb oder rot.
+ Dadurch ist das Ergebnis auch in dieser kleinen Darstellung bewertbar und
+ kontrollierbar durch den Nautiker.
 \end_layout
 
 \end_body

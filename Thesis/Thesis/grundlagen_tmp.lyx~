@@ -103,7 +103,7 @@ ARPA und AIS
 \end_layout
 
 \begin_layout Standard
-Das Automatic radar plotting ais (ARPA) ist für die Auswertung, Darstellung
+Das Automatic radar plotting aid (ARPA) ist für die Auswertung, Darstellung
  und Bestimmung weiterer wichtiger Werte mithilfe des Radars zuständig.
  Es kann die Daten aus dem Radar, welche die Distanz und das Bearing zum
  jeweiligen Ziel sind darstellen und bei längerer Betrachtung sogar die
@@ -129,9 +129,9 @@ getrackten
 \end_inset
 
  Ziele werden als eine NMEA-Nachricht, spezifisch ein TTM Diagramm in das
- Schiffsnetz gesendet, da diese höchst Wahrscheinlich ein Schiff indizieren.
+ Schiffsnetz gesendet, da diese höchst wahrscheinlich ein Schiff indizieren.
  Diese Nachricht enthält alle Daten, welche in Abbildung 2.1 zu erkennen
- sind, wobei die wichtigsten beiden Daten die aktuelle Distanz uund Bearing
+ sind, wobei die wichtigsten beiden Daten die aktuelle Distanz und Bearing
  sind.
  Das Bearing kann als 
 \emph on
@@ -159,7 +159,7 @@ Bearing gibt ebenso den Winkel zwischen Ziel und Eigenschiff an, jedoch
 
 Die Reichweite des Radars ist abhängig von den eingestellten Gebiet und
  Filtern.
- Das eingestellte Gebiet kann beschränkt werden um höhere Reichweiten des
+ Das eingestellte Gebiet kann beschränkt werden, um höhere Reichweiten des
  Radars zu erreichen.
  Dies ist hilfreich, falls man in bestimmten Richtungen keine Radarkontakte
  vermutet.
@@ -169,18 +169,18 @@ Die Reichweite des Radars ist abhängig von den eingestellten Gebiet und
 \end_inset
 
 Die Frequenz mit der die Radardaten sich erneuern beträgt zwischen zwei
- bis vier Sekunden, dies ist die Zeit in welcher sich die Radar Antenne
- einmal umdreht.
+ bis vier Sekunden, dies ist die Zeit in welcher sich die Radarantenne einmal
+ umdreht.
  
 \begin_inset Newline newline
 \end_inset
 
-Es gibt auch Fälle in denen das Radar keine oder nur schlechte Daten liefern
+Es gibt auch Fälle, in denen das Radar keine oder nur schlechte Daten liefern
  kann.
  Dies kann bei schlechtem Wetter der Fall sein, da starker Regen das Radarbild
  beeinflusst und es so nur noch für kürzere Distanz klar zu erkennen ist.
- Dazu kommt das die Radarantenne durch ihre Lage beschränkt ist, da sie
- nichts geographisch höher gelegenes erfassen kann, sowie sie nicht durch
+ Dazu kommt, dass die Radarantenne durch ihre Lage beschränkt ist, da sie
+ nichts geografisch höher Gelegenes erfassen kann, sowie sie nicht durch
  Ziele hindurch sehen kann.
  Das sorgt für Fehlerfälle wie Verschattung von kleineren Schiffen hinter
  größeren.
@@ -196,28 +196,27 @@ bar von außerhalb der Schiffsbrücke ist und die Fehlerfälle kaum schadhaft
 \begin_layout Standard
 Das Automatic Identification System AIS ist ein Funksystem zum Schiffsdatenausta
 usch bei der Seefahrt.
- Hierbei werden die eigenen Schiffsinformationen, sowie die Daten einiger
+ Hierbei werden die eigenen Schiffsinformationen sowie die Daten einiger
  Sensoren, wie GPS-Daten, über Funk durch ein Gebiet gesendet.
  In diesem Gebiet erhalten nun alle anderen Schiffe diese Daten und können
- mit diesen bessere Einschätzungen für Kollisionsverhinderung und allgemein
- bessere Entscheidungen treffen.
+ mit diesen bessere Einschätzungen für Kollisionsverhinderung treffen.
  
 \begin_inset Newline newline
 \end_inset
 
 Die AIS-Daten enthalten die absolute Position des Schiffes, die Bemessung
- des Schiffe, die Geschwindigkeit, den Kurs, den Namen und viele weitere
+ des Schiffes, die Geschwindigkeit, den Kurs, den Namen und viele weitere
  Informationen über das sendende Schiff.
  Die Reichweite, über welche diese Informationen gesendet werden können
- übersteigt die Reichweite des Radars bei weitem.
+ übersteigt die Reichweite des Radars bei Weitem.
 \begin_inset Newline newline
 \end_inset
 
-Die Ausstattung einer AIS-Senders ist auf fast allen Schiffen Pflicht.
+Die Ausstattung eines AIS-Senders ist auf fast allen Schiffen Pflicht.
  Zusätzlich ist es auf dicht befahrenen Seewegen verpflichtend AIS zu senden,
  um die Sicherheit dort zu erhöhen.
- Die Frequenz, in welcher die AIS-Nachricht gesendet werden muss hängt von
- der Geschwindigkeit und der Drehrate des Schiffes ab.
+ Die Frequenz, in welcher die AIS-Nachricht gesendet werden muss, hängt
+ von der Geschwindigkeit und der Drehrate des Schiffes ab.
  Deswegen können AIS-Nachrichten in einer Frequenz zwischen zwei Sekunden
  und drei Minuten versendet werden.
 \begin_inset Newline newline
@@ -230,7 +229,7 @@ fen wie Bojen gesendet.
 \begin_inset Newline newline
 \end_inset
 
-Obwohl AIS so eine wichtige Rolle in der Schifffahrt spielt hat es einige
+Obwohl AIS so eine wichtige Rolle in der Schifffahrt spielt, hat es einige
  gravierende Schwächen.
  Eine davon ist, dass AIS unverschlüsselt übertragen wird und somit für
  einen Angreifer einfach manipulierbar ist.
@@ -242,10 +241,10 @@ Obwohl AIS so eine wichtige Rolle in der Schifffahrt spielt hat es einige
 \begin_inset Newline newline
 \end_inset
 
-Das heißt AIS ist sehr leicht manipulierbar und somit müssen die Daten vorher
- geprüft werden bevor sie als vertrauenswürdig gelten können.
+Das heißt, AIS ist sehr leicht manipulierbar und somit müssen die Daten
+ vorher geprüft werden, bevor sie als vertrauenswürdig gelten können.
  Solche Manipulationen treten nur äußerst selten auf, jedoch gibt es kaum
- Maßnahmen um so etwas zu erkennen.
+ Maßnahmen, um so etwas zu erkennen.
 \end_layout
 
 \begin_layout Subsection
@@ -256,17 +255,15 @@ NMEA 0183
 Der NMEA 0183 ist ein Standard zur Kommunikation zwischen Geräten auf einer
  Schiffsbrücke.
  Dieser wurde von der 1983 veröffentlicht.
- In diesem ist unter anderem die Struktur der Nachrichten definiert.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-QUELLE AUS DEM PRAKTIKUMSBERICHT
-\end_layout
+ In diesem ist unter anderem die Struktur der Nachrichten definiert 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "IEC"
+literal "true"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -378,7 +375,15 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-TTM Telegramm (NMEA Nachricht)
+TTM Telegramm (NMEA Nachricht) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "IEC"
+literal "true"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -401,7 +406,15 @@ WGS 84
 
 \begin_layout Standard
 Das World Geodetic System 1984 (WGS 84) ist ein einheitliches System zur
- Positionsbestimmung auf dem Erdellipsoid.
+ Positionsbestimmung auf dem Erdellipsoid 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WGS84"
+literal "true"
+
+\end_inset
+
+.
  Es basiert auf einem Referenzellipsoid.
 \end_layout
 
@@ -449,16 +462,6 @@ literal "false"
 \end_inset
 
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Mehr Text über was?
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Subsection
@@ -469,7 +472,7 @@ Berechnungen auf dem Erdellipsoid
 Die Berechnung von Entfernung auf dem Erdellipsoid sind besonders in der
  Weise, dass sie mit geodätischen Koordinaten bestimmt werden müssen.
  Die Position der geodätischen Koordinaten enthält auch die Abplattung der
- Erde, diese steigt je näher die Position an einem der Pole liegt.
+ Erde, diese steigt, je näher die Position an einem der Pole liegt.
  Die Fehler, die durch diese Abplattung entstehen, sollen möglichst gering
  gehalten werden, deswegen gibt es verschiedene Formeln zur Berechnung auf
  dem Erdellipsoiden, welche sich in Genauigkeit und Performanz unterscheiden.
@@ -510,7 +513,15 @@ Der Vorteil hiervon ist, dass wenn die Entfernungen zwischen den Punkten
 \end_layout
 
 \begin_layout Standard
-Die zweite Mögliche Formel für die Berechnung ist die Great Circle Distance.
+Die zweite Mögliche Formel für die Berechnung ist die Haversine Formel 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Haversine"
+literal "true"
+
+\end_inset
+
+.
  Diese beruht auf der Annahme das die Erde eine perfekte Kugel ist und somit
  Distanzberechnungen auf einer Kugel möglich sind.
  Der Vorteil dieser Methode ist, dass der Fehler deutlich geringer bleibt
@@ -518,23 +529,20 @@ Die zweite Mögliche Formel für die Berechnung ist die Great Circle Distance.
  Jedoch ist der Fehler für größere Distanzen, vor allem über die Pole noch
  relativ groß.
  Die Formel ist deswegen für kleine bis mittlere Distanzen verwendbar, jedoch
- nicht für große Distanzen oder die Verwendung in einem sicherheitskritischen
- Bereich.
+ nicht für große Distanzen..
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Great Circle zu Haversine formel je nachdem wie das Paper heißt
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-Die dritte Möglichkeit ist die Vincenty Formel.
+Die dritte Möglichkeit ist die Vincenty Formel 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vincenty"
+literal "true"
+
+\end_inset
+
+.
  Diese berechnet die geodätischen Hauptaufgaben auf einem Ellipsoiden.
  Dieser kann anhand der Erde parametrisiert werden.
  Das eröffnet die Möglichkeit, Punkte über eine beliebige Distanz zu berechnen
@@ -544,16 +552,6 @@ Die dritte Möglichkeit ist die Vincenty Formel.
  Die Formel soll egal wo auf der Erde eine gleichbleibende Ungenauigkeit
  haben, welche unter einem Zentimeter liegen soll.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Paper Vincenty Formel
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -563,8 +561,8 @@ Die Bestimmung der für den Fall richtigen Formel ist meisten abhängig von
  Formel im Vergleich zu der Vincenty Formel ist in Tabelle 2.1 dokumentiert.
  Hierfür wurde die Distanz zwischen dem Ursprung (0, 0) und einem Punkt
  gemessen, welche immer weiter vergrößert wurde.
- Der Punkt, zu dem die Entfernung gemessen wurde weißt immer einen Richtungswink
-el von 
+ Der Punkt, zu dem die Entfernung gemessen wurde, weißt immer einen Richtungswin
+kel von 
 \begin_inset Formula $45$
 \end_inset
 
@@ -779,19 +777,6 @@ Es ist zu erkennen, dass der Fehler bei der Haversine Formel linear mit
 Point Set Registration
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Was soll hier hin?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Rigid und Non-rigid Transformationen
 \end_layout
@@ -862,38 +847,29 @@ Die Point Set Registration Algorithmen lassen sich in eine der beiden Kategorien
 
 \begin_layout Subsection
 Gaussian Mixture Model
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Noch Durchgucken
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-WIRD NOCHMAL ÜBERARBEITET
-\end_layout
-
-\begin_layout Standard
-Ein Gaussian Mixture Model ist eine Mischverteilung von Normalverteilungen.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Nachschlagen
-\end_layout
-
-\end_inset
-
+Ein Gaussian Mixture Model ist eine Mischverteilung basierend auf Normalverteilu
+ngen.
  Eine Mischverteilung ist eine Zusammensetzung von Verteilungen verschiedener
  Datenmengen.
  Bei Gaussian Mixture Models sind diese Verteilungen Normalverteilungen.
- Das bedeutet sie hängen von folgenden Parametern ab:
+ Das heißt es beschreibt eine Menge von 
+\begin_inset Formula $k$
+\end_inset
+
+ Normalverteilungen, welche alle von jeweils unterschiedlichen Parametern
+ abhängen 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GMM"
+literal "true"
+
+\end_inset
+
+.
+ Diese Parameter sind:
 \end_layout
 
 \begin_layout Enumerate
@@ -960,7 +936,7 @@ Somit ist die Wahrscheinlichkeitsdichtefunktion des Gaussian Mixture Models
 \end_layout
 
 \begin_layout Standard
-Die Gaussian Mixture Models werden immer verwendet wenn eine Verteilung
+Die Gaussian Mixture Models werden immer verwendet, wenn eine Verteilung
  aus mehrere Gauß-Verteilungen besteht oder es abschätzbar ist das dies
  der Fall sein wird.
  Dadurch finden sie eine Anwendung im Feld des Unsupervised Learnings für
@@ -973,7 +949,7 @@ Sie finden auch in Point Set Registration Anwendung.
  Hier wird meist aus einer der Punktwolken eine Menge von Gaussian mixture
  Models generiert, welche nun mit den Punkten der zweiten Punktwolke verglichen
  werden.
- Dadurch ist es möglich eine probabilistische Lösung für das Problem zu
+ Dadurch ist es möglich, eine probabilistische Lösung für das Problem zu
  bestimmen.
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
@@ -986,25 +962,8 @@ literal "false"
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Abbildung
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 EM-Algorithmus
-\end_layout
-
-\begin_layout Standard
-WIRD NOCHMAL ÜBERARBEITET
 \end_layout
 
 \begin_layout Standard
@@ -1026,14 +985,26 @@ versteckter
 \begin_inset Quotes grd
 \end_inset
 
- Parameter ist ein Parameter welcher nur über die Abhängigkeit von einem
+ Parameter ist ein Parameter, welcher nur über die Abhängigkeit von einem
  anderen Parameter beobachtet werden kann.
- Hierfür muss ein mathematisches Modell existieren um die beiden Parameter
- ineinander zu überführen.
- Ein Beispiel im Kontext des Point Set Registration ist, dass die Zuordnung
- der Punkte und die Transformationsparameter, welche benötigt werden um
+ Hierfür muss ein mathematisches Modell existieren, um die beiden Parameter
+ ineinander zu überführen 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "EM"
+literal "true"
+
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Ein Beispiel im Kontext des Point Set Registration ist, dass die Zuordnung
+ der Punkte und die Transformationsparameter, welche benötigt werden, um
  die Punktwolken ineinander zu überführen, so voneinander abhängen.
- Sobald die Zuordnung bekannt ist kann man damit die Transformationsparameter
+ Sobald die Zuordnung bekannt ist, kann man damit die Transformationsparameter
  bestimmen und andersherum.
  Somit ist das Ziel die Zuordnung zu finden, welche von den Transformationsparam
 etern abhängt.
@@ -1057,7 +1028,7 @@ HIER NOCH REST SCHREIBEN
 
 Der EM-Algorithmus terminiert immer mit einer Lösung für das Problem.
  Diese Lösung ist aber nur ein lokales Maximum.
- Damit das globale Maximum gefunden werden kann muss der Algorithmus mit
+ Damit das globale Maximum gefunden werden kann, muss der Algorithmus mit
  verschiedenen Startparametern aufgerufen werden.
  
 \begin_inset CommandInset nomenclature
@@ -1094,7 +1065,11 @@ literal "false"
 
 Der CPD gehört zu den probabilistischen Point Set Registration Verfahren,
  dies bedeutet er arbeitet mit Wahrscheinlichkeiten für die Zuordnung der
- Punkte anstatt mit einer harten Zuordnung.
+ Punkte anstatt mit einem 
+\emph on
+hard assignment
+\emph default
+.
  Dieser probabilistische Weg ist möglich, da der Algorithmus mit Gaussian
  Mixture Models arbeitet.
  
@@ -1147,16 +1122,6 @@ keiten für eine Zuordnung von jedem Punkt der bewegenden Punktwolke zu jedem
 \end_inset
 
  Kovarianz der beiden Punktwolken
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Richtig?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1207,16 +1172,6 @@ Richtig?
 \[
 p_{mn}=\frac{e^{-\frac{1}{2\sigma^{2}}||x_{n}-(Ry_{m}+t)||^{2}}}{\sum_{k=1}^{M}e^{-\frac{1}{2\sigma^{2}}||x_{n}-(Ry_{m}+t)||^{2}}+(2\pi\sigma^{2})\cdot\frac{w}{1-w}\cdot\frac{M}{N}}
 \]
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Erklärung für die Formel?
-\end_layout
 
 \end_inset
 
@@ -1284,7 +1239,15 @@ ation findet.
  Eine weitere Schwäche des Algorithmus ist, dass die Menge an Ausreißern
  welche erwartet werden initial eingegeben werden müssen.
  Somit ist es notwendig das diese Menge bestimmbar oder abschätzbar ist
- für ein optimales Ergebnis.
+ für ein optimales Ergebnis 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CPD"
+literal "true"
+
+\end_inset
+
+.
 \end_layout
 
 \end_body

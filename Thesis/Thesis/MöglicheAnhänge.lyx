@@ -77,8 +77,18 @@
 
 \begin_body
 
-\begin_layout Section*
+\begin_layout Chapter*
 Anhänge
+\end_layout
+
+\begin_layout Standard
+Diese werden noch vor der Abgabe überarbeitet und Ergänzt.
+\end_layout
+
+\begin_layout Standard
+In der Folgenden Tabelle ist die erkannte Rotation des CPD zu sehen.
+ Hier für den unveränderten Fall des Algorithmus, das bedeutet er wurde
+ nicht mehrfach ausgeführt.
 \end_layout
 
 \begin_layout Standard
@@ -686,7 +696,7 @@ Abweichung
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="20" columns="3">
+<lyxtabular version="3" rows="18" columns="3">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1185,7 +1195,7 @@ Abweichung
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1194,7 +1204,7 @@ Abweichung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1203,69 +1213,11 @@ Abweichung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,0516
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-360
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--0,0718
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0,0718
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
--
+0,0516
 \end_layout
 
 \end_inset
@@ -1474,6 +1426,12 @@ Bestimmte Rotation durch CPD an perfekten Daten
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Folgende Tabelle zeigt die Entfernungen zwischen dem Ursprung und eine Punkt
+ auf der Erde, welche jeweils mit der euklidischen Norm, der Haversine Formel
+ und der Vincenty Formel berechnet wurde.
 \end_layout
 
 \begin_layout Standard

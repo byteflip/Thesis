@@ -134,7 +134,7 @@ pagenumbering{roman}
 
 
 \backslash
-setcounter{page}{2}
+setcounter{page}{1}
 \end_layout
 
 \end_inset
