@@ -81,17 +81,13 @@
 Literaturvergleich
 \end_layout
 
-\begin_layout Standard
-.....
-\end_layout
-
 \begin_layout Section
 Fusion von AIS- und ARPA-Signalen
 \end_layout
 
 \begin_layout Standard
-Das Hauptproblem der Arbeit ist es, eine sichere Zuordnung zwischen ARPA
- und AIS-Signalen zu finden.
+Das Ziel der Arbeit ist es, eine sichere Zuordnung zwischen ARPA und AIS-Signale
+n zu finden.
  In diesem Gebiet gibt es schon mehrere wissenschaftliche Ansätze, welche
  unter der Fusion von AIS und ARPA-Signalen bekannt sind.
  Diese werden im Folgenden betrachtet, zudem wird ein Vergleich dieser Methoden
@@ -103,9 +99,10 @@ Die Fusion von ARPA- und AIS-Signalen ist ein wichtiger Bestandteil der
  Kollisionsverhinderung auf Schiffen.
  Die Fusion bringt den Vorteil, dass die Daten des Radars, welche Schiffe
  und Objekte in der Nähe enthalten, mit den absoluten Positions- und Information
-sdaten des AIS verglichen und auf der ECDIS angezeigt werden können.
+sdaten des AIS verglichen und auf der Seekarte (ECDIS) angezeigt werden
+ können.
  Viele der Verfahren basieren darauf die Daten nicht nur zuzuordnen, sondern
- sie verfolgen zu können das so genannte 
+ sie verfolgen zu können, dass so genannte 
 \begin_inset Quotes gld
 \end_inset
 
@@ -144,8 +141,8 @@ literal "true"
 
 \end_inset
 
-, welche einen Algorithmus vorstellt, der die Genauigkeit und die Zuverlässigkei
-t des 
+, welche einen Algorithmus entwickelten, der die Genauigkeit und die Zuverlässig
+keit des 
 \begin_inset Quotes gld
 \end_inset
 
@@ -181,21 +178,20 @@ literal "true"
 \end_inset
 
 .
- Die Grey System Theory, findet eine Lösung für das gegebene Problem, jedoch
+ Die Grey System Theory findet eine Lösung für das gegebene Problem, jedoch
  ist nicht garantiert, dass diese eine optimale Lösung ist.
  
 \begin_inset Newline newline
 \end_inset
 
 Weitere Ansätze zur AIS- und ARPA-Signal Fusion basierten darauf, die AIS-
- und ARPA-Daten mithilfe von einem Kalman-Filtern zuzuordnen, indem dieser
+ und ARPA-Daten mithilfe von einem Kalman-Filter zuzuordnen, indem dieser
  anhand der AIS-Daten die nächste Position des Schiffes bestimmte und dies
  mit den Radar Daten verglich.
- Der Kalman-Filter ist ein Filter für optimale Schätzungen von mathematisch
- beschreibbaren Problemen.
- Mehrere Arbeiten in diesem Gebiet sind von Stateczny, welcher den Kalman
- Filtern in diesem Bereich angewendet hat für die Fusion von AIS und ARPA
- Daten
+ Der Kalman-Filter dient für optimale Schätzungen von mathematisch beschreibbare
+n Problemen.
+ Mehrere Arbeiten in diesem Gebiet von Stateczny, thematisieren den Kalman
+ Filter für die Fusion von AIS und ARPA Daten
 \begin_inset CommandInset citation
 LatexCommand cite
 key "RadarAISfusionMaritime,KalmanAndNeuralFilters"
@@ -239,7 +235,7 @@ Die in dieser Arbeit entwickelte Methode zur Zusammenführung von AIS- und
  ARPA-Daten unterscheidet sich in mehreren Punkten von den bekannten Methoden
  zur ARPA und AIS Fusion.
  Die Anforderungen für die Zusammenführung beider Informationsquellen ist
- ein anderer.
+ eine andere.
  Die Fusion von ARPA und AIS versucht mit der Zusammenführung und Verfolgung
  der Schiffe auf der Seekarte gefährliche Kollisionsszenarien vorauszusehen
  und zu verhindern, sowie dem Nautiker ein genaueres Informationsbild auf
@@ -249,13 +245,13 @@ Die in dieser Arbeit entwickelte Methode zur Zusammenführung von AIS- und
  Daten.
  Somit kann der AIS Position nicht vertraut werden, da sie manipuliert sein
  kann.
- Deshalb müssen die Daten unter der Vermutung verglichen werden, dass fehlerhaft
-e Daten enthalten sind und nicht alle Positionen korrekt sind.
+ Deshalb müssen die Daten unter der Vermutung verglichen werden, ob fehlerhafte
+ Daten enthalten und nicht alle Positionen korrekt sind.
 \begin_inset Newline newline
 \end_inset
 
 Zusätzlich arbeiten alle genannten Algorithmen immer mit dynamischen Daten.
- Das bedeutet sie Schätzen nachdem sie zwei Datenpaare zusammengefügt haben
+ Das bedeutet sie schätzen, nachdem sie zwei Datenpaare zusammengefügt haben,
  immer wieder ab wo das Schiff bei der nächsten AIS-Nachricht sein muss
  und wie sich das reelle Schiff dazu verhält.
  In dieser Arbeit wurde ein statischer Ansatz gewählt, damit direkt eine
@@ -306,9 +302,8 @@ literal "true"
 \end_inset
 
 .
- Diese Methode war noch recht fehleranfällig, weswegen sie 2011 diese ausweitete
-n auf mehrere Point Set Registration Methoden und ein Framework hierzu entwickel
-ten.
+ Diese Methode war noch recht fehleranfällig, weswegen sie 2011 ein Framework
+ entwickelten, in welchem Sie ihre Arbeit auf andere Algorithmen ausweiteten.
  Dieses Framework erweiterte die bekannten Algorithmen, sodass sie statt
  mit zwei Punktwolken nun mit zwei Gaussian Mixture Models arbeiteten 
 \begin_inset CommandInset citation
@@ -323,12 +318,13 @@ literal "true"
 
 \begin_layout Standard
 Zur Lösung des Point Set Registration Problems wird in manchen Algorithmen
- der EM-Algorithmus, da es mit ihm möglich ist, die Zuordnung und die Transforma
-tionsparameter gleichzeitig iterativ zu bestimmen.
+ der EM-Algorithmus verwendet, da es mit ihm möglich ist, die Zuordnung
+ und die Transformationsparameter gleichzeitig iterativ zu bestimmen.
  Der bekannte rigid Point Set Registration Algorithmus Iterative Closest
  Point (ICP) wurde auch mit diesem Algorithmus erweitert.
  Diese Erweiterung wird EM-ICP genannt.
- Der EM-ICP wurde auch mit GMMs erweitert und in 
+ Der EM-ICP wurde auch mit GMMs erweitert und in Erweiterungen robuster
+ gegen Ausreißer gemacht 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "EM-ICP"
@@ -336,7 +332,7 @@ literal "true"
 
 \end_inset
 
- dazu robuster gegen Ausreißer gemacht.
+.
  Der Nachteil dieses Algorithmus ist, dass er immer nur ein lokales Minimum
  finden konnte, da der EM-Algorithmus immer nur zum nähesten Maximum konvergiert.
  Deswegen waren weitere Verfahren wie Simulated Annealing notwendig, um

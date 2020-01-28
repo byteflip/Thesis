@@ -135,53 +135,6 @@ status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-vspace*{1cm}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tabular}{@{}p{.5in}p{4in}@{}} 
-\end_layout
-
-\begin_layout Plain Layout
-
-Approved: & 
-\backslash
-hrulefill 
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-& Fats Domino, Ph.D.
- 
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-& Chair of the Department of Nutrition
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tabular}
 \end_layout
 
 \end_inset

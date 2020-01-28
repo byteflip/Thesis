@@ -87,7 +87,6 @@
   author  = {Hermans, Jeroen and Smeets, Dirk and Vandermeulen, Dirk and Suetens, Paul},
   title   = {{Robust point set registration using EM-ICP with information-theoretically optimal outlier handling}},
   year    = {2011},
-  pages   = {2465-2472},
   month   = {06},
   doi     = {10.1109/CVPR.2011.5995744},
   journal = {Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition},
@@ -233,7 +232,43 @@
 
 @Misc{CPD_C++,
   author = {Gadomski, Pete},
+  title  = {{CPD}},
+  month  = nov,
+  year   = {2014},
+  note   = {Https://github.com/gadomski/cpd},
   url    = {https://github.com/gadomski/cpd},
+}
+
+@InProceedings{GA-comp-CPD-ICP,
+  author    = {V. {Golyanik} and S. A. {Ali} and D. {Stricker}},
+  title     = {{Gravitational Approach for Point Set Registration}},
+  booktitle = {2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2016},
+  month     = {June},
+  doi       = {10.1109/CVPR.2016.625},
+  issn      = {1063-6919},
+  keywords  = {computational geometry;differential equations;gravitational approach;astrodynamics-inspired rigid point set registration algorithm;N-body problem;GA;template point set;viscous medium;gravitational forces;reference point set;differential equations;Newtonian mechanics;coherent point drift algorithm;structured outliers;noise robustness;Iterative closest point algorithm;Three-dimensional displays;Probabilistic logic;Force;Mathematical model;Optimization;Kinetic energy},
+}
+
+@Article{GMM-Definition,
+  author = {Reynolds, Douglas},
+  title  = {{Gaussian Mixture Models}},
+}
+
+@Article{GPS-Accuracy,
+  author   = {Wing, Michael G. and Eklund, Aaron and Kellogg, Loren D.},
+  title    = {{Consumer-Grade Global Positioning System (GPS) Accuracy and Reliability}},
+  journal  = {Journal of Forestry},
+  year     = {2005},
+  volume   = {103},
+  number   = {4},
+  pages    = {169-173},
+  month    = {06},
+  issn     = {0022-1201},
+  abstract = {{Our primary study objective was to test the accuracy and reliability of consumer-grade GPS receivers in a variety of landscape settings. We established three measurement testing courses in open sky, young forest, and closed canopy settings within a conifer-dominated forest in westernOregon and rigorously tested the positional accuracy of six different GPS. All units were produced by established GPS manufacturers. We found that performance varied, in some cases considerably, among units and appeared to be influenced by canopy cover and satellite availability. Among thetop GPS performers, we determined that users could expect positional accuracies within approximately 5 m of true position in open sky settings, 7 m in young forest conditions, and 10 m under closed canopies.}},
+  doi      = {10.1093/jof/103.4.169},
+  eprint   = {https://academic.oup.com/jof/article-pdf/103/4/169/25133856/jof0169.pdf},
+  url      = {https://doi.org/10.1093/jof/103.4.169},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

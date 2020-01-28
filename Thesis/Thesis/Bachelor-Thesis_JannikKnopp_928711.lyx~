@@ -256,11 +256,16 @@ nomname}{Abkürzungsverzeichnis}
 
 
 \backslash
-addcontentsline{toc}{Anhänge}
+addcontentsline{toc}{chapter}{Anhänge}
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
 
 \end_layout
 

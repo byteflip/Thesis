@@ -88,6 +88,20 @@ status open
 vspace*{3cm}
 \end_layout
 
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{plain}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{roman}
+\end_layout
+
 \end_inset
 
 

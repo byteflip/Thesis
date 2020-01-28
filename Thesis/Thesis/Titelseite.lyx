@@ -80,13 +80,298 @@
 
 \begin_body
 
-\begin_layout Title
-Bestimmung von Position und Orientierung des Eigenschiffes mittels Korrelation
- von AIS-und Radar-Informationen
+\begin_layout Standard
+
+\family sans
+\series bold
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
 \end_layout
 
-\begin_layout Author
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size largest
+\lang ngerman
+Bestimmung von Position und Orientierung des Eigenschiffes mittels Korrelation
+ von AIS- und Radar-Informationen
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\begin_inset VSpace 1.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family sans
+\series bold
+\size largest
+\lang ngerman
+Bachelor-Thesis
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family sans
+\size larger
+\lang ngerman
+an der Fachhochschule Kiel
+\begin_inset Newline newline
+\end_inset
+
+Fachbereich Informatik und Elektrotechnik
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang ngerman
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features tabularvalignment="middle">
+<column alignment="right" valignment="top">
+<column alignment="left" valignment="top" width="0pt">
+<row bottomspace="1cm">
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\lang ngerman
+im Studiengang:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\size large
+\lang ngerman
+Informationstechnologie
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomspace="1.5cm">
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\lang ngerman
+vorgelegt von:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\size large
+\lang ngerman
 Jannik Knopp
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\lang ngerman
+im Unternehmen:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\size large
+\lang ngerman
+Raytheon Anschütz GmbH
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomspace="1.5cm">
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\lang ngerman
+Betreuer:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\size large
+\lang ngerman
+Dipl.
+ -Inf.
+ Thomas Rohe
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\lang ngerman
+Erstprüfer:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\size large
+\lang ngerman
+Prof.
+ Dr.
+ Hauke Schramm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomspace="1.5cm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\lang ngerman
+Zweitprüfer:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\size large
+\lang ngerman
+Dipl.
+ -Inf.
+ Thomas Rohe
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\lang ngerman
+Vorgelegt am:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\size large
+\lang ngerman
+03.02.2020
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \end_body

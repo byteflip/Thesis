@@ -4,7 +4,7 @@
 \usepackage[nottoc]{tocbibind}
 
 % title of thesis
-\newcommand{\myThesisTitle}{\textit{Bestimmung von Position und Orientierung des Eigenschiffes mittels Korrelation von Radar- und AIS-Informationen}}
+\newcommand{\myThesisTitle}{\textit{Bestimmung von Position und Orientierung des Eigenschiffes mittels Korrelation von AIS- und Radar-Informationen}}
 
 % backmatter functions exactly as frontmatter
 \renewcommand\backmatter{%
@@ -21,8 +21,8 @@
 \renewcommand{\sectionmark}[1]{ \markright{#1}{} }
 
 % set symbols in nomenclature bold, add nomenclature to toc
-%\renewcommand{\nomlabel}[1]{\textsf{\textbf{#1}}}
-%\def\nompreamble{\addcontentsline{toc}{chapter}{\nomname}\markboth{\nomname}{\nomname}}
+\renewcommand{\nomlabel}[1]{\textsf{\textbf{#1}}}
+\def\nompreamble{\addcontentsline{toc}{chapter}{\nomname}\markboth{\nomname}{\nomname}}
 
 % header and footer style for book layout
 \fancypagestyle{main}{%

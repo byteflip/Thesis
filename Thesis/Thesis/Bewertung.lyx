@@ -100,12 +100,12 @@ Beide Algorithmen müssen zusammen eine möglichst genaue Eigenposition bestimme
  Fällen einzeln geprüft und bewertet.
  Zuerst wird der CPD auf seine Genauigkeit der Zuordnung bei verrauschten
  Daten geprüft.
- Zusätzlich wird die Genauigkeit geprüft mit, welcher er die Rotation erkennen
+ Zusätzlich wird die Genauigkeit geprüft, mit welcher er die Rotation erkennen
  kann.
 \begin_inset Newline newline
 \end_inset
 
-Der Position-Fix wird auf seine Genauigkeit geprüft bei verrauschten Daten.
+Der Position-Fix wird auf seine Genauigkeit bei verrauschten Daten geprüft.
  Hierbei wird dies anhand der Abweichung zur Originalposition und anhand
  der Größe des Sicherheitsbereichs bewertet.
 \end_layout
@@ -117,8 +117,8 @@ Coherent Point Drift
 \begin_layout Standard
 Eine der Eigenschaften des CPD ist es auch in verrauschten Daten eine korrekte
  Zuordnung zu finden.
- Hierfür wurde die Genauigkeit gemessen, mit welcher der CPD korrekte Zuordnunge
-n finden kann bei einer Erhöhung von Rauschen auf den Daten.
+ Hierfür wurde die Genauigkeit gemessen, mit welcher der CPD die korrekte
+ Zuordnungen bei immer weiter steigenden Rauschen finden kann.
  Hierfür wurden die Daten mit einem immer größer werdenden Rauschen versehen
  und die Zuordnungsgenauigkeit wurde dabei beobachtet.
  Für alle Messungen wurde der CPD mit einem Ausreißer Wert von zehn Prozent
@@ -131,9 +131,9 @@ Für die Messungen wurde eine Punktwolke, welche 50 Ziele umfasst, um 140
  Grad verdreht und der Algorithmus, welcher so modifiziert wurde wie in
  dieser Arbeit beschrieben, darauf angewendet.
  Für das Rauschen wurden 15 Meter bestimmt.
- Das bedeutet jeder Punkt hat eine Abweichung von seiner normalen Position
+ Das bedeutet, jeder Punkt hat eine Abweichung von seiner normalen Position
  von 0 bis 15 Meter.
- Die Verteilung des Rauschens, wurde als Normalverteilung gewählt.
+ Die Verteilung des Rauschens wurde als Normalverteilung gewählt.
  Dadurch ist sicher, dass die Ergebnisse reproduzierbar sind und nicht eine
  seltene zufällige Anordnung der Abweichungen als Begründung haben.
  Diese Messung ist in Abbildung 5.1 dargestellt.
@@ -180,8 +180,8 @@ Zuordnung bei steigendem Rauschen
 \end_layout
 
 \begin_layout Standard
-Es ist zu erkennen, dass die Genauigkeit der Zuordnung mit zunehmenden Fehler
- immer weiter abnimmt.
+Es ist zu erkennen, dass die Genauigkeit der Zuordnung mit der zunehmenden
+ Abweichung immer weiter abnimmt.
  Ab einer Abweichung über 100 Meter konnte der Algorithmus erstmals zwei
  Punkte nicht mehr korrekt zuordnen.
  Bis zur Abweichung von 300 Meter nehmen die Fehler in der Zuordnung weiter
@@ -194,7 +194,7 @@ ngers des Schiffes und der Abweichung durch die Fahrtgeschwindigkeit zusammen.
 \end_inset
 
 Zusätzlich ist die Struktur der beiden Punktwolken wichtig für diese Messung.
- Wenn Punkte nah aneinander liegen, passiert es schneller das ein Fehler
+ Wenn Punkte nah aneinander liegen, passiert es schneller, dass ein Fehler
  in der Zuordnung entsteht.
  Sind die Punkte jedoch weit von einander entfernt, kann der CPD auch bei
  größeren Abweichungen gute Ergebnisse für die Zuordnung erzielen.
@@ -213,11 +213,11 @@ Der CPD kann keine beliebige Rotation zwischen zwei Punktwolken erkennen,
 \begin_inset Newline newline
 \end_inset
 
-Für die Messung wurden zwei Punktwolken gewählt mit jeweils 10 Punkten und
- einem Rauschen von 15 Meter.
- Dieses Rauschen ist etwas höher als die Ungenauigkeiten durch GPS.
+Für die Messung wurden zwei Punktwolken mit jeweils 10 Punkten und einem
+ Rauschen von 15 Metern gewählt.
+ Dieses Rauschen ist ein wenig höher als die Ungenauigkeiten durch GPS.
  Nun wurde eine der Punktwolken in zehn Grad Schritten gedreht und für jede
- dieser Drehung wurde die Rotation durch den Algorithmus bestimmt.
+ dieser Drehungen wurde die Rotation durch den Algorithmus bestimmt.
  Diese Bestimmung war in jedem Fall korrekt, weswegen die Messung in Abbildung
  5.2 nur die Abweichungen darstellt.
 \end_layout
@@ -263,11 +263,11 @@ Erkennung von Rotation bei 10 Zielen
 \end_layout
 
 \begin_layout Standard
-Die Abbildung zeigt, dass der CPD jede Rotation erkennen konnte mit einem
- maximalen Fehler von 0,34 Grad.
- Die Abweichungen sind einerseits dem Rauschen auf den Daten geschuldet
+Die Abbildung zeigt, dass der CPD jede Rotation mit einem maximalen Fehler
+ von 0,34 Grad erkennen konnte.
+ Die Abweichungen sind einerseits des Rauschens auf den Daten geschuldet
  und zusätzlich der Anwendung von rigid Transformationen auf dem Erdellipsoid.
- Dieser Fehler sinkt, desto mehr Ziele der Algorithmus verwenden kann.
+ Dieser Fehler sinkt, umso mehr Ziele der Algorithmus verwenden kann.
  In Abbildung 5.3 wurde dieselbe Messung mit 50 statt 10 Zielen ausgeführt.
 \end_layout
 
@@ -312,16 +312,16 @@ Erkennung von Rotation bei 50 Zielen
 \end_layout
 
 \begin_layout Standard
-Es ist klar, zu erkennen, dass der Fehler mit steigender Anzahl an erfassten
+Es ist klar zu erkennen, dass der Fehler mit steigender Anzahl an erfassten
  Schiffen sinkt.
- Hier ist der Fehler bei maximal 0.23 Grad.
+ Hier ist der Fehler bei maximal 0,23 Grad.
  
 \begin_inset Newline newline
 \end_inset
 
-Somit ist gegeben, dass der CPD die korrekte Rotation und somit ein genaues
- Heading bestimmen kann.
- Somit sind die beiden wichtigen Ergebnisse, die Rotation und die Zuordnung,
+Hierdurch ist gegeben, dass der CPD die korrekte Rotation und somit ein
+ genaues Heading bestimmen kann.
+ Dadurch sind die beiden wichtigen Ergebnisse, die Rotation und die Zuordnung,
  als hinreichend genau einzustufen, um mit ihnen eine gültige Eigenposition
  mithilfe des Position-Fix Algorithmus zu bestimmen.
 \end_layout
@@ -334,16 +334,16 @@ Position-Fix
 Der Position-Fix Algorithmus hat die Aufgabe, aus den Ergebnissen des CPD
  eine möglichst genaue Eigenposition zu bestimmen.
  Die Genauigkeit dieser Eigenposition und des bestimmten Sicherheitsbereichs
- wird im Weiteren im Fall von Rauschen auf den Daten untersucht.
+ wird im Weiteren, im Fall von verrauschten Daten, untersucht.
 \end_layout
 
 \begin_layout Standard
-Zuerst wurde die Bestimmung der Eigenposition untersucht auf ihr verhaltet
- bei Daten, welche verrauscht sind.
- Hier wurde auch ein initiales Rauschen von 15 Meter gewählt, welches gleichmäßi
-g bis 300 Meter gesteigert wurde.
- Dieses Rauschen wurde für jedes Ziel zufällig gewählt zwischen 0 und dem
- aktuellen Wert des Rauschens.
+Zuerst wurde die Bestimmung der Eigenposition auf ihr verhaltet bei Daten,
+ welche verrauscht sind untersucht.
+ Hier wurde auch ein initiales Rauschen von 15 Metern gewählt, welches gleichmäß
+ig bis 300 Meter gesteigert wurde.
+ Dieses Rauschen wurde für jedes Ziel zufällig zwischen 0 und dem aktuellen
+ Wert des Rauschens gewählt.
  Die Messung wurde anhand von 20 Zielen durchgeführt, welche keine Ausreißer
  beinhalten.
  Zur Messung des Fehlers wurde die Eigenposition aus dem Datengenerator
@@ -397,29 +397,29 @@ Positionsungenauigkeit durch Rauschen
 \end_layout
 
 \begin_layout Standard
-Die Abweichung der Eigenposition steigt annähernd linear an.
+Die Abweichung der Eigenposition steigt annähernd linear.
  Es ist jedoch wichtig zu betrachten, dass die Abweichung bis zu einem Rauschen
- von 100 Meter, unter 10 Meter lag.
+ von 100 Metern, unter 10 Meter lag.
  Das heißt, selbst bei einer größeren Ungenauigkeit konnte die Position
  in den Abweichungsgrenzen eines GPS-Geräts bestimmt werden.
- Auch bei größeren Rauschen konnte die Position noch relativ genau bestimmt
- werden können.
+ Auch bei größerem Rauschen konnte die Position noch relativ genau bestimmt
+ werden.
  
 \begin_inset Newline newline
 \end_inset
 
 Hierbei ist zu beachten, dass alle Punkte dieselbe Gewichtung hatten.
- Das bedeutet unter normalen Bedingungen würde eine Vertrauenswürdigkeit
+ Das bedeutet, unter normalen Bedingungen würde eine Vertrauenswürdigkeit
  oder die Zuordnungsgenauigkeit des CPD diese Gewichtung vorgeben und so,
  die Abweichung noch weiter senken.
 \end_layout
 
 \begin_layout Standard
-Zum Test des Sicherheitsbereichs wurde unter denselben Bedingungen, wie
- für die Bestimmung der Eigenposition die Messung ausgeführt.
+Zum Test des Sicherheitsbereichs wurde unter gleichen Bedingungen, wie für
+ die Bestimmung der Eigenposition, die Messung ausgeführt.
  Hierbei wurde die Größe des Sicherheitsbereichs anhand der Menge des Rauschens
  protokolliert.
- Der Sicherheitsbereich wird in einer Ellipse angegeben, dass bedeutet er
+ Der Sicherheitsbereich wird in einer Ellipse angegeben, das bedeutet er
  hat eine Ausdehnung in zwei Richtungen.
  Für diese Messung wurde immer die Größere von beiden protokolliert.
  Die Messung ist in Abbildung 5.5 visualisiert.
@@ -466,24 +466,22 @@ Veränderung des Sicherheitsbereichs durch Rauschen
 \end_layout
 
 \begin_layout Standard
-Es ist zu erkennen, dass die Größe des Sicherheitsbereichs fast linear mit
- dem Rauschen steigt.
+Es ist zu erkennen, dass die Größe des Sicherheitsbereichs annähernd linear
+ mit dem Rauschen steigt.
  Dies war zu erwarten, da der Sicherheitsbereich über die Streuung der Punkte
- bestimmt wird und diese, mit zunehmenden Rauschen auch zunimmt.
- Das Ergebnis zeigt aber auch, dass der Sicherheitsbereich mit den Ausreißern
- ansteigt und somit die Ungenauigkeiten darstellt.
+ bestimmt wird und diese mit zunehmenden Rauschen zunimmt.
+ Das Ergebnis zeigt, dass der Sicherheitsbereich mit den Ausreißern ansteigt
+ und somit die Ungenauigkeiten darstellt.
  Dadurch erfüllt er den Zweck solche Abweichungen klar anzeigen zu können.
  
 \end_layout
 
 \begin_layout Standard
-Zusammenfassend ist zu sagen, dass die Genauigkeit beider Algorithmen genauer
- wird, desto mehr Ziele vorhanden sind.
- Beide Ansätze können trotz Ungenauigkeiten gute Ergebnisse erzielen und
- die Abweichungen, welche entstehen halten sich unter den Abweichungen,
- welche durch andere Positionsbestimmungsmethoden, wie Loran-C entstehen
- würden.
- 
+Zusammenfassend ist zu sagen, dass die Genauigkeit beider Algorithmen steigt,
+ desto mehr Ziele vorhanden sind.
+ Beide Ansätze können trotz Ungenauigkeiten gute Ergebnisse erzielen.
+ Die Abweichungen, welche entstehen halten sich unter den Ungenauigkeiten
+ von anderen Positionsbestimmungsmaßnahmen wie Loran-C.
 \end_layout
 
 \begin_layout Section
@@ -524,24 +522,25 @@ ches Ergebnis zu erzielen.
 \begin_inset Newline newline
 \end_inset
 
-Im Weiteren wurde mit 20 Zielen geprüft ab, wann die Zuordnungsgenauigkeit
+Im Weiteren wurde mit 20 Zielen geprüft, ab wann die Zuordnungsgenauigkeit
  des CPD abnimmt, wenn immer mehr Ausreißer hinzugefügt werden.
  Damit diese Daten realen Umständen entsprechen, hatte die Punktwolke eine
- Rotation von 140 Grad und ein Rauschen von 10 Meter.
+ Rotation von 140 Grad und ein Rauschen von 10 Metern.
  
 \begin_inset Newline newline
 \end_inset
 
-Es wurden mehrere Messungen durchgeführt mit verschiedener Struktur der
- Punktwolken.
- In Abbildung 5.6 sind die Ergebnisse dargestellt, hier zeigen die beiden
- Graphen jeweils das beste und schlechteste Ergebnis, welches über mehrere
- Messungen erzielt werden konnte.
+Es wurden mehrere Messungen durchgeführt, mit sich unterscheidener Struktur
+ der Punktwolken.
+ In Abbildung 5.6 sind die Ergebnisse dargestellt.
+ Hier zeigen die beiden Graphen jeweils das beste und schlechteste Ergebnis,
+ welches über mehrere Messungen erzielt werden konnte.
 \end_layout
 
 \begin_layout Standard
 \noindent
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -581,9 +580,8 @@ Zuordnungsgenauigkeit bei zunehmenden Ausreißern
 \begin_layout Standard
 Der Algorithmus kann ab einem bestimmten Punkt keine richtige Zuordnung
  mehr finden.
- Die Zuordnungsgenauigkeit sinkt nicht mit zunehmenden Ausreißern, denn
- sobald zu viele Ausreißer enthalten sind, ist die komplette Zuordnung falsch
- und kein Punkt kann mehr richtig zugeordnet werden.
+ Die Zuordnungsgenauigkeit fällt, bei zu vielen Ausreißern, direkt auf null
+ Prozent, weil alle Punkte falsch zugeordnet werden.
  Deswegen ist es wichtig die Ausreißer, welche manuell in den Algorithmus
  eingegeben werden müssen, mit einem möglichst genauen Wert zu schätzen.
  
@@ -591,7 +589,7 @@ Der Algorithmus kann ab einem bestimmten Punkt keine richtige Zuordnung
 \end_inset
 
 Der CPD ist robust gegen Ausreißer.
- Dies gilt jedoch, nur wenn man die Menge dieser vorher abschätzen kann,
+ Dies gilt jedoch nur, wenn man die Menge dieser vorher abschätzen kann,
  da sonst die Möglichkeit einer komplett falschen Zuordnung besteht.
 \end_layout
 
@@ -604,8 +602,8 @@ Der Position-Fix Algorithmus muss robust gegen falsche Zuordnungen sein,
  damit kleine Fehler des CPD-Algorithmus sich nicht negativ auf das Ergebnis
  auswirken.
  Deswegen wurde das Verfahren zur Klassifizierung und Entfernung von Punkten,
- welche zu weit außerhalb der Standardabweichung der Punktwolke liegen entwickel
-t (siehe 4.3.2).
+ welche zu weit außerhalb der Standardabweichung der Punktwolke liegen,
+ entwickelt (siehe 4.3.2).
  
 \begin_inset Newline newline
 \end_inset
@@ -622,7 +620,7 @@ Diese Methode zur Entfernung möglicher falscher Daten ist sehr effektiv
 \end_inset
 
 Die Messungen hierzu ergaben, dass falsch zugeordnete Punkte, welche einen
- großen Fehler bedeutet hätten immer korrekt entfernt wurden.
+ großen Fehler bedeutet hätten, immer korrekt entfernt wurden.
  Wenn die falsch zugeordneten Punkte nicht gefunden werden konnten, hatten
  sie entweder keine große Auswirkung auf das Ergebnis oder die Genauigkeit
  der Zuordnung, welche vom CPD verteilt wurde, sorgte für eine ausreichend
@@ -631,11 +629,11 @@ Die Messungen hierzu ergaben, dass falsch zugeordnete Punkte, welche einen
 
 \begin_layout Standard
 Abschließend ist zu sagen, dass beide Algorithmen für die konkrete Aufgabe
- gute Ergebnisse erzielen können und die anhand von Generator-Daten nachweisbar
- ist.
- Dies ist natürlich auch kritisch zu betrachten, da unter realen Daten andere
- Probleme auftreten könnten und es unbedingt nötig wäre vor dem praktischen
- Einsatz dieser Algorithmen sie unter realen Daten zu testen.
+ gute Ergebnisse erzielen können und anhand von Generator-Daten nachweisbar
+ gute Ergebnisse erzielen.
+ Dies ist auch kritisch zu betrachten, da unter realen Daten andere Probleme
+ auftreten können und es unbedingt nötig wäre, vor einem praktischen Einsatz
+ diese Algorithmen, unter realen Daten zu testen.
 \end_layout
 
 \end_body

@@ -88,7 +88,7 @@ Problemstellung
 \begin_layout Standard
 Die Eigenposition eines Schiﬀes gehört zu den wichtigsten navigatorischen
  Daten.
- Diese wird über einen GPS-Empfänger bestimmt.
+ Diese wird normalerweise über einen GPS-Empfänger bestimmt.
  Das GPS-Signal ist manipulierbar, somit besteht die Möglichkeit einer böswillig
 en Manipulation durch einen Angreifer.
  Dadurch fällt der GPS-Empfänger aus oder gibt eine falsche Position zurück.
@@ -96,13 +96,13 @@ en Manipulation durch einen Angreifer.
  vertrauenswürdig.
  Aufgrund dessen ist es notwendig, eine Methode zur Positionsbestimmung
  zu entwickeln, welche unabhängig von dem eigenen GPS-Empfänger arbeitet.
- Diese ist dadurch in der Lage die GPS-Daten zu verifizieren.
+ Diese ist dadurch in der Lage die Positionsdaten zu verifizieren.
 \begin_inset Newline newline
 \end_inset
 
 Zur Bestimmung der Eigenposition können die Daten aus dem Radar, die GPS-Daten
- der Schiffe in unmittelbarer Nähe (über AIS bekannt) und die Daten der
- Seekarte genutzt werden.
+ der Schiffe in unmittelbarer Nähe und die Daten der Seekarte genutzt werden.
+ Die Daten der Schiffe aus der Umgebung sind über AIS bekannt.
  Das Automatic Identification System (AIS) ist ein unverschlüsseltes Funksystem,
  zum Austausch von Schiffs- und Navigationsdaten.
  Dieses Informationssystem basiert auf dem Prinzip, dass jedes Schiff und
@@ -139,7 +139,7 @@ Aid to navigation
  AtoN's sind markante Landmarken oder Bojen zur Unterstützung der Navigation.
  Durch das Radar erhält man die relative Position der Schiffe und der AtoN's
  zu der Eigenposition.
- Durch diese beiden Daten lässt sich die Schiffsposition berechnen.
+ Mit diesen beiden Daten lässt sich die Schiffsposition berechnen.
  
 \begin_inset Newline newline
 \end_inset
@@ -147,11 +147,11 @@ Aid to navigation
 Die Zuordnung zwischen AIS- und Radar-Signalen ist aktuell abhängig von
  der über den eigenen GPS-Empfänger bestimmten Eigenposition.
  Da diese bestimmt werden soll, muss ein Algorithmus entwickelt werden,
- welcher unabhängig von dieser die Zuordnung finden kann.
- Dieser Algorithmus muss sich an der Entfernung zu den Punkten orientieren
- und darf diese nicht verändern, da dies eine Manipulation für den folgenden
- Positions-Bestimmungs-Algorithmus wäre.
- Dieser Positions-Bestimmungs-Algorithmus wird muss auch entwickelt werden.
+ welcher unabhängig von der Eigenposition, die Zuordnung finden kann.
+ Mit dieser Zuordnung kann ein Positions-Bestimmungs-Algorithmus die Schiffseige
+nposition bestimmen.
+ Dieser Positions-Bestimmungs-Algorithmus wird auch als Teil dieser Arbeit
+ entwickelt.
  Dessen Aufgabe ist es anhand der zugeordneten Daten die Eigenposition zu
  bestimmen.
 \begin_inset CommandInset nomenclature
@@ -173,15 +173,16 @@ Zielsetzung
 Das Ziel der Thesis ist die Entwicklung eines Algorithmus, welcher die Eigenposi
 tion und den Kurs (Heading) des Eigenschiffes möglichst genau bestimmen
  kann.
- Dieser soll unabhängig der eigenen GPS-Daten funktionieren.
+ Dieser soll unabhängig von den eigenen GPS-Daten funktionieren.
  Der Algorithmus soll später als eine Art Sensor für die Brücke eingesetzt
- werden, das heißt, die Brücke sendet die benötigten Daten an den Algorithmus
- und dieser sendet die errechnete Eigenposition und eine Darstellung an
- die Seekarte.
+ werden, damit das Ergebnis verwendet werden kann, um die Güte von GPS-Daten
+ zu überprüfen.
+ Hierfür sendet die Brücke die benötigten Daten an den Algorithmus und dieser
+ sendet die errechnete Eigenposition und eine Darstellung an die Seekarte.
  Der Algorithmus muss robust gegen Ausreißer und Ungenauigkeit sein, da
- die Reichweite von Radar und AIS nicht gleich ist und die Frequenz, mit
- der neue Daten kommen, der beiden Informationsquellen sich auch deutlich
- unterscheiden kann.
+ die Reichweite von Radar und AIS nicht gleich ist.
+ Zusätzlich unterscheidet sich die Aktualisierungsfrequenz der beiden Informatio
+nsquellen deutlich.
 \end_layout
 
 \begin_layout Section

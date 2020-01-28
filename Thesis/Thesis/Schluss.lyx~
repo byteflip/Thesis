@@ -84,7 +84,7 @@ Fazit
 \begin_layout Standard
 In dieser Arbeit wurden Methoden zum Zuordnen von AIS- und ARPA-Zielen,
  sowie eine Methode zum Bestimmen der Eigenposition.
- 
+ WIRD NOCH GESCHRIEBEN
 \end_layout
 
 \begin_layout Section
@@ -92,18 +92,18 @@ Ausblick
 \end_layout
 
 \begin_layout Standard
-Die entwickelten Ansätze lösen das am Anfang genannte Problem.
- Jedoch gibt es mehrere Stellen an denen Spielraum für Erweiterungen und
- Verbesserungen ist.
+Die entwickelten Ansätze lösen das am Anfang genannte Problem, jedoch gibt
+ es mehrere Stellen an denen Spielraum für Erweiterungen und Verbesserungen
+ ist.
  
 \begin_inset Newline newline
 \end_inset
 
 Der Zuordnungsalgorithmus basiert mit dem CPD auf rigid Transformationen.
- Die Genauigkeit des Algorithmus würde steigen falls es möglich wäre effizient
+ Die Genauigkeit des Algorithmus würde steigen, falls es möglich wäre, effizient
  Transformationen auf dem Erdellipsoid in diesen zu integrieren.
  Dies würde natürlich auch die Laufzeit verringern, da momentan beide Punktwolke
-n auf den Ursprung verschoben werden müssen
+n auf den Ursprung verschoben werden müssen.
 \begin_inset Newline newline
 \end_inset
 
@@ -114,9 +114,9 @@ Zudem würde eine Point-Set-Registration Methode, die globale Optima findet,
 \begin_inset Newline newline
 \end_inset
 
-Eine automatische Erkennung der Menge der Ausreißer würde, die Robustheit
+Eine automatische Erkennung der Menge der Ausreißer würde die Robustheit
  des CPD noch deutlich verbessern.
- Hierzu könnte, das Verhältnis zwischen der Menge von ARPA- zu AIS-Zielen
+ Hierzu könnte das Verhältnis zwischen der Menge von ARPA- zu AIS-Zielen
  verwendet werden.
  Um die Funktionalität dieses Ansatzes zu verifizieren wäre ein Test mit
  echten Daten jedoch unabdingbar.

@@ -84,7 +84,7 @@ Grundlagen
 \begin_layout Standard
 Im folgenden Kapitel werden Grundlagen für die folgende Arbeit definiert
  und erklärt.
- Diese Grundlagen sorgen für ein Grundverständnis des Themas und helfen
+ Diese Grundlagen sorgen für ein Grundverständnis der Thematik und helfen
  den Kontext und die restlichen Schritte der Arbeit zu verstehen.
 \end_layout
 
@@ -103,35 +103,34 @@ ARPA und AIS
 \end_layout
 
 \begin_layout Standard
-Das Automatic radar plotting aid (ARPA) ist für die Auswertung, Darstellung
- und Bestimmung weiterer wichtiger Werte mithilfe des Radars zuständig.
+Das Automatic radar plotting aid (ARPA) 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "ARPA"
+description "Automatic Radar Plotting Aid"
+literal "false"
+
+\end_inset
+
+ist für die Auswertung, Darstellung und Bestimmung weiterer wichtiger Werte
+ mithilfe des Radars zuständig.
  Es kann die Daten aus dem Radar, welche die Distanz und das Bearing zum
- jeweiligen Ziel sind darstellen und bei längerer Betrachtung sogar die
- Geschwindigkeit des Ziels bestimmen.
+ jeweiligen Ziel sind, darstellen und bei längerer Betrachtung die Geschwindigke
+it des Ziels bestimmen.
  Es wird hauptsächlich für die Kollisionsverhütung verwendet und ist in
  diesem Bereich das wichtigste System.
- Das ARPA kann auch Schiffe als solche erkennen und deswegen 
-\begin_inset Quotes gld
-\end_inset
-
-tracken
-\begin_inset Quotes grd
-\end_inset
-
-, diese werden unterschiedlich von anderen Radar Kontakten wie Landmassen
- behandelt.
- Die 
-\begin_inset Quotes gld
-\end_inset
-
-getrackten
+ Das ARPA kann Schiffe als solche erkennen und tracken.
+ Diese werden unterschiedlich von anderen Radarkontakten wie z.
+ B.
+ Landmassen behandelt.
+ Die getrackte
 \begin_inset Quotes grd
 \end_inset
 
  Ziele werden als eine NMEA-Nachricht, spezifisch ein TTM Diagramm in das
- Schiffsnetz gesendet, da diese höchst wahrscheinlich ein Schiff indizieren.
+ Schiffsnetz gesendet.
  Diese Nachricht enthält alle Daten, welche in Abbildung 2.1 zu erkennen
- sind, wobei die wichtigsten beiden Daten die aktuelle Distanz und Bearing
+ sind, wobei die wichtigsten beiden Daten die aktuelle Distanz und das Bearing
  sind.
  Das Bearing kann als 
 \emph on
@@ -147,7 +146,7 @@ relative
 relative
 \emph default
  Bearing gibt den Winkel zwischen dem Ziel und dem eigenen Schiff relativ
- von der Ausrichtung (Heading) des Eigenschiffes.
+ von der Ausrichtung (Heading) des Eigenschiffes an.
  Das 
 \emph on
 true 
@@ -157,8 +156,8 @@ Bearing gibt ebenso den Winkel zwischen Ziel und Eigenschiff an, jedoch
 \begin_inset Newline newline
 \end_inset
 
-Die Reichweite des Radars ist abhängig von den eingestellten Gebiet und
- Filtern.
+Die Reichweite des Radars ist abhängig von dem eingestellten Gebiet und
+ den eingestellten Filtern.
  Das eingestellte Gebiet kann beschränkt werden, um höhere Reichweiten des
  Radars zu erreichen.
  Dies ist hilfreich, falls man in bestimmten Richtungen keine Radarkontakte
@@ -169,8 +168,8 @@ Die Reichweite des Radars ist abhängig von den eingestellten Gebiet und
 \end_inset
 
 Die Frequenz mit der die Radardaten sich erneuern beträgt zwischen zwei
- bis vier Sekunden, dies ist die Zeit in welcher sich die Radarantenne einmal
- umdreht.
+ bis vier Sekunden.
+ Dies ist die Zeit in welcher die Radarantenne eine Umdrehung vollzieht.
  
 \begin_inset Newline newline
 \end_inset
@@ -180,8 +179,8 @@ Es gibt auch Fälle, in denen das Radar keine oder nur schlechte Daten liefern
  Dies kann bei schlechtem Wetter der Fall sein, da starker Regen das Radarbild
  beeinflusst und es so nur noch für kürzere Distanz klar zu erkennen ist.
  Dazu kommt, dass die Radarantenne durch ihre Lage beschränkt ist, da sie
- nichts geografisch höher Gelegenes erfassen kann, sowie sie nicht durch
- Ziele hindurch sehen kann.
+ nicht durch Ziele hindurch sehen kann und dadurch Verschattung von Schiffen
+ auftreten kann.
  Das sorgt für Fehlerfälle wie Verschattung von kleineren Schiffen hinter
  größeren.
  
@@ -204,27 +203,45 @@ usch bei der Seefahrt.
 \begin_inset Newline newline
 \end_inset
 
-Die AIS-Daten enthalten die absolute Position des Schiffes, die Bemessung
- des Schiffes, die Geschwindigkeit, den Kurs, den Namen und viele weitere
- Informationen über das sendende Schiff.
- Die Reichweite, über welche diese Informationen gesendet werden können
- übersteigt die Reichweite des Radars bei Weitem.
+Die AIS-Daten enthalten viele wichtige Daten über das sendende Schiff.
+ Einige wichtige sind:
+\end_layout
+
+\begin_layout Enumerate
+Die absolute Position
+\end_layout
+
+\begin_layout Enumerate
+Die Bemessung
+\end_layout
+
+\begin_layout Enumerate
+Die Geschwindigkeit 
+\end_layout
+
+\begin_layout Enumerate
+Der Kurs (Heading)
+\end_layout
+
+\begin_layout Standard
+Die Reichweite, über welche diese Informationen gesendet werden können,
+ übersteigt die Reichweite des Radars.
 \begin_inset Newline newline
 \end_inset
 
-Die Ausstattung eines AIS-Senders ist auf fast allen Schiffen Pflicht.
+Die Ausstattung eines AIS-Senders ist auf vielen Schiffen Ausrüstungspflicht.
  Zusätzlich ist es auf dicht befahrenen Seewegen verpflichtend AIS zu senden,
  um die Sicherheit dort zu erhöhen.
  Die Frequenz, in welcher die AIS-Nachricht gesendet werden muss, hängt
  von der Geschwindigkeit und der Drehrate des Schiffes ab.
- Deswegen können AIS-Nachrichten in einer Frequenz zwischen zwei Sekunden
- und drei Minuten versendet werden.
+ Auf Grund dessen können AIS-Nachrichten in einer Frequenz zwischen zwei
+ Sekunden und drei Minuten versendet werden.
 \begin_inset Newline newline
 \end_inset
 
- Die AIS-Daten werden auch von Landstationen wie Leuchttürmen und Navigationshil
-fen wie Bojen gesendet.
- Mithilfe dieser kann man sich besser in Fahrtrinnen und Häfen navigieren,
+ Die AIS-Daten werden ebenfalls von Landstationen wie Leuchttürmen und Navigatio
+nshilfen wie Bojen gesendet.
+ Mithilfe dieser kann man sich besser in Fahrtrinnen und Häfen orientieren,
  sollten diese nicht auf dem Radar zu erkennen sein.
 \begin_inset Newline newline
 \end_inset
@@ -232,7 +249,7 @@ fen wie Bojen gesendet.
 Obwohl AIS so eine wichtige Rolle in der Schifffahrt spielt, hat es einige
  gravierende Schwächen.
  Eine davon ist, dass AIS unverschlüsselt übertragen wird und somit für
- einen Angreifer einfach manipulierbar ist.
+ einen Angreifer manipulierbar ist.
  Ein weiteres Problem ist, dass die Daten aus den Sensoren der Schiffe gesendet
  werden.
  Hier könnte ein GPS-Empfänger böswillig manipuliert sein und diese manipulierte
@@ -241,10 +258,12 @@ Obwohl AIS so eine wichtige Rolle in der Schifffahrt spielt, hat es einige
 \begin_inset Newline newline
 \end_inset
 
-Das heißt, AIS ist sehr leicht manipulierbar und somit müssen die Daten
- vorher geprüft werden, bevor sie als vertrauenswürdig gelten können.
- Solche Manipulationen treten nur äußerst selten auf, jedoch gibt es kaum
- Maßnahmen, um so etwas zu erkennen.
+Das heißt, AIS ist sehr leicht manipulierbar.
+ Aus diesem Grund müssen die Daten aus dem AIS überprüft werden, bevor sie
+ für sicherheitskritische Anwendungen, wie Positionsbestimmung genutzt werden
+ können.
+ Solche Manipulationen treten nur äußerst selten auf, jedoch gibt es nur
+ wenige Maßnahmen, um diese zu erkennen oder ihnen entgegen zu wirken.
 \end_layout
 
 \begin_layout Subsection
@@ -254,7 +273,8 @@ NMEA 0183
 \begin_layout Standard
 Der NMEA 0183 ist ein Standard zur Kommunikation zwischen Geräten auf einer
  Schiffsbrücke.
- Dieser wurde von der 1983 veröffentlicht.
+ Dieser wurde von der National Marine Electronics Association 1983 veröffentlich
+t.
  In diesem ist unter anderem die Struktur der Nachrichten definiert 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -270,9 +290,7 @@ literal "true"
 Die Nachrichten, welche über NMEA gesendet werden enthalten z.
  B.
  Daten von Systemen auf dem Schiff wie dem Radar, Daten von Sensoren wie
- Kompasse und GPS-Empfängern.
- Hier rüber werden auch zusätzlich AIS-Nachrichten von Schiffen und AtoNs
- aus der Umgebung.
+ GPS-Empfängern und empfangene AIS-Daten von anderen Schiffen.
  
 \begin_inset Newline newline
 \end_inset
@@ -304,7 +322,7 @@ $
  durch welchen auch die folgenden Datenfelder zu identifizieren sind.
  Nun folgen die Datenfelder, welche für jeden Nachrichtentyp spezifisch
  sind.
- Am Ende der Nachricht folgt eine optionale Prüfzahl, welche mit einem 
+ Am Ende der Nachricht folgt eine Prüfzahl, welche mit einem 
 \begin_inset Quotes gld
 \end_inset
 
@@ -312,7 +330,7 @@ $
 \begin_inset Quotes grd
 \end_inset
 
- Abgetrennt wird.
+ abgetrennt wird.
  Die Nachricht wird mit einem Zeilenumbruch beendet.
  
 \begin_inset Newline newline
@@ -320,7 +338,7 @@ $
 
 Im Folgenden beschreibt Abbildung 2.1 eine Tracked Target Message (TTM) NMEA
  - Nachricht.
- Dieser Nachrichtentyp enthält Schiffe aus dem Radar die, als solche erkannt
+ Dieser Nachrichtentyp enthält Schiffe aus dem Radar, die als solche erkannt
  wurden und nun kontinuierlich über das Radar verfolgt werden.
  
 \begin_inset CommandInset nomenclature
@@ -401,6 +419,10 @@ literal "true"
 \end_layout
 
 \begin_layout Subsection
+WGS 84 und Loran-C
+\end_layout
+
+\begin_layout Subsubsection*
 WGS 84
 \end_layout
 
@@ -440,7 +462,7 @@ Semi Minor Axis
 
 \begin_layout Standard
 Somit sind globale Positionsangaben in Längen- und Breitengrad möglich.
- Die Längengrade verlaufen zwischen den Nord- und Südpol, die Breitengrade
+ Die Längengrade verlaufen zwischen dem Nord- und Südpol, die Breitengrade
  parallel zum Äquator.
  Dadurch sinkt die Distanz zwischen benachbarten Längengraden, je näher
  sie einem Pol kommen.
@@ -464,13 +486,55 @@ literal "false"
  
 \end_layout
 
+\begin_layout Subsubsection*
+Loran-C
+\end_layout
+
+\begin_layout Standard
+Die Long Range Navigation (LORAN) ist eine alternative Methode zur Positionsbest
+immung.
+ Die aktuelle Version wird LORAN-C genannt.
+ In der Schifffahrt wird diese verwendet, wenn kein GPS-Signal verfügbar
+ ist.
+\begin_inset Newline newline
+\end_inset
+
+Dieses Navigationssystem basiert auf einem Hauptsender und bis zu fünf Nebensend
+ern.
+ Diese sind durch eine Distanz von mehreren 100 Kilometern getrennt.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Diese Sender senden in bestimmten Abständen Signale aus, welche von Schiffen
+ empfangen werden können.
+ Hierbei gibt es zwischen den Signalen der Sender eine Verzögerung um Störungen
+ unter den Sendern zu vermeiden.
+ Das Schiff, welches die Signale empfängt kann nun Anhand der zeitlichen
+ Differenz, der Signale, die Eigenposition bestimmen.
+\begin_inset Newline newline
+\end_inset
+
+Die Genauigkeit von LORAN-C ist abhängig von der Lage des Schiffes zu den
+ Sendestationen und der Qualität des Signalempfängers.
+ Aktuell gibt es bereits Signalempfänger, welche bei optimalen Bedingungen
+ eine Genauigkeit von bis zu zehn Metern garantieren, dies entspricht der
+ Durchschnittlichen Genauigkeit eines GPS-Empfängers.
+ Derzeit sind auf den meisten Schiffen ältere Empfänger verbaut, welche
+ die Eigenposition nur auf einige Hundert Meter genau bestimmen können.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Subsection
 Berechnungen auf dem Erdellipsoid
 \end_layout
 
 \begin_layout Standard
-Die Berechnung von Entfernung auf dem Erdellipsoid sind besonders in der
- Weise, dass sie mit geodätischen Koordinaten bestimmt werden müssen.
+Die Berechnung von Entfernung auf dem Erdellipsoid sind besonders, weil
+ sie mit geodätischen Koordinaten bestimmt werden müssen.
  Die Position der geodätischen Koordinaten enthält auch die Abplattung der
  Erde, diese steigt, je näher die Position an einem der Pole liegt.
  Die Fehler, die durch diese Abplattung entstehen, sollen möglichst gering
@@ -479,8 +543,8 @@ Die Berechnung von Entfernung auf dem Erdellipsoid sind besonders in der
 \end_layout
 
 \begin_layout Standard
-Für diese Arbeit sind besonders Formeln wichtig, welche die erste und zweite
- geodätische Hauptaufgabe lösen können.
+Für diese Arbeit sind Formeln wichtig, welche die erste und zweite geodätische
+ Hauptaufgabe lösen können.
  Die erste geodätische Hauptaufgabe ist das Bestimmen eines Punktes mit
  einem gegebenen Punkt, einer Richtung und der Distanz.
  
@@ -503,7 +567,7 @@ Die erste Möglichkeit ist die Berechnung über die euklidische Norm.
 
 Der Vorteil hiervon ist, dass wenn die Entfernungen zwischen den Punkten
  nicht zu groß werden, der Fehler durch die Erdkrümmung nur sehr klein ist.
- Zusätzlich ist die Berechnung so sehr simpel und effizient ausführbar.
+ Zusätzlich ist die Berechnung sehr simpel und effizient ausführbar.
  Die Berechnung über diesen Weg ist nur ratsam, solange die Distanz nicht
  mehrere Längen- bzw.
  Breitengrade überschreitet.
@@ -513,7 +577,7 @@ Der Vorteil hiervon ist, dass wenn die Entfernungen zwischen den Punkten
 \end_layout
 
 \begin_layout Standard
-Die zweite Mögliche Formel für die Berechnung ist die Haversine Formel 
+Die zweite mögliche Formel für die Berechnung ist die Haversine Formel 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Haversine"
@@ -524,13 +588,12 @@ literal "true"
 .
  Diese beruht auf der Annahme das die Erde eine perfekte Kugel ist und somit
  Distanzberechnungen auf einer Kugel möglich sind.
- Der Vorteil dieser Methode ist, dass der Fehler deutlich geringer bleibt
- als bei der euklidischen Norm.
+ Der Vorteil dieser Methode ist, dass der Fehler deutlich geringer als bei
+ der euklidischen Norm bleibt.
  Jedoch ist der Fehler für größere Distanzen, vor allem über die Pole noch
  relativ groß.
  Die Formel ist deswegen für kleine bis mittlere Distanzen verwendbar, jedoch
- nicht für große Distanzen..
- 
+ nicht für große Distanzen.
 \end_layout
 
 \begin_layout Standard
@@ -582,35 +645,64 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="3">
+<lyxtabular version="3" rows="6" columns="3">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Distanz (Berechnung Vincenty Formel)
+Distanz 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Euklidische Norm
+Abweichung Euklidische 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Haversine Formel
+Abweichung Haversine 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vincenty Formel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Norm zur Vincenty Formel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Formel zur Vincenty Formel
 \end_layout
 
 \end_inset
@@ -630,7 +722,7 @@ Haversine Formel
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.0069
+0,0069
 \end_layout
 
 \end_inset
@@ -659,7 +751,7 @@ Haversine Formel
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.0626
+0,0626
 \end_layout
 
 \end_inset
@@ -688,7 +780,7 @@ Haversine Formel
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.626
+0,626
 \end_layout
 
 \end_inset
@@ -717,7 +809,7 @@ Haversine Formel
 \begin_inset Text
 
 \begin_layout Plain Layout
-5.276
+5,276
 \end_layout
 
 \end_inset
@@ -798,15 +890,15 @@ rt.
 \end_layout
 
 \begin_layout Enumerate
-Translation, das verschieben der Punktwolke
+Translation, das Verschieben der Punktwolke
 \end_layout
 
 \begin_layout Enumerate
-Rotation, das rotieren der Punktwolke um den Ursprung
+Rotation, das Rotieren der Punktwolke um den Ursprung
 \end_layout
 
 \begin_layout Enumerate
-Spiegelung, das spiegeln der gesamten Punktwolke um eine Achse des Koordinatensy
+Spiegelung, das Spiegeln der gesamten Punktwolke um eine Achse des Koordinatensy
 stems
 \end_layout
 
@@ -819,8 +911,8 @@ Hierbei ist Spiegelung aber eine eher selten verwendete Transformation im
 Eine Transformation wird als non-rigid bezeichnet sobald sie die Abstände
  und Winkel zwischen den Punkten verändert.
  Das bedeutet, sie verändert die Struktur der Punktwolke.
- Zu den bei rigid Transformationen erlaubten Transformationen kommen nun
- noch affine Transformationen hinzu, diese sind: 
+ Zusätzlich zu den rigid Transformationen sind die folgenden Transformationen
+ möglich, diese sind: 
 \end_layout
 
 \begin_layout Enumerate
@@ -850,8 +942,15 @@ Gaussian Mixture Model
 \end_layout
 
 \begin_layout Standard
-Ein Gaussian Mixture Model ist eine Mischverteilung basierend auf Normalverteilu
-ngen.
+Ein Gaussian Mixture Model 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GMM,GMM-Definition"
+literal "true"
+
+\end_inset
+
+ (GMM) ist eine Mischverteilung basierend auf Normalverteilungen.
  Eine Mischverteilung ist eine Zusammensetzung von Verteilungen verschiedener
  Datenmengen.
  Bei Gaussian Mixture Models sind diese Verteilungen Normalverteilungen.
@@ -860,20 +959,12 @@ ngen.
 \end_inset
 
  Normalverteilungen, welche alle von jeweils unterschiedlichen Parametern
- abhängen 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "GMM"
-literal "true"
-
-\end_inset
-
-.
+ abhängen .
  Diese Parameter sind:
 \end_layout
 
 \begin_layout Enumerate
-Einem Mittelwert 
+Der Mittelwert 
 \begin_inset Formula $\mu$
 \end_inset
 
@@ -881,12 +972,12 @@ Einem Mittelwert
 \end_layout
 
 \begin_layout Enumerate
-Einer Varianz 
+Die Varianz 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
  bzw.
- einer Kovarianz 
+ die Kovarianz 
 \begin_inset Formula $\Sigma$
 \end_inset
 
@@ -906,7 +997,7 @@ Die Dichtefunktion der Normalverteilungen
 \begin_inset Formula $i$
 \end_inset
 
- enthalten in einem Gaussian Mixture Model ist wie folgt definiert.
+ ist wie folgt definiert.
 \end_layout
 
 \begin_layout Standard
@@ -917,27 +1008,35 @@ Die Dichtefunktion der Normalverteilungen
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $f_{i}(x)=N(\mu_{i},\Sigma_{i})(x)=\frac{1}{(2\pi)^{\frac{d}{2}}|\Sigma_{i}|^{\frac{1}{2}}}\cdot exp(-\frac{1}{2}(x-\mu_{i})\cdot\Sigma_{i}^{-1}\cdot(x-\mu_{i}))$
+\begin_inset Formula 
+\[
+f_{i}(x)=N(\mu_{i},\Sigma_{i})(x)=\frac{1}{(2\pi)^{\frac{d}{2}}|\Sigma_{i}|^{\frac{1}{2}}}\cdot exp(-\frac{1}{2}(x-\mu_{i})\cdot\Sigma_{i}^{-1}\cdot(x-\mu_{i}))
+\]
+
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Somit ist die Wahrscheinlichkeitsdichtefunktion des Gaussian Mixture Models
  die folgende.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula ${\displaystyle f(x)=\sum_{i=1}^{M}w_{i}f_{i}(x)=\sum_{i=1}^{M}\cdot\frac{a_{i}}{\left(2\pi\right)^{\frac{d}{2}}|\Sigma_{i}|^{\frac{1}{2}}}\cdot exp(-\frac{1}{2}(x-\mu_{i})\cdot\Sigma_{i}^{-1}\cdot(x-\mu_{i}))}$
+\begin_inset Formula 
+\[
+{\displaystyle f(x)=\sum_{i=1}^{M}w_{i}f_{i}(x)=\sum_{i=1}^{M}\cdot\frac{a_{i}}{\left(2\pi\right)^{\frac{d}{2}}|\Sigma_{i}|^{\frac{1}{2}}}\cdot exp(-\frac{1}{2}(x-\mu_{i})\cdot\Sigma_{i}^{-1}\cdot(x-\mu_{i}))}
+\]
+
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Die Gaussian Mixture Models werden immer verwendet, wenn eine Verteilung
- aus mehrere Gauß-Verteilungen besteht oder es abschätzbar ist das dies
+ aus mehreren Gauß-Verteilungen besteht oder es abschätzbar ist, dass dies
  der Fall sein wird.
  Dadurch finden sie eine Anwendung im Feld des Unsupervised Learnings für
  das Clustering von Datensätzen.
@@ -946,7 +1045,7 @@ Die Gaussian Mixture Models werden immer verwendet, wenn eine Verteilung
 \end_inset
 
 Sie finden auch in Point Set Registration Anwendung.
- Hier wird meist aus einer der Punktwolken eine Menge von Gaussian mixture
+ Hier wird meist aus einer der Punktwolken eine Menge von Gaussian Mixture
  Models generiert, welche nun mit den Punkten der zweiten Punktwolke verglichen
  werden.
  Dadurch ist es möglich, eine probabilistische Lösung für das Problem zu
@@ -967,8 +1066,15 @@ EM-Algorithmus
 \end_layout
 
 \begin_layout Standard
-Der Expectation-Maximization Algorithmus ist ein iterativer Algorithmus
- zur Bestimmung von 
+Der Expectation-Maximization Algorithmus 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "EM"
+literal "true"
+
+\end_inset
+
+ ist ein iterativer Algorithmus zur Bestimmung von 
 \begin_inset Quotes gld
 \end_inset
 
@@ -988,15 +1094,7 @@ versteckter
  Parameter ist ein Parameter, welcher nur über die Abhängigkeit von einem
  anderen Parameter beobachtet werden kann.
  Hierfür muss ein mathematisches Modell existieren, um die beiden Parameter
- ineinander zu überführen 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "EM"
-literal "true"
-
-\end_inset
-
-.
+ ineinander zu überführen.
  
 \begin_inset Newline newline
 \end_inset
@@ -1006,13 +1104,13 @@ Ein Beispiel im Kontext des Point Set Registration ist, dass die Zuordnung
  die Punktwolken ineinander zu überführen, so voneinander abhängen.
  Sobald die Zuordnung bekannt ist, kann man damit die Transformationsparameter
  bestimmen und andersherum.
- Somit ist das Ziel die Zuordnung zu finden, welche von den Transformationsparam
-etern abhängt.
+ Somit ist es das Ziel die Zuordnung zu finden, welche von den Transformationspa
+rametern abhängt.
 \begin_inset Newline newline
 \end_inset
 
 Der EM-Algorithmus startet meistens mit einer zufälligen Initialisierung
- und optimiert nun diese bis er konvergiert.
+ und optimiert diese bis er konvergiert.
 \begin_inset Newline newline
 \end_inset
 
@@ -1047,8 +1145,16 @@ Coherent Point Drift
 \end_layout
 
 \begin_layout Standard
-Der Coherent Point Drift Algorithmus (CPD) ist ein Point Set Registration
- Verfahren, welches Rigid und non-Rigid Registrierungen lösen kann.
+Der Coherent Point Drift Algorithmus 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CPD"
+literal "true"
+
+\end_inset
+
+ (CPD) ist ein Point Set Registration Verfahren, welches Rigid und non-Rigid
+ Registrierungen lösen kann.
  Im Weiteren wird hier der Ablauf der rigid Registrierung erläutert, da
  nur dieser im Kontext dieser Arbeit relevant ist.
 \begin_inset CommandInset nomenclature
@@ -1065,18 +1171,14 @@ literal "false"
 
 Der CPD gehört zu den probabilistischen Point Set Registration Verfahren,
  dies bedeutet er arbeitet mit Wahrscheinlichkeiten für die Zuordnung der
- Punkte anstatt mit einem 
-\emph on
-hard assignment
-\emph default
-.
+ Punkte anstatt mit einer festen Zuweisung.
  Dieser probabilistische Weg ist möglich, da der Algorithmus mit Gaussian
  Mixture Models arbeitet.
  
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-Im folgenden wird die Funktionsweise des Coherent Point Drifts genauer beschrieb
+Im Folgenden wird die Funktionsweise des Coherent Point Drifts genauer beschrieb
 en.
 \begin_inset Newline newline
 \end_inset
@@ -1085,8 +1187,8 @@ Es wird eine Punktwolke durch GMM Mittelwerte beschrieben.
  Das bedeutet, jeder Punkt wird als eine Normalverteilung angenommen mit
  seiner Position als Mittelwert und einer gleichen Varianz für alle Punkte.
  Die andere Punktwolke bleibt in ihrer normalen Form.
- Die GMM Punktwolke wird im Weiteren bewegende Punktwolke und die als feste
- Punktwolke bezeichnet.
+ Die GMM Punktwolke wird im Weiteren als bewegende Punktwolke und die sich
+ nicht bewegende Punktwolke als feste Punktwolke bezeichnet.
 \begin_inset Newline newline
 \end_inset
 
@@ -1139,7 +1241,7 @@ keiten für eine Zuordnung von jedem Punkt der bewegenden Punktwolke zu jedem
 \begin_inset Formula $y:$
 \end_inset
 
- Punkt aus der stehenden Punktwolke mit 
+ Punkt aus der bewegenden Punktwolke mit 
 \begin_inset Formula $M$
 \end_inset
 
@@ -1175,10 +1277,6 @@ p_{mn}=\frac{e^{-\frac{1}{2\sigma^{2}}||x_{n}-(Ry_{m}+t)||^{2}}}{\sum_{k=1}^{M}e
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Der M-Schritt bestimmt nun neue maximierte Transformationsparameter, welche
  anhand der Zuordnung optimiert wurden.
  Hierfür wird die Rotationsmatrix mithilfe von Singulärwertzerlegung bestimmt
@@ -1221,24 +1319,20 @@ t=\mu_{fix}-R\mu_{moving}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Diese beiden Schritte werden solange wiederholt, bis die Änderung in den
  Transformationsparametern nur noch unter einem gewissen Schwellwert liegt.
- Das bedeutet die Zuordnung und die Transformationsparameter werden durch
+ Das bedeutet, die Zuordnung und die Transformationsparameter werden durch
  den EM-Algorithmus solange verbessert bis ein Maximum gefunden wurde.
  Dieses Maximum muss aber nicht das globale Maximum sein.
  Der EM-Algorithmus findet immer nur ein lokales Maximum, das bedeutet,
  dass auch der CPD immer nur ein lokales Maximum für die Zuordnung und Transform
 ation findet.
  Aus diesem Grund dürfen die Punktwolken zu Beginn der Zuordnung keine zu
- großen Unterschied aufweisen, da sonst die Punkte initial falsch zugeordnet
+ großen Unterschiede aufweisen, da sonst die Punkte initial falsch zugeordnet
  werden und möglicherweise der Algorithmus nur ein lokales Maximum findet.
- Eine weitere Schwäche des Algorithmus ist, dass die Menge an Ausreißern
+ Eine weitere Schwäche des Algorithmus ist, dass die Menge an Ausreißern,
  welche erwartet werden initial eingegeben werden müssen.
- Somit ist es notwendig das diese Menge bestimmbar oder abschätzbar ist
+ Somit ist es notwendig, dass diese Menge bestimmbar oder abschätzbar ist
  für ein optimales Ergebnis 
 \begin_inset CommandInset citation
 LatexCommand cite
