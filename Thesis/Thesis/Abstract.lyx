@@ -90,9 +90,12 @@ Die Manipulation von Positionsdaten ist eine zunehmende Bedrohung in der
  Dies ist auf die Manipulierbarkeit von GPS-Daten zurückzuführen.
  Zur Minderung dieser Gefahr wurde eine Methode entwickelt, mit welcher
  die Eigenposition, unabhängig der GPS-Daten, bestimmt werden kann.
- Hierfür werden die Informationen der umliegenden Schiffe und des Radars
- genutzt.
-  
+ Hierfür werden die Informationen der umliegenden Schiffe und des Radars,
+ mithilfe des Coherent Point Drift Algorithmus zugeordnet und mit einem
+ entwickelten Positions-Bestimmungs-Algorithmus verarbeitet.
+ Dieser Ansatz lieferte bessere Ergebnisse je mehr Daten einander zugeordnet
+ werden konnten.
+ 
 \end_layout
 
 \begin_layout Standard

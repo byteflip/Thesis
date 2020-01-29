@@ -152,7 +152,7 @@ relative
 true 
 \emph default
 Bearing gibt ebenso den Winkel zwischen Ziel und Eigenschiff an, jedoch
- bezogen auf die Nordrichtung.
+ bezogen auf die geografische Nordrichtung.
 \begin_inset Newline newline
 \end_inset
 
@@ -458,6 +458,14 @@ Semi Minor Axis
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+Abflachungsfaktor der Erde 
+\begin_inset Formula $\frac{1}{f}=298,257223563$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -519,12 +527,35 @@ Die Genauigkeit von LORAN-C ist abhängig von der Lage des Schiffes zu den
  Sendestationen und der Qualität des Signalempfängers.
  Aktuell gibt es bereits Signalempfänger, welche bei optimalen Bedingungen
  eine Genauigkeit von bis zu zehn Metern garantieren, dies entspricht der
- Durchschnittlichen Genauigkeit eines GPS-Empfängers.
+ Durchschnittlichen Genauigkeit eines GPS-Empfängers 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GPS-Accuracy"
+literal "true"
+
+\end_inset
+
+.
  Derzeit sind auf den meisten Schiffen ältere Empfänger verbaut, welche
  die Eigenposition nur auf einige Hundert Meter genau bestimmen können.
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "LORAN"
+description "Long Range Navigation"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LORAN-C QUELLE
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 
 \end_layout
 
@@ -539,7 +570,7 @@ Die Berechnung von Entfernung auf dem Erdellipsoid sind besonders, weil
  Erde, diese steigt, je näher die Position an einem der Pole liegt.
  Die Fehler, die durch diese Abplattung entstehen, sollen möglichst gering
  gehalten werden, deswegen gibt es verschiedene Formeln zur Berechnung auf
- dem Erdellipsoiden, welche sich in Genauigkeit und Performanz unterscheiden.
+ dem Erdellipsoid, welche sich in Genauigkeit und Performanz unterscheiden.
 \end_layout
 
 \begin_layout Standard

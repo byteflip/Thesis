@@ -126,7 +126,7 @@ Zuerst werden die Transformationsparameter so initialisiert, dass die beiden
  kann.
  Wenn die Zuordnung bestimmt wurde, kann nun über die Summe der Abstandsquadrate
  zwischen den Punkten ein Fehler zwischen den Punktwolken berechnet werden.
- Wenn der bestimmte Fehler einen Schwellwert unterschreitet ist die Registration
+ Wenn der bestimmte Fehler einen Schwellwert unterschreitet ist die Zuordnung
  abgeschlossen.
  Sollte der Fehler zu groß sein, werden die Transformationsparameter anhand
  der gefundenen Zuordnung neu bestimmt und der Algorithmus wird iterativ
@@ -172,19 +172,19 @@ Der ICP Algorithmus wurde aus folgenden Gründen nicht in dieser Arbeit verwende
 :
 \end_layout
 
-\begin_layout Enumerate
-Die Rotation zwischen den beiden Punktwolken kann beliebig sein und ist
- vorher nicht bestimmbar
+\begin_layout Itemize
+Die Rotation zwischen den beiden Punktwolken kann beliebig sein und ICP
+ kann diese nur in einem kleinen Bereich korrekt finden
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 Es können mehrere Punkte in den Punktwolken fehlen, aufgrund der großen
  Punktmenge, welche aus der Menge an Daten resultiert
 \end_layout
 
-\begin_layout Enumerate
-Die Zuordnung von Punkten ist eindeutig (0 oder 1), was das erkennen von
- Fehlern oder das bestimmen einer Vertrauenswürdigkeit sehr schwer macht
+\begin_layout Itemize
+Die Zuordnung von Punkten ist digital (0 oder 1), was das Erkennen von Fehlern
+ oder das bestimmen einer Vertrauenswürdigkeit sehr schwer macht
 \end_layout
 
 \begin_layout Subsection
@@ -194,8 +194,8 @@ Subgraph Matching
 \begin_layout Standard
 Das Subgraph Matching ist ein weiterer Ansatz, um eine Zuordnung zwischen
  den Punktwolken wiederherzustellen.
- Hierfür würden die Punktwolken als zwei vollvermaschte Graphen betrachtet
- werden.
+ Hierfür wurde versucht die Punktwolken als zwei vollvermaschte Graphen
+ zu betrachten.
  
 \begin_inset Newline newline
 \end_inset
@@ -252,9 +252,8 @@ literal "true"
 Die Stärke dieses Ansatzes ist die Genauigkeit, da das Finden eines Subgraphen
  eine eindeutige Zuordnung zur Folge hätte, welche je nach Größe des Subgraphs
  auch als dementsprechend sicher einzustufen wäre.
- Zusätzlich kann sich so jede beliebige Rotation zwischen den Punktwolken
- finden lassen, da die Zuordnung nur auf den Abständen zwischen den Punkten
- basiert.
+ Durch die gefundene Zuordnung ist nun auch die Rotation zwischen den Punktwolke
+n berechenbar.
 \begin_inset Newline newline
 \end_inset
 
@@ -294,47 +293,37 @@ Coherent Point Drift
 Der in dieser Arbeit verwendete Algorithmus ist der Coherent Point Drift
  Algorithmus.
  Die Wahl für diesen Algorithmus wird im Folgenden genauer erklärt.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-Der CPD kann mit verrauschten und Ausreißer behafteten Daten immer noch
- eine korrekte Zuordnung finden.
- Er hat ein soft assignment (Wert zwischen 0 und 1), anstatt einer eindeutigen
- Zuordnung(hard assignment) wie der ICP Algorithmus.
- Durch dieses soft assignment ist es auch möglich, eine Aussage über die
+Der CPD hat eine weiche Zuordnung (Wert zwischen 0 und 1), anstatt einer
+ digitalen Zuordnung(0 oder 1) wie der ICP Algorithmus.
+ Durch diese weiche Zuordnung ist es auch möglich, eine Aussage über die
  Vertrauenswürdigkeit eines Zuordnungspaares zu treffen.
- Somit können Punkte, welche sicher zugeordnet werden konnten eine hohe
- Vertrauenswürdigkeit zusprechen, da eine hohe Zuordnung bedeutet, dass
- die ARPA und AIS-Daten zusammenpassten.
- Dadurch könnte der errechnete Wert, wie genau die Zuordnung gepasst hat,
- als Gewichtung genutzt werden.
+ Somit kann Punkten, welche sicher zugeordnet werden konnten eine hohe Vertrauen
+swürdigkeit zugesprochen werden.
+ Eine hohe Vertrauenswürdigkeit indiziert also, dass die ARPA und AIS-Daten
+ zusammenpassen.
 \begin_inset Newline newline
 \end_inset
 
 Eine weitere wichtige Eigenschaft von CPD ist, dass es möglich ist Ausreißer
  in den Punktwolken zu erkennen, solange man deren Menge im Vergleich zur
  Gesamtheit abschätzen kann.
- Dies war in ICP und Subgraph Matching noch ein Problem.
 \begin_inset Newline newline
 \end_inset
 
-Zusätzlich kann der CPD eine Rotation der Punktwolke erkennen, was essenziell
- für die Bestimmung des Headings des Schiffes ist (siehe Programmablauf).
+Zusätzlich kann der CPD mehrfach ausgeführt eine beliebige Rotation der
+ Punktwolke erkennen (siehe Kapitel 4.2.3), was essenziell für die Bestimmung
+ des Headings des Schiffes ist (siehe 4.2.1).
  Dies funktioniert jedoch nur für einen bestimmten Bereich, da der CPD nur
  ein lokales Maximum finden kann.
- Auf dieses Problem wird in 4.23 genauer eingegangen.
-\begin_inset Newline newline
-\end_inset
-
-Es existiert noch ein weiteres Problem mit diesem Ansatz.
- Der CPD benötigt für das finden von Ausreißern einen initialen Wert für
- die Menge der Ausreißer, welche in den Punktwolken erwartet werden.
- 
+ Auf dieses Problem wird in 4.2.3 genauer eingegangen.
 \begin_inset Newline newline
 \end_inset
 
 In der folgenden Tabelle 4.1 ist die Entscheidungsfindung für das Verfahren
- tabelliert anhand der Anforderungen.
+ tabellarisch gegenübergestellt anhand der Anforderungen.
  Zu erkennen sind die einzelnen Stärken der Ansätze und welche Eigenschaften
  fehlen, um das hier betrachtete Problem effektiv zu lösen.
 \end_layout
@@ -575,8 +564,8 @@ Vor- und Nachteile der Ansätze
 \end_layout
 
 \begin_layout Standard
-Die Implementierung des CPD Algorithmus erfolgte mithilfe eines Github Repositor
-ys 
+Die Implementierung des CPD Algorithmus basiert auf der Arbeit von Gadomski
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "CPD_C++"
@@ -585,14 +574,30 @@ literal "true"
 \end_inset
 
 .
- In diesem ist der Algorithmus mithilfe der Eigen3 Bibliothek implementiert.
+ Es steht unter der General Public License 2 (GPL2).
+ In dieser ist der Algorithmus mithilfe der Eigen3 Bibliothek implementiert.
  Die Eigen3 Bibliothek umfasst Methoden für Matrizen Berechnung, sowie Methoden
  zur Singulärwertzerlegung.
- Diese Implementierung kann auf bestimmte Weise parametrisiert werden, was
- im Folgenden genauer erklärt wird.
-\end_layout
+ 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "GPL2"
+description "General Public License 2"
+literal "false"
 
-\begin_layout Standard
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Der von Gadomski implementierte CPD ist nicht der originale CPD.
+ Er bietet weitere Möglichkeiten, wie das Spiegeln und Skalieren bei rigid
+ Transformationen, jedoch auch die Möglichkeit, diese zusätzlichen Transformatio
+nen nicht zu verwenden.
+\begin_inset Newline newline
+\end_inset
+
 Der Algorithmus gibt die Möglichkeit vor der Ausführung mehrere Einstellungen
  zu treffen.
  Hier wurden Folgende Einstellungen getroffen:
@@ -611,13 +616,21 @@ Die Ausgabe der Zuordnung der Punkte wurde als Rückgabe festgelegt
 \end_layout
 
 \begin_layout Standard
-Die Transformationen Spiegelung und Skalierung wurden ausgeschlossen, weil
- das die Punktwolke in ihrer Form verändern würde.
- Das ist nicht gewünscht, da die Radardaten sehr genau sind und eine Veränderung
- ihrer Struktur nur zu Fehlern führen würde.
- Zusätzlich würde so auch die Aussagekraft verringert werden, welche die
- Zuordnungswerte haben, falls die Struktur der Punktwolke sich beim Verfahren
- ändert.
+Die Transformationen Skalierung wurden ausgeschlossen, weil das die Punktwolke
+ in ihrer Form verändern würde.
+ Die Spiegelung wurde ebenfalls deaktiviert, weil die ARPA- und AIS-Daten
+ bereits korrekt gespiegelt sind.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+spiegelkorrekt?
+\end_layout
+
+\end_inset
+
+ Das ist nicht gewünscht, weil ARPA- und AIS-Daten bereits seitenrichtig
+ und in einer einheitlichen Skalierung vorliegen.
 \end_layout
 
 \begin_layout Section
@@ -905,7 +918,7 @@ Rotationsschwäche von Coherent Point Drift
 Das erkennen von Rotation ist eine essenzielle Eigenschaft, welche der Algorithm
 us benötigt um die Punktwolken einander zuzuordnen und somit auch das Heading
  des Eigenschiffes zu bestimmen.
- Die Rotation kann jeden beliebigem gültigen Wert entsprechen, da die Drehung
+ Die Rotation kann jedem beliebigen gültigen Wert entsprechen, da die Drehung
  der ARPA Punktwolke abhängig vom Heading ist und die Drehung der AIS Punktwolke
  immer nach Norden ausgerichtet ist.
  Somit ist jeder Rotationswinkel eine mögliche Lösung und das Problem kann
@@ -942,13 +955,13 @@ literal "true"
 
 In Tabelle 4.2 wurden die Ergebnisse des CPD Algorithmus für verschiedene
  Rotationen bestimmt.
- Diese Messung wurde mit perfekten Daten ausgeführt, dass bedeutet das alle
- Punkte zugeordnet werden können.
- Zudem ist es möglich die Punkte perfekt aufeinander zuzuordnen und das
+ Diese Messung wurde mit perfekten Daten ausgeführt, dies bedeutet, dass
+ alle Punkte zugeordnet werden können.
+ Zudem ist es möglich die Punkte perfekt aufeinander zuzuordnen, sodass
  lediglich der Rotationswinkel der Punktwolken sie voneinander unterscheidet.
  Die Punkte der Punktwolke wurden zufällig anhand einer Normalverteilung
  erstellt und besteht aus 20 Punkten in geodätischen Koordinaten.
- Alle Angaben sind in Grad gegeben.
+ Alle Angaben sind in Grad angegeben.
 \begin_inset Float table
 placement H
 wide false
@@ -1131,13 +1144,13 @@ Es ist deutlich zu erkennen, dass der CPD Algorithmus ab einem bestimmten
  Rotationswinkel, die korrekte Rotation nicht mehr findet und in einem lokalen
  Minimum terminiert.
  In den Testdaten von Tabelle 4.2 werden fünf verschiedene Minima gefunden,
- je nach Rotation der Punktwolke.
+ welche von je nach Rotation der Punktwolke gefunden werden.
  
 \end_layout
 
 \begin_layout Standard
 Für dieses Problem wurde eine Lösung entwickelt, um die korrekte Rotation
- sowie die korrekte Zuordnung zu bestimmen.
+ sowie Zuordnung zu bestimmen.
  
 \begin_inset Newline newline
 \end_inset
@@ -1159,9 +1172,8 @@ Hierfür wird der Algorithmus mehrfach ausgeführt, wobei nach jeder Ausführung
 
  Grad, weil diese Messung ohne Ausreißer stattfand und außerdem noch weitere
  Abweichungen das Ergebnis beeinflussen können.
- Eine dieser zu beachtenden Abweichungen ist das euklidische Transformationen
- auf geodätische Daten angewandt werden, was in Abweichungen resultieren
- könnte.
+ Eine dieser zu beachtenden Abweichungen ist, dass euklidische Transformationen
+ auf geodätische Daten angewandt werden, was in Abweichungen resultiert.
  Die Rotation der ARPA-Punktwolke ist sehr simple, da sie bereits in Polarkoordi
 naten vorliegt.
  Nachdem der Algorithmus achtmal ausgeführt wurde (
@@ -1205,16 +1217,16 @@ Bestimmung der Eigenposition
 \begin_layout Standard
 Mit dem Ergebnis des Coherent Point Drift Algorithmus können ARPA - Punkte
  auf ihre zugehörigen AIS - Punkte zugeordnet werden.
- Dadurch ist nun bekannt, wo dieser Punkt absolut auf der Karte liegt (AIS-Daten
-) und wie er relativ zu der Schiffseigenposition liegt (ARPA-Daten).
+ Dadurch ist nun bekannt, wo dieser Punkt absolut auf der Karte (AIS-Daten)
+ und wie er relativ zu der Schiffseigenposition liegt (ARPA-Daten).
  Durch diese beiden Daten ist es möglich, die Schiffseigenposition für jedes
  Paar zugeordneter Punkte zu berechnen.
 \begin_inset Newline newline
 \end_inset
 
-Momentan wird bei Versagen der GPS-Analge die Eigenposition von der Besatzung
+Derzeit wird bei Versagen der GPS-Analge die Eigenposition von der Besatzung
  des Schiffes bestimmt.
- Hierfür werden markante Ziele im AIS gesucht wie Leuchttürme.
+ Hierfür werden markante Ziele im AIS gesucht wie unter anderem Leuchttürme.
  Danach muss der Nautiker überprüfen, in welchem Winkel dieses Ziel zum
  eigenen Schiff liegt und so selber den passenden Radarpunkt identifizieren.
  Dies wird für zwei bis drei Ziele wiederholt, womit der Nautiker nun die
@@ -1361,8 +1373,8 @@ Arithmetisches Mittel der individuell zurückgerechneten Eigenpositionen
 Die Abbildung zeigt, wie stark die Genauigkeit der Positionsbestimmung erhöht
  werden kann, falls es möglich ist, eine Aussage über die Genauigkeit oder
  die Vertrauenswürdigkeit der einzelnen Punkte treffen zu können.
- Das wäre möglich über das Unterscheiden von Schiffen und AtoNs oder einer
- manuellen Eingabe.
+ Ein Maß hierfür könnte die Zuordnungswahrscheinlichkeit des CPD sein oder
+ die Unterscheidung zwischen AtoNs und Schiffen.
 \end_layout
 
 \begin_layout Subsection
@@ -1449,7 +1461,7 @@ d(\vec{X},\vec{\mu})=\sqrt{(\vec{X}-\vec{\mu})^{T}\cdot\Sigma^{-1}\cdot(\vec{X}-
 \end_inset
 
 Zur Berechnung der Mahalanobis Distanz wird nun das arithmetische Mittel
- und die Kovarianzmatrix bestimmt, jedoch ohne einbeziehen des Punktes,
+ und die Kovarianzmatrix bestimmt, jedoch ohne Einbeziehung des Punktes,
  zu welchem die Mahalanobis Distanz bestimmt werden soll, da sonst das Ergebnis
  verfälscht wird.
  Nachdem dies für jede individuelle Eigenposition berechnet wurde, ist es
@@ -1560,7 +1572,7 @@ n.
  Die Visualisierung wird über die Netzwerkschnittstelle von Herrn André
  Becker an die ECDIS übermittelt.
  Diese muss in Form einer SVG-Grafik gesendet werden, da sie sonst nicht
- verlustfrei Skaliert werden kann.
+ verlustfrei skaliert werden kann.
 \end_layout
 
 \begin_layout Standard
@@ -1622,9 +1634,9 @@ et, welches mit einem Strich sein Heading kennzeichnet.
  Eigenposition, welche für jedes Ziel individuell ist.
  Die Grafik wurde anhand perfekter Daten erstellt, deswegen führen alle
  Linien direkt zur Eigenposition.
- Die Ziele sind zusätzlich eingefärbt in grün, gelb oder rot.
- Diese Farben sollen ein Indikator sein, wie gut sie zugeordnet werden konnten
- und somit auch wie vertrauenswürdig ein Ziel ist.
+ Die Ziele sind zusätzlich in grün, gelb oder rot eingefärbt.
+ Die Farben sind ein Indikator, wie gut sie zugeordnet werden konnten und
+ somit auch wie vertrauenswürdig ein Ziel ist.
  
 \begin_inset Newline newline
 \end_inset
@@ -1634,7 +1646,7 @@ Im Laufe des Projekts wurde entschieden diese Visualisierung nicht zu nutzen.
  darstellt, was schnell unübersichtlich sein kann.
  Deswegen wurde es als kontraproduktiv eingeschätzt noch viele weitere Informati
 onen hinzuzufügen und somit der Übersicht zu schaden.
- Dieser Ansatz wäre eine alternative, wenn Informationen klar ein und ausgeblend
+ Dieser Ansatz wäre eine Alternative, wenn Informationen klar ein und ausgeblend
 et werden können.
  
 \end_layout
@@ -1696,7 +1708,7 @@ Die Darstellung zeigt die Eigenposition als grünes Rechteck und das Heading
  anhand einer Linie, welche die Fahrtrichtung indiziert.
  Die Farbe des Rechtecks stellt hierbei die Größe des Sicherheitsbereichs
  dar.
- Wenn der Sicherheitsbereich größer wird und somit die Position ungenauer
+ Wenn der Sicherheitsbereich größer wird und somit die Position ungenauer,
  wird die Farbe gelb oder rot.
  Dadurch ist das Ergebnis auch in dieser kleinen Darstellung bewertbar und
  kontrollierbar durch den Nautiker.

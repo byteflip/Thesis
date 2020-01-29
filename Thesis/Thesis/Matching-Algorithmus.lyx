@@ -126,7 +126,7 @@ Zuerst werden die Transformationsparameter so initialisiert, dass die beiden
  kann.
  Wenn die Zuordnung bestimmt wurde, kann nun über die Summe der Abstandsquadrate
  zwischen den Punkten ein Fehler zwischen den Punktwolken berechnet werden.
- Wenn der bestimmte Fehler einen Schwellwert unterschreitet ist die Registration
+ Wenn der bestimmte Fehler einen Schwellwert unterschreitet ist die Zuordnung
  abgeschlossen.
  Sollte der Fehler zu groß sein, werden die Transformationsparameter anhand
  der gefundenen Zuordnung neu bestimmt und der Algorithmus wird iterativ
@@ -172,19 +172,19 @@ Der ICP Algorithmus wurde aus folgenden Gründen nicht in dieser Arbeit verwende
 :
 \end_layout
 
-\begin_layout Enumerate
-Die Rotation zwischen den beiden Punktwolken kann beliebig sein und ist
- vorher nicht bestimmbar
+\begin_layout Itemize
+Die Rotation zwischen den beiden Punktwolken kann beliebig sein und ICP
+ kann diese nur in einem kleinen Bereich korrekt finden
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 Es können mehrere Punkte in den Punktwolken fehlen, aufgrund der großen
  Punktmenge, welche aus der Menge an Daten resultiert
 \end_layout
 
-\begin_layout Enumerate
-Die Zuordnung von Punkten ist eindeutig (0 oder 1), was das erkennen von
- Fehlern oder das bestimmen einer Vertrauenswürdigkeit sehr schwer macht
+\begin_layout Itemize
+Die Zuordnung von Punkten ist digital (0 oder 1), was das Erkennen von Fehlern
+ oder das bestimmen einer Vertrauenswürdigkeit sehr schwer macht
 \end_layout
 
 \begin_layout Subsection
@@ -194,8 +194,8 @@ Subgraph Matching
 \begin_layout Standard
 Das Subgraph Matching ist ein weiterer Ansatz, um eine Zuordnung zwischen
  den Punktwolken wiederherzustellen.
- Hierfür würden die Punktwolken als zwei vollvermaschte Graphen betrachtet
- werden.
+ Hierfür wurde versucht die Punktwolken als zwei vollvermaschte Graphen
+ zu betrachten.
  
 \begin_inset Newline newline
 \end_inset
@@ -252,9 +252,8 @@ literal "true"
 Die Stärke dieses Ansatzes ist die Genauigkeit, da das Finden eines Subgraphen
  eine eindeutige Zuordnung zur Folge hätte, welche je nach Größe des Subgraphs
  auch als dementsprechend sicher einzustufen wäre.
- Zusätzlich kann sich so jede beliebige Rotation zwischen den Punktwolken
- finden lassen, da die Zuordnung nur auf den Abständen zwischen den Punkten
- basiert.
+ Durch die gefundene Zuordnung ist nun auch die Rotation zwischen den Punktwolke
+n berechenbar.
 \begin_inset Newline newline
 \end_inset
 
@@ -294,47 +293,37 @@ Coherent Point Drift
 Der in dieser Arbeit verwendete Algorithmus ist der Coherent Point Drift
  Algorithmus.
  Die Wahl für diesen Algorithmus wird im Folgenden genauer erklärt.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-Der CPD kann mit verrauschten und Ausreißer behafteten Daten immer noch
- eine korrekte Zuordnung finden.
- Er hat ein soft assignment (Wert zwischen 0 und 1), anstatt einer eindeutigen
- Zuordnung(hard assignment) wie der ICP Algorithmus.
- Durch dieses soft assignment ist es auch möglich, eine Aussage über die
+Der CPD hat eine weiche Zuordnung (Wert zwischen 0 und 1), anstatt einer
+ digitalen Zuordnung(0 oder 1) wie der ICP Algorithmus.
+ Durch diese weiche Zuordnung ist es auch möglich, eine Aussage über die
  Vertrauenswürdigkeit eines Zuordnungspaares zu treffen.
- Somit können Punkte, welche sicher zugeordnet werden konnten eine hohe
- Vertrauenswürdigkeit zusprechen, da eine hohe Zuordnung bedeutet, dass
- die ARPA und AIS-Daten zusammenpassten.
- Dadurch könnte der errechnete Wert, wie genau die Zuordnung gepasst hat,
- als Gewichtung genutzt werden.
+ Somit kann Punkten, welche sicher zugeordnet werden konnten eine hohe Vertrauen
+swürdigkeit zugesprochen werden.
+ Eine hohe Vertrauenswürdigkeit indiziert also, dass die ARPA und AIS-Daten
+ zusammenpassen.
 \begin_inset Newline newline
 \end_inset
 
 Eine weitere wichtige Eigenschaft von CPD ist, dass es möglich ist Ausreißer
  in den Punktwolken zu erkennen, solange man deren Menge im Vergleich zur
  Gesamtheit abschätzen kann.
- Dies war in ICP und Subgraph Matching noch ein Problem.
 \begin_inset Newline newline
 \end_inset
 
-Zusätzlich kann der CPD eine Rotation der Punktwolke erkennen, was essenziell
- für die Bestimmung des Headings des Schiffes ist (siehe Programmablauf).
+Zusätzlich kann der CPD mehrfach ausgeführt eine beliebige Rotation der
+ Punktwolke erkennen (siehe Kapitel 4.2.3), was essenziell für die Bestimmung
+ des Headings des Schiffes ist (siehe 4.2.1).
  Dies funktioniert jedoch nur für einen bestimmten Bereich, da der CPD nur
  ein lokales Maximum finden kann.
- Auf dieses Problem wird in 4.23 genauer eingegangen.
-\begin_inset Newline newline
-\end_inset
-
-Es existiert noch ein weiteres Problem mit diesem Ansatz.
- Der CPD benötigt für das finden von Ausreißern einen initialen Wert für
- die Menge der Ausreißer, welche in den Punktwolken erwartet werden.
- 
+ Auf dieses Problem wird in 4.2.3 genauer eingegangen.
 \begin_inset Newline newline
 \end_inset
 
 In der folgenden Tabelle 4.1 ist die Entscheidungsfindung für das Verfahren
- tabelliert anhand der Anforderungen.
+ tabellarisch gegenübergestellt anhand der Anforderungen.
  Zu erkennen sind die einzelnen Stärken der Ansätze und welche Eigenschaften
  fehlen, um das hier betrachtete Problem effektiv zu lösen.
 \end_layout
@@ -575,8 +564,8 @@ Vor- und Nachteile der Ansätze
 \end_layout
 
 \begin_layout Standard
-Die Implementierung des CPD Algorithmus erfolgte mithilfe eines Github Repositor
-ys 
+Die Implementierung des CPD Algorithmus basiert auf der Arbeit von Gadomski
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "CPD_C++"
@@ -585,14 +574,30 @@ literal "true"
 \end_inset
 
 .
- In diesem ist der Algorithmus mithilfe der Eigen3 Bibliothek implementiert.
+ Es steht unter der General Public License 2 (GPL2).
+ In dieser ist der Algorithmus mithilfe der Eigen3 Bibliothek implementiert.
  Die Eigen3 Bibliothek umfasst Methoden für Matrizen Berechnung, sowie Methoden
  zur Singulärwertzerlegung.
- Diese Implementierung kann auf bestimmte Weise parametrisiert werden, was
- im Folgenden genauer erklärt wird.
-\end_layout
+ 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "GPL2"
+description "General Public License 2"
+literal "false"
 
-\begin_layout Standard
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Der von Gadomski implementierte CPD ist nicht der originale CPD.
+ Er bietet weitere Möglichkeiten, wie das Spiegeln und Skalieren bei rigid
+ Transformationen, jedoch auch die Möglichkeit, diese zusätzlichen Transformatio
+nen nicht zu verwenden.
+\begin_inset Newline newline
+\end_inset
+
 Der Algorithmus gibt die Möglichkeit vor der Ausführung mehrere Einstellungen
  zu treffen.
  Hier wurden Folgende Einstellungen getroffen:
@@ -611,13 +616,21 @@ Die Ausgabe der Zuordnung der Punkte wurde als Rückgabe festgelegt
 \end_layout
 
 \begin_layout Standard
-Die Transformationen Spiegelung und Skalierung wurden ausgeschlossen, weil
- das die Punktwolke in ihrer Form verändern würde.
- Das ist nicht gewünscht, da die Radardaten sehr genau sind und eine Veränderung
- ihrer Struktur nur zu Fehlern führen würde.
- Zusätzlich würde so auch die Aussagekraft verringert werden, welche die
- Zuordnungswerte haben, falls die Struktur der Punktwolke sich beim Verfahren
- ändert.
+Die Transformationen Skalierung wurden ausgeschlossen, weil das die Punktwolke
+ in ihrer Form verändern würde.
+ Die Spiegelung wurde ebenfalls deaktiviert, weil die ARPA- und AIS-Daten
+ bereits korrekt gespiegelt sind.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+spiegelkorrekt?
+\end_layout
+
+\end_inset
+
+ Das ist nicht gewünscht, weil ARPA- und AIS-Daten bereits seitenrichtig
+ und in einer einheitlichen Skalierung vorliegen.
 \end_layout
 
 \begin_layout Section
@@ -796,12 +809,12 @@ Ungenauigkeiten durch den Erdellipsoid
 Der Coherent Point Drift Algorithmus basiert auf Koordinaten in kartesischer
  Form.
  In dieser Arbeit wurde dieser auf geodätische Koordinaten angewendet.
- Wodurch einige Genauigkeitsprobleme entstanden sind, die im Weiteren erläutert
- werden und eine Lösung präsentiert wird.
-\end_layout
+ Wodurch einige Genauigkeitsprobleme entstehen, die im Weiteren erläutert
+ werden.
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-Das erste Problem beruht auf der Translation, die der Algorithmus anwendet
+Das erste Problem beruht auf der Translation, die der Algorithmus anwendet,
  um die Distanz zwischen zwei Punktwolken zu minimieren.
  
 \begin_inset Newline newline
@@ -809,7 +822,7 @@ Das erste Problem beruht auf der Translation, die der Algorithmus anwendet
 
 Die Translation basiert auf der Distanz zwischen den Schwerpunkten der Punktwolk
 en.
- Dies ist zwar in einem kartesischen Koordinatensystem korrekt , indem der
+ Dies ist zwar in einem kartesischen Koordinatensystem korrekt, in dem der
  Abstand zwischen zwei Punkten über die euklidische Norm bestimmt werden
  kann, jedoch nicht wenn mit geodätische Koordinaten gerechnet wird.
  Der Grund hierfür ist, dass der Abstand zwischen den Längengraden zwischen
@@ -818,17 +831,15 @@ en.
  Als Folge hiervon ist es zwar möglich die Punktwolken zueinander zu bewegen,
  jedoch ist die Translation, welche der Algorithmus bestimmt, mit einem
  Fehler versehen.
- Diese Abweichungen, die durch dieses Problem entstanden sind verhalten
- sich proportional zum Abstand der beiden Punktwolken.
  Der Abstand zwischen den Punktwolken kann beliebig groß sein, da die ARPA-Punkt
 wolke ohne eine absolute Positionsangabe in Polarkoordinaten vorliegt und
- somit eine initiale Position benötigt wird um aus dieser geodätische Koordinate
-n zu erstellen.
+ somit eine initiale Position benötigt wird, um aus dieser geodätische Koordinat
+en zu erstellen.
  
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-Das zweite Problem entstand durch die Rotation, welche Teil des Algorithmus
+Das zweite Problem entsteht durch die Rotation, welche Teil des Algorithmus
  ist.
  Bei einer Rotation werden alle Punkte einer Punktwolke um den Ursprung
  des Koordinatensystems gedreht und erhalten somit eine neue Position.
@@ -838,14 +849,13 @@ Das zweite Problem entstand durch die Rotation, welche Teil des Algorithmus
  Wenn man geodätische Koordinaten rotiert, ändern sich ebenso die Positionen
  der Punkte, jedoch ändert sich hier auch der Abstand zwischen den Punkten,
  aufgrund der unterschiedlichen Abstände zwischen Längengraden.
- Die Abweichungen, die durch dieses Problem entstanden sind, steigen mit
- dem Abstand zwischen den Punktwolken.
-\end_layout
+ Die Abweichungen steigen mit dem Abstand zwischen den Punktwolken.
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-Die Lösung für das erste Problem (Translation) ist das Minimieren der initialen
- Abstände zwischen den Punktwolken.
- Die Translation die für das Überführen der einen Punktwolke in die andere
+Die Lösung für das erste Problem (Translation) ist das eliminieren der Abstände
+ zwischen den Schwerpunkten der Punktwolken.
+ Die Translation, die für das Überführen der einen Punktwolke in die andere
  benötigt wird, resultiert in einer kleinen Abweichung.
 \begin_inset Newline newline
 \end_inset
@@ -855,9 +865,9 @@ es der zu rotierenden Punktwolke in den Ursprung des Koordinatensystems.
  Eine Rotation dieser Punktwolke bewirkt nun, dass der Schwerpunkt seine
  Position nicht verändert, wodurch die Punkte der Punktwolke eine minimale
  Positionsänderung durch eine Rotation erfahren.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Somit ist die Lösung für diese Probleme die Translation beider Punktwolken
  auf den Ursprung des Koordinatensystems, um so die Ungenauigkeiten so gering
  wie möglich zu halten.
@@ -890,9 +900,9 @@ Die AIS - Punktwolke ist jedoch an ihre absolute Position gebunden, deswegen
  Das macht es möglich sie ebenso wie die ARPA - Punktwolke an den Ursprung
  zu platzieren.
  
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Nun sind optimale Bedingungen geschaffen, um eine Zuordnung zwischen den
  Punktwolken durch den Coherent Point Drift Algorithmus zu bestimmen.
 \end_layout

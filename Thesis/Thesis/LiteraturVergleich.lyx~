@@ -99,8 +99,8 @@ Die Fusion von ARPA- und AIS-Signalen ist ein wichtiger Bestandteil der
  Kollisionsverhinderung auf Schiffen.
  Die Fusion bringt den Vorteil, dass die Daten des Radars, welche Schiffe
  und Objekte in der Nähe enthalten, mit den absoluten Positions- und Information
-sdaten des AIS verglichen und auf der Seekarte (ECDIS) angezeigt werden
- können.
+sdaten des AIS verglichen und auf der elektronischen Seekarte (ECDIS) angezeigt
+ werden können.
  Viele der Verfahren basieren darauf die Daten nicht nur zuzuordnen, sondern
  sie verfolgen zu können, dass so genannte 
 \begin_inset Quotes gld
@@ -243,10 +243,10 @@ Die in dieser Arbeit entwickelte Methode zur Zusammenführung von AIS- und
  Diese Arbeit zielt auf eine möglichst genaue Positionsbestimmung mithilfe
  dieser Daten ab und dies im Kontext von möglichen Manipulierten oder falschen
  Daten.
- Somit kann der AIS Position nicht vertraut werden, da sie manipuliert sein
- kann.
- Deshalb müssen die Daten unter der Vermutung verglichen werden, ob fehlerhafte
- Daten enthalten und nicht alle Positionen korrekt sind.
+ Somit kann der AIS-Position bedingt nicht vertraut werden, da sie manipuliert
+ sein kann.
+ Deshalb müssen die Daten unter der Vermutung verglichen werden, dass fehlerhaft
+e Daten enthalten und nicht alle Positionen korrekt sind.
 \begin_inset Newline newline
 \end_inset
 
@@ -268,7 +268,7 @@ Point Set Registration ist ein bekanntes Problem aus der Mustererkennung.
  In diesem Abschnitt werden bekannte Point Set Registration Algorithmen
  genannt, welche mit dem verwendeten Algorithmus Ähnlichkeiten aufweisen.
  Zusätzlich werden auch Algorithmen genannt, welche in manchen Gebieten
- und unter bestimmten Bedingungen bessere Ergebnisse liefern könnten.
+ und unter bestimmten Bedingungen bessere Ergebnisse liefern können.
  Ein Point Set Registration Algorithmus wird verwendet um die Zuordnung
  der Punkte von zwei teilweise gleichen Punktwolken zu finden, sowie die
  Transformation, welche beide Punktwolken voneinander unterscheidet.
@@ -376,8 +376,8 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-Das finden von globalen Maxima wurde später im Jahr 2015 mit der ICP Erweiterung
- Global Optimal - Iterative closest Point (GO-ICP) erreicht 
+Das Finden vom globalen Optimum wurde später im Jahr 2015 mit der ICP Erweiterun
+g Global Optimal - Iterative closest Point (GO-ICP) erreicht 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "GO-ICP"
@@ -387,7 +387,7 @@ literal "true"
 
 .
  Dieser Algorithmus konnte ein globales Optimum für eine rigid Registration
- finden.
+ bestimmen.
  Das globale Optimum wird mit einem Branch and Bound Algorithmus gefunden,
  welcher die optimale Transformation finden soll.
  Dieser Ansatz löst das Problem, dass das Ergebnis nicht von der Initialisierung
@@ -417,7 +417,7 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Ein weiterer global Optimaler Algorithmus ist eine Coherent Point Drift
+Ein weiterer global optimaler Algorithmus ist eine Coherent Point Drift
  Erweitertung 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -427,12 +427,12 @@ literal "true"
 \end_inset
 
 .
- Diese Erweiterung behandelt bekannte Probleme des CPD, wie der manuellen
- Eingabe der vermuteten Ausreißer Menge und dem finden von nur lokalen Maxima.
+ Diese Erweiterung behandelt bekannte Probleme des CPD, wie die manuellen
+ Eingabe der vermuteten Ausreißer Menge und dem Finden von nur lokalen Maxima.
  Hierfür verwendet der Algorithmus rotation invariant shape context (RISC)
  und den EM-Algorithmus, wobei dieser nur abschließend die Zuordnung und
  Transformationsparameter bestimmt.
- Der Ansatz löst die kritischen Probleme von CPD, wie das finden von nur
+ Der Ansatz löst die kritischen Probleme von CPD, wie das Finden von nur
  lokalen Maxima.
  Der Algorithmus basiert jedoch auf der non-rigid Variante des CPD und verändert
  somit die Struktur der Punktwolke bei der Transformation.
@@ -447,12 +447,12 @@ literal "true"
 
 \end_inset
 
-, der auch in dieser Arbeit verwendet wurde ist ein Point Set Registration
+, der auch in dieser Arbeit verwendet wurde, ist ein Point Set Registration
  Algorithmus basierend auf Gaussian Mixture Models und dem EM-Algorithmus.
- Er unter normalen Bedingungen schlechter Einzuschätzen als der GO-ICP und
- der Erweiterung des CPD, jedoch erfüllt er alle Bedingungen, welche für
- diese Arbeit notwendig waren.
- Diese sind
+ Er ist unter allgemeinen Bedingungen schlechter einzuschätzen, als der
+ GO-ICP und der Erweiterung des CPD, jedoch erfüllt er alle Bedingungen,
+ welche für diese Arbeit notwendig waren.
+ Diese sind: 
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "RISC"
@@ -477,13 +477,16 @@ schnelle Laufzeit auch bei Ausreißer behafteten Daten
 \end_layout
 
 \begin_layout Enumerate
-Finden von beliebigen Rotationen (nur teilweise erfüllt)
+Finden von beliebigen Rotationen
 \end_layout
 
 \begin_layout Standard
 Unter diesen Anforderungen ist die Entscheidung für den CPD gefallen.
- Jedoch sollten alle anderen Methoden beobachtet werden, da sie möglicherweise
- mit speziellen Anpassungen auch die Anforderungen zu genüge erfüllen könnten.
+ Der CPD ist nahezu ein Standardalgorithmus, weswegen viele Algorithmen
+ sich mit diesem Vergleichen.
+ Dies vereinfacht das finden von besseren Algorithmen in diesem Gebiet,
+ falls der CPD ausgetauscht werden soll.
+ 
 \end_layout
 
 \end_body

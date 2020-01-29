@@ -152,7 +152,7 @@ relative
 true 
 \emph default
 Bearing gibt ebenso den Winkel zwischen Ziel und Eigenschiff an, jedoch
- bezogen auf die Nordrichtung.
+ bezogen auf die geografische Nordrichtung.
 \begin_inset Newline newline
 \end_inset
 
@@ -458,6 +458,14 @@ Semi Minor Axis
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+Abflachungsfaktor der Erde 
+\begin_inset Formula $\frac{1}{f}=298,257223563$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -530,6 +538,15 @@ literal "true"
 .
  Derzeit sind auf den meisten Schiffen ältere Empfänger verbaut, welche
  die Eigenposition nur auf einige Hundert Meter genau bestimmen können.
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "LORAN"
+description "Long Range Navigation"
+literal "false"
+
+\end_inset
+
+
 \begin_inset Note Note
 status open
 
@@ -1096,7 +1113,7 @@ versteckten
 \begin_inset Quotes grd
 \end_inset
 
- Parametern.
+ Parametern oder Parametern, welche von diesen abhängen.
  Ein 
 \begin_inset Quotes gld
 \end_inset
@@ -1113,11 +1130,11 @@ versteckter
 \begin_inset Newline newline
 \end_inset
 
-Ein Beispiel im Kontext des Point Set Registration ist, dass die Zuordnung
- der Punkte und die Transformationsparameter, welche benötigt werden, um
- die Punktwolken ineinander zu überführen, so voneinander abhängen.
+Im Kontext des Point Set Registration sind, dass die Zuordnung der Punkte
+ und die Transformationsparameter, welche benötigt werden, um die Punktwolken
+ ineinander zu überführen.
  Sobald die Zuordnung bekannt ist, kann man damit die Transformationsparameter
- bestimmen und andersherum.
+ bestimmen und ebenso anders rum.
  Somit ist es das Ziel die Zuordnung zu finden, welche von den Transformationspa
 rametern abhängt.
 \begin_inset Newline newline
@@ -1129,16 +1146,22 @@ Der EM-Algorithmus startet meistens mit einer zufälligen Initialisierung
 \end_inset
 
 Er besteht aus zwei Schritten dem E- und dem M-Schritt.
- Der E-Schritt auch Expectation-Schritt genannt bestimmt zuerst die Daten,
- welche Abhängig von den.....
+ Der E-Schritt auch Expectation-Schritt genannt schätzt im ersten Durchgang
+ die versteckten Parameter.
+ In weiteren Durchläufen, werden die versteckten Parameter über das Ergebnis
+ des M-Schrittes berechnet.
 \begin_inset Newline newline
 \end_inset
 
-HIER NOCH REST SCHREIBEN
+Der M-Schritt bestimmt anhand der im E-Schritt bestimmten versteckten Parameter
+ die gesuchten Parameter mittels einer Maximum-Likelihood-Methode.
+ 
 \begin_inset Newline newline
 \end_inset
 
-Der EM-Algorithmus terminiert immer mit einer Lösung für das Problem.
+Diese beiden Schritte werden wiederholt bis sich die Parameter pro Iteration
+ kaum noch ändern.
+ Der EM-Algorithmus terminiert immer mit einer Lösung für das Problem.
  Diese Lösung ist aber nur ein lokales Maximum.
  Damit das globale Maximum gefunden werden kann, muss der Algorithmus mit
  verschiedenen Startparametern aufgerufen werden.

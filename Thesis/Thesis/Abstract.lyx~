@@ -80,6 +80,21 @@
 
 \begin_body
 
+\begin_layout Chapter
+Kurzzusammenfassung
+\end_layout
+
+\begin_layout Standard
+Die Manipulation von Positionsdaten ist eine zunehmende Bedrohung in der
+ Schifffahrt.
+ Dies ist auf die Manipulierbarkeit von GPS-Daten zurückzuführen.
+ Zur Minderung dieser Gefahr wurde eine Methode entwickelt, mit welcher
+ die Eigenposition, unabhängig der GPS-Daten, bestimmt werden kann.
+ Hierfür werden die Informationen der umliegenden Schiffe und des Radars
+ genutzt.
+  
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -108,21 +123,6 @@ setcounter{page}{2}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Chapter
-Kurzzusammenfassung
-\end_layout
-
-\begin_layout Standard
-Die Manipulation von Positionsdaten ist eine zunehmende Bedrohung in der
- Schifffahrt.
- Dies ist auf die Manipulierbarkeit von GPS-Daten zurückzuführen.
- Zur Minderung dieser Gefahr wurde eine Methode entwickelt, mit welcher
- die Eigenposition, unabhängig der GPS-Daten, bestimmt werden kann.
- Hierfür werden die Informationen der umliegenden Schiffe und des Radars
- genutzt.
-  
 \end_layout
 
 \end_body
