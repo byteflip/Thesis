@@ -92,9 +92,9 @@ n zu finden.
  unter der Fusion von AIS und ARPA-Signalen bekannt sind.
  Diese werden im Folgenden betrachtet, zudem wird ein Vergleich dieser Methoden
  mit der aktuellen Arbeit präsentiert.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Die Fusion von ARPA- und AIS-Signalen ist ein wichtiger Bestandteil der
  Kollisionsverhinderung auf Schiffen.
  Die Fusion bringt den Vorteil, dass die Daten des Radars, welche Schiffe
@@ -127,9 +127,9 @@ Durch diesen Vergleich steigt die Genauigkeit und Verlässlichkeit beider
  Systeme, da ARPA bei schlechten Wetterbedingungen nur eingeschränkt gute
  Ergebnisse liefert und AIS ein unverschlüsselt übertragenes Datenpaket
  ist.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Dieser Vorteil wurde schon früh erkannt, weswegen schon 2009 Methoden gesucht
  und entwickelt wurden, um diese Erhöhung der Sicherheit im Bereich Kollisionsve
 rhinderung zu erreichen.
@@ -228,9 +228,9 @@ literal "true"
 \end_inset
 
 .
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Die in dieser Arbeit entwickelte Methode zur Zusammenführung von AIS- und
  ARPA-Daten unterscheidet sich in mehreren Punkten von den bekannten Methoden
  zur ARPA und AIS Fusion.
@@ -282,9 +282,9 @@ en, da dies auch der Anwendungsfall dieser Arbeit ist.
  welche z.
  B.
  bei Bilderkennung verwendet werden.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Die Verwendung von Gaussian Mixture Models war schon vor dem Coherent Point
  Drift Algorithmus eine Methode zur Bestimmung einer probabilistischen Zuordnung.
  Hierzu haben Jian und Vemuri 2005 eine Methode entwickelt, welche mithilfe
@@ -314,17 +314,15 @@ literal "true"
 \end_inset
 
 .
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Zur Lösung des Point Set Registration Problems wird in manchen Algorithmen
  der EM-Algorithmus verwendet, da es mit ihm möglich ist, die Zuordnung
  und die Transformationsparameter gleichzeitig iterativ zu bestimmen.
  Der bekannte rigid Point Set Registration Algorithmus Iterative Closest
  Point (ICP) wurde auch mit diesem Algorithmus erweitert.
- Diese Erweiterung wird EM-ICP genannt.
- Der EM-ICP wurde auch mit GMMs erweitert und in Erweiterungen robuster
- gegen Ausreißer gemacht 
+ Diese Erweiterung wird EM-ICP 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "EM-ICP"
@@ -332,7 +330,9 @@ literal "true"
 
 \end_inset
 
-.
+ genannt.
+ Der EM-ICP wurde auch mit GMMs erweitert und in Erweiterungen robuster
+ gegen Ausreißer gemacht.
  Der Nachteil dieses Algorithmus ist, dass er immer nur ein lokales Minimum
  finden konnte, da der EM-Algorithmus immer nur zum nähesten Maximum konvergiert.
  Deswegen waren weitere Verfahren wie Simulated Annealing notwendig, um
@@ -355,13 +355,11 @@ literal "false"
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Eine weitere Methode ist der Expectation Conditional Maximization for Point
- Registration Algorithmus (ECMPR) für rigid Registration, welcher eine Abänderun
-g des EM-Algorithmus ist und eine bessere Methode zur Bestimmung der Rotation
- und Translation verspricht 
+ Registration Algorithmus (ECMPR) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ECMPR"
@@ -369,15 +367,16 @@ literal "true"
 
 \end_inset
 
-.
+ für rigid Registration, welcher eine Abänderung des EM-Algorithmus ist
+ und eine bessere Methode zur Bestimmung der Rotation und Translation verspricht.
  Diese Methode findet bei richtiger Initialisierung, welche bei manchen
  Datensätzen schwer sein kann, das globale Maximum und damit die korrekte
  Zuordnung der Punktwolken.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Das Finden vom globalen Optimum wurde später im Jahr 2015 mit der ICP Erweiterun
-g Global Optimal - Iterative closest Point (GO-ICP) erreicht 
+g Global Optimal - Iterative closest Point (GO-ICP) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "GO-ICP"
@@ -385,7 +384,7 @@ literal "true"
 
 \end_inset
 
-.
+ erreicht .
  Dieser Algorithmus konnte ein globales Optimum für eine rigid Registration
  bestimmen.
  Das globale Optimum wird mit einem Branch and Bound Algorithmus gefunden,
@@ -414,9 +413,9 @@ literal "false"
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Ein weiterer global optimaler Algorithmus ist eine Coherent Point Drift
  Erweitertung 
 \begin_inset CommandInset citation
@@ -436,9 +435,9 @@ literal "true"
  lokalen Maxima.
  Der Algorithmus basiert jedoch auf der non-rigid Variante des CPD und verändert
  somit die Struktur der Punktwolke bei der Transformation.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Der Coherent Point Drift Algorithmus 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -478,6 +477,10 @@ Erkennen und nicht zuordnen von Ausreißern
 
 \begin_layout Enumerate
 Finden von beliebigen Rotationen
+\end_layout
+
+\begin_layout Enumerate
+Umgang mit verrauschten Daten
 \end_layout
 
 \begin_layout Standard

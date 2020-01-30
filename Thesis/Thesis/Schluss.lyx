@@ -121,14 +121,19 @@ Die entwickelten Ansätze lösen das am Anfang genannte Problem, jedoch gibt
 Der Zuordnungsalgorithmus basiert mit dem CPD auf rigid Transformationen.
  Die Genauigkeit des Algorithmus würde steigen, falls es möglich wäre, effizient
  Transformationen auf dem Erdellipsoid in diesen zu integrieren.
- Dies würde natürlich auch die Laufzeit verringern, da momentan beide Punktwolke
-n auf den Ursprung verschoben werden müssen.
+ 
 \begin_inset Newline newline
 \end_inset
 
-Zudem würde eine Point-Set-Registration Methode, die globale Optima findet,
- die Performanz deutlich erhöhen.
+Zudem würde eine Point-Set-Registration Methode, die nicht die Rotationsprobleme
+ des CPD hat, die Performanz deutlich erhöhen.
  Dadurch müsste der Algorithmus nicht achtfach ausgeführt werden.
+\begin_inset Newline newline
+\end_inset
+
+Hierbei könnten auch Erweiterungen des CPD Algorithmus oder dem CPD ähnliche
+ Algorithmen für dieses Problem getestet werden, um eine bessere Robustheit
+ oder ähnliche Verbesserung zu erreichen.
  
 \begin_inset Newline newline
 \end_inset
@@ -137,8 +142,15 @@ Eine automatische Erkennung der Menge der Ausreißer würde die Robustheit
  des CPD noch deutlich verbessern.
  Hierzu könnte das Verhältnis zwischen der Menge von ARPA- zu AIS-Zielen
  verwendet werden.
- Um die Funktionalität dieses Ansatzes zu verifizieren wäre ein Test mit
- echten Daten jedoch unabdingbar.
+ Dieses Verhältnis könnte anschließend automatisch angepasst werden bis
+ eine akzeptable Zuordnung entsteht oder nur wenige korrekte Datenpunkte
+ übrig bleiben.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Ein Test des gesamten Algorithmus mit echten Daten ist wichtig, für die
+ Verifikation der Funktion und die Weiterentwicklung dieses Ansatzes.
 \begin_inset Newline newline
 \end_inset
 

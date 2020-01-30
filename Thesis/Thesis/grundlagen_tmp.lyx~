@@ -190,9 +190,9 @@ Es gibt auch Fälle, in denen das Radar keine oder nur schlechte Daten liefern
 Die Sicherheit der ARPA Anlage ist sehr hoch einzustufen, da sie kaum manipulier
 bar von außerhalb der Schiffsbrücke ist und die Fehlerfälle kaum schadhaft
  ausgenutzt werden können.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Das Automatic Identification System AIS ist ein Funksystem zum Schiffsdatenausta
 usch bei der Seefahrt.
  Hierbei werden die eigenen Schiffsinformationen sowie die Daten einiger
@@ -284,9 +284,9 @@ literal "true"
 \end_inset
 
 .
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Die Nachrichten, welche über NMEA gesendet werden enthalten z.
  B.
  Daten von Systemen auf dem Schiff wie dem Radar, Daten von Sensoren wie
@@ -296,9 +296,9 @@ Die Nachrichten, welche über NMEA gesendet werden enthalten z.
 \end_inset
 
 Eine solche NMEA - Nachricht ist wie folgt aufgebaut: 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Sie beginnt mit einem 
 \begin_inset Quotes gld
 \end_inset
@@ -438,9 +438,9 @@ literal "true"
 
 .
  Es basiert auf einem Referenzellipsoid.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Dieser Referenzellipsoid ist wie folgt parametrisiert:
 \begin_inset Newline newline
 \end_inset
@@ -466,9 +466,9 @@ Abflachungsfaktor der Erde
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Somit sind globale Positionsangaben in Längen- und Breitengrad möglich.
  Die Längengrade verlaufen zwischen dem Nord- und Südpol, die Breitengrade
  parallel zum Äquator.
@@ -501,7 +501,15 @@ Loran-C
 \begin_layout Standard
 Die Long Range Navigation (LORAN) ist eine alternative Methode zur Positionsbest
 immung.
- Die aktuelle Version wird LORAN-C genannt.
+ Die aktuelle Version wird LORAN-C 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LORAN"
+literal "true"
+
+\end_inset
+
+ genannt.
  In der Schifffahrt wird diese verwendet, wenn kein GPS-Signal verfügbar
  ist.
 \begin_inset Newline newline
@@ -547,16 +555,6 @@ literal "false"
 \end_inset
 
 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-LORAN-C QUELLE
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -571,9 +569,9 @@ Die Berechnung von Entfernung auf dem Erdellipsoid sind besonders, weil
  Die Fehler, die durch diese Abplattung entstehen, sollen möglichst gering
  gehalten werden, deswegen gibt es verschiedene Formeln zur Berechnung auf
  dem Erdellipsoid, welche sich in Genauigkeit und Performanz unterscheiden.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Für diese Arbeit sind Formeln wichtig, welche die erste und zweite geodätische
  Hauptaufgabe lösen können.
  Die erste geodätische Hauptaufgabe ist das Bestimmen eines Punktes mit
@@ -586,9 +584,9 @@ Die zweite geodätische Hauptaufgabe ist das Bestimmen von Richtung und Distanz
  zwischen zwei Punkten.
  Zur Lösung der ersten beiden geodätischen Hauptaufgaben werden im weiteren
  drei Möglichkeiten dargestellt und bewertet.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Die erste Möglichkeit ist die Berechnung über die euklidische Norm.
  Dabei werden die Koordinaten auf einer Ebene angenommen und dementsprechend
  berechnet.
@@ -605,9 +603,9 @@ Der Vorteil hiervon ist, dass wenn die Entfernungen zwischen den Punkten
  Denn ab diesem Punkt werden die Fehler durch die Erdkrümmung immer größer,
  wodurch auf komplexere Formeln mit erdähnlicheren Grundformen zurückzugreifen
  ist.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Die zweite mögliche Formel für die Berechnung ist die Haversine Formel 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -625,9 +623,9 @@ literal "true"
  relativ groß.
  Die Formel ist deswegen für kleine bis mittlere Distanzen verwendbar, jedoch
  nicht für große Distanzen.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Die dritte Möglichkeit ist die Vincenty Formel 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -646,9 +644,9 @@ literal "true"
  Die Formel soll egal wo auf der Erde eine gleichbleibende Ungenauigkeit
  haben, welche unter einem Zentimeter liegen soll.
  
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Die Bestimmung der für den Fall richtigen Formel ist meisten abhängig von
  der Entfernung der Punkte und dem tolerierbaren Fehler.
  Eine Übersicht über die Abweichung der euklidischen Norm und der Haversine
@@ -909,9 +907,9 @@ Point Set Registration Algorithmen lassen sich in zwei Kategorien einteilen.
  Diese sind Rigid (starre) Transformationen und Non-rigid (nicht starre)
  Transformationen.
  Im Weiteren werden beide Transformationen erklärt und ebenso ihre Unterschiede.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 Unter einer rigid Transformation, versteht man eine Transformation, bei
  welcher sich die Abstände und die Winkel zwischen den Punkten nicht ändern.
  Das bedeutet, die Struktur der Punktwolke bleibt bei Transformationen unverände
@@ -1113,7 +1111,7 @@ versteckten
 \begin_inset Quotes grd
 \end_inset
 
- Parametern.
+ Parametern oder Parametern, welche von diesen abhängen.
  Ein 
 \begin_inset Quotes gld
 \end_inset
@@ -1130,11 +1128,11 @@ versteckter
 \begin_inset Newline newline
 \end_inset
 
-Ein Beispiel im Kontext des Point Set Registration ist, dass die Zuordnung
- der Punkte und die Transformationsparameter, welche benötigt werden, um
- die Punktwolken ineinander zu überführen, so voneinander abhängen.
+Im Kontext des Point Set Registration sind, dass die Zuordnung der Punkte
+ und die Transformationsparameter, welche benötigt werden, um die Punktwolken
+ ineinander zu überführen.
  Sobald die Zuordnung bekannt ist, kann man damit die Transformationsparameter
- bestimmen und andersherum.
+ bestimmen und ebenso anders rum.
  Somit ist es das Ziel die Zuordnung zu finden, welche von den Transformationspa
 rametern abhängt.
 \begin_inset Newline newline
@@ -1146,16 +1144,30 @@ Der EM-Algorithmus startet meistens mit einer zufälligen Initialisierung
 \end_inset
 
 Er besteht aus zwei Schritten dem E- und dem M-Schritt.
- Der E-Schritt auch Expectation-Schritt genannt bestimmt zuerst die Daten,
- welche Abhängig von den.....
+ Der E-Schritt auch Expectation-Schritt genannt schätzt im ersten Durchgang
+ die versteckten Parameter.
+ In weiteren Durchläufen, werden die versteckten Parameter über das Ergebnis
+ des M-Schrittes berechnet.
 \begin_inset Newline newline
 \end_inset
 
-HIER NOCH REST SCHREIBEN
+Der M-Schritt bestimmt anhand der im E-Schritt bestimmten versteckten Parameter
+ die gesuchten Parameter mittels einer Maximum-Likelihood-Methode 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MLE"
+literal "true"
+
+\end_inset
+
+.
+ 
 \begin_inset Newline newline
 \end_inset
 
-Der EM-Algorithmus terminiert immer mit einer Lösung für das Problem.
+Diese beiden Schritte werden wiederholt bis sich die Parameter pro Iteration
+ kaum noch ändern.
+ Der EM-Algorithmus terminiert immer mit einer Lösung für das Problem.
  Diese Lösung ist aber nur ein lokales Maximum.
  Damit das globale Maximum gefunden werden kann, muss der Algorithmus mit
  verschiedenen Startparametern aufgerufen werden.
@@ -1364,15 +1376,7 @@ ation findet.
  Eine weitere Schwäche des Algorithmus ist, dass die Menge an Ausreißern,
  welche erwartet werden initial eingegeben werden müssen.
  Somit ist es notwendig, dass diese Menge bestimmbar oder abschätzbar ist
- für ein optimales Ergebnis 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "CPD"
-literal "true"
-
-\end_inset
-
-.
+ für ein optimales Ergebnis.
 \end_layout
 
 \end_body

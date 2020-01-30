@@ -84,6 +84,26 @@ Fazit
 \begin_layout Standard
 In dieser Arbeit wurde eine Methoden zum Zuordnen von AIS- und ARPA-Zielen,
  sowie eine Methode zum Bestimmen der Eigenposition präsentiert.
+ Diese konnten in Testszenarien gute Ergebnisse erzielen und somit zeigen
+ das sie die Problemstellung lösen können.
+ Diese Testszenarien, wurden mit Generator-Daten erstellt und sind somit
+ nicht aussagekräftig für Fälle mit realen Daten.
+ Deshalb ist ein weiterer Test mit realen Daten unabdingbar, um die Funktionalit
+ät auf diesen zu gewährleisten.
+\begin_inset Newline newline
+\end_inset
+
+Die Schwäche der Algorithmen, welche die Große nicht bekannte Menge von
+ Ausreißern ist, kann möglicherweise mit Vorfilterungen gelöst werden um
+ so diese Schwäche zu überkommen und ein besseres Ergebnis zu generieren.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Die Stärke der Algorithmen ist definitiv, dass sie mit steigender Menge
+ von Punkten, welche in beiden Punktwolken existieren, bessere Ergebnisse
+ erzielen.
+ 
 \end_layout
 
 \begin_layout Section
