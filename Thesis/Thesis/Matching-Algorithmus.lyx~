@@ -136,7 +136,7 @@ Zuerst werden die Transformationsparameter so initialisiert, dass die beiden
 
 ICP existiert schon sehr lange, deswegen gibt es eine Vielzahl von Erweiterungen
 , wie z.B.
- EM-ICP, welches ICP durch den EM-Algorithmus erweitert 
+ EM-ICP 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "EM-ICP"
@@ -144,7 +144,7 @@ literal "true"
 
 \end_inset
 
-.
+, welches ICP durch den EM-Algorithmus erweitert .
  So existieren noch viele weitere Varianten die ICP für verschiedene Anwendungsf
 älle modifiziert haben.
 \begin_inset Newline newline
@@ -194,9 +194,12 @@ Subgraph Matching
 \begin_layout Standard
 Das Subgraph Matching ist ein weiterer Ansatz, um eine Zuordnung zwischen
  den Punktwolken wiederherzustellen.
- Hierfür wurde versucht die Punktwolken als zwei vollvermaschte Graphen
- zu betrachten.
- 
+ Hierfür wurde versucht das Point-Set-Registration Problem in ein Subgraph
+ Matching zu überführen.
+ Dafür werden aus beiden Punktwolken vollvermaschte Graphen erstellt, indem
+ jeder Punkt mit jedem anderen verbunden wird.
+ Hier tritt das Problem auf, dass durch Ausreißer sie keine direkten Subgraphen
+ der anderen Punktwolke sind, sondern nur einen Subgraphen enthalten.
 \begin_inset Newline newline
 \end_inset
 
@@ -251,9 +254,9 @@ literal "true"
 
 Die Stärke dieses Ansatzes ist die Genauigkeit, da das Finden eines Subgraphen
  eine eindeutige Zuordnung zur Folge hätte, welche je nach Größe des Subgraphs
- auch als dementsprechend sicher einzustufen wäre.
- Durch die gefundene Zuordnung ist nun auch die Rotation zwischen den Punktwolke
-n berechenbar.
+ als sicher einzustufen wäre.
+ Durch diese eindeutige Zuordnung kann der Rotationsunterschied zwischen
+ den Punktwolken mathematisch bestimmt werden.
 \begin_inset Newline newline
 \end_inset
 
@@ -275,8 +278,10 @@ Das Graph Matching kann mit Ausreißern nicht arbeiten, da es keine fehlenden
 
 Außerdem kann die ARPA-Punktwolke auch Punkte enthalten, die in der AIS-Punktwol
 ke fehlen.
- Dies ist möglich, falls ein Schiff kein AIS sendet oder Radarschatten fälschlic
-h für Schiffe gehalten werden.
+ Dies ist möglich, falls ein Schiff oder ein AtoN kein AIS senden oder Radarscha
+tten fälschlich für Schiffe gehalten werden.
+ Außerdem besteht auch die Möglichkeit, dass Inseln vom Radar getrackt werden,
+ diese würden auch im AIS nicht erscheinen.
  Zusätzlich ist der Ansatz sehr Laufzeit intensiv, da die beiden Graphen
  zuerst erstellt werden müssen, wofür die Distanz zwischen allen Punkten
  berechnet werden muss.

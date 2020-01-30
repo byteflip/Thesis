@@ -419,7 +419,31 @@ literal "true"
 \end_layout
 
 \begin_layout Subsection
-WGS 84 und Loran-C
+Positionsbestimmung im Maritimen Umfeld
+\end_layout
+
+\begin_layout Standard
+Die Positionsangaben im Maritimen Umfeld, werden in Längen- und Breitengrad
+ angegeben.
+ Die Positionsbestimmung erfolgt hauptsächlich über das Global Positioning
+ System (GPS).
+ Dies ist ein Positionssystem basierend auf Satelliten, über welche es die
+ Position bestimmt 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GPS-Accuracy"
+literal "true"
+
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Im Weiteren wird auf die Art der Koordinaten eingegangen, sowie ein alternatives
+ Positionsbestimmungssystem gezeigt, welches in der Schifffahrt bei Ausfall
+ von GPS genutzt werden kann.
 \end_layout
 
 \begin_layout Subsubsection*

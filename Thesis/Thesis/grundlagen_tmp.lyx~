@@ -534,8 +534,9 @@ Diese Sender senden in bestimmten Abständen Signale aus, welche von Schiffen
 Die Genauigkeit von LORAN-C ist abhängig von der Lage des Schiffes zu den
  Sendestationen und der Qualität des Signalempfängers.
  Aktuell gibt es bereits Signalempfänger, welche bei optimalen Bedingungen
- eine Genauigkeit von bis zu zehn Metern garantieren, dies entspricht der
- Durchschnittlichen Genauigkeit eines GPS-Empfängers 
+ eine Genauigkeit von bis zu zehn Metern garantieren, dies entspricht etwas
+ der Genauigkeit eines durchschnittlichen GPS-Empfängers.
+ Dieser hat eine Genauigkeit zwischen zehn und fünfzehn Metern 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "GPS-Accuracy"
